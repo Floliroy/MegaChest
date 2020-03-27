@@ -226,7 +226,7 @@ public abstract class Personnage {
 	 * @param objet
 	 */
 	public void addListObjets(String objet) { //TODO: Remplacer String par la classe Objet
-		if(listObjets.size() <= TAILLE_MAX_LISTE_OBJET) {
+		if(listObjets.size() < TAILLE_MAX_LISTE_OBJET) {
 			listObjets.add(objet);
 		}
 	}
