@@ -10,6 +10,7 @@ public class Wukong extends Personnage {
 	private static final Integer vitesse = 60;
 	private static final Element element = Element.FEU;
 	private static final Origine origine = Origine.IONIA;
+	private static final String cheminImage = System.getProperty("user.dir") + "/images/personnages/wukong.png";
 	
 	/**
 	 * Initialise le personnage Wukong avec comme caractéristiques :<br>
@@ -20,7 +21,7 @@ public class Wukong extends Personnage {
 	 *  - Vit = 60<br>
 	 */
 	public Wukong() {
-		super(nom, vie, deplacements, degats, portee, vitesse, element, origine);
+		super(nom, vie, deplacements, degats, portee, vitesse, element, origine, cheminImage);
 	}
 	
 }

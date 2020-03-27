@@ -10,6 +10,7 @@ public class Sion extends Personnage {
 	private static final Integer vitesse = 30;
 	private static final Element element = Element.TERRE;
 	private static final Origine origine = Origine.NOXUS;
+	private static final String cheminImage = System.getProperty("user.dir") + "/images/personnages/sion.png";
 	
 	/**
 	 * Initialise le personnage Sion avec comme caractéristiques :<br>
@@ -20,7 +21,7 @@ public class Sion extends Personnage {
 	 *  - Vit = 30<br>
 	 */
 	public Sion() {
-		super(nom, vie, deplacements, degats, portee, vitesse, element, origine);
+		super(nom, vie, deplacements, degats, portee, vitesse, element, origine, cheminImage);
 	}
 	
 }

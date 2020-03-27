@@ -10,6 +10,7 @@ public class Ahri extends Personnage {
 	private static final Integer vitesse = 50;
 	private static final Element element = Element.EAU;
 	private static final Origine origine = Origine.IONIA;
+	private static final String cheminImage = System.getProperty("user.dir") + "/images/personnages/ahri.png";
 
 	/**
 	 * Initialise le personnage Ahri avec comme caractéristiques :<br>
@@ -20,7 +21,7 @@ public class Ahri extends Personnage {
 	 *  - Vit = 50<br>
 	 */
 	public Ahri() {
-		super(nom, vie, deplacements, degats, portee, vitesse, element, origine);
+		super(nom, vie, deplacements, degats, portee, vitesse, element, origine, cheminImage);
 	}
 	
 }

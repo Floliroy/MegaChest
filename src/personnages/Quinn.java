@@ -10,6 +10,7 @@ public class Quinn extends Personnage {
 	private static final Integer vitesse = 70;
 	private static final Element element = Element.VENT;
 	private static final Origine origine = Origine.DEMACIA;
+	private static final String cheminImage = System.getProperty("user.dir") + "/images/personnages/quinn.png";
 	
 	/**
 	 * Initialise le personnage Quinn avec comme caractéristiques :<br>
@@ -20,7 +21,7 @@ public class Quinn extends Personnage {
 	 *  - Vit = 70<br>
 	 */
 	public Quinn() {
-		super(nom, vie, deplacements, degats, portee, vitesse, element, origine);
+		super(nom, vie, deplacements, degats, portee, vitesse, element, origine, cheminImage);
 	}
 	
 }

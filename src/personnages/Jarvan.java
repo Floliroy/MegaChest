@@ -10,6 +10,7 @@ public class Jarvan extends Personnage {
 	private static final Integer vitesse = 50;
 	private static final Element element = Element.TERRE;
 	private static final Origine origine = Origine.DEMACIA;
+	private static final String cheminImage = System.getProperty("user.dir") + "/images/personnages/jarvan.png";
 	
 	/**
 	 * Initialise le personnage Jarvan IV avec comme caractéristiques :<br>
@@ -20,7 +21,7 @@ public class Jarvan extends Personnage {
 	 *  - Vit = 50<br>
 	 */
 	public Jarvan() {
-		super(nom, vie, deplacements, degats, portee, vitesse, element, origine);
+		super(nom, vie, deplacements, degats, portee, vitesse, element, origine, cheminImage);
 	}
 	
 }

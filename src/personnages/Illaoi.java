@@ -10,6 +10,7 @@ public class Illaoi extends Personnage {
 	private static final Integer vitesse = 30;
 	private static final Element element = Element.TERRE;
 	private static final Origine origine = Origine.BILGEWATER;
+	private static final String cheminImage = System.getProperty("user.dir") + "/images/personnages/illaoi.png";
 	
 	/**
 	 * Initialise le personnage Illaoi avec comme caractéristiques :<br>
@@ -20,7 +21,7 @@ public class Illaoi extends Personnage {
 	 *  - Vit = 30<br>
 	 */
 	public Illaoi() {
-		super(nom, vie, deplacements, degats, portee, vitesse, element, origine);
+		super(nom, vie, deplacements, degats, portee, vitesse, element, origine, cheminImage);
 	}
 	
 }

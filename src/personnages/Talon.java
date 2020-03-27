@@ -10,6 +10,7 @@ public class Talon extends Personnage {
 	private static final Integer vitesse = 50;
 	private static final Element element = Element.VENT;
 	private static final Origine origine = Origine.NOXUS;
+	private static final String cheminImage = System.getProperty("user.dir") + "/images/personnages/talon.png";
 	
 	/**
 	 * Initialise le personnage Talon avec comme caractéristiques :<br>
@@ -20,7 +21,7 @@ public class Talon extends Personnage {
 	 *  - Vit = 50<br>
 	 */
 	public Talon() {
-		super(nom, vie, deplacements, degats, portee, vitesse, element, origine);
+		super(nom, vie, deplacements, degats, portee, vitesse, element, origine, cheminImage);
 	}
 	
 }

@@ -10,6 +10,7 @@ public class Kayle extends Personnage {
 	private static final Integer vitesse = 60;
 	private static final Element element = Element.VENT;
 	private static final Origine origine = Origine.DEMACIA;
+	private static final String cheminImage = System.getProperty("user.dir") + "/images/personnages/kayle.png";
 	
 	/**
 	 * Initialise le personnage Kayle avec comme caractéristiques :<br>
@@ -20,7 +21,7 @@ public class Kayle extends Personnage {
 	 *  - Vit = 60<br>
 	 */
 	public Kayle() {
-		super(nom, vie, deplacements, degats, portee, vitesse, element, origine);
+		super(nom, vie, deplacements, degats, portee, vitesse, element, origine, cheminImage);
 	}
 	
 }

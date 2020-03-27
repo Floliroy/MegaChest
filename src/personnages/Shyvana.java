@@ -10,6 +10,7 @@ public class Shyvana extends Personnage {
 	private static final Integer vitesse = 70;
 	private static final Element element = Element.FEU;
 	private static final Origine origine = Origine.DEMACIA;
+	private static final String cheminImage = System.getProperty("user.dir") + "/images/personnages/shyvana.png";
 	
 	/**
 	 * Initialise le personnage Shyvana avec comme caractéristiques :<br>
@@ -20,7 +21,7 @@ public class Shyvana extends Personnage {
 	 *  - Vit = 70<br>
 	 */
 	public Shyvana() {
-		super(nom, vie, deplacements, degats, portee, vitesse, element, origine);
+		super(nom, vie, deplacements, degats, portee, vitesse, element, origine, cheminImage);
 	}
 
 }

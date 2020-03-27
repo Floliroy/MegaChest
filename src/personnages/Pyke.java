@@ -10,6 +10,7 @@ public class Pyke extends Personnage {
 	private static final Integer vitesse = 40;
 	private static final Element element = Element.EAU;
 	private static final Origine origine = Origine.BILGEWATER;
+	private static final String cheminImage = System.getProperty("user.dir") + "/images/personnages/pyke.png";
 	
 	/**
 	 * Initialise le personnage Pyke avec comme caractéristiques :<br>
@@ -20,7 +21,7 @@ public class Pyke extends Personnage {
 	 *  - Vit = 40<br>
 	 */
 	public Pyke() {
-		super(nom, vie, deplacements, degats, portee, vitesse, element, origine);
+		super(nom, vie, deplacements, degats, portee, vitesse, element, origine, cheminImage);
 	}
 	
 }

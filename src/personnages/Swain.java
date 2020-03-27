@@ -10,6 +10,7 @@ public class Swain extends Personnage {
 	private static final Integer vitesse = 40;
 	private static final Element element = Element.FEU;
 	private static final Origine origine = Origine.NOXUS;
+	private static final String cheminImage = System.getProperty("user.dir") + "/images/personnages/swain.png";
 	
 	/**
 	 * Initialise le personnage Swain avec comme caractéristiques :<br>
@@ -20,7 +21,7 @@ public class Swain extends Personnage {
 	 *  - Vit = 40<br>
 	 */
 	public Swain() {
-		super(nom, vie, deplacements, degats, portee, vitesse, element, origine);
+		super(nom, vie, deplacements, degats, portee, vitesse, element, origine, cheminImage);
 	}
 	
 }

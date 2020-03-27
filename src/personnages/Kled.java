@@ -10,6 +10,7 @@ public class Kled extends Personnage {
 	private static final Integer vitesse = 70;
 	private static final Element element = Element.FEU;
 	private static final Origine origine = Origine.NOXUS;
+	private static final String cheminImage = System.getProperty("user.dir") + "/images/personnages/kled.png";
 	
 	/**
 	 * Initialise le personnage Kled avec comme caractéristiques :<br>
@@ -20,7 +21,7 @@ public class Kled extends Personnage {
 	 *  - Vit = 70<br>
 	 */
 	public Kled() {
-		super(nom, vie, deplacements, degats, portee, vitesse, element, origine);
+		super(nom, vie, deplacements, degats, portee, vitesse, element, origine, cheminImage);
 	}
 	
 }

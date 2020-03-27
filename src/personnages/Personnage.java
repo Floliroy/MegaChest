@@ -39,6 +39,9 @@ public abstract class Personnage {
 	/** L'origine du personnage */
 	private Origine origine;
 	
+	/** Le chemin de l'image de l'icone du personnage */
+	private String cheminImage;
+	
 	/** La liste d'objets équipés */
 	private List<String> listObjets; //TODO: Remplacer String par la classe Objet
 	
@@ -56,8 +59,9 @@ public abstract class Personnage {
 	 * @param vitesse La vitesse d'attaque souhaitée
 	 * @param element L'element du personnage
 	 * @param origine L'origine du personnage
+	 * @param cheminImage Le chemin de l'image de l'icone du personnage
 	 */
-	public Personnage(String nom, Integer vie, Integer deplacements, Integer degats, Integer portee, Integer vitesse, Element element, Origine origine) {
+	public Personnage(String nom, Integer vie, Integer deplacements, Integer degats, Integer portee, Integer vitesse, Element element, Origine origine, String cheminImage) {
 		this.nom = nom;
 		this.vie = vie;
 		this.deplacements = deplacements;
@@ -66,6 +70,7 @@ public abstract class Personnage {
 		this.vitesse = vitesse;
 		this.element = element;
 		this.origine = origine;
+		this.cheminImage = cheminImage;
 		listObjets = new ArrayList<>();
 	}
 	
@@ -206,6 +211,22 @@ public abstract class Personnage {
 	 */
 	public void setOrigine(Origine origine) {
 		this.origine = origine;
+	}
+
+	/**
+	 * Permet de connaître le chemin de l'image de l'icone du personnage
+	 * @return Renvoit le chemin de l'image
+	 */
+	public String getCheminImage() {
+		return cheminImage;
+	}
+
+	/**
+	 * Permet de renseigner le chemin de l'image de l'icone du personnage
+	 * @param cheminImage Le chemin de l'image souhaité
+	 */
+	public void setCheminImage(String cheminImage) {
+		this.cheminImage = cheminImage;
 	}
 
 	/**
