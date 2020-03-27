@@ -21,6 +21,9 @@ public abstract class Personnage {
 	/** La santé du personnage */
 	private Integer vie;
 	
+	/** Les points de déplacement du personnage */
+	private Integer deplacements;
+	
 	/** Les dégâts du perssonage */
 	private Integer degats;
 	
@@ -51,9 +54,10 @@ public abstract class Personnage {
 	 * @param portee La portée d'attaque souhaitée
 	 * @param vitesse La vitesse d'attaque souhaitée
 	 */
-	public Personnage(String nom, Integer vie, Integer degats, Integer portee, Integer vitesse, Element element, Origine origine) {
+	public Personnage(String nom, Integer vie, Integer deplacements, Integer degats, Integer portee, Integer vitesse, Element element, Origine origine) {
 		this.nom = nom;
 		this.vie = vie;
+		this.deplacements = deplacements;
 		this.degats = degats;
 		this.portee = portee;
 		this.vitesse = vitesse;
@@ -103,6 +107,22 @@ public abstract class Personnage {
 	 */
 	public void setVie(Integer vie) {
 		this.vie = vie;
+	}
+
+	/**
+	 * Permet de connaître les points de déplacement du personnage
+	 * @return Renvoit ses points de déplacements
+	 */
+	public Integer getDeplacements() {
+		return deplacements;
+	}
+
+	/**
+	 * Permet de renseigner les points de déplacements du personnage
+	 * @param deplacements Le nombre de points de dépalcements souhaités
+	 */
+	public void setDeplacements(Integer deplacements) {
+		this.deplacements = deplacements;
 	}
 
 	/**
