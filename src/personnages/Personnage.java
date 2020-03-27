@@ -50,9 +50,12 @@ public abstract class Personnage {
 	 * Constructeur permettant de construire un personnage
 	 * @param nom Le nom souhaité
 	 * @param vie La santé souhaitée
+	 * @param deplacements Les points de déplacements souhaitées
 	 * @param degats Les dégâts souhaités
 	 * @param portee La portée d'attaque souhaitée
 	 * @param vitesse La vitesse d'attaque souhaitée
+	 * @param element L'element du personnage
+	 * @param origine L'origine du personnage
 	 */
 	public Personnage(String nom, Integer vie, Integer deplacements, Integer degats, Integer portee, Integer vitesse, Element element, Origine origine) {
 		this.nom = nom;
