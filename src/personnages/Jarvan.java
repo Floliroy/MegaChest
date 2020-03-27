@@ -11,6 +11,14 @@ public class Jarvan extends Personnage {
 	private static final Element element = Element.TERRE;
 	private static final Origine origine = Origine.DEMACIA;
 	
+	/**
+	 * Initialise le personnage Jarvan IV avec comme caractéristiques :<br>
+	 *  - Vie = 150<br>
+	 *  - PM = 5<br>
+	 *  - AD = 20<br>
+	 *  - PO = 2<br>
+	 *  - Vit = 50<br>
+	 */
 	public Jarvan() {
 		super(nom, vie, deplacements, degats, portee, vitesse, element, origine);
 	}

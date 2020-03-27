@@ -11,6 +11,14 @@ public class Wukong extends Personnage {
 	private static final Element element = Element.FEU;
 	private static final Origine origine = Origine.IONIA;
 	
+	/**
+	 * Initialise le personnage Wukong avec comme caractéristiques :<br>
+	 *  - Vie = 120<br>
+	 *  - PM = 3<br>
+	 *  - AD = 25<br>
+	 *  - PO = 3<br>
+	 *  - Vit = 60<br>
+	 */
 	public Wukong() {
 		super(nom, vie, deplacements, degats, portee, vitesse, element, origine);
 	}

@@ -11,6 +11,14 @@ public class Yasuo extends Personnage {
 	private static final Element element = Element.VENT;
 	private static final Origine origine = Origine.IONIA;
 	
+	/**
+	 * Initialise le personnage Yasuo avec comme caractéristiques :<br>
+	 *  - Vie = 100<br>
+	 *  - PM = 4<br>
+	 *  - AD = 30<br>
+	 *  - PO = 2<br>
+	 *  - Vit = 70<br>
+	 */
 	public Yasuo() {
 		super(nom, vie, deplacements, degats, portee, vitesse, element, origine);
 	}

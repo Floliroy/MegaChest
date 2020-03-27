@@ -11,6 +11,14 @@ public class Kayle extends Personnage {
 	private static final Element element = Element.VENT;
 	private static final Origine origine = Origine.DEMACIA;
 	
+	/**
+	 * Initialise le personnage Kayle avec comme caractéristiques :<br>
+	 *  - Vie = 100<br>
+	 *  - PM = 2<br>
+	 *  - AD = 25<br>
+	 *  - PO = 6<br>
+	 *  - Vit = 60<br>
+	 */
 	public Kayle() {
 		super(nom, vie, deplacements, degats, portee, vitesse, element, origine);
 	}

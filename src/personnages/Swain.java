@@ -11,6 +11,14 @@ public class Swain extends Personnage {
 	private static final Element element = Element.FEU;
 	private static final Origine origine = Origine.NOXUS;
 	
+	/**
+	 * Initialise le personnage Swain avec comme caractéristiques :<br>
+	 *  - Vie = 180<br>
+	 *  - PM = 2<br>
+	 *  - AD = 20<br>
+	 *  - PO = 5<br>
+	 *  - Vit = 40<br>
+	 */
 	public Swain() {
 		super(nom, vie, deplacements, degats, portee, vitesse, element, origine);
 	}

@@ -11,6 +11,14 @@ public class Kled extends Personnage {
 	private static final Element element = Element.FEU;
 	private static final Origine origine = Origine.NOXUS;
 	
+	/**
+	 * Initialise le personnage Kled avec comme caractéristiques :<br>
+	 *  - Vie = 150<br>
+	 *  - PM = 6<br>
+	 *  - AD = 25<br>
+	 *  - PO = 1<br>
+	 *  - Vit = 70<br>
+	 */
 	public Kled() {
 		super(nom, vie, deplacements, degats, portee, vitesse, element, origine);
 	}

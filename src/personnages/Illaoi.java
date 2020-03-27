@@ -11,6 +11,14 @@ public class Illaoi extends Personnage {
 	private static final Element element = Element.TERRE;
 	private static final Origine origine = Origine.BILGEWATER;
 	
+	/**
+	 * Initialise le personnage Illaoi avec comme caractéristiques :<br>
+	 *  - Vie = 150<br>
+	 *  - PM = 2<br>
+	 *  - AD = 30<br>
+	 *  - PO = 2<br>
+	 *  - Vit = 30<br>
+	 */
 	public Illaoi() {
 		super(nom, vie, deplacements, degats, portee, vitesse, element, origine);
 	}

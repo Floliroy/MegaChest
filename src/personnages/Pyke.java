@@ -11,6 +11,14 @@ public class Pyke extends Personnage {
 	private static final Element element = Element.EAU;
 	private static final Origine origine = Origine.BILGEWATER;
 	
+	/**
+	 * Initialise le personnage Pyke avec comme caractéristiques :<br>
+	 *  - Vie = 120<br>
+	 *  - PM = 3<br>
+	 *  - AD = 35<br>
+	 *  - PO = 4<br>
+	 *  - Vit = 40<br>
+	 */
 	public Pyke() {
 		super(nom, vie, deplacements, degats, portee, vitesse, element, origine);
 	}

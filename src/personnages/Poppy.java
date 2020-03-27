@@ -11,6 +11,14 @@ public class Poppy extends Personnage {
 	private static final Element element = Element.TERRE;
 	private static final Origine origine = Origine.DEMACIA;
 	
+	/**
+	 * Initialise le personnage Poppy avec comme caractéristiques :<br>
+	 *  - Vie = 180<br>
+	 *  - PM = 5<br>
+	 *  - AD = 8<br>
+	 *  - PO = 2<br>
+	 *  - Vit = 40<br>
+	 */
 	public Poppy() {
 		super(nom, vie, deplacements, degats, portee, vitesse, element, origine);
 	}

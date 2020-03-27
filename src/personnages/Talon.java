@@ -11,6 +11,14 @@ public class Talon extends Personnage {
 	private static final Element element = Element.VENT;
 	private static final Origine origine = Origine.NOXUS;
 	
+	/**
+	 * Initialise le personnage Talon avec comme caractéristiques :<br>
+	 *  - Vie = 80<br>
+	 *  - PM = 5<br>
+	 *  - AD = 50<br>
+	 *  - PO = 3<br>
+	 *  - Vit = 50<br>
+	 */
 	public Talon() {
 		super(nom, vie, deplacements, degats, portee, vitesse, element, origine);
 	}

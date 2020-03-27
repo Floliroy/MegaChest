@@ -11,6 +11,14 @@ public class Quinn extends Personnage {
 	private static final Element element = Element.VENT;
 	private static final Origine origine = Origine.DEMACIA;
 	
+	/**
+	 * Initialise le personnage Quinn avec comme caractéristiques :<br>
+	 *  - Vie = 80<br>
+	 *  - PM = 4<br>
+	 *  - AD = 30<br>
+	 *  - PO = 8<br>
+	 *  - Vit = 70<br>
+	 */
 	public Quinn() {
 		super(nom, vie, deplacements, degats, portee, vitesse, element, origine);
 	}

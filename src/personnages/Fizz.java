@@ -11,6 +11,14 @@ public class Fizz extends Personnage {
 	private static final Element element = Element.EAU;
 	private static final Origine origine = Origine.BILGEWATER;
 	
+	/**
+	 * Initialise le personnage Fizz avec comme caractéristiques :<br>
+	 *  - Vie = 100<br>
+	 *  - PM = 4<br>
+	 *  - AD = 40<br>
+	 *  - PO = 2<br>
+	 *  - Vit = 40<br>
+	 */
 	public Fizz() {
 		super(nom, vie, deplacements, degats, portee, vitesse, element, origine);
 	}

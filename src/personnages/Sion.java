@@ -11,6 +11,14 @@ public class Sion extends Personnage {
 	private static final Element element = Element.TERRE;
 	private static final Origine origine = Origine.NOXUS;
 	
+	/**
+	 * Initialise le personnage Sion avec comme caractéristiques :<br>
+	 *  - Vie = 200<br>
+	 *  - PM = 2<br>
+	 *  - AD = 15<br>
+	 *  - PO = 1<br>
+	 *  - Vit = 30<br>
+	 */
 	public Sion() {
 		super(nom, vie, deplacements, degats, portee, vitesse, element, origine);
 	}

@@ -11,6 +11,14 @@ public class Shyvana extends Personnage {
 	private static final Element element = Element.FEU;
 	private static final Origine origine = Origine.DEMACIA;
 	
+	/**
+	 * Initialise le personnage Shyvana avec comme caractéristiques :<br>
+	 *  - Vie = 150<br>
+	 *  - PM = 4<br>
+	 *  - AD = 20<br>
+	 *  - PO = 3<br>
+	 *  - Vit = 70<br>
+	 */
 	public Shyvana() {
 		super(nom, vie, deplacements, degats, portee, vitesse, element, origine);
 	}
