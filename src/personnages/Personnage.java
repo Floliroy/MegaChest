@@ -3,7 +3,7 @@ package personnages;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Personnage {
+public abstract class Personnage {
 	
 	////////////////
 	// CONSTANTES //
@@ -30,6 +30,12 @@ public class Personnage {
 	/** La vitesse d'attaque du personnage */
 	private Integer vitesse;
 	
+	/** L'element du personnage */
+	private Element element;
+	
+	/** L'origine du personnage */
+	private Origine origine;
+	
 	/** La liste d'objets équipés */
 	private List<String> listObjets; //TODO: Remplacer String par la classe Objet
 	
@@ -45,12 +51,14 @@ public class Personnage {
 	 * @param portee La portée d'attaque souhaitée
 	 * @param vitesse La vitesse d'attaque souhaitée
 	 */
-	public Personnage(String nom, Integer vie, Integer degats, Integer portee, Integer vitesse) {
+	public Personnage(String nom, Integer vie, Integer degats, Integer portee, Integer vitesse, Element element, Origine origine) {
 		this.nom = nom;
 		this.vie = vie;
 		this.degats = degats;
 		this.portee = portee;
 		this.vitesse = vitesse;
+		this.element = element;
+		this.origine = origine;
 		listObjets = new ArrayList<>();
 	}
 	
@@ -143,6 +151,38 @@ public class Personnage {
 	 */
 	public void setVitesse(Integer vitesse) {
 		this.vitesse = vitesse;
+	}
+
+	/**
+	 * Permet de connaître l'élément du personnage
+	 * @return Renvoit son élément
+	 */
+	public Element getElement() {
+		return element;
+	}
+
+	/**
+	 * Permet de renseigner l'élément du personnage
+	 * @param element L'élément du personnage souhaité
+	 */
+	public void setElement(Element element) {
+		this.element = element;
+	}
+
+	/**
+	 * Permet de connaître l'origine du personnage
+	 * @return Renvoit son origine
+	 */
+	public Origine getOrigine() {
+		return origine;
+	}
+
+	/**
+	 * Permet de renseigner l'origine du personnage
+	 * @param element L'origine du personnage souhaitée
+	 */
+	public void setOrigine(Origine origine) {
+		this.origine = origine;
 	}
 
 	/**
