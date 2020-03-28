@@ -16,6 +16,8 @@ public class Case {
 	 */
 	private Personnage personnage;
 	
+	/* -------------------------------------------------- */
+	
 	/**
 	 * Constructeur permettant de creer une Case
 	 * 
@@ -80,7 +82,6 @@ public class Case {
 	public void setPersonnage(Personnage personnage) {
 		this.personnage = personnage;
 	}
-	
 	
 
 }
