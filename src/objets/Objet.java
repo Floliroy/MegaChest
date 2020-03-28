@@ -11,16 +11,20 @@ public abstract class Objet {
 	/** Le nom de l'objet */
 	private String nom;
 	
+	/** Le chemin de l'image de l'icone de l'objet */
+	private String cheminImage;
+	
 	/**
 	 * Contructeur de la classe Objet 
 	 * @param stat Valeur de la statistique de l'objet
 	 * @param typeStat Le type de statistique de l'objet
 	 * @param nom Le nom de l'objet
 	 */
-	public Objet(Integer stat, TypeStat typeStat, String nom) {
+	public Objet(Integer stat, TypeStat typeStat, String nom, String cheminImage) {
 		this.stat = stat;
 		this.typeStat = typeStat;
-		this.nom=nom;
+		this.nom = nom;
+		this.cheminImage= cheminImage;
 	}
 
 	/**
@@ -69,6 +73,22 @@ public abstract class Objet {
 	 */
 	public void setNom(String nom) {
 		this.nom = nom;
+	}
+
+	/**
+	 * Permet de connaître le chemin de l'image de l'icone de l'objet
+	 * @return Renvoit le chemin de l'image de l'icone de l'objet
+	 */
+	public String getCheminImage() {
+		return cheminImage;
+	}
+
+	/**
+	 * Permet de renseigner le chemin de l'image de l'icone de l'objet
+	 * @param cheminImage Chemin de l'image de l'icone de l'objet
+	 */
+	public void setCheminImage(String cheminImage) {
+		this.cheminImage = cheminImage;
 	}
 
 }
