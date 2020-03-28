@@ -21,6 +21,9 @@ public abstract class Personnage {
 	/** La santé du personnage */
 	private Integer vie;
 	
+	/** Le vie maximale du personnage */
+	private Integer vieBase;
+	
 	/** Les points de déplacement du personnage */
 	private Integer deplacements;
 	
@@ -64,6 +67,7 @@ public abstract class Personnage {
 	public Personnage(String nom, Integer vie, Integer deplacements, Integer degats, Integer portee, Integer vitesse, Element element, Origine origine, String cheminImage) {
 		this.nom = nom;
 		this.vie = vie;
+		this.vieBase = vie;
 		this.deplacements = deplacements;
 		this.degats = degats;
 		this.portee = portee;
@@ -115,6 +119,22 @@ public abstract class Personnage {
 	 */
 	public void setVie(Integer vie) {
 		this.vie = vie;
+	}
+
+	/**
+	 * Permet de connaître la santé maximale du personnage
+	 * @return Renvoit sa vie de base
+	 */
+	public Integer getVieBase() {
+		return vieBase;
+	}
+
+	/**
+	 * Permet de renseigner la santé maximale du personnage
+	 * @param vie Vie de base du personnage souhaité
+	 */
+	public void setVieBase(Integer vieBase) {
+		this.vieBase = vieBase;
 	}
 
 	/**
