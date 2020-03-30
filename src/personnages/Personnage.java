@@ -3,6 +3,9 @@ package personnages;
 import java.util.ArrayList;
 import java.util.List;
 
+import objets.Objet;
+import objets.TypeStat;
+
 public abstract class Personnage {
 	
 	////////////////
@@ -20,6 +23,9 @@ public abstract class Personnage {
 	
 	/** La santé du personnage */
 	private Integer vie;
+	
+	/** Le vie maximale du personnage */
+	private Integer vieBase;
 	
 	/** Les points de déplacement du personnage */
 	private Integer deplacements;
@@ -43,7 +49,7 @@ public abstract class Personnage {
 	private String cheminImage;
 	
 	/** La liste d'objets équipés */
-	private List<String> listObjets; //TODO: Remplacer String par la classe Objet
+	private List<Objet> listObjets;
 	
 	//////////////////
 	// CONSTRUCTEUR //
@@ -64,6 +70,7 @@ public abstract class Personnage {
 	public Personnage(String nom, Integer vie, Integer deplacements, Integer degats, Integer portee, Integer vitesse, Element element, Origine origine, String cheminImage) {
 		this.nom = nom;
 		this.vie = vie;
+		this.vieBase = vie;
 		this.deplacements = deplacements;
 		this.degats = degats;
 		this.portee = portee;
@@ -78,7 +85,68 @@ public abstract class Personnage {
 	// METHODES //
 	//////////////
 	
-	/* Empty for now ... */
+	/**
+	 * Permet de connaitre la valeur du boost d'une statistique
+	 * @param typeStat Le type de statistique dont on veut connaitre le boost
+	 * @return La valeur du boost de cette statistique
+	 */
+	private Integer getBoostEquipement(TypeStat typeStat) {
+		Integer retour = 0;
+		for(Objet objet : listObjets) {
+			if(objet.getTypeStat() == typeStat) {
+				retour += objet.getStat();
+			}
+		}
+		return retour;
+	}
+	
+	/**
+	 * Permet de récupérer la vie actuelle avec le boost de l'équipement
+	 * @return Renvoit la vie actuelle boostée
+	 */
+	public Integer getVieAvecBoost() {
+		return vie + getBoostEquipement(TypeStat.VIE);
+	}
+	
+	/**
+	 * Permet de récupérer la vie maximale avec le boost de l'équipement
+	 * @return Renvoit la vie maximale boostée
+	 */
+	public Integer getVieBaseAvecBoost() {
+		return vieBase + getBoostEquipement(TypeStat.VIE);
+	}
+	
+	/**
+	 * Permet de récupérer le nombre de points de déplacements avec le boost de l'équipement
+	 * @return Renvoit le déplacement boosté
+	 */
+	public Integer getDeplacementsAvecBoost() {
+		return deplacements + getBoostEquipement(TypeStat.DEPLACEMENTS);
+	}
+	
+	/**
+	 * Permet de récupérer le nombre de dégâts avec le boost de l'équipement
+	 * @return Renvoit les dégâts boostés
+	 */
+	public Integer getDegatsAvecBoost() {
+		return degats + getBoostEquipement(TypeStat.DEGATS);
+	}
+	
+	/**
+	 * Permet de récupérer la portée avec le boost de l'équipement
+	 * @return Renvoit la portée boostée
+	 */
+	public Integer getPorteeAvecBoost() {
+		return portee + getBoostEquipement(TypeStat.PORTEE);
+	}
+	
+	/**
+	 * Permet de récupérer la vitesse avec le boost de l'équipement
+	 * @return Renvoit la vitesse boostée
+	 */
+	public Integer getVitesseAvecBoost() {
+		return vitesse + getBoostEquipement(TypeStat.VITESSE);
+	}
 	
 	
 	///////////////////////
@@ -115,6 +183,22 @@ public abstract class Personnage {
 	 */
 	public void setVie(Integer vie) {
 		this.vie = vie;
+	}
+
+	/**
+	 * Permet de connaître la santé maximale du personnage
+	 * @return Renvoit sa vie de base
+	 */
+	public Integer getVieBase() {
+		return vieBase;
+	}
+
+	/**
+	 * Permet de renseigner la santé maximale du personnage
+	 * @param vie Vie de base du personnage souhaité
+	 */
+	public void setVieBase(Integer vieBase) {
+		this.vieBase = vieBase;
 	}
 
 	/**
@@ -233,7 +317,7 @@ public abstract class Personnage {
 	 * Permet de connaître la liste des objets équipés par le personnage
 	 * @return Renvoit sa liste d'objets
 	 */
-	public List<String> getListObjets() { //TODO: Remplacer String par la classe Objet
+	public List<Objet> getListObjets() {
 		return listObjets;
 	}
 
@@ -241,7 +325,7 @@ public abstract class Personnage {
 	 * Permet de renseigner la liste d'objets que le personnage à d'équiper
 	 * @param listObjets La liste d'objets à équiper
 	 */
-	public void setListObjets(List<String> listObjets) { //TODO: Remplacer String par la classe Objet
+	public void setListObjets(List<Objet> listObjets) {
 		this.listObjets = listObjets;
 	}
 	
@@ -249,7 +333,7 @@ public abstract class Personnage {
 	 * Permet d'ajouter un objet à la liste des objets équipés
 	 * @param objet
 	 */
-	public void addListObjets(String objet) { //TODO: Remplacer String par la classe Objet
+	public void addListObjets(Objet objet) {
 		if(listObjets.size() < TAILLE_MAX_LISTE_OBJET) {
 			listObjets.add(objet);
 		}
