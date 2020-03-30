@@ -4,7 +4,7 @@ public class Plateau {
 	
 	/** Nombre de ligne du plateau */
 	private final static int NOMBRE_LIGNE = 16;
-	/** Nombre de colonne par ligne du plateau */
+	/* Nombre de colonne par ligne du plateau */
 	private final static int NOMBRE_COLONNE = 8;
 	
 	/* -------------------------------------------------- */
@@ -45,5 +45,7 @@ public class Plateau {
 	public void setPlateau(Case[][] plateau) {
 		this.plateau = plateau;
 	}
+	
+	
 	
 }
