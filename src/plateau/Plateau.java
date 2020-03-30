@@ -3,9 +3,9 @@ package plateau;
 public class Plateau {
 	
 	/** Nombre de ligne du plateau */
-	private final static int NB_LIGNE = 16;
+	private final static int NOMBRE_LIGNE = 16;
 	/* Nombre de colonne par ligne du plateau */
-	private final static int NB_COL = 8;
+	private final static int NOMBRE_COLONNE = 8;
 	
 	/* -------------------------------------------------- */
 	
@@ -20,10 +20,10 @@ public class Plateau {
 	 * 
 	 */
 	public Plateau() {
-		plateau = new Case[NB_LIGNE][NB_COL];
+		plateau = new Case[NOMBRE_LIGNE][NOMBRE_COLONNE];
 		
-		for(int lig = 0; lig < NB_LIGNE; lig ++) {
-			for(int col = 0; col < NB_COL; col ++)
+		for(int lig = 0; lig < NOMBRE_LIGNE; lig ++) {
+			for(int col = 0; col < NOMBRE_COLONNE; col ++)
 				plateau[lig][col] = new Case(lig, col);
 		}	
 	}

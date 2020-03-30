@@ -6,10 +6,10 @@ public class Case {
 	
 
 	/** coordonnee x */
-	private int pos_x;
+	private int positionX;
 	
 	/** coordonnee y */
-	private int pos_y;
+	private int positionY;
 	
 	/** personnage present sur la case
 	 *  par default = null
@@ -21,48 +21,48 @@ public class Case {
 	/**
 	 * Constructeur permettant de creer une Case
 	 * 
-	 * @param pos_x position x sur le plateau
-	 * @param pos_y position y sur le plateau
+	 * @param positionX position x sur le plateau
+	 * @param positionY position y sur le plateau
 	 */
-	public Case(int pos_x, int pos_y) {
-		this.pos_x = pos_x;
-		this.pos_y = pos_y;
+	public Case(int positionX, int positionY) {
+		this.positionX = positionX;
+		this.positionY = positionY;
 	}
 
 	/**
 	 * Getter position x
 	 * 
-	 * @return pos_x
+	 * @return positionX
 	 */
-	public int getPos_x() {
-		return pos_x;
+	public int getpositionX() {
+		return positionX;
 	}
 
 	/**
 	 * Setter position x
 	 * 
-	 * @param pos_x position x voulu
+	 * @param positionX position x voulu
 	 */
-	public void setPos_x(int pos_x) {
-		this.pos_x = pos_x;
+	public void setpositionX(int positionX) {
+		this.positionX = positionX;
 	}
 
 	/**
 	 * Getter position y
 	 * 
-	 * @return pos_y
+	 * @return positionY
 	 */
-	public int getPos_y() {
-		return pos_y;
+	public int getpositionY() {
+		return positionY;
 	}
 
 	/**
 	 * Setter position y 
 	 * 
-	 * @param pos_y position y voulu
+	 * @param positionY position y voulu
 	 */
-	public void setPos_y(int pos_y) {
-		this.pos_y = pos_y;
+	public void setpositionY(int positionY) {
+		this.positionY = positionY;
 	}
 
 	/**
