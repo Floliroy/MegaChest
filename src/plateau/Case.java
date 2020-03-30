@@ -27,6 +27,7 @@ public class Case {
 	public Case(int positionX, int positionY) {
 		this.positionX = positionX;
 		this.positionY = positionY;
+		personnage = null;
 	}
 
 	/**
@@ -81,6 +82,16 @@ public class Case {
 	 */
 	public void setPersonnage(Personnage personnage) {
 		this.personnage = personnage;
+	}
+	
+	/**
+	 * Verifie si un personnage est present sur la case
+	 * 
+	 * @return true si un personnage est present <br>
+	 * 		   false si la case est vide
+	 */
+	public boolean isEmpty() {
+		return getPersonnage() == null;
 	}
 	
 
