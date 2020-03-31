@@ -112,7 +112,7 @@ public class Plateau {
 		ArrayList<Case> casesAtteignables = new ArrayList<Case>();
 		Case libre = null;
 		
-		int pmPerso = personnage.getPorteeAvecBoost();
+		int pmPerso = personnage.getDeplacementsAvecBoost();
 		Case position = getCase(personnage);
 		int positionX = position.getPositionX();
 		int positionY = position.getPositionY();
@@ -122,9 +122,32 @@ public class Plateau {
 			for(int colonne = positionY - decalage; colonne <= positionY + decalage; colonne ++)
 				if((libre = getCase(ligne, colonne)) != null  && libre.getPersonnage() == null) 
 					casesAtteignables.add(libre);
-			decalage = ligne < positionX ? decalage + pmPerso : decalage - pmPerso;
+			decalage = ligne < positionX ? decalage + 1 : decalage - 1;
 		}
 		return casesAtteignables;
+	}
+	
+	/**
+	 * 
+	 * @param personnage
+	 * @return
+	 */
+	public ArrayList<Personnage> getPersonnagesAttaquables(Personnage personnage) {
+		ArrayList<Personnage> personnagesAtteignables = new ArrayList<Personnage>();
+		Case positionCible = null;
+		Personnage cible = null;
+		
+		int poPerso = personnage.getPorteeAvecBoost();
+		Case positionPersonnage = getCase(personnage);
+		int positionPersonnageX = positionPersonnage.getPositionX();
+		int positionPersonnageY = positionPersonnage.getPositionY();
+
+		for(int ligne = positionPersonnageX - poPerso; ligne <= positionPersonnageX + poPerso; ligne ++) {
+			for(int colonne = positionPersonnageY - poPerso; colonne <= positionPersonnageY + poPerso; colonne ++)
+				if((positionCible = getCase(ligne, colonne)) != null  && (cible = positionCible.getPersonnage()) != null && !cible.equals(personnage))
+					personnagesAtteignables.add(cible);
+		}
+		return personnagesAtteignables;
 	}
 	
 	/**
