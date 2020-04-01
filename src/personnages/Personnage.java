@@ -1,6 +1,7 @@
 package personnages;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import objets.Objet;
@@ -45,6 +46,9 @@ public abstract class Personnage {
 	/** L'origine du personnage */
 	private Origine origine;
 	
+	/** Les bonus en fonction de l'equipe du personnage, calculer grace a son element et son origine */
+	private HashMap<TypeStat, Integer> bonusEquipe;
+	
 	/** Le chemin de l'image de l'icone du personnage */
 	private String cheminImage;
 	
@@ -79,6 +83,10 @@ public abstract class Personnage {
 		this.origine = origine;
 		this.cheminImage = cheminImage;
 		listObjets = new ArrayList<>();
+		bonusEquipe = new HashMap<>();
+		for(TypeStat stat : TypeStat.values()) {
+			bonusEquipe.put(stat, 0);
+		}
 	}
 	
 	//////////////
@@ -105,7 +113,7 @@ public abstract class Personnage {
 	 * @return Renvoit la vie actuelle boostée
 	 */
 	public Integer getVieAvecBoost() {
-		return vie + getBoostEquipement(TypeStat.VIE);
+		return vie + getBoostEquipement(TypeStat.VIE) + bonusEquipe.get(TypeStat.VIE);
 	}
 	
 	/**
@@ -113,7 +121,7 @@ public abstract class Personnage {
 	 * @return Renvoit la vie maximale boostée
 	 */
 	public Integer getVieBaseAvecBoost() {
-		return vieBase + getBoostEquipement(TypeStat.VIE);
+		return vieBase + getBoostEquipement(TypeStat.VIE) + bonusEquipe.get(TypeStat.VIE);
 	}
 	
 	/**
@@ -121,7 +129,7 @@ public abstract class Personnage {
 	 * @return Renvoit le déplacement boosté
 	 */
 	public Integer getDeplacementsAvecBoost() {
-		return deplacements + getBoostEquipement(TypeStat.DEPLACEMENTS);
+		return deplacements + getBoostEquipement(TypeStat.DEPLACEMENTS) + bonusEquipe.get(TypeStat.DEPLACEMENTS);
 	}
 	
 	/**
@@ -129,7 +137,7 @@ public abstract class Personnage {
 	 * @return Renvoit les dégâts boostés
 	 */
 	public Integer getDegatsAvecBoost() {
-		return degats + getBoostEquipement(TypeStat.DEGATS);
+		return degats + getBoostEquipement(TypeStat.DEGATS) + bonusEquipe.get(TypeStat.DEGATS);
 	}
 	
 	/**
@@ -137,7 +145,7 @@ public abstract class Personnage {
 	 * @return Renvoit la portée boostée
 	 */
 	public Integer getPorteeAvecBoost() {
-		return portee + getBoostEquipement(TypeStat.PORTEE);
+		return portee + getBoostEquipement(TypeStat.PORTEE) + bonusEquipe.get(TypeStat.PORTEE);
 	}
 	
 	/**
@@ -145,7 +153,7 @@ public abstract class Personnage {
 	 * @return Renvoit la vitesse boostée
 	 */
 	public Integer getVitesseAvecBoost() {
-		return vitesse + getBoostEquipement(TypeStat.VITESSE);
+		return vitesse + getBoostEquipement(TypeStat.VITESSE) + bonusEquipe.get(TypeStat.VITESSE);
 	}
 	
 	
@@ -295,6 +303,31 @@ public abstract class Personnage {
 	 */
 	public void setOrigine(Origine origine) {
 		this.origine = origine;
+	}
+
+	/**
+	 * TODO
+	 * @return
+	 */
+	public HashMap<TypeStat, Integer> getBonusEquipe() {
+		return bonusEquipe;
+	}
+
+	/**
+	 * TODO
+	 * @param bonusEquipe
+	 */
+	public void setBonusEquipe(HashMap<TypeStat, Integer> bonusEquipe) {
+		this.bonusEquipe = bonusEquipe;
+	}
+	
+	/**
+	 * TODO
+	 * @param typeStat
+	 * @param value
+	 */
+	public void putBonusEquipe(TypeStat typeStat, Integer value) {
+		bonusEquipe.replace(typeStat, bonusEquipe.get(typeStat) + value);
 	}
 
 	/**
