@@ -133,7 +133,7 @@ public class Plateau {
 	 * @return
 	 */
 	public ArrayList<Personnage> getPersonnagesAttaquables(Personnage personnage) {
-		ArrayList<Personnage> personnagesAtteignables = new ArrayList<Personnage>();
+		ArrayList<Personnage> personnagesAttaquables = new ArrayList<Personnage>();
 		Case positionCible = null;
 		Personnage cible = null;
 		
@@ -145,9 +145,9 @@ public class Plateau {
 		for(int ligne = positionPersonnageX - poPerso; ligne <= positionPersonnageX + poPerso; ligne ++) {
 			for(int colonne = positionPersonnageY - poPerso; colonne <= positionPersonnageY + poPerso; colonne ++)
 				if((positionCible = getCase(ligne, colonne)) != null  && (cible = positionCible.getPersonnage()) != null && !cible.equals(personnage))
-					personnagesAtteignables.add(cible);
+					personnagesAttaquables.add(cible);
 		}
-		return personnagesAtteignables;
+		return personnagesAttaquables;
 	}
 	
 	/**
