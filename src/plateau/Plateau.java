@@ -60,7 +60,7 @@ public class Plateau {
 	 * @return true si case est dedans <br/>
 	 * 		   false si la case est en-dehors
 	 */
-	public boolean isDansPlateau(int positionX, int positionY) {
+	private boolean isDansPlateau(int positionX, int positionY) {
 		return positionX < NOMBRE_LIGNE && positionX >= 0 && positionY < NOMBRE_COLONNE && positionY >= 0;
 	}
 	
@@ -128,12 +128,12 @@ public class Plateau {
 	}
 	
 	/**
-	 * 
+	 * TODO
 	 * @param personnage
 	 * @return
 	 */
-	public ArrayList<Personnage> getPersonnagesAttaquables(Personnage personnage) {
-		ArrayList<Personnage> personnagesAttaquables = new ArrayList<Personnage>();
+	public ArrayList<Case> getCasesAPorte(Personnage personnage) {
+		ArrayList<Case> casesAPorte = new ArrayList<Case>();
 		Case positionCible = null;
 		Personnage cible = null;
 		
@@ -145,9 +145,9 @@ public class Plateau {
 		for(int ligne = positionPersonnageX - poPerso; ligne <= positionPersonnageX + poPerso; ligne ++) {
 			for(int colonne = positionPersonnageY - poPerso; colonne <= positionPersonnageY + poPerso; colonne ++)
 				if((positionCible = getCase(ligne, colonne)) != null  && (cible = positionCible.getPersonnage()) != null && !cible.equals(personnage))
-					personnagesAttaquables.add(cible);
+					casesAPorte.add(positionCible);
 		}
-		return personnagesAttaquables;
+		return casesAPorte;
 	}
 	
 	/**

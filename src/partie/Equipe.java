@@ -2,7 +2,6 @@ package partie;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
 
 import objets.TypeStat;
 import personnages.Element;
@@ -12,7 +11,7 @@ import personnages.Personnage;
 public class Equipe {
 	
 	/** TODO */
-	private static final int TAILLE_EQUIPE = 8;
+	private static final int TAILLE_EQUIPE = 10;
 	
 	/* -------------------------------------------------- */
 	
@@ -183,12 +182,25 @@ public class Equipe {
 		return equipe.size() == TAILLE_EQUIPE;
 	}
 	
+	public boolean isEmpty() {
+		return equipe.size() == 0;
+	}
+	
+	/**
+	 * 
+	 * @param personnage
+	 * @return
+	 */
+	public boolean isDansEquipe(Personnage personnage) {
+		return equipe.contains(personnage);
+	}
+	
 	/**
 	 * TODO
 	 * @param personnage
 	 */
-	public void ajouterPersonnages(Personnage personnage) {
-		if(!isComplete())
+	public void addEquipe(Personnage personnage) {
+		if(!isComplete() && !isDansEquipe(personnage))
 			equipe.add(personnage);
 	}
 	
@@ -196,7 +208,7 @@ public class Equipe {
 	 * TODO
 	 * @param personnage
 	 */
-	public void supprimerPersonnage(Personnage personnage) {
+	public void removeEquipe(Personnage personnage) {
 		equipe.remove(personnage);
 	}
 	
