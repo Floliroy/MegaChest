@@ -4,5 +4,10 @@
 /personnages/
 =======
 >>>>>>> 5b46b84 Ajout positionnement personnage
+<<<<<<< Upstream, based on branch 'dev' of https://github.com/Floliroy/MegaChest.git
 /test/
 /plateau/
+=======
+/plateau/
+/test/
+>>>>>>> 3bf0304 completerEquipe + retour du nombre de pm restant dans actionDeplacer

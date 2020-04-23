@@ -213,7 +213,7 @@ public class Jeu {
 	/**
 	 * TODO
 	 */
-	public void actionDeplacer(Personnage personnage) {
+	public int actionDeplacer(Personnage personnage) {
 		Case depart = plateauJeu.getCase(personnage);
 		System.out.println("Vous etes sur la case " + depart.dumpCase());
 		System.out.println(personnage.getNom() + " possede " + personnage.getDeplacementsAvecBoost() + " PM");
@@ -235,6 +235,8 @@ public class Jeu {
 		} while(!plateauJeu.isDansPlateau(positionX, positionY) && !casesAtteignables.contains(plateauJeu.getCase(positionX, positionY)));
 		
 		plateauJeu.deplacerPersonnage(depart, positionX, positionY);
+		
+		return personnage.getDeplacementsAvecBoost() - Util.distanceCase(depart, positionX, positionY);
 	}
 	
 	/** ---------------------------------------- */
