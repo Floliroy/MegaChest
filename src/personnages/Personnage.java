@@ -31,6 +31,9 @@ public abstract class Personnage {
 	/** Les points de déplacement du personnage */
 	private Integer deplacements;
 	
+	/** Les points de déplacement de base du personnage */
+	private Integer deplacementsBase;
+	
 	/** Les dégâts du perssonage */
 	private Integer degats;
 	
@@ -76,6 +79,7 @@ public abstract class Personnage {
 		this.vie = vie;
 		this.vieBase = vie;
 		this.deplacements = deplacements;
+		this.deplacementsBase = deplacements;
 		this.degats = degats;
 		this.portee = portee;
 		this.vitesse = vitesse;
@@ -159,11 +163,19 @@ public abstract class Personnage {
 	}
 	
 	/**
-	 * Permet de récupérer le nombre de points de d�placements avec le boost de l'équipement
+	 * Permet de récupérer le nombre de points de déplacements avec le boost de l'équipement
 	 * @return Renvoit le déplacement boosté
 	 */
 	public Integer getDeplacementsAvecBoost() {
 		return deplacements + getBoostEquipement(TypeStat.DEPLACEMENTS) + bonusEquipe.get(TypeStat.DEPLACEMENTS);
+	}
+	
+	/**
+	 * Permet de récupérer le nombre de points de déplacements de base avec le boost de l'équipement
+	 * @return Renvoit le déplacement boosté
+	 */
+	public Integer getDeplacementsBaseAvecBoost() {
+		return deplacementsBase + getBoostEquipement(TypeStat.DEPLACEMENTS) + bonusEquipe.get(TypeStat.DEPLACEMENTS);
 	}
 	
 	/**
@@ -249,6 +261,22 @@ public abstract class Personnage {
 	 */
 	public void setDeplacements(Integer deplacements) {
 		this.deplacements = deplacements;
+	}
+
+	/**
+	 * Permet de connaître les points de déplacements de base du personnage
+	 * @return Renvoit ses points de déplacements de base 
+	 */
+	public Integer getDeplacementsBase() {
+		return deplacementsBase;
+	}
+
+	/**
+	 * Permet de renseigner les points de déplacements de base du personnage
+	 * @param deplacements Le nombre de points de déplacements de base souhaités
+	 */
+	public void setDeplacementsBase(Integer deplacementsBase) {
+		this.deplacementsBase = deplacementsBase;
 	}
 
 	/**

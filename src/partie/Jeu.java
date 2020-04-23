@@ -53,6 +53,7 @@ public class Jeu {
 			for(Personnage perso : getJoueurActif().getEquipe().getListePersonnages()) {
 				if(perso.getNom().toLowerCase().equals(nomPersonnage.toLowerCase())) {
 					personnage = perso;
+					personnage.setDeplacements(personnage.getDeplacementsBase());
 					break;
 				}
 			}
@@ -69,7 +70,6 @@ public class Jeu {
 
 		Boolean actionEffectue = false;
 		Boolean jetonAttaque = true;
-		Integer pmPerso = personnage.getDeplacements();
 		
 		Boolean finTour = false;
 		do {
@@ -78,6 +78,7 @@ public class Jeu {
 			
 			String actions = "";
 			Integer cpt = 1;
+			Integer pmPerso = personnage.getDeplacementsAvecBoost();
 			
 			actions += pmPerso > 0 ? "   " + cpt++ + " - Se déplacer\n" : "";
 			actions += jetonAttaque ? "   " + cpt++ + " - Attaquer\n" : "";
@@ -85,7 +86,7 @@ public class Jeu {
 			System.out.print(actions);
 			Integer action = Clavier.entrerClavierInt();
 			if(action == 1 && pmPerso > 0) {
-				pmPerso = actionDeplacer(personnage);
+				actionDeplacer(personnage);
 				System.out.println();
 				plateauJeu.afficherPlateau();	
 				actionEffectue = true;
@@ -221,7 +222,7 @@ public class Jeu {
 	/**
 	 * TODO
 	 */
-	private int actionDeplacer(Personnage personnage) {
+	private void actionDeplacer(Personnage personnage) {
 		Case depart = plateauJeu.getCase(personnage);
 		System.out.println("Vous etes sur la case " + depart.dumpCase());
 		System.out.println(personnage.getNom() + " possede " + personnage.getDeplacementsAvecBoost() + " PM");
@@ -245,7 +246,7 @@ public class Jeu {
 
 		plateauJeu.deplacerPersonnage(depart, positionX, positionY);
 		
-		return personnage.getDeplacementsAvecBoost() - Util.distanceCase(depart, positionX, positionY);
+		personnage.setDeplacements(personnage.getDeplacements() - Util.distanceCase(depart, positionX, positionY));
 	}
 	
 	/** ---------------------------------------- */
