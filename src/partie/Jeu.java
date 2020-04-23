@@ -162,7 +162,7 @@ public class Jeu {
 				if(defenseur == null) {
 					System.out.println("Personnage \"" + nomDefenseur + "\" introuvable ou pas a portée d'attaque.");
 				}
-			}while(defenseur == null || !nomDefenseur.equals("retour"));
+			}while(defenseur == null || nomDefenseur.equals("retour"));
 				
 			if(defenseur != null) {
 				//On regarde si le defenseur pourra r�pondre a l'attaque ou non
@@ -224,6 +224,7 @@ public class Jeu {
 		System.out.println(personnage.getNom() + " possede " + personnage.getDeplacementsAvecBoost() + " PM");
 		
 		ArrayList<Case> casesAtteignables = plateauJeu.getCasesAtteignables(personnage);
+
 		int positionX = -1;
 		int positionY = -1;
 		
@@ -237,8 +238,8 @@ public class Jeu {
 			System.out.print("Numéro colonne : ");
 			positionY = Clavier.entrerClavierInt();
 		
-		} while(!plateauJeu.isDansPlateau(positionX, positionY) && !casesAtteignables.contains(plateauJeu.getCase(positionX, positionY)));
-		
+		} while(!plateauJeu.isDansPlateau(positionX, positionY) || !casesAtteignables.contains(plateauJeu.getCase(positionX, positionY)));
+
 		plateauJeu.deplacerPersonnage(depart, positionX, positionY);
 		
 		return personnage.getDeplacementsAvecBoost() - Util.distanceCase(depart, positionX, positionY);
