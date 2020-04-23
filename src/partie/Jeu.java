@@ -162,7 +162,7 @@ public class Jeu {
 				if(defenseur == null) {
 					System.out.println("Personnage \"" + nomDefenseur + "\" introuvable ou pas a portée d'attaque.");
 				}
-			}while(defenseur == null || nomDefenseur.equals("retour"));
+			}while(defenseur == null && !nomDefenseur.equals("retour"));
 				
 			if(defenseur != null) {
 				//On regarde si le defenseur pourra r�pondre a l'attaque ou non
