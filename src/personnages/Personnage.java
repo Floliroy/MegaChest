@@ -228,14 +228,6 @@ public abstract class Personnage {
 	}
 
 	/**
-	 * Permet de renseigner la santé maximale du personnage
-	 * @param vie Vie de base du personnage souhaité
-	 */
-	public void setVieBase(Integer vieBase) {
-		this.vieBase = vieBase;
-	}
-
-	/**
 	 * Permet de connaître les points de déplacement du personnage
 	 * @return Renvoit ses points de déplacements
 	 */
