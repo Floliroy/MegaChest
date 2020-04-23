@@ -12,8 +12,9 @@ public class Joueur {
 	private Equipe equipe;
 	private Boolean tour;
 	
-	public Joueur() {
-		setEquipe(new Equipe());
+	public Joueur(Boolean tour) {
+		this.equipe = new Equipe();
+		this.tour = tour;
 	}
 	
 	

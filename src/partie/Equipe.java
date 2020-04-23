@@ -183,7 +183,7 @@ public class Equipe {
 	}
 	
 	public boolean isEmpty() {
-		return listePersonnages.size() == 0;
+		return listePersonnages.isEmpty();
 	}
 	
 	/**

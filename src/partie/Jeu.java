@@ -15,7 +15,7 @@ public class Jeu {
 	private Joueur joueur2;
 	
 	
-	private Joueur getJoueurActif() {
+	public Joueur getJoueurActif() {
 		if(joueur1.isTour() && !joueur2.isTour()) {
 			return joueur1;
 		}else if(!joueur1.isTour() && joueur2.isTour()) {
@@ -24,7 +24,7 @@ public class Jeu {
 		return null;
 	}
 	
-	private Joueur getJoueurInactif() {
+	public Joueur getJoueurInactif() {
 		if(joueur1.isTour() && !joueur2.isTour()) {
 			return joueur2;
 		}else if(!joueur1.isTour() && joueur2.isTour()) {
@@ -35,15 +35,15 @@ public class Jeu {
 	
 	public Jeu() {
 		plateauJeu = new Plateau();
-		joueur1 = new Joueur();
-		joueur2 = new Joueur();
+		joueur1 = new Joueur(true);
+		joueur2 = new Joueur(false);
 	}
 	
 	/**
 	 * Permet de choisir un personnage de son équipe
 	 * @return Le personnage choisi
 	 */
-	public Personnage choixPersonnage() {
+	private Personnage choixPersonnage() {
 		Personnage personnage = null;
 		do {
 			System.out.println("Vos personnages sont : " + Util.imprimeListPersoCoor(getJoueurActif().getEquipe().getListePersonnages(), plateauJeu));
@@ -131,7 +131,7 @@ public class Jeu {
 	 * @param defenseur Le personnage subissant l'attaque
 	 * @return l'etat du jeton d'attaque
 	 */
-	public Boolean actionAttaquer(Personnage attaquant) {
+	private Boolean actionAttaquer(Personnage attaquant) {
 		ArrayList<Personnage> personnagesAttaquables = new ArrayList<>();
 		//On vérifie que dans les cases a porter du personnage attaquant on a bien un ou des ennemis
 		for(Personnage ennemi : getJoueurInactif().getEquipe().getListePersonnages()) {
@@ -217,7 +217,7 @@ public class Jeu {
 	/**
 	 * TODO
 	 */
-	public int actionDeplacer(Personnage personnage) {
+	private int actionDeplacer(Personnage personnage) {
 		Case depart = plateauJeu.getCase(personnage);
 		System.out.println("Vous etes sur la case " + depart.dumpCase());
 		System.out.println(personnage.getNom() + " possede " + personnage.getDeplacementsAvecBoost() + " PM");
