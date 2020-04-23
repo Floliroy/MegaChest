@@ -16,7 +16,7 @@ public class Equipe {
 	/* -------------------------------------------------- */
 	
 	/** Liste des personnages composant une equipe */
-	private ArrayList<Personnage> equipe;
+	private ArrayList<Personnage> listePersonnages;
 	
 	/* -------------------------------------------------- */
 	
@@ -24,14 +24,14 @@ public class Equipe {
 	 * TODO
 	 */
 	public Equipe() {
-		equipe = new ArrayList<Personnage>();
+		listePersonnages = new ArrayList<Personnage>();
 	}
 	
 	public void calculerBonusEquipe() {
 		HashMap<Element, Integer> bonusElement = getNombreElement();
 		HashMap<Origine, Integer> bonusOrigine = getNombreOrigine();
 		
-		for(Personnage personnage : equipe) {
+		for(Personnage personnage : listePersonnages) {
 			switch(personnage.getElement()) {
 			case FEU:
 				if(bonusElement.get(Element.FEU) >= 4) {
@@ -99,7 +99,7 @@ public class Equipe {
 	private HashMap<Element, Integer> getNombreElement() {
 		HashMap<Element, Integer> map = new HashMap<>();
 		
-		for(Personnage personnage : equipe) {
+		for(Personnage personnage : listePersonnages) {
 			switch(personnage.getElement()) {
 			case FEU:
 				increaseHashMapElement(map, Element.FEU);
@@ -130,7 +130,7 @@ public class Equipe {
 	private HashMap<Origine, Integer> getNombreOrigine() {
 		HashMap<Origine, Integer> map = new HashMap<>();
 		
-		for(Personnage personnage : equipe) {
+		for(Personnage personnage : listePersonnages) {
 			switch(personnage.getOrigine()) {
 			case BILGEWATER:
 				increaseHashMapOrigine(map, Origine.BILGEWATER);
@@ -162,16 +162,16 @@ public class Equipe {
 	 * TODO
 	 * @return
 	 */
-	public ArrayList<Personnage> getEquipe() {
-		return equipe;
+	public ArrayList<Personnage> getListePersonnages() {
+		return listePersonnages;
 	}
 
 	/**
 	 * TODO
 	 * @param equipe
 	 */
-	public void setEquipe(ArrayList<Personnage> equipe) {
-		this.equipe = equipe;
+	public void setListePersonnages(ArrayList<Personnage> listePersonnages) {
+		this.listePersonnages = listePersonnages;
 	}
 	
 	/**
@@ -179,11 +179,11 @@ public class Equipe {
 	 * @return
 	 */
 	public boolean isComplete() {
-		return equipe.size() == TAILLE_EQUIPE;
+		return listePersonnages.size() == TAILLE_EQUIPE;
 	}
 	
 	public boolean isEmpty() {
-		return equipe.size() == 0;
+		return listePersonnages.size() == 0;
 	}
 	
 	/**
@@ -192,7 +192,7 @@ public class Equipe {
 	 * @return
 	 */
 	public boolean isDansEquipe(Personnage personnage) {
-		return equipe.contains(personnage);
+		return listePersonnages.contains(personnage);
 	}
 	
 	/**
@@ -201,7 +201,7 @@ public class Equipe {
 	 */
 	public void addEquipe(Personnage personnage) {
 		if(!isComplete() && !isDansEquipe(personnage))
-			equipe.add(personnage);
+			listePersonnages.add(personnage);
 	}
 	
 	/**
@@ -209,7 +209,7 @@ public class Equipe {
 	 * @param personnage
 	 */
 	public void removeEquipe(Personnage personnage) {
-		equipe.remove(personnage);
+		listePersonnages.remove(personnage);
 	}
 	
 	

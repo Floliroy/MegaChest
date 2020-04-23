@@ -40,14 +40,42 @@ public class Jeu {
 	}
 	
 	/**
+	 * TODO
+	 */
+	public void positionnerEquipe(Joueur joueur) {
+		int positionX = -1;
+		int positionY = -1;
+		
+		for(Personnage membre : joueur.getEquipe().getListePersonnages()) {
+			System.out.println("Positionnez " + membre.getNom());
+		
+			do {
+				System.out.print("Numéro ligne : ");
+				positionX = Clavier.entrerClavierInt();
+				
+				System.out.print("Numéro colonne : ");
+				positionY = Clavier.entrerClavierInt();
+				
+			} while(!plateauJeu.isDansPlateau(positionX, positionY));
+			
+			plateauJeu.placerPersonnage(positionX, positionY, membre);
+		}
+	}
+	
+	/**
 	 * Permet d'effectuer l'action attaquer entre deux personnages
 	 * @param attaquant Le personnage initiant l'attaque
 	 * @param defenseur Le personnage subissant l'attaque
 	 */
 	public void actionAttaquer(Personnage attaquant) {
 		ArrayList<Personnage> personnagesAttaquables = new ArrayList<>();
+<<<<<<< Upstream, based on branch 'dev' of https://github.com/Floliroy/MegaChest.git
 		//On vérifie que dans les cases a porter du personnage attaquant on a bien un ou des ennemis
 		for(Personnage ennemi : getJoueurInactif().getEquipe().getEquipe()) {
+=======
+		//On v�rifie que dans les cases a porter du personnage attaquant on a bien un ou des ennemis
+		for(Personnage ennemi : getJoueurInactif().getEquipe().getListePersonnages()) {
+>>>>>>> 5b46b84 Ajout positionnement personnage
 			for(Case caseAPorte : plateauJeu.getCasesAPorte(attaquant)) {
 				if(caseAPorte.getPersonnage().equals(ennemi)) {
 					personnagesAttaquables.add(ennemi);
