@@ -23,7 +23,10 @@ public class Joueur {
 		String nom;
 		
 		while(!equipe.isComplete()) {
+			System.out.println("Voici la liste des personnages disponibles : ");
+			System.out.println(Util.imprimeList(listePersonnages));
 			System.out.println("Quels personnage voulez vous ajouter ?");
+			
 			nom = Clavier.entrerClavierString().toLowerCase();
 			
 			for(Personnage personnage : listePersonnages) {
