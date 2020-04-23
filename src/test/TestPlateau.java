@@ -23,24 +23,49 @@ public class TestPlateau {
 		plateau.getCase(positionX, positionY).setPersonnage(pyke);
 		System.out.println("-------------------------------------------");
 		
-		
 		System.out.println("\tCase atteignable par " + pyke.getNom() + ":\n");
-		ArrayList<Case> listeCasesAtteignables = plateau.getCasesAtteignables(pyke);
-		System.out.println("Nombre de cases atteignables par " + pyke.getNom() + " : " + listeCasesAtteignables.size());
-		if(listeCasesAtteignables.size() > 0)
-			for(Case atteignable : listeCasesAtteignables)
+		ArrayList<Case> listeCasesAtteignablesPyke = plateau.getCasesAtteignables(pyke);
+		System.out.println("Nombre de cases atteignables par " + pyke.getNom() + " : " + listeCasesAtteignablesPyke.size());
+		if(listeCasesAtteignablesPyke.size() > 0)
+			for(Case atteignable : listeCasesAtteignablesPyke)
 				System.out.print("[" + atteignable.getPositionX() + "," + atteignable.getPositionY() + "]");
 		System.out.println("\n-------------------------------------------");
 		
 		System.out.println("\tCase attaquable par " + pyke.getNom() + ":\n");
-		ArrayList<Case> listeCasesAttaquables = plateau.getCasesAPorte(pyke);
-		System.out.println("Nombre de cases attaquables par " + pyke.getNom() + " : " + listeCasesAttaquables.size());
-		if(listeCasesAttaquables.size() > 0)
-			for(Case attaquables : listeCasesAttaquables)
+		ArrayList<Case> listeCasesAttaquablesPyke = plateau.getCasesAPorte(pyke);
+		System.out.println("Nombre de cases attaquables par " + pyke.getNom() + " : " + listeCasesAttaquablesPyke.size());
+		if(listeCasesAttaquablesPyke.size() > 0)
+			for(Case attaquables : listeCasesAttaquablesPyke)
 				System.out.print("[" + attaquables.getPositionX() + "," + attaquables.getPositionY() + "]");
 		System.out.println("-------------------------------------------");
 		
-		System.out.println("\tCreation du personnage Fizz");
+		
+		System.out.println("\n\tCreation du personnage Fizz");
 		Fizz fizz  = new Fizz();
+		System.out.println("PM = " + fizz.getDeplacementsAvecBoost() + " | Porte = " + fizz.getPorteeAvecBoost());
+		positionX = 0;
+		positionY = 2;
+		System.out.println(fizz.getNom() + " est positione sur la case [" + positionX + "," + positionY + "]");
+		plateau.getCase(positionX, positionY).setPersonnage(fizz);
+		System.out.println("-------------------------------------------");
+		
+		System.out.println("\tCase atteignable par " + fizz.getNom() + ":\n");
+		ArrayList<Case> listeCasesAtteignablesFizz = plateau.getCasesAtteignables(fizz);
+		System.out.println("Nombre de cases atteignables par " + fizz.getNom() + " : " + listeCasesAtteignablesFizz.size());
+		if(listeCasesAtteignablesFizz.size() > 0)
+			for(Case atteignable : listeCasesAtteignablesFizz)
+				System.out.print("[" + atteignable.getPositionX() + "," + atteignable.getPositionY() + "]");
+		System.out.println("\n-------------------------------------------");
+		
+		System.out.println("\tCase attaquable par " + fizz.getNom() + ":\n");
+		ArrayList<Case> listeCasesAttaquablesFizz = plateau.getCasesAPorte(fizz);
+		System.out.println("Nombre de cases attaquables par " + fizz.getNom() + " : " + listeCasesAttaquablesFizz.size());
+		if(listeCasesAttaquablesFizz.size() > 0)
+			for(Case attaquables : listeCasesAttaquablesFizz)
+				System.out.print("[" + attaquables.getPositionX() + "," + attaquables.getPositionY() + "]");
+		
+		System.out.println("\n");
+		plateau.afficherPlateau();
+		
 	}
 }
