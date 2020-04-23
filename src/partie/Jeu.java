@@ -69,13 +69,8 @@ public class Jeu {
 	 */
 	public void actionAttaquer(Personnage attaquant) {
 		ArrayList<Personnage> personnagesAttaquables = new ArrayList<>();
-<<<<<<< Upstream, based on branch 'dev' of https://github.com/Floliroy/MegaChest.git
-		//On vérifie que dans les cases a porter du personnage attaquant on a bien un ou des ennemis
-		for(Personnage ennemi : getJoueurInactif().getEquipe().getEquipe()) {
-=======
 		//On v�rifie que dans les cases a porter du personnage attaquant on a bien un ou des ennemis
 		for(Personnage ennemi : getJoueurInactif().getEquipe().getListePersonnages()) {
->>>>>>> 5b46b84 Ajout positionnement personnage
 			for(Case caseAPorte : plateauJeu.getCasesAPorte(attaquant)) {
 				if(caseAPorte.getPersonnage().equals(ennemi)) {
 					personnagesAttaquables.add(ennemi);
@@ -92,7 +87,7 @@ public class Jeu {
 				System.out.print("Veuillez entrer le nom du Personnage a attaquer (ou retour) : ");
 				nomDefenseur = Clavier.entrerClavierString().toLowerCase();
 				
-				//On vérifie si ce personnage existe et s'il est a portée d'attaque
+				//On v�rifie si ce personnage existe et s'il est a port�e d'attaque
 				for(Personnage ennemi : personnagesAttaquables) {
 					if(ennemi.getNom().toLowerCase().equals(nomDefenseur)) {
 						defenseur = ennemi;
@@ -100,12 +95,12 @@ public class Jeu {
 					}
 				}
 				if(defenseur == null) {
-					System.out.println("Personnage \"" + nomDefenseur + "\" introuvable ou pas a portée d'attaque.");
+					System.out.println("Personnage \"" + nomDefenseur + "\" introuvable ou pas a port�e d'attaque.");
 				}
 			}while(defenseur == null || !nomDefenseur.equals("retour"));
 				
 			if(defenseur != null) {
-				//On regarde si le defenseur pourra répondre a l'attaque ou non
+				//On regarde si le defenseur pourra r�pondre a l'attaque ou non
 				Boolean defenseurPeutAttaquer = plateauJeu.getCasesAPorte(defenseur).contains(plateauJeu.getCase(attaquant));
 				
 				//Si l'attaquant attaque en premier
@@ -117,7 +112,7 @@ public class Jeu {
 						attaquant.imprimeEtat();
 					}
 					
-				//Si le défenseur attaque en premier
+				//Si le d�fenseur attaque en premier
 				}else if(attaquant.getVitesseAvecBoost() < defenseur.getVitesseAvecBoost()) {
 					if(defenseurPeutAttaquer) {
 						defenseur.attaque(attaquant);
@@ -147,7 +142,7 @@ public class Jeu {
 				}
 			}			
 		}else {
-			System.out.println("Aucun personnage ennemi a portée d'attaque.");
+			System.out.println("Aucun personnage ennemi a port�e d'attaque.");
 		}
 	}
 	
