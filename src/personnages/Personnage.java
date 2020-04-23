@@ -119,6 +119,14 @@ public abstract class Personnage {
 		return getVieAvecBoost() > 0;
 	}
 	
+	public void imprimeEtat() {
+		if(isVivant()) {
+			System.out.println("Il reste " + getVieAvecBoost() + " points de vie a " + nom);
+		}else {
+			System.out.println(nom + " est mort.");
+		}
+	}
+	
 	/**
 	 * Permet de connaitre la valeur du boost d'une statistique
 	 * @param typeStat Le type de statistique dont on veut connaitre le boost

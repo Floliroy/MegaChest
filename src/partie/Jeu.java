@@ -77,24 +77,30 @@ public class Jeu {
 				//Si l'attaquant attaque en premier
 				if(attaquant.getVitesseAvecBoost() > defenseur.getVitesseAvecBoost()) {
 					attaquant.attaque(defenseur);
+					defenseur.imprimeEtat();
 					if(defenseur.isVivant() && defenseurPeutAttaquer) {
 						defenseur.attaque(attaquant);
+						attaquant.imprimeEtat();
 					}
 					
 				//Si le défenseur attaque en premier
 				}else if(attaquant.getVitesseAvecBoost() < defenseur.getVitesseAvecBoost()) {
 					if(defenseurPeutAttaquer) {
 						defenseur.attaque(attaquant);
+						attaquant.imprimeEtat();
 					}
 					if(attaquant.isVivant()) {
 						attaquant.attaque(defenseur);
+						defenseur.imprimeEtat();
 					}
 					
 				//Si les deux attaques en même temps
 				}else {
 					attaquant.attaque(defenseur);
+					defenseur.imprimeEtat();
 					if(defenseurPeutAttaquer) {
 						defenseur.attaque(attaquant);
+						attaquant.imprimeEtat();
 					}
 				}
 			}			
