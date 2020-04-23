@@ -35,8 +35,8 @@ public class Jeu {
 	
 	public Jeu() {
 		plateauJeu = new Plateau();
-		Joueur1 = new Joueur();
-		Joueur2 = new Joueur();
+		joueur1 = new Joueur();
+		joueur2 = new Joueur();
 	}
 	
 	/**
