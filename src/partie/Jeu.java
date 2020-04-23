@@ -85,19 +85,22 @@ public class Jeu {
 			System.out.print(actions);
 			Integer action = Clavier.entrerClavierInt();
 			if(action == 1 && pmPerso > 0) {
-
 				pmPerso = actionDeplacer(personnage);
 				System.out.println();
-				plateauJeu.afficherPlateau();		
-
+				plateauJeu.afficherPlateau();	
+				actionEffectue = true;
 			}else if((action == 1 || (action == 2 && pmPerso > 0)) && jetonAttaque) {
 				jetonAttaque = actionAttaquer(personnage);
+				actionEffectue = true;
 			}else {
 				if(actionEffectue) {
 					finTour = true;
 				}else {
 					personnage = choixPersonnage();
 				}
+			}
+			if((pmPerso <= 0 && !jetonAttaque) || joueur1.getEquipe().isEmpty() || joueur2.getEquipe().isEmpty()) {
+				finTour = true;
 			}
 		}while(!finTour);
 	}
@@ -209,7 +212,7 @@ public class Jeu {
 				return false;
 			}			
 		}else {
-			System.out.println("Aucun personnage ennemi a port�e d'attaque.");
+			System.out.println("Aucun personnage ennemi a portée d'attaque.");
 		}
 		//Le jeton d'attaque est toujours disponible
 		return true;

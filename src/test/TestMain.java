@@ -29,9 +29,9 @@ public class TestMain {
 			}
 		}while(!finJeu);
 		
-		if(jeu.getJoueur1().getEquipe().isEmpty() && !jeu.getJoueur2().getEquipe().isEmpty()) {
+		if(!jeu.getJoueur1().getEquipe().isEmpty() && jeu.getJoueur2().getEquipe().isEmpty()) {
 			System.out.println("Joueur 1 tu as gagné !");
-		}else if(!jeu.getJoueur1().getEquipe().isEmpty() && jeu.getJoueur2().getEquipe().isEmpty()) {
+		}else if(jeu.getJoueur1().getEquipe().isEmpty() && !jeu.getJoueur2().getEquipe().isEmpty()) {
 			System.out.println("Joueur 2 tu as gagné !");
 		}else {
 			if(jeu.getJoueurActif().equals(jeu.getJoueur1())) {

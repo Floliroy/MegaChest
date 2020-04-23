@@ -402,7 +402,7 @@ public abstract class Personnage {
 		String print;
 		print = "PV : " + vieBase + "\n";
 		print += "PM : " + deplacements + "\n";
-		print += "Deg :" + degats + "\n";
+		print += "Deg : " + degats + "\n";
 		print += "PO : " + portee + "\n";
 		print += "Vit : " + vitesse + "\n";	
 		return print;
