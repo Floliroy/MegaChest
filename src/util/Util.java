@@ -6,12 +6,23 @@ import personnages.Personnage;
 
 public class Util {
 	
-	public static String imprimeList(ArrayList<Personnage> liste) {
+	/**
+	 * Renvoit tous les elements d'une liste séparés par une virgule
+	 * @param liste La liste que l'on souhaite imprimer
+	 * @return Les elements séparés par une virgule
+	 */
+	public static String imprimeList(ArrayList<?> liste) {
 		String retour = "";
-		for(Personnage perso : liste) {
-			retour += perso.getNom() + ", ";
+		if(!liste.isEmpty()) {
+			if(liste.get(0) instanceof Personnage) {
+				for(Object element : liste) {
+					Personnage perso = (Personnage) element;
+					retour += perso.getNom() + ", ";
+				}
+			}
+			retour = retour.substring(0, retour.length() - 2);
 		}
-		return retour.substring(0, retour.length() - 2);
+		return retour;
 	}
 	
 }
