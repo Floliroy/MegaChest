@@ -1,7 +1,5 @@
 package partie;
 
-import personnages.Personnage;
-
 public class Joueur {
 	
 	
