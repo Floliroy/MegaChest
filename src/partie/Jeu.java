@@ -103,6 +103,14 @@ public class Jeu {
 						attaquant.imprimeEtat();
 					}
 				}
+				
+				//On supprime le personnage de son equipe s'il est mort
+				if(!attaquant.isVivant()) {
+					getJoueurActif().getEquipe().removeEquipe(attaquant);
+				}
+				if(!defenseur.isVivant()) {
+					getJoueurInactif().getEquipe().removeEquipe(defenseur);
+				}
 			}			
 		}else {
 			System.out.println("Aucun personnage ennemi a portée d'attaque.");
