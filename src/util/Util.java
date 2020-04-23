@@ -7,9 +7,9 @@ import personnages.Personnage;
 public class Util {
 	
 	/**
-	 * Renvoit tous les elements d'une liste séparés par une virgule
+	 * Renvoit tous les elements d'une liste sÃ©parÃ©s par une virgule
 	 * @param liste La liste que l'on souhaite imprimer
-	 * @return Les elements séparés par une virgule
+	 * @return Les elements sÃ©parÃ©s par une virgule
 	 */
 	public static String imprimeList(ArrayList<?> liste) {
 		String retour = "";

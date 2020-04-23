@@ -22,19 +22,19 @@ public abstract class Personnage {
 	/** Le nom du personnage */
 	private String nom;
 	
-	/** La santé du personnage */
+	/** La santï¿½ du personnage */
 	private Integer vie;
 	
 	/** Le vie maximale du personnage */
 	private Integer vieBase;
 	
-	/** Les points de déplacement du personnage */
+	/** Les points de dÃ©placement du personnage */
 	private Integer deplacements;
 	
-	/** Les dégâts du perssonage */
+	/** Les dÃ©gÃ¢ts du perssonage */
 	private Integer degats;
 	
-	/** La portée d'attaque du personnage */
+	/** La portÃ©e d'attaque du personnage */
 	private Integer portee;
 	
 	/** La vitesse d'attaque du personnage */
@@ -52,7 +52,7 @@ public abstract class Personnage {
 	/** Le chemin de l'image de l'icone du personnage */
 	private String cheminImage;
 	
-	/** La liste d'objets équipés */
+	/** La liste d'objets Ã©quipÃ©s */
 	private List<Objet> listObjets;
 	
 	//////////////////
@@ -61,12 +61,12 @@ public abstract class Personnage {
 	
 	/**
 	 * Constructeur permettant de construire un personnage
-	 * @param nom Le nom souhaité
-	 * @param vie La santé souhaitée
-	 * @param deplacements Les points de déplacements souhaitées
-	 * @param degats Les dégâts souhaités
-	 * @param portee La portée d'attaque souhaitée
-	 * @param vitesse La vitesse d'attaque souhaitée
+	 * @param nom Le nom souhaitÃ©
+	 * @param vie La santÃ© souhaitÃ©e
+	 * @param deplacements Les points dÃ©placements souhaitÃ©es
+	 * @param degats Les dÃ©gÃ¢ts souhaitÃ©s
+	 * @param portee La portÃ©e d'attaque souhaitÃ©e
+	 * @param vitesse La vitesse d'attaque souhaitÃ©e
 	 * @param element L'element du personnage
 	 * @param origine L'origine du personnage
 	 * @param cheminImage Le chemin de l'image de l'icone du personnage
@@ -102,7 +102,7 @@ public abstract class Personnage {
 	}
 	
 	/**
-	 * Permet de recevoir des dégâts<br>
+	 * Permet de recevoir des dÃ©gÃ¢ts<br>
 	 * Il est possible d'avoir moins de 0 de vie et d'etre encore en vie avec les bonus
 	 * @param degatsRecus Le nombres de degats recus
 	 */
@@ -143,48 +143,48 @@ public abstract class Personnage {
 	}
 	
 	/**
-	 * Permet de récupérer la vie actuelle avec le boost de l'équipement
-	 * @return Renvoit la vie actuelle boostée
+	 * Permet de rÃ©cupÃ©rer la vie actuelle avec le boost de l'Ã©quipement
+	 * @return Renvoit la vie actuelle boostÃ©e
 	 */
 	public Integer getVieAvecBoost() {
 		return vie + getBoostEquipement(TypeStat.VIE) + bonusEquipe.get(TypeStat.VIE);
 	}
 	
 	/**
-	 * Permet de récupérer la vie maximale avec le boost de l'équipement
-	 * @return Renvoit la vie maximale boostée
+	 * Permet de rÃ©cupÃ©rer la vie maximale avec le boost de l'Ã©quipement
+	 * @return Renvoit la vie maximale boostÃ©e
 	 */
 	public Integer getVieBaseAvecBoost() {
 		return vieBase + getBoostEquipement(TypeStat.VIE) + bonusEquipe.get(TypeStat.VIE);
 	}
 	
 	/**
-	 * Permet de récupérer le nombre de points de déplacements avec le boost de l'équipement
-	 * @return Renvoit le déplacement boosté
+	 * Permet de rÃ©cupÃ©rer le nombre de points de dï¿½placements avec le boost de l'Ã©quipement
+	 * @return Renvoit le dÃ©placement boostÃ©
 	 */
 	public Integer getDeplacementsAvecBoost() {
 		return deplacements + getBoostEquipement(TypeStat.DEPLACEMENTS) + bonusEquipe.get(TypeStat.DEPLACEMENTS);
 	}
 	
 	/**
-	 * Permet de récupérer le nombre de dégâts avec le boost de l'équipement
-	 * @return Renvoit les dégâts boostés
+	 * Permet de rÃ©cupÃ©rer le nombre de dÃ©gÃ¢ts avec le boost de l'Ã©quipement
+	 * @return Renvoit les dÃ©gÃ¢ts boostÃ©s
 	 */
 	public Integer getDegatsAvecBoost() {
 		return degats + getBoostEquipement(TypeStat.DEGATS) + bonusEquipe.get(TypeStat.DEGATS);
 	}
 	
 	/**
-	 * Permet de récupérer la portée avec le boost de l'équipement
-	 * @return Renvoit la portée boostée
+	 * Permet de rÃ©cupÃ©rer la portï¿½e avec le boost de l'ï¿½quipement
+	 * @return Renvoit la portï¿½e boostÃ©e
 	 */
 	public Integer getPorteeAvecBoost() {
 		return portee + getBoostEquipement(TypeStat.PORTEE) + bonusEquipe.get(TypeStat.PORTEE);
 	}
 	
 	/**
-	 * Permet de récupérer la vitesse avec le boost de l'équipement
-	 * @return Renvoit la vitesse boostée
+	 * Permet de rÃ©cupÃ©rer la vitesse avec le boost de l'ï¿½quipement
+	 * @return Renvoit la vitesse boostÃ©e
 	 */
 	public Integer getVitesseAvecBoost() {
 		return vitesse + getBoostEquipement(TypeStat.VITESSE) + bonusEquipe.get(TypeStat.VITESSE);
@@ -196,7 +196,7 @@ public abstract class Personnage {
 	///////////////////////
 	
 	/**
-	 * Permet de connaître le nom du personnage
+	 * Permet de connaÃ®tre le nom du personnage
 	 * @return Renvoit son nom
 	 */
 	public String getNom() {
@@ -205,14 +205,14 @@ public abstract class Personnage {
 
 	/**
 	 * Permet de renseigner le nom du personnage
-	 * @param nom Nom du personnage souhaité
+	 * @param nom Nom du personnage souhaitï¿½
 	 */
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
 
 	/**
-	 * Permet de connaître la santé actuelle du personnage
+	 * Permet de connaÃ®tre la santÃ© actuelle du personnage
 	 * @return Renvoit sa vie
 	 */
 	public Integer getVie() {
@@ -220,15 +220,15 @@ public abstract class Personnage {
 	}
 
 	/**
-	 * Permet de renseigner la santé du personnage
-	 * @param vie Vie du personnage souhaité
+	 * Permet de renseigner la santÃ© du personnage
+	 * @param vie Vie du personnage souhaitï¿½
 	 */
 	public void setVie(Integer vie) {
 		this.vie = vie;
 	}
 
 	/**
-	 * Permet de connaître la santé maximale du personnage
+	 * Permet de connaÃ®tre la santÃ© maximale du personnage
 	 * @return Renvoit sa vie de base
 	 */
 	public Integer getVieBase() {
@@ -236,55 +236,55 @@ public abstract class Personnage {
 	}
 
 	/**
-	 * Permet de connaître les points de déplacement du personnage
-	 * @return Renvoit ses points de déplacements
+	 * Permet de connaÃ®tre les points de dÃ©placements du personnage
+	 * @return Renvoit ses points de dÃ©placements
 	 */
 	public Integer getDeplacements() {
 		return deplacements;
 	}
 
 	/**
-	 * Permet de renseigner les points de déplacements du personnage
-	 * @param deplacements Le nombre de points de dépalcements souhaités
+	 * Permet de renseigner les points de dÃ©placements du personnage
+	 * @param deplacements Le nombre de points de dÃ©placements souhaitÃ©s
 	 */
 	public void setDeplacements(Integer deplacements) {
 		this.deplacements = deplacements;
 	}
 
 	/**
-	 * Permet de connaître la force de frappe du personnage
-	 * @return Renvoit ses dégâts
+	 * Permet de connaÃ®tre la force de frappe du personnage
+	 * @return Renvoit ses dÃ©gÃ¢ts
 	 */
 	public Integer getDegats() {
 		return degats;
 	}
 
 	/**
-	 * Permet de renseigner les dégâts du personnage
-	 * @param degats Les dégâts du personnage souhaités
+	 * Permet de renseigner les dÃ©gÃ¢ts du personnage
+	 * @param degats Les dÃ©gÃ¢ts du personnage souhaitÃ©s
 	 */
 	public void setDegats(Integer degats) {
 		this.degats = degats;
 	}
 
 	/**
-	 * Permet de connaître la portée d'attaque du personnage
-	 * @return Renvoit sa portée
+	 * Permet de connaÃ®tre la portÃ©e d'attaque du personnage
+	 * @return Renvoit sa portÃ©e
 	 */
 	public Integer getPortee() {
 		return portee;
 	}
 
 	/**
-	 * Permet de renseigner la portée d'attaque du personnage
-	 * @param portee La portée du personnage souhaitée
+	 * Permet de renseigner la portÃ©e d'attaque du personnage
+	 * @param portee La portÃ©e du personnage souhaitÃ©e
 	 */
 	public void setPortee(Integer portee) {
 		this.portee = portee;
 	}
 
 	/**
-	 * Permet de connaître la vitesse d'attaque du personnage
+	 * Permet de connaÃ®tre la vitesse d'attaque du personnage
 	 * @return Renvoit sa vitesse
 	 */
 	public Integer getVitesse() {
@@ -293,30 +293,30 @@ public abstract class Personnage {
 
 	/**
 	 * Permet de renseigner la vitesse d'attaque du personnage
-	 * @param vitesse La vitesse du personnage souhaitée
+	 * @param vitesse La vitesse du personnage souhaitÃ©e
 	 */
 	public void setVitesse(Integer vitesse) {
 		this.vitesse = vitesse;
 	}
 
 	/**
-	 * Permet de connaître l'élément du personnage
-	 * @return Renvoit son élément
+	 * Permet de connaÃ®tre l'Ã©lÃ©ment du personnage
+	 * @return Renvoit son Ã©lÃ©ment
 	 */
 	public Element getElement() {
 		return element;
 	}
 
 	/**
-	 * Permet de renseigner l'élément du personnage
-	 * @param element L'élément du personnage souhaité
+	 * Permet de renseigner l'ï¿½lï¿½ment du personnage
+	 * @param element L'ï¿½lï¿½ment du personnage souhaitï¿½
 	 */
 	public void setElement(Element element) {
 		this.element = element;
 	}
 
 	/**
-	 * Permet de connaître l'origine du personnage
+	 * Permet de connaÃ®tre l'origine du personnage
 	 * @return Renvoit son origine
 	 */
 	public Origine getOrigine() {
@@ -325,7 +325,7 @@ public abstract class Personnage {
 
 	/**
 	 * Permet de renseigner l'origine du personnage
-	 * @param element L'origine du personnage souhaitée
+	 * @param element L'origine du personnage souhaitÃ©e
 	 */
 	public void setOrigine(Origine origine) {
 		this.origine = origine;
@@ -357,7 +357,7 @@ public abstract class Personnage {
 	}
 
 	/**
-	 * Permet de connaître le chemin de l'image de l'icone du personnage
+	 * Permet de connaÃ®tre le chemin de l'image de l'icone du personnage
 	 * @return Renvoit le chemin de l'image
 	 */
 	public String getCheminImage() {
@@ -366,14 +366,14 @@ public abstract class Personnage {
 
 	/**
 	 * Permet de renseigner le chemin de l'image de l'icone du personnage
-	 * @param cheminImage Le chemin de l'image souhaité
+	 * @param cheminImage Le chemin de l'image souhaitÃ©
 	 */
 	public void setCheminImage(String cheminImage) {
 		this.cheminImage = cheminImage;
 	}
 
 	/**
-	 * Permet de connaître la liste des objets équipés par le personnage
+	 * Permet de connaÃ®tre la liste des objets Ã©quipÃ©s par le personnage
 	 * @return Renvoit sa liste d'objets
 	 */
 	public List<Objet> getListObjets() {
@@ -381,15 +381,15 @@ public abstract class Personnage {
 	}
 
 	/**
-	 * Permet de renseigner la liste d'objets que le personnage à d'équiper
-	 * @param listObjets La liste d'objets à équiper
+	 * Permet de renseigner la liste d'objets que le personnage Ã  d'Ã©quiper
+	 * @param listObjets La liste d'objets Ã  Ã©quiper
 	 */
 	public void setListObjets(List<Objet> listObjets) {
 		this.listObjets = listObjets;
 	}
 	
 	/**
-	 * Permet d'ajouter un objet à la liste des objets équipés
+	 * Permet d'ajouter un objet Ã  la liste des objets Ã©quipÃ©s
 	 * @param objet
 	 */
 	public void addListObjets(Objet objet) {
