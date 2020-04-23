@@ -1,13 +1,11 @@
 package partie;
 
-<<<<<<< Upstream, based on branch 'dev' of https://github.com/Floliroy/MegaChest.git
-=======
 import java.util.ArrayList;
 
 import personnages.Personnage;
 import util.*;
 
->>>>>>> 3bf0304 completerEquipe + retour du nombre de pm restant dans actionDeplacer
+
 public class Joueur {
 	
 	
