@@ -27,14 +27,16 @@ public class Joueur {
 			System.out.println(Util.imprimeList(listePersonnages));
 			System.out.println("Quels personnage voulez vous ajouter ?");
 			
-			nom = Clavier.entrerClavierString().toLowerCase();
+			nom = Clavier.entrerClavierString();
+			Boolean trouve = false;
 			
 			for(Personnage personnage : listePersonnages) {
-				if(nom.equals(personnage.getNom()) && !equipe.isDansEquipe(personnage)) {
+				if(nom.toLowerCase().equals(personnage.getNom().toLowerCase()) && !equipe.isDansEquipe(personnage)) {
 					System.out.println("Personnage : " + personnage.getNom() + "\n" + personnage.dumpCaracteristique());
 					
 					System.out.println("Confirmer personnage : y/n");
 					String choix = Clavier.entrerClavierString().toLowerCase();
+					trouve = true;
 					
 					if(choix.equals("y")) {
 						equipe.addEquipe(personnage);
@@ -43,6 +45,9 @@ public class Joueur {
 						break;
 					}
 				}
+			}
+			if(!trouve) {
+				System.out.println("Personnage \"" + nom + "\" introuvable.");
 			}
 		}
 	}

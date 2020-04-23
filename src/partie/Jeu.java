@@ -77,7 +77,7 @@ public class Jeu {
 			System.out.println("Veuillez choisir l'action souhaitée pour " + personnage.getNom() + " " + plateauJeu.getCase(personnage).dumpCase() + " : ");
 			
 			String actions = "";
-			Integer cpt = 0;
+			Integer cpt = 1;
 			
 			actions += pmPerso > 0 ? "   " + cpt++ + " - Se déplacer\n" : "";
 			actions += jetonAttaque ? "   " + cpt++ + " - Attaquer\n" : "";
@@ -110,6 +110,7 @@ public class Jeu {
 		int positionY = -1;
 		
 		for(Personnage membre : joueur.getEquipe().getListePersonnages()) {
+			plateauJeu.afficherPlateau();
 			System.out.println("Positionnez " + membre.getNom());
 		
 			do {
