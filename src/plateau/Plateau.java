@@ -7,9 +7,9 @@ import personnages.Personnage;
 public class Plateau {
 	
 	/** Nombre de ligne du plateau */
-	private final static int NOMBRE_LIGNE = 16;
+	private final static int NOMBRE_LIGNE = 8;
 	/* Nombre de colonne par ligne du plateau */
-	private final static int NOMBRE_COLONNE = 8;
+	private final static int NOMBRE_COLONNE = 16;
 	
 	/* -------------------------------------------------- */
 	

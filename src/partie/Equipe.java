@@ -11,7 +11,7 @@ import personnages.Personnage;
 public class Equipe {
 	
 	/** TODO */
-	private static final int TAILLE_EQUIPE = 10;
+	private static final int TAILLE_EQUIPE = 4;
 	
 	/* -------------------------------------------------- */
 	
