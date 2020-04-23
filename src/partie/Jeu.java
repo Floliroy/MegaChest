@@ -123,7 +123,7 @@ public class Jeu {
 				System.out.print("Numéro colonne : ");
 				positionY = Clavier.entrerClavierInt();
 				
-			} while(!plateauJeu.isDansPlateau(positionX, positionY));
+			} while(!plateauJeu.isDansPlateau(positionX, positionY) || !plateauJeu.getCase(positionX, positionY).isEmpty());
 			
 			plateauJeu.placerPersonnage(positionX, positionY, membre);
 		}
