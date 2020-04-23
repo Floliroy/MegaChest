@@ -27,7 +27,7 @@ public class Equipe {
 		equipe = new ArrayList<Personnage>();
 	}
 	
-	private void calculerBonusEquipe() {
+	public void calculerBonusEquipe() {
 		HashMap<Element, Integer> bonusElement = getNombreElement();
 		HashMap<Origine, Integer> bonusOrigine = getNombreOrigine();
 		

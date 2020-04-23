@@ -94,6 +94,32 @@ public abstract class Personnage {
 	//////////////
 	
 	/**
+	 * Permet d'attaquer un autre personnage
+	 * @param adversaire Le personnage a attaquer
+	 */
+	public void attaque(Personnage adversaire) {
+		adversaire.subirDegats(getDegatsAvecBoost());
+	}
+	
+	/**
+	 * Permet de recevoir des dégâts<br>
+	 * Il est possible d'avoir moins de 0 de vie et d'etre encore en vie avec les bonus
+	 * @param degatsRecus Le nombres de degats recus
+	 */
+	public void subirDegats(Integer degatsRecus) {
+		degatsRecus = degatsRecus >= 0 ? degatsRecus : 0;
+		vie -= degatsRecus;
+	}
+	
+	/**
+	 * Permet de savoir si le personnage est vivant ou non
+	 * @return S'il est vivant
+	 */
+	public Boolean isVivant() {
+		return getVieAvecBoost() > 0;
+	}
+	
+	/**
 	 * Permet de connaitre la valeur du boost d'une statistique
 	 * @param typeStat Le type de statistique dont on veut connaitre le boost
 	 * @return La valeur du boost de cette statistique
