@@ -74,7 +74,7 @@ public class Jeu {
 		Boolean finTour = false;
 		do {
 			System.out.println();
-			System.out.println("Veuillez choisir l'action souhaitée : ");
+			System.out.println("Veuillez choisir l'action souhaitée pour " + personnage.getNom() + " " + plateauJeu.getCase(personnage).dumpCase() + " : ");
 			
 			String actions = "";
 			Integer cpt = 0;
@@ -86,6 +86,8 @@ public class Jeu {
 			Integer action = Clavier.entrerClavierInt();
 			if(action == 1 && pmPerso > 0) {
 				actionDeplacer(personnage);
+				System.out.println();
+				plateauJeu.afficherPlateau();
 			}else if((action == 1 || (action == 2 && pmPerso > 0)) && jetonAttaque) {
 				jetonAttaque = actionAttaquer(personnage);
 			}else {
