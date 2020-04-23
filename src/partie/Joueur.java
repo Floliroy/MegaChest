@@ -50,6 +50,7 @@ public class Joueur {
 				System.out.println("Personnage \"" + nom + "\" introuvable.");
 			}
 		}
+		equipe.calculerBonusEquipe();
 	}
 	
 	
