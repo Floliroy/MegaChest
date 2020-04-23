@@ -85,9 +85,11 @@ public class Jeu {
 			System.out.print(actions);
 			Integer action = Clavier.entrerClavierInt();
 			if(action == 1 && pmPerso > 0) {
-				actionDeplacer(personnage);
+
+				pmPerso = actionDeplacer(personnage);
 				System.out.println();
-				plateauJeu.afficherPlateau();
+				plateauJeu.afficherPlateau();		
+
 			}else if((action == 1 || (action == 2 && pmPerso > 0)) && jetonAttaque) {
 				jetonAttaque = actionAttaquer(personnage);
 			}else {
