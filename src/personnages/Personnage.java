@@ -397,4 +397,14 @@ public abstract class Personnage {
 			listObjets.add(objet);
 		}
 	}
+	
+	public String dumpCaracteristique() {
+		String print;
+		print = "PV : " + vieBase + "\n";
+		print += "PM : " + deplacements + "\n";
+		print += "Deg :" + degats + "\n";
+		print += "PO : " + portee + "\n";
+		print += "Vit : " + vitesse + "\n";	
+		return print;
+	}
 }

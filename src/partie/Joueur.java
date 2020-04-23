@@ -27,10 +27,17 @@ public class Joueur {
 			
 			for(Personnage personnage : listePersonnages) {
 				if(nom.equals(personnage.getNom()) && !equipe.isDansEquipe(personnage)) {
-					equipe.addEquipe(personnage);
-					System.out.println(personnage.getNom() + " a été ajouté à l'équipe ");
-					listePersonnages.remove(personnage);		
-					break;
+					System.out.println("Personnage : " + personnage.getNom() + "\n" + personnage.dumpCaracteristique());
+					
+					System.out.println("Confirmer personnage : y/n");
+					String choix = Clavier.entrerClavierString().toLowerCase();
+					
+					if(choix.equals("y")) {
+						equipe.addEquipe(personnage);
+						System.out.println(personnage.getNom() + " a été ajouté à l'équipe ");
+						listePersonnages.remove(personnage);		
+						break;
+					}
 				}
 			}
 		}
