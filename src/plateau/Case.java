@@ -94,4 +94,11 @@ public class Case {
 		return personnage == null;
 	}
 	
+	/**
+	 * 
+	 */
+	public String dumpCase() {
+		return "(" + positionX + "," + positionY + ")";
+	}
+	
 }

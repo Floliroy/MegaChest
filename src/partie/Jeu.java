@@ -33,6 +33,12 @@ public class Jeu {
 		return null;
 	}
 	
+	public Jeu() {
+		plateauJeu = new Plateau();
+		Joueur1 = new Joueur();
+		Joueur2 = new Joueur();
+	}
+	
 	/**
 	 * Permet d'effectuer l'action attaquer entre deux personnages
 	 * @param attaquant Le personnage initiant l'attaque
@@ -115,6 +121,33 @@ public class Jeu {
 		}else {
 			System.out.println("Aucun personnage ennemi a portée d'attaque.");
 		}
+	}
+	
+	/**
+	 * TODO
+	 */
+	public void actionDeplacer(Personnage personnage) {
+		Case depart = plateauJeu.getCase(personnage);
+		System.out.println("Vous etes sur la case " + depart.dumpCase());
+		System.out.println(personnage.getNom() + " possede " + personnage.getDeplacementsAvecBoost() + " PM");
+		
+		ArrayList<Case> casesAtteignables = plateauJeu.getCasesAtteignables(personnage);
+		int positionX = -1;
+		int positionY = -1;
+		
+		do {
+			
+		System.out.println("Veuillez choisir les coordonnees de la case d'arrive :");
+
+		System.out.print("Numéro ligne : ");
+		positionX = Clavier.entrerClavierInt();
+		
+		System.out.print("Numéro colonne : ");
+		positionY = Clavier.entrerClavierInt();
+		
+		} while(!plateauJeu.isDansPlateau(positionX, positionY) && !casesAtteignables.contains(plateauJeu.getCase(positionX, positionY)));
+		
+		plateauJeu.deplacerPersonnage(depart, positionX, positionY);
 	}
 	
 	/** ---------------------------------------- */

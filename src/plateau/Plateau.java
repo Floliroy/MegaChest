@@ -60,7 +60,7 @@ public class Plateau {
 	 * @return true si case est dedans <br/>
 	 * 		   false si la case est en-dehors
 	 */
-	private boolean isDansPlateau(int positionX, int positionY) {
+	public boolean isDansPlateau(int positionX, int positionY) {
 		return positionX < NOMBRE_LIGNE && positionX >= 0 && positionY < NOMBRE_COLONNE && positionY >= 0;
 	}
 	
@@ -148,6 +148,23 @@ public class Plateau {
 					casesAPorte.add(positionCible);
 		}
 		return casesAPorte;
+	}
+	
+	/**
+	 * TODO
+	 */
+	public void placerPersonnage(int positionX, int positionY, Personnage personnage) {
+		plateau[positionX ][positionY].setPersonnage(personnage);
+	}
+	
+	/**
+	 * TODO
+	 */
+	public void deplacerPersonnage(Case caseDepart, int positionX, int positionY) {
+		/**/
+		placerPersonnage(positionX, positionY, caseDepart.getPersonnage());
+		/**/
+		caseDepart.setPersonnage(null);
 	}
 	
 	/**

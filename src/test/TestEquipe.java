@@ -1,6 +1,7 @@
 package test;
 
 import partie.Equipe;
+import partie.Jeu;
 import personnages.*;
 
 public class TestEquipe {
@@ -20,6 +21,13 @@ public class TestEquipe {
 		team.addEquipe(new Swain());
 		team.addEquipe(new Pyke());
 		team.addEquipe(new Sion());
+		
+		Jarvan j = new Jarvan();
+		
+		Jeu partie = new Jeu();
+		partie.getPlateauJeu().getCase(0, 0).setPersonnage(j);
+		partie.actionDeplacer(j);
+		System.out.println(partie.getPlateauJeu().getCase(j).dumpCase());
 
 		
 	}

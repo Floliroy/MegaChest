@@ -1,5 +1,7 @@
 package partie;
 
+import personnages.Personnage;
+
 public class Joueur {
 	
 	
@@ -25,6 +27,7 @@ public class Joueur {
 	public void setTour(Boolean tour) {
 		this.tour = tour;
 	}
+	
 	
 
 }
