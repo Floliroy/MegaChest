@@ -26,7 +26,6 @@ public class TestEquipe {
 		
 		Jeu partie = new Jeu();
 		partie.getPlateauJeu().getCase(0, 0).setPersonnage(j);
-		partie.actionDeplacer(j);
 		System.out.println(partie.getPlateauJeu().getCase(j).dumpCase());
 
 		
