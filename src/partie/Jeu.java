@@ -37,6 +37,20 @@ public class Jeu {
 		plateauJeu = new Plateau();
 		joueur1 = new Joueur(true);
 		joueur2 = new Joueur(false);
+		
+		initialiserPartie();
+	}
+	
+	public void jouer() {
+		Boolean finJeu = false;
+		do {
+			System.out.println("Tour de " + (joueur1.isTour() ? joueur1.getNom() : joueur2.getNom()) + " :");
+			plateauJeu.afficherPlateau();
+			
+			finJeu = jouerTour();
+		}while(!finJeu);
+		
+		declarerVainqueur();
 	}
 	
 	/**
@@ -65,7 +79,7 @@ public class Jeu {
 		return personnage;
 	}
 	
-	public void choixAction() {
+	private void choixAction() {
 		Personnage personnage = choixPersonnage();
 
 		Boolean actionEffectue = false;
@@ -111,7 +125,7 @@ public class Jeu {
 	/**
 	 * TODO
 	 */
-	public void positionnerEquipe(Joueur joueur) {
+	private void positionnerEquipe(Joueur joueur) {
 		int positionX = -1;
 		int positionY = -1;
 		
@@ -251,7 +265,7 @@ public class Jeu {
 		personnage.setDeplacements(personnage.getDeplacements() - Util.distanceCase(depart, positionX, positionY));
 	}
 	
-	public void saisirNomJoueur() {
+	private void saisirNomJoueur() {
 		System.out.println("Joueur 1 entre ton nom :");
 		joueur1.setNom(Clavier.entrerClavierString());
 		
@@ -259,14 +273,14 @@ public class Jeu {
 		joueur2.setNom(Clavier.entrerClavierString());
 	}
 	
-	public void initialisationEquipe(Joueur joueur) {
+	private void initialisationEquipe(Joueur joueur) {
 		System.out.println(joueur.getNom() + " complète ton équipe !\n");
 		joueur.completerEquipe();
 		positionnerEquipe(joueur);
 	}
 
 	
-	public void initialiserPartie() {
+	private void initialiserPartie() {
 		
 		String pres = "\t+-------------------+\n";
 			  pres += "\t|     MegaChest     |\n";
@@ -282,19 +296,26 @@ public class Jeu {
 		
 	}
 	
-	public void declarerVainqueur() {
+	private Boolean jouerTour() {		
+		choixAction();
+		
+		if(joueur1.getEquipe().isEmpty() || joueur2.getEquipe().isEmpty()) {
+			return true;
+		}
+		
+		joueur1.setTour(!joueur1.isTour());
+		joueur2.setTour(!joueur2.isTour());
+		return false;
+	}
 	
+	private void declarerVainqueur() {
 		if(!joueur1.getEquipe().isEmpty() && joueur2.getEquipe().isEmpty()) {
 			System.out.println(joueur1.getNom() + " tu as gagné !");
-			
 		}else if(joueur1.getEquipe().isEmpty() && !joueur2.getEquipe().isEmpty()) {
-			System.out.println(joueur2.getNom() + " tu as gagné !");
-			
+			System.out.println(joueur2.getNom() + " tu as gagné !");	
 		}else {
-			
 			if(getJoueurActif().equals(joueur1)){
 				System.out.println(joueur1.getNom() + " tu as gagné !");
-				
 			}else {
 				System.out.println(joueur2.getNom() + " tu as gagné !");
 			}
