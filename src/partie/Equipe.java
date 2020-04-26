@@ -120,7 +120,7 @@ public class Equipe {
 	}
 	
 	private void increaseHashMapElement(HashMap<Element, Integer> map, Element element) {
-		if(!map.entrySet().iterator().hasNext()) {
+		if(!map.containsKey(element)) {
 			map.put(element, 1);
 		}else {
 			map.replace(element, map.get(element) + 1);
@@ -151,7 +151,7 @@ public class Equipe {
 	}
 	
 	private void increaseHashMapOrigine(HashMap<Origine, Integer> map, Origine origine) {
-		if(!map.entrySet().iterator().hasNext()) {
+		if(!map.containsKey(origine)) {
 			map.put(origine, 1);
 		}else {
 			map.replace(origine, map.get(origine) + 1);

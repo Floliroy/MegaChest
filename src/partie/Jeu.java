@@ -138,6 +138,8 @@ public class Jeu {
 		
 		for(Personnage membre : joueur.getEquipe().getListePersonnages()) {
 			plateauJeu.afficherPlateau();
+			System.out.println(joueur == joueur1 ? "Vous ne pouvez placer vos personnages que sur les 4 premières colonnes"
+												 : "Vous ne pouvez placer vos personnages que sur les 4 dernières colonnes");	
 			System.out.println("Positionnez " + membre.getNom());
 		
 			do {
