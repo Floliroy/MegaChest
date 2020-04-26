@@ -2,7 +2,7 @@ package personnages;
 
 public class Jarvan extends Personnage {
 
-	private static final String nom = "Jarvan IV";
+	private static final String nom = "Jarvan";
 	private static final Integer vie = 150;
 	private static final Integer deplacements = 5;
 	private static final Integer degats = 20;
@@ -13,7 +13,7 @@ public class Jarvan extends Personnage {
 	private static final String cheminImage = System.getProperty("user.dir") + "/images/personnages/jarvan.png";
 	
 	/**
-	 * Initialise le personnage Jarvan IV avec comme caractéristiques :<br>
+	 * Initialise le personnage Jarvan IV avec comme caractï¿½ristiques :<br>
 	 *  - Vie = 150<br>
 	 *  - PM = 5<br>
 	 *  - AD = 20<br>
