@@ -28,7 +28,7 @@ public class Plateau {
 		
 		for(int ligne = 0; ligne < NOMBRE_LIGNE; ligne ++) {
 			for(int colonne = 0; colonne < NOMBRE_COLONNE; colonne ++)
-				plateau[ligne][colonne] = new Case(ligne, colonne);
+				plateau[ligne][colonne] = new Case(colonne, ligne);
 		}	
 	}
 
@@ -118,11 +118,11 @@ public class Plateau {
 		int positionY = position.getPositionY();
 		int decalage = 0;
 
-		for(int ligne = positionX - pmPerso; ligne <= positionX + pmPerso; ligne ++) {
-			for(int colonne = positionY - decalage; colonne <= positionY + decalage; colonne ++)
+		for(int ligne = positionY - pmPerso; ligne <= positionY + pmPerso; ligne ++) {
+			for(int colonne = positionX - decalage; colonne <= positionX + decalage; colonne ++)
 				if((libre = getCase(colonne, ligne)) != null  && libre.getPersonnage() == null) 
 					casesAtteignables.add(libre);
-			decalage = ligne < positionX ? decalage + 1 : decalage - 1;
+			decalage = ligne < positionY ? decalage + 1 : decalage - 1;
 		}
 		return casesAtteignables;
 	}
@@ -142,8 +142,8 @@ public class Plateau {
 		int positionPersonnageX = positionPersonnage.getPositionX();
 		int positionPersonnageY = positionPersonnage.getPositionY();
 
-		for(int ligne = positionPersonnageX - poPerso; ligne <= positionPersonnageX + poPerso; ligne ++) {
-			for(int colonne = positionPersonnageY - poPerso; colonne <= positionPersonnageY + poPerso; colonne ++)
+		for(int ligne = positionPersonnageY - poPerso; ligne <= positionPersonnageY + poPerso; ligne ++) {
+			for(int colonne = positionPersonnageX - poPerso; colonne <= positionPersonnageX + poPerso; colonne ++)
 				if((positionCible = getCase(colonne, ligne)) != null  && (cible = positionCible.getPersonnage()) != null && !cible.equals(personnage))
 					casesAPorte.add(positionCible);
 		}
