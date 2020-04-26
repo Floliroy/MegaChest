@@ -123,7 +123,7 @@ public class Jeu {
 					personnage = choixPersonnage();
 				}
 			}
-			if((personnage.getDeplacementsAvecBoost() <= 0 && !jetonAttaque) || joueur1.getEquipe().isEmpty() || joueur2.getEquipe().isEmpty()) {
+			if((personnage.getDeplacementsAvecBoost() <= 0 && !jetonAttaque) || joueur1.getEquipe().isEmpty() || joueur2.getEquipe().isEmpty() || !personnage.isVivant()) {
 				finTour = true;
 			}
 		}while(!finTour);
