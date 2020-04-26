@@ -66,6 +66,7 @@ public class Util {
 		allPersonnages.add(new Swain());
 		allPersonnages.add(new Talon());
 		allPersonnages.add(new Wukong());
+		allPersonnages.add(new Yasuo());
 		
 		return allPersonnages;
 	}
