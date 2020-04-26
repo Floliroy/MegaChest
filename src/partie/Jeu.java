@@ -144,8 +144,24 @@ public class Jeu {
 				System.out.print("Numéro ligne : ");
 				positionY = Clavier.entrerClavierInt() - 1;
 				
+				if (joueur==joueur1){
+					while (positionX<5) {
+						System.out.print("Vous pouvez placer votre personnage que sur les 4 premieres colonnes du plateau : ");
+						positionX = Clavier.entrerClavierInt() - 1;
+					}
+				}
+				else {
+					while (positionX>11 && positionX<17) {
+						System.out.print("Vous pouvez placer votre personnage que sur les 4 dernières colonnes du plateau : ");
+						positionX = Clavier.entrerClavierInt() - 1;
+					}
+				}
+				
+				
 			} while(!plateauJeu.isDansPlateau(positionX, positionY) || !plateauJeu.getCase(positionX, positionY).isEmpty());
 			
+			
+				
 			plateauJeu.placerPersonnage(positionX, positionY, membre);
 		}
 	}
