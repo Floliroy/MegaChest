@@ -147,7 +147,6 @@ public class Jeu {
 				System.out.print("Numéro ligne : ");
 				positionY = Clavier.entrerClavierInt() - 1;
 				
-				int test=1;
 			} while(!plateauJeu.isDansPlateau(positionX, positionY) || !plateauJeu.getCase(positionX, positionY).isEmpty()
 					|| (joueur==joueur1 && positionX>=0+NOMBRE_COLONNE_PLACEMENT) 
 					|| (joueur==joueur2 && positionX<Plateau.NOMBRE_COLONNE-NOMBRE_COLONNE_PLACEMENT));
