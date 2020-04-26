@@ -1,11 +1,2 @@
 /partie/
-<<<<<<< Upstream, based on branch 'dev' of https://github.com/Floliroy/MegaChest
-<<<<<<< Upstream, based on branch 'dev' of https://github.com/Floliroy/MegaChest
-/util/
-=======
->>>>>>> 12cc81b fix on position x/y and lig/col + modif affichage tableau
-/personnages/
-/objets/
-=======
->>>>>>> cf1b2dc modification de positionnerEquipe
-/test/
+/plateau/

@@ -9,7 +9,10 @@ import util.Util;
 
 
 public class Jeu {
-		
+	
+	private static final int NOMBRE_COLONNE_PLACEMENT = 4;
+	
+	
 	private Plateau plateauJeu;
 	private Joueur joueur1;
 	private Joueur joueur2;
@@ -144,21 +147,10 @@ public class Jeu {
 				System.out.print("Numéro ligne : ");
 				positionY = Clavier.entrerClavierInt() - 1;
 				
-				if (joueur==joueur1){
-					while (positionX<5) {
-						System.out.print("Vous pouvez placer votre personnage que sur les 4 premieres colonnes du plateau : ");
-						positionX = Clavier.entrerClavierInt() - 1;
-					}
-				}
-				else {
-					while (positionX>11 && positionX<17) {
-						System.out.print("Vous pouvez placer votre personnage que sur les 4 dernières colonnes du plateau : ");
-						positionX = Clavier.entrerClavierInt() - 1;
-					}
-				}
-				
-				
-			} while(!plateauJeu.isDansPlateau(positionX, positionY) || !plateauJeu.getCase(positionX, positionY).isEmpty());
+				int test=1;
+			} while(!plateauJeu.isDansPlateau(positionX, positionY) || !plateauJeu.getCase(positionX, positionY).isEmpty()
+					|| (joueur==joueur1 && positionX>=0+NOMBRE_COLONNE_PLACEMENT) 
+					|| (joueur==joueur2 && positionX<Plateau.NOMBRE_COLONNE-NOMBRE_COLONNE_PLACEMENT));
 			
 			
 				
