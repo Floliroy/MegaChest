@@ -251,6 +251,57 @@ public class Jeu {
 		personnage.setDeplacements(personnage.getDeplacements() - Util.distanceCase(depart, positionX, positionY));
 	}
 	
+	public void saisirNomJoueur() {
+		System.out.println("Joueur 1 entre ton nom :");
+		joueur1.setNom(Clavier.entrerClavierString());
+		
+		System.out.println("Joueur 2 entre ton nom :");
+		joueur2.setNom(Clavier.entrerClavierString());
+	}
+	
+	public void initialisationEquipe(Joueur joueur) {
+		System.out.println(joueur.getNom() + " complète ton équipe !\n");
+		joueur.completerEquipe();
+		positionnerEquipe(joueur);
+	}
+
+	
+	public void initialiserPartie() {
+		
+		String pres = "\t+-------------------+\n";
+			  pres += "\t|     MegaChest     |\n";
+			  pres += "\t+-------------------+";
+		
+		System.out.println(pres + "\n");
+		saisirNomJoueur();
+		
+		System.out.println();
+		initialisationEquipe(joueur1);
+		System.out.println();
+		initialisationEquipe(joueur2);
+		
+	}
+	
+	public void declarerVainqueur() {
+	
+		if(!joueur1.getEquipe().isEmpty() && joueur2.getEquipe().isEmpty()) {
+			System.out.println(joueur1.getNom() + " tu as gagné !");
+			
+		}else if(joueur1.getEquipe().isEmpty() && !joueur2.getEquipe().isEmpty()) {
+			System.out.println(joueur2.getNom() + " tu as gagné !");
+			
+		}else {
+			
+			if(getJoueurActif().equals(joueur1)){
+				System.out.println(joueur1.getNom() + " tu as gagné !");
+				
+			}else {
+				System.out.println(joueur2.getNom() + " tu as gagné !");
+			}
+		}
+	}
+	
+	
 	/** ---------------------------------------- */
 	public Plateau getPlateauJeu() {
 		return plateauJeu;
