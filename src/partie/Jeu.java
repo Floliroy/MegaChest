@@ -306,7 +306,7 @@ public class Jeu {
 		
 		System.out.println();
 		initialisationEquipe(joueur1);
-		System.out.println();
+		plateauJeu.afficherPlateau();
 		initialisationEquipe(joueur2);
 		
 	}
