@@ -26,7 +26,7 @@ public class Joueur {
 		while(!equipe.isComplete()) {
 			System.out.println("Voici la liste des personnages disponibles : ");
 			System.out.println(Util.imprimeList(listePersonnages));
-			System.out.println("Quels personnage voulez vous ajouter ?");
+			System.out.print("Quels personnage voulez vous ajouter ? ");
 			
 			nom = Clavier.entrerClavierString();
 			Boolean trouve = false;
@@ -35,7 +35,7 @@ public class Joueur {
 				if(nom.toLowerCase().equals(personnage.getNom().toLowerCase()) && !equipe.isDansEquipe(personnage)) {
 					System.out.println("Personnage : " + personnage.getNom() + "\n" + personnage.dumpCaracteristique());
 					
-					System.out.println("Confirmer personnage : y/n");
+					System.out.print("Confirmer personnage (y/n) : ");
 					String choix = Clavier.entrerClavierString().toLowerCase();
 					trouve = true;
 					

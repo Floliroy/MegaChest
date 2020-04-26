@@ -98,7 +98,7 @@ public class Case {
 	 * 
 	 */
 	public String dumpCase() {
-		return "(" + positionX + "," + positionY + ")";
+		return "(" + (positionY+1) + "," + (positionX+1) + ")";
 	}
 	
 }

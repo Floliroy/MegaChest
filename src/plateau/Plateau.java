@@ -154,7 +154,7 @@ public class Plateau {
 	 * TODO
 	 */
 	public void placerPersonnage(int positionX, int positionY, Personnage personnage) {
-		plateau[positionX ][positionY].setPersonnage(personnage);
+		plateau[positionY][positionX].setPersonnage(personnage);
 	}
 	
 	/**
@@ -182,7 +182,7 @@ public class Plateau {
 	 * TODO
 	 */
 	public void afficherPlateau() {
-		System.out.print("  ");
+		System.out.print("\n  ");
 		for(int col=0 ; col<NOMBRE_COLONNE ; col++) {
 			String numColonne = (col+1) + "";
 			System.out.print("  " + numColonne + (numColonne.length() < 2 ? " " : ""));
@@ -200,6 +200,7 @@ public class Plateau {
 		}
 		
 		afficherLigneSeparation();
+		System.out.println();
 	}
 	
 	

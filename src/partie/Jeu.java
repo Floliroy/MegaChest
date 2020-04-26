@@ -44,7 +44,12 @@ public class Jeu {
 	public void jouer() {
 		Boolean finJeu = false;
 		do {
-			System.out.println("Tour de " + (joueur1.isTour() ? joueur1.getNom() : joueur2.getNom()) + " :");
+			String nomJoueur = joueur1.isTour() ? joueur1.getNom() : joueur2.getNom();
+			String 	pres =  "\t+-----------------------+\n";
+			  		pres += "\t \t" + nomJoueur + "\n";
+			  		pres += "\t+-----------------------+";
+		
+			System.out.println(pres);
 			plateauJeu.afficherPlateau();
 			
 			finJeu = jouerTour();
@@ -102,7 +107,6 @@ public class Jeu {
 				actionDeplacer(personnage);
 				
 				if(personnage.getDeplacementsAvecBoost() > 0 || jetonAttaque) {
-					System.out.println();
 					plateauJeu.afficherPlateau();	
 				}
 				actionEffectue = true;
@@ -266,10 +270,10 @@ public class Jeu {
 	}
 	
 	private void saisirNomJoueur() {
-		System.out.println("Joueur 1 entre ton nom :");
+		System.out.print("Joueur 1 entre ton nom : ");
 		joueur1.setNom(Clavier.entrerClavierString());
 		
-		System.out.println("Joueur 2 entre ton nom :");
+		System.out.print("Joueur 2 entre ton nom : ");
 		joueur2.setNom(Clavier.entrerClavierString());
 	}
 	
