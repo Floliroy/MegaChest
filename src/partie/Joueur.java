@@ -11,6 +11,7 @@ public class Joueur {
 	
 	private Equipe equipe;
 	private Boolean tour;
+	private String nom;
 	
 	public Joueur(Boolean tour) {
 		this.equipe = new Equipe();
@@ -71,6 +72,14 @@ public class Joueur {
 
 	public void setTour(Boolean tour) {
 		this.tour = tour;
+	}
+	
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+	
+	public String getNom() {
+		return this.nom;
 	}
 	
 	
