@@ -78,19 +78,21 @@ public class Jeu {
 			
 			String actions = "";
 			Integer cpt = 1;
-			Integer pmPerso = personnage.getDeplacementsAvecBoost();
 			
-			actions += pmPerso > 0 ? "   " + cpt++ + " - Se déplacer\n" : "";
+			actions += personnage.getDeplacementsAvecBoost() > 0 ? "   " + cpt++ + " - Se déplacer\n" : "";
 			actions += jetonAttaque ? "   " + cpt++ + " - Attaquer\n" : "";
 			actions += "   " + cpt ++ + (actionEffectue ? " - Passer le tour\n" : " - Changer de perso\n");
 			System.out.print(actions);
 			Integer action = Clavier.entrerClavierInt();
-			if(action == 1 && pmPerso > 0) {
+			if(action == 1 && personnage.getDeplacementsAvecBoost() > 0) {
 				actionDeplacer(personnage);
-				System.out.println();
-				plateauJeu.afficherPlateau();	
+				
+				if(personnage.getDeplacementsAvecBoost() > 0 || jetonAttaque) {
+					System.out.println();
+					plateauJeu.afficherPlateau();	
+				}
 				actionEffectue = true;
-			}else if((action == 1 || (action == 2 && pmPerso > 0)) && jetonAttaque) {
+			}else if((action == 1 || (action == 2 && personnage.getDeplacementsAvecBoost() > 0)) && jetonAttaque) {
 				jetonAttaque = actionAttaquer(personnage);
 				actionEffectue = true;
 			}else {
@@ -100,7 +102,7 @@ public class Jeu {
 					personnage = choixPersonnage();
 				}
 			}
-			if((pmPerso <= 0 && !jetonAttaque) || joueur1.getEquipe().isEmpty() || joueur2.getEquipe().isEmpty()) {
+			if((personnage.getDeplacementsAvecBoost() <= 0 && !jetonAttaque) || joueur1.getEquipe().isEmpty() || joueur2.getEquipe().isEmpty()) {
 				finTour = true;
 			}
 		}while(!finTour);
