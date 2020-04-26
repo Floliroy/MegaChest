@@ -234,9 +234,11 @@ public class Jeu {
 				//On supprime le personnage de son equipe s'il est mort
 				if(!attaquant.isVivant()) {
 					getJoueurActif().getEquipe().removeEquipe(attaquant);
+					plateauJeu.getCase(attaquant).setPersonnage(null);
 				}
 				if(!defenseur.isVivant()) {
 					getJoueurInactif().getEquipe().removeEquipe(defenseur);
+					plateauJeu.getCase(defenseur).setPersonnage(null);
 				}
 				//Le jeton d'attaque a été utilisé
 				return false;
