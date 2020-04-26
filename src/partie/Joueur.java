@@ -41,7 +41,7 @@ public class Joueur {
 					
 					if(choix.equals("y")) {
 						equipe.addEquipe(personnage);
-						System.out.println(personnage.getNom() + " a été ajouté à l'équipe ");
+						System.out.println(personnage.getNom() + " a été ajouté à l'équipe.\n");
 						listePersonnages.remove(personnage);		
 						break;
 					}

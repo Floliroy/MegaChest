@@ -48,7 +48,7 @@ public class Jeu {
 		Boolean finJeu = false;
 		do {
 			String nomJoueur = joueur1.isTour() ? joueur1.getNom() : joueur2.getNom();
-			String 	pres =  "\t+-----------------------+\n";
+			String 	pres =  "\n\t+-----------------------+\n";
 			  		pres += "\t \t" + nomJoueur + "\n";
 			  		pres += "\t+-----------------------+";
 		
