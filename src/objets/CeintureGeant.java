@@ -5,9 +5,9 @@ public class CeintureGeant extends Objet {
 	private static final String cheminImage = System.getProperty("user.dir") + "/images/objets/ceinture_de_geant.png";
 	
 	/**
-	 * Initialise l'objet Ceinture de Géant qui donnera 50 de vie
+	 * Initialise l'objet Ceinture de GÃ©ant qui donnera 50 de vie
 	 */
 	public CeintureGeant() {
-		super(50, TypeStat.VIE, "Ceinture de Géant", cheminImage);
+		super(50, TypeStat.VIE, "Ceinture de GÃ©ant", cheminImage);
 	}
 }

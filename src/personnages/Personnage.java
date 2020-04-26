@@ -34,7 +34,7 @@ public abstract class Personnage {
 	/** Les points de déplacement de base du personnage */
 	private Integer deplacementsBase;
 	
-	/** Les dégâts du perssonage */
+	/** Les dégâts du personnage */
 	private Integer degats;
 	
 	/** La portée d'attaque du personnage */
@@ -187,15 +187,15 @@ public abstract class Personnage {
 	}
 	
 	/**
-	 * Permet de récupérer la port�e avec le boost de l'�quipement
-	 * @return Renvoit la port�e boostée
+	 * Permet de récupérer la portée avec le boost de l'équipement
+	 * @return Renvoit la portée boostée
 	 */
 	public Integer getPorteeAvecBoost() {
 		return portee + getBoostEquipement(TypeStat.PORTEE) + bonusEquipe.get(TypeStat.PORTEE);
 	}
 	
 	/**
-	 * Permet de récupérer la vitesse avec le boost de l'�quipement
+	 * Permet de récupérer la vitesse avec le boost de l'équipement
 	 * @return Renvoit la vitesse boostée
 	 */
 	public Integer getVitesseAvecBoost() {
@@ -336,8 +336,8 @@ public abstract class Personnage {
 	}
 
 	/**
-	 * Permet de renseigner l'�l�ment du personnage
-	 * @param element L'�l�ment du personnage souhait�
+	 * Permet de renseigner l'élément du personnage
+	 * @param element L'élément du personnage souhaité
 	 */
 	public void setElement(Element element) {
 		this.element = element;

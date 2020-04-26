@@ -189,7 +189,7 @@ public class Jeu {
 			}while(defenseur == null && !nomDefenseur.equals("retour"));
 				
 			if(defenseur != null) {
-				//On regarde si le defenseur pourra r�pondre a l'attaque ou non
+				//On regarde si le defenseur pourra répondre a l'attaque ou non
 				Boolean defenseurPeutAttaquer = plateauJeu.getCasesAPorte(defenseur).contains(plateauJeu.getCase(attaquant));
 				
 				//Si l'attaquant attaque en premier
@@ -201,7 +201,7 @@ public class Jeu {
 						attaquant.imprimeEtat();
 					}
 					
-				//Si le d�fenseur attaque en premier
+				//Si le défenseur attaque en premier
 				}else if(attaquant.getVitesseAvecBoost() < defenseur.getVitesseAvecBoost()) {
 					if(defenseurPeutAttaquer) {
 						defenseur.attaque(attaquant);

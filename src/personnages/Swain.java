@@ -13,7 +13,7 @@ public class Swain extends Personnage {
 	private static final String cheminImage = System.getProperty("user.dir") + "/images/personnages/swain.png";
 	
 	/**
-	 * Initialise le personnage Swain avec comme caractéristiques :<br>
+	 * Initialise le personnage Swain avec comme caractÃ©ristiques :<br>
 	 *  - Vie = 180<br>
 	 *  - PM = 2<br>
 	 *  - AD = 20<br>

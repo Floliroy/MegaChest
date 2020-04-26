@@ -13,7 +13,7 @@ public class Poppy extends Personnage {
 	private static final String cheminImage = System.getProperty("user.dir") + "/images/personnages/poppy.png";
 	
 	/**
-	 * Initialise le personnage Poppy avec comme caractéristiques :<br>
+	 * Initialise le personnage Poppy avec comme caractÃ©ristiques :<br>
 	 *  - Vie = 180<br>
 	 *  - PM = 5<br>
 	 *  - AD = 8<br>

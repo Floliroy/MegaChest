@@ -13,7 +13,7 @@ public class Talon extends Personnage {
 	private static final String cheminImage = System.getProperty("user.dir") + "/images/personnages/talon.png";
 	
 	/**
-	 * Initialise le personnage Talon avec comme caractéristiques :<br>
+	 * Initialise le personnage Talon avec comme caractÃ©ristiques :<br>
 	 *  - Vie = 80<br>
 	 *  - PM = 5<br>
 	 *  - AD = 50<br>

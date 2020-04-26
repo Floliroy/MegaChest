@@ -13,7 +13,7 @@ public class Sion extends Personnage {
 	private static final String cheminImage = System.getProperty("user.dir") + "/images/personnages/sion.png";
 	
 	/**
-	 * Initialise le personnage Sion avec comme caractéristiques :<br>
+	 * Initialise le personnage Sion avec comme caractÃ©ristiques :<br>
 	 *  - Vie = 200<br>
 	 *  - PM = 2<br>
 	 *  - AD = 15<br>

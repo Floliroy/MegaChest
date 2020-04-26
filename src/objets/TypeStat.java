@@ -1,7 +1,7 @@
 package objets;
 
 /**
- * Les différents type de statistiques possibles pour un objet : Vie, Déplacements, Dégats, Vitesse.
+ * Les diffÃ©rents type de statistiques possibles pour un objet : Vie, DÃ©placements, DÃ©gats, Vitesse.
  * @author Dorian
  *
  */

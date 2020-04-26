@@ -13,7 +13,7 @@ public class Jarvan extends Personnage {
 	private static final String cheminImage = System.getProperty("user.dir") + "/images/personnages/jarvan.png";
 	
 	/**
-	 * Initialise le personnage Jarvan IV avec comme caract�ristiques :<br>
+	 * Initialise le personnage Jarvan IV avec comme caractéristiques :<br>
 	 *  - Vie = 150<br>
 	 *  - PM = 5<br>
 	 *  - AD = 20<br>

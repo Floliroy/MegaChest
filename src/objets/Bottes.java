@@ -5,7 +5,7 @@ public class Bottes extends Objet {
 	private static final String cheminImage = System.getProperty("user.dir") + "/images/objets/bottes.png";
 	
 	/**
-	 * Initialise l'objet Bottes qui donnera 2 de déplacements
+	 * Initialise l'objet Bottes qui donnera 2 de dÃ©placements
 	 */
 	public Bottes() {
 		super(2, TypeStat.DEPLACEMENTS, "Bottes", cheminImage);

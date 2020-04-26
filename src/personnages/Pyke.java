@@ -13,7 +13,7 @@ public class Pyke extends Personnage {
 	private static final String cheminImage = System.getProperty("user.dir") + "/images/personnages/pyke.png";
 	
 	/**
-	 * Initialise le personnage Pyke avec comme caractéristiques :<br>
+	 * Initialise le personnage Pyke avec comme caractÃ©ristiques :<br>
 	 *  - Vie = 120<br>
 	 *  - PM = 3<br>
 	 *  - AD = 35<br>

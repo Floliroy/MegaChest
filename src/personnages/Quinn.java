@@ -13,7 +13,7 @@ public class Quinn extends Personnage {
 	private static final String cheminImage = System.getProperty("user.dir") + "/images/personnages/quinn.png";
 	
 	/**
-	 * Initialise le personnage Quinn avec comme caractéristiques :<br>
+	 * Initialise le personnage Quinn avec comme caractÃ©ristiques :<br>
 	 *  - Vie = 80<br>
 	 *  - PM = 4<br>
 	 *  - AD = 30<br>

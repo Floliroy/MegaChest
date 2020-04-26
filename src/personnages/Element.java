@@ -1,7 +1,7 @@
 package personnages;
 
 /**
- * Les différents éléments possible pour un personnage : Feu, Eau, Terre, Vent.
+ * Les diffÃ©rents Ã©lÃ©ments possible pour un personnage : Feu, Eau, Terre, Vent.
  * @author Florian
  *
  */

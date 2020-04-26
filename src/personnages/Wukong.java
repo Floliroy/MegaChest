@@ -13,7 +13,7 @@ public class Wukong extends Personnage {
 	private static final String cheminImage = System.getProperty("user.dir") + "/images/personnages/wukong.png";
 	
 	/**
-	 * Initialise le personnage Wukong avec comme caractéristiques :<br>
+	 * Initialise le personnage Wukong avec comme caractÃ©ristiques :<br>
 	 *  - Vie = 120<br>
 	 *  - PM = 3<br>
 	 *  - AD = 25<br>

@@ -13,7 +13,7 @@ public class Kayle extends Personnage {
 	private static final String cheminImage = System.getProperty("user.dir") + "/images/personnages/kayle.png";
 	
 	/**
-	 * Initialise le personnage Kayle avec comme caractéristiques :<br>
+	 * Initialise le personnage Kayle avec comme caractÃ©ristiques :<br>
 	 *  - Vie = 100<br>
 	 *  - PM = 2<br>
 	 *  - AD = 25<br>

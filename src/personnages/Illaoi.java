@@ -13,7 +13,7 @@ public class Illaoi extends Personnage {
 	private static final String cheminImage = System.getProperty("user.dir") + "/images/personnages/illaoi.png";
 	
 	/**
-	 * Initialise le personnage Illaoi avec comme caractéristiques :<br>
+	 * Initialise le personnage Illaoi avec comme caractÃ©ristiques :<br>
 	 *  - Vie = 150<br>
 	 *  - PM = 2<br>
 	 *  - AD = 30<br>

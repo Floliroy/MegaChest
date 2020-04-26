@@ -13,7 +13,7 @@ public class Ahri extends Personnage {
 	private static final String cheminImage = System.getProperty("user.dir") + "/images/personnages/ahri.png";
 
 	/**
-	 * Initialise le personnage Ahri avec comme caractéristiques :<br>
+	 * Initialise le personnage Ahri avec comme caractÃ©ristiques :<br>
 	 *  - Vie = 80<br>
 	 *  - PM = 4<br>
 	 *  - AD = 30<br>

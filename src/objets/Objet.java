@@ -28,7 +28,7 @@ public abstract class Objet {
 	}
 
 	/**
-	 * Permet de connaître la valeur de la statistique de l'objet
+	 * Permet de connaÃ®tre la valeur de la statistique de l'objet
 	 * @return Renvoit la valeur de la statistique
 	 */
 	public Integer getStat() {
@@ -44,7 +44,7 @@ public abstract class Objet {
 	}
 
 	/**
-	 * Permet de connaître le type de la statistique de l'objet
+	 * Permet de connaÃ®tre le type de la statistique de l'objet
 	 * @return Renvoit le type de la statistique de l'objet
 	 */
 	public TypeStat getTypeStat() {
@@ -60,7 +60,7 @@ public abstract class Objet {
 	}
 
 	/**
-	 * Permet de connaître le nom de l'objet
+	 * Permet de connaÃ®tre le nom de l'objet
 	 * @return Renvoit le nom de l'objet
 	 */
 	public String getNom() {
@@ -76,7 +76,7 @@ public abstract class Objet {
 	}
 
 	/**
-	 * Permet de connaître le chemin de l'image de l'icone de l'objet
+	 * Permet de connaÃ®tre le chemin de l'image de l'icone de l'objet
 	 * @return Renvoit le chemin de l'image de l'icone de l'objet
 	 */
 	public String getCheminImage() {
