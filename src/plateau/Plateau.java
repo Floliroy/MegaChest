@@ -54,29 +54,29 @@ public class Plateau {
 	 * Verifie que les coordonnees de la case sont 
 	 * bien dans le plateau
 	 * 
-	 * @param positionX ligne du plateau
-	 * @param positionY colonne du plateau
+	 * @param positionX colonne du plateau
+	 * @param positionY ligne du plateau
 	 * 
 	 * @return true si case est dedans <br/>
 	 * 		   false si la case est en-dehors
 	 */
 	public boolean isDansPlateau(int positionX, int positionY) {
-		return positionX < NOMBRE_LIGNE && positionX >= 0 && positionY < NOMBRE_COLONNE && positionY >= 0;
+		return positionX < NOMBRE_COLONNE && positionX >= 0 && positionY < NOMBRE_LIGNE && positionY >= 0;
 	}
 	
 	/**
 	 * Permet de recuperer une case a partir de ses
 	 * coordonnees
 	 * 
-	 * @param positionX ligne de la case
-	 * @param positionY colonne de la case
+	 * @param positionX colonne de la case
+	 * @param positionY ligne de la case
 	 * 
 	 * @return Case si la case a ete trouvee
 	 * 		   null si la case est introuvable
 	 */
 	public Case getCase(int positionX, int positionY) {
 		if(isDansPlateau(positionX, positionY))
-			return plateau[positionX][positionY];
+			return plateau[positionY][positionX];
 		else
 			return null;
 	}
@@ -120,7 +120,7 @@ public class Plateau {
 
 		for(int ligne = positionX - pmPerso; ligne <= positionX + pmPerso; ligne ++) {
 			for(int colonne = positionY - decalage; colonne <= positionY + decalage; colonne ++)
-				if((libre = getCase(ligne, colonne)) != null  && libre.getPersonnage() == null) 
+				if((libre = getCase(colonne, ligne)) != null  && libre.getPersonnage() == null) 
 					casesAtteignables.add(libre);
 			decalage = ligne < positionX ? decalage + 1 : decalage - 1;
 		}
@@ -144,7 +144,7 @@ public class Plateau {
 
 		for(int ligne = positionPersonnageX - poPerso; ligne <= positionPersonnageX + poPerso; ligne ++) {
 			for(int colonne = positionPersonnageY - poPerso; colonne <= positionPersonnageY + poPerso; colonne ++)
-				if((positionCible = getCase(ligne, colonne)) != null  && (cible = positionCible.getPersonnage()) != null && !cible.equals(personnage))
+				if((positionCible = getCase(colonne, ligne)) != null  && (cible = positionCible.getPersonnage()) != null && !cible.equals(personnage))
 					casesAPorte.add(positionCible);
 		}
 		return casesAPorte;
@@ -170,15 +170,36 @@ public class Plateau {
 	/**
 	 * TODO
 	 */
-	public void afficherPlateau() {
-		for(int lig = 0; lig < NOMBRE_LIGNE; lig ++) {
-			for(int col = 0; col < NOMBRE_COLONNE; col ++) 
-				if(plateau[lig][col].getPersonnage() == null)
-					System.out.print(" *");
-				else 
-					System.out.print(" x");
-			System.out.println("");
+	private void afficherLigneSeparation() {
+		System.out.print("  ");
+		for(int col=0 ; col<NOMBRE_COLONNE*4+1 ; col++) {
+			System.out.print("-");
 		}
+		System.out.println();
+	}
+	
+	/**
+	 * TODO
+	 */
+	public void afficherPlateau() {
+		System.out.print("  ");
+		for(int col=0 ; col<NOMBRE_COLONNE ; col++) {
+			String numColonne = (col+1) + "";
+			System.out.print("  " + numColonne + (numColonne.length() < 2 ? " " : ""));
+		}
+		System.out.println();
+		
+		for(int lig=0 ; lig<NOMBRE_LIGNE ; lig++) {
+			afficherLigneSeparation();
+			System.out.print((lig+1) + " ");
+			
+			for(int col=0 ; col<NOMBRE_COLONNE ; col++) {
+				System.out.print("| " + (getCase(col, lig).getPersonnage() != null ? getCase(col, lig).getPersonnage().getNom().substring(0, 1) : " ") + " ");
+			}
+			System.out.println("|");			
+		}
+		
+		afficherLigneSeparation();
 	}
 	
 	

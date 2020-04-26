@@ -120,11 +120,11 @@ public class Jeu {
 			System.out.println("Positionnez " + membre.getNom());
 		
 			do {
-				System.out.print("Numéro ligne : ");
-				positionX = Clavier.entrerClavierInt();
-				
 				System.out.print("Numéro colonne : ");
-				positionY = Clavier.entrerClavierInt();
+				positionX = Clavier.entrerClavierInt() - 1;
+				
+				System.out.print("Numéro ligne : ");
+				positionY = Clavier.entrerClavierInt() - 1;
 				
 			} while(!plateauJeu.isDansPlateau(positionX, positionY) || !plateauJeu.getCase(positionX, positionY).isEmpty());
 			
@@ -238,11 +238,11 @@ public class Jeu {
 			
 			System.out.println("Veuillez choisir les coordonnees de la case d'arrive :");
 	
-			System.out.print("Numéro ligne : ");
-			positionX = Clavier.entrerClavierInt();
-			
 			System.out.print("Numéro colonne : ");
-			positionY = Clavier.entrerClavierInt();
+			positionX = Clavier.entrerClavierInt() - 1;
+			
+			System.out.print("Numéro ligne : ");
+			positionY = Clavier.entrerClavierInt() - 1;
 		
 		} while(!plateauJeu.isDansPlateau(positionX, positionY) || !casesAtteignables.contains(plateauJeu.getCase(positionX, positionY)));
 

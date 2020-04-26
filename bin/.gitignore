@@ -1,3 +1,10 @@
 /test/
+<<<<<<< Upstream, based on branch 'dev' of https://github.com/Floliroy/MegaChest
+=======
+/plateau/
+>>>>>>> 12cc81b fix on position x/y and lig/col + modif affichage tableau
 /partie/
+<<<<<<< Upstream, based on branch 'dev' of https://github.com/Floliroy/MegaChest
 /util/
+=======
+>>>>>>> 12cc81b fix on position x/y and lig/col + modif affichage tableau
