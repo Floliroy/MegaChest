@@ -23,7 +23,8 @@ public class CaseImage extends JPanel {
 	public CaseImage(String stringImage, int sizeX, int sizeY, String stringFond) {
 		 try {         
 	          image = resize(ImageIO.read(new File(stringImage)), sizeX, sizeY);
-	          fond = ImageIO.read(new File(System.getProperty("user.dir") + "/images/util/" + stringFond));
+	          if(stringFond != null)
+	        	  fond = ImageIO.read(new File(System.getProperty("user.dir") + "/images/util/" + stringFond));
 
 	       } catch (IOException e) {
 	           e.printStackTrace();
@@ -46,7 +47,8 @@ public class CaseImage extends JPanel {
 		super.paintComponent(g);
 		
 		Graphics2D g2d = (Graphics2D) g;
-		g2d.drawImage(fond, 0, 0, null);
+		if(fond != null)
+			g2d.drawImage(fond, 0, 0, null);
 		
 		g2d.translate(this.getWidth() / 2, this.getHeight() / 2);
 		g2d.translate(-image.getWidth(null) / 2, -image.getHeight(null) / 2);

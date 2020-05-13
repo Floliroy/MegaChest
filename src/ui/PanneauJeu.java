@@ -17,12 +17,12 @@ public class PanneauJeu extends JPanel {
 	private static final long serialVersionUID = 1L;
 	
 	private Jeu jeu;
-	private JPanel panneauInfos;
+	private PanneauInfos panneauInfos;
 	private Personnage personnageSelectionne;
 	
 
 
-	public PanneauJeu(Jeu jeu, JPanel panneauInfos) {
+	public PanneauJeu(Jeu jeu, PanneauInfos panneauInfos) {
 		this.jeu = jeu;
 		this.panneauInfos = panneauInfos;
 		refresh();

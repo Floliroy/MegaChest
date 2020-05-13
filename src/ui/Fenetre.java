@@ -5,7 +5,9 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 
 import javax.swing.JFrame;
+import javax.swing.JInternalFrame;
 import javax.swing.JPanel;
+import javax.swing.plaf.basic.BasicInternalFrameUI;
 
 import partie.Jeu;
 
@@ -17,7 +19,7 @@ public class Fenetre extends JFrame {
 	private static final long serialVersionUID = 1L;
 	
 	private PanneauJeu panneauJeu;
-	private JPanel panneauInfos;
+	private PanneauInfos panneauInfos;
 	private JPanel panneauLogs;
 	private JPanel panneauActions;
 
@@ -26,12 +28,20 @@ public class Fenetre extends JFrame {
 		this.setSize(1920, 1080);
 		this.setLocationRelativeTo(null);
 		
-		panneauInfos = new JPanel();
-		panneauInfos.setBackground(Color.RED);
+		panneauInfos = new PanneauInfos();
 		panneauLogs = new JPanel();
 		panneauLogs.setBackground(Color.CYAN);
 		panneauActions = new JPanel();
 		panneauActions.setBackground(Color.YELLOW);
+		
+		
+		JInternalFrame test = new JInternalFrame();
+		test.add(panneauInfos);
+		BasicInternalFrameUI bi = (BasicInternalFrameUI) test.getUI();
+		bi.setNorthPane(null);
+	
+		test.setVisible(true);
+		
 		
 		panneauJeu = new PanneauJeu(jeu, panneauInfos);
 		
@@ -53,7 +63,7 @@ public class Fenetre extends JFrame {
 		cons.gridy = 0;
 		cons.gridheight = 1;
 		cons.weightx = 0.3;
-		add(panneauInfos, cons);
+		add(test, cons);
 
 		cons.gridwidth = 1;
 		cons.weighty = 0.34;

@@ -12,10 +12,10 @@ import plateau.Case;
 public class Souris extends MouseAdapter{
 	
 	private Case casePlateau;
-	private JPanel panneauInfos;
+	private PanneauInfos panneauInfos;
 	private PanneauJeu panneauJeu;
 	
-	public Souris(Case casePlateau, PanneauJeu panneauJeu, JPanel panneauInfos) {
+	public Souris(Case casePlateau, PanneauJeu panneauJeu, PanneauInfos panneauInfos) {
 		this.casePlateau = casePlateau;
 		this.panneauInfos = panneauInfos;
 		this.panneauJeu = panneauJeu;
@@ -47,16 +47,13 @@ public class Souris extends MouseAdapter{
 	
 	@Override
     public void mouseEntered(MouseEvent e) {
-		if(casePlateau.getPersonnage() != null) {
-			panneauInfos.setBackground(Color.GREEN);
-		}else {
-			panneauInfos.setBackground(Color.PINK);
-		}
+		if(casePlateau.getPersonnage() != null) 
+			panneauInfos.refresh(casePlateau.getPersonnage());
     }
 	
 	@Override
     public void mouseExited(MouseEvent e) {
-		panneauInfos.setBackground(Color.RED);
+		panneauInfos.refresh();
     }
 
 	public Case getCasePlateau() {
