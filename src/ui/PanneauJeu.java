@@ -17,9 +17,11 @@ public class PanneauJeu extends JPanel {
 	private static final long serialVersionUID = 1L;
 	
 	Jeu jeu;
+	JPanel panneauInfos;
 	
-	public PanneauJeu(Jeu jeu) {
+	public PanneauJeu(Jeu jeu, JPanel panneauInfos) {
 		this.jeu = jeu;
+		this.panneauInfos = panneauInfos;
 		refresh();
 	}
 	
@@ -32,13 +34,20 @@ public class PanneauJeu extends JPanel {
 				if(jeu.getPlateauJeu().getCase(y, x).getPersonnage() != null) {
 					
 					Personnage perso = jeu.getPlateauJeu().getCase(y, x).getPersonnage();
-					this.add(new CaseImage(perso.getCheminImage(), 80, 80, jeu.getJoueur1().getEquipe().getListePersonnages().contains(perso)? "bleu.png" : "rouge.png"));
+					CaseImage caseImage = new CaseImage(perso.getCheminImage(), 80, 80, jeu.getJoueur1().getEquipe().getListePersonnages().contains(perso)? "bleu.png" : "rouge.png");
+					
+					caseImage.addMouseListener(new Souris(jeu.getPlateauJeu().getCase(y, x), panneauInfos));
+					this.add(caseImage);
 					
 				}else {
-					JPanel panel = new JPanel();
+					JPanel panel = new JPanel();					
 					panel.setBackground((x + y) % 2 == 0 ? Color.DARK_GRAY : Color.LIGHT_GRAY);
+
+					panel.addMouseListener(new Souris(jeu.getPlateauJeu().getCase(y, x), panneauInfos));
+					
 					this.add(panel);	
 				}
+				
 			}
 		}
 	}

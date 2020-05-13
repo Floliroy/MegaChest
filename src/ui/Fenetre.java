@@ -25,11 +25,12 @@ public class Fenetre extends JFrame {
 		this.setSize(1920, 1080);
 		this.setLocationRelativeTo(null);
 		
-		panneauJeu = new PanneauJeu(jeu);
 		panneauInfos = new JPanel();
 		panneauInfos.setBackground(Color.RED);
 		panneauLogs = new JPanel();
 		panneauLogs.setBackground(Color.CYAN);
+		
+		panneauJeu = new PanneauJeu(jeu, panneauInfos);
 		
 		setLayout(new GridBagLayout());
 		
