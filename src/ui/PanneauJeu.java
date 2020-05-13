@@ -16,9 +16,12 @@ public class PanneauJeu extends JPanel {
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	Jeu jeu;
-	JPanel panneauInfos;
+	private Jeu jeu;
+	private JPanel panneauInfos;
+	private Personnage personnageSelectionne;
 	
+
+
 	public PanneauJeu(Jeu jeu, JPanel panneauInfos) {
 		this.jeu = jeu;
 		this.panneauInfos = panneauInfos;
@@ -26,6 +29,7 @@ public class PanneauJeu extends JPanel {
 	}
 	
 	public void refresh() {
+		this.removeAll();
 		this.setLayout(new GridLayout(Plateau.NOMBRE_LIGNE,Plateau.NOMBRE_COLONNE));
 		
 		for(int x=0 ; x<Plateau.NOMBRE_LIGNE ; x++) {
@@ -36,20 +40,37 @@ public class PanneauJeu extends JPanel {
 					Personnage perso = jeu.getPlateauJeu().getCase(y, x).getPersonnage();
 					CaseImage caseImage = new CaseImage(perso.getCheminImage(), 80, 80, jeu.getJoueur1().getEquipe().getListePersonnages().contains(perso)? "bleu.png" : "rouge.png");
 					
-					caseImage.addMouseListener(new Souris(jeu.getPlateauJeu().getCase(y, x), panneauInfos));
+					caseImage.addMouseListener(new Souris(jeu.getPlateauJeu().getCase(y, x), this, panneauInfos));
 					this.add(caseImage);
 					
 				}else {
 					JPanel panel = new JPanel();					
 					panel.setBackground((x + y) % 2 == 0 ? Color.DARK_GRAY : Color.LIGHT_GRAY);
 
-					panel.addMouseListener(new Souris(jeu.getPlateauJeu().getCase(y, x), panneauInfos));
+					panel.addMouseListener(new Souris(jeu.getPlateauJeu().getCase(y, x), this, panneauInfos));
 					
 					this.add(panel);	
-				}
-				
+				}		
 			}
 		}
+		this.revalidate();
+		this.repaint();
 	}
 
+	
+	public Jeu getJeu() {
+		return jeu;
+	}
+
+	public void setJeu(Jeu jeu) {
+		this.jeu = jeu;
+	}
+
+	public Personnage getPersonnageSelectionne() {
+		return personnageSelectionne;
+	}
+
+	public void setPersonnageSelectionne(Personnage personnageSelectionne) {
+		this.personnageSelectionne = personnageSelectionne;
+	}
 }

@@ -13,16 +13,36 @@ public class Souris extends MouseAdapter{
 	
 	private Case casePlateau;
 	private JPanel panneauInfos;
+	private PanneauJeu panneauJeu;
 	
-	public Souris(Case casePlateau, JPanel panneauInfos) {
+	public Souris(Case casePlateau, PanneauJeu panneauJeu, JPanel panneauInfos) {
 		this.casePlateau = casePlateau;
 		this.panneauInfos = panneauInfos;
+		this.panneauJeu = panneauJeu;
 	}
 	
 	@Override
     public void mouseClicked(MouseEvent e) {
         System.out.println("Case clique : " + (casePlateau.getPositionX()+1) + " , " + (casePlateau.getPositionY()+1) 
         		+ (casePlateau.getPersonnage() != null ? " -> " + casePlateau.getPersonnage().getNom() : ""));
+        		
+        if(!casePlateau.isEmpty()) {
+        	if(casePlateau.getPersonnage().equals(panneauJeu.getPersonnageSelectionne())) {
+        		System.out.println(panneauJeu.getPersonnageSelectionne().getNom() + " deselectionne");
+        		panneauJeu.setPersonnageSelectionne(null);
+        		
+        	} else {
+        		panneauJeu.setPersonnageSelectionne(casePlateau.getPersonnage());
+        		System.out.println(panneauJeu.getPersonnageSelectionne().getNom() + " selectionne");
+        	}	
+        } else if (panneauJeu.getPersonnageSelectionne() != null) {
+        	System.out.println(panneauJeu.getPersonnageSelectionne().getNom() + " deplace");
+        	panneauJeu.getJeu().getPlateauJeu().getCase(panneauJeu.getPersonnageSelectionne()).setPersonnage(null);
+        	casePlateau.setPersonnage(panneauJeu.getPersonnageSelectionne());
+        	panneauJeu.setPersonnageSelectionne(null);
+        	panneauJeu.refresh();
+        }
+        
     }
 	
 	@Override

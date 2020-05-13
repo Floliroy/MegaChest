@@ -19,6 +19,7 @@ public class Fenetre extends JFrame {
 	private PanneauJeu panneauJeu;
 	private JPanel panneauInfos;
 	private JPanel panneauLogs;
+	private JPanel panneauActions;
 
 	public Fenetre(Jeu jeu) {
 		this.setTitle("MegaChest");
@@ -29,6 +30,8 @@ public class Fenetre extends JFrame {
 		panneauInfos.setBackground(Color.RED);
 		panneauLogs = new JPanel();
 		panneauLogs.setBackground(Color.CYAN);
+		panneauActions = new JPanel();
+		panneauActions.setBackground(Color.YELLOW);
 		
 		panneauJeu = new PanneauJeu(jeu, panneauInfos);
 		
@@ -43,18 +46,23 @@ public class Fenetre extends JFrame {
 		cons.gridwidth = 1;
 		cons.gridheight = 1;
 		cons.weightx = 0.70;
-		cons.weighty = 1;
+		cons.weighty = 0.66;
 		add(panneauJeu,cons);
 		
 		cons.gridx = 1;
 		cons.gridy = 0;
 		cons.gridheight = 1;
 		cons.weightx = 0.3;
-		cons.weighty = 0.48;
 		add(panneauInfos, cons);
 
-		cons.gridwidth = 2;
+		cons.gridwidth = 1;
+		cons.weighty = 0.34;
 		cons.gridx = 0;
+		cons.gridy = 1;
+		add(panneauActions, cons);
+		
+		cons.gridwidth = 1;
+		cons.gridx = 1;
 		cons.gridy = 1;
 		add(panneauLogs, cons);
 	}
