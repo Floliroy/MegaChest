@@ -34,34 +34,53 @@ public class PanneauInfos extends JPanel{
 		cons.gridheight = 1;
 		cons.weightx = 0.50;
 		cons.weighty = 0.30;
+		
 		CaseImage image = new CaseImage(personnage.getCheminImage(), 100, 100, null);
 		image.setBackground(Color.GRAY);
 		this.add(image,cons);
 		
+		String htmlHeader = "<style>"
+						  + "p {"
+						  + "	font-size: large; "
+						  + "	font-weight: normal; "
+						  + "	text-align: center; "
+						  + "	margin-left: 25px; "
+						  + "}"
+						  + ".caracs {"
+						  + "	font-weight: bold; "
+						  + "	margin-left: 50px; "
+						  + "}"
+						  + "h1 {"
+						  + "	font-size: xx-large; "
+						  + "	text-align: right; "
+						  + "	margin-right: 50px; "
+						  + "}"
+						  + "</style>";
+		
 		cons.gridx = 1;
 		cons.gridy = 0;
-		this.add(new JLabel(personnage.getNom()));
+		this.add(new JLabel("<html>" + htmlHeader + "<h1>" + personnage.getNom() + "</h1></html>"));
 
 		cons.weighty = 0.70;
 		cons.gridx = 0;
-		cons.gridy = 1;
+		cons.gridy = 1;		
 		
-		String listeCaracs = "<html> Point de vie : <br/>" 
+		String listeCaracs = "<html>" + htmlHeader + "<p class=\"caracs\"> Point de vie : <br/>" 
 				   + " Point de déplacements : <br/>"
 				   + " Point de dégats : <br/>"
 				   + " Portée d'attaque : <br/>"
-				   + " Vitesse d'attaque : <br/></html>";
+				   + " Vitesse d'attaque : <br/></p></html>";
 		
 		this.add(new JLabel(listeCaracs),cons);
 
 		cons.gridx = 1;
 		cons.gridy = 1;
 		
-		String listeValeurs = "<html>" + personnage.getVieAvecBoost() + " / " + personnage.getVieBaseAvecBoost() + "<br/>"
+		String listeValeurs = "<html>" + htmlHeader + "<p>" + personnage.getVieAvecBoost() + " / " + personnage.getVieBaseAvecBoost() + "<br/>"
 				+ personnage.getDeplacementsAvecBoost() + "<br/>"
 				+ personnage.getDegatsAvecBoost() + "<br/>"
 				+ personnage.getPorteeAvecBoost() + "<br/>"
-				+ personnage.getVitesseAvecBoost() + "<br/></html>";
+				+ personnage.getVitesseAvecBoost() + "<br/></p></html>";
 		
 		this.add(new JLabel(listeValeurs),cons);
 	

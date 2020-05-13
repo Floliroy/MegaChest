@@ -1,10 +1,12 @@
 package ui;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.Insets;
 import java.io.PrintStream;
 
 import javax.swing.JFrame;
@@ -12,6 +14,9 @@ import javax.swing.JInternalFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+import javax.swing.ScrollPaneConstants;
+import javax.swing.border.EtchedBorder;
+import javax.swing.border.TitledBorder;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 
 import partie.Jeu;
@@ -30,17 +35,45 @@ public class Fenetre extends JFrame {
 	private JPanel panneauActions;
 
 	public Fenetre(Jeu jeu) {
+		
+		//Fenetre
 		this.setTitle("MegaChest");
 		this.setSize(1920, 1080);
 		this.setLocationRelativeTo(null);
 		
-		panneauInfos = new PanneauInfos();
+		//Panneau Logs (Bas Droite)
+		JInternalFrame iFrameLogs= new JInternalFrame();
 		panneauLogs = new JPanel();
+		panneauLogs.setLayout(new BorderLayout());
+		panneauLogs.setBorder(new TitledBorder(new EtchedBorder(), "Logs"));
 		
+		JTextArea textArea= new JTextArea(1,1);
+		textArea.setBackground(Color.WHITE);
+		textArea.setAutoscrolls(true);
+		textArea.setEditable(false);
+		
+		PrintStream printStream = new PrintStream(new RedirectionOutput(textArea));
+		System.setOut(printStream);
+		
+		JScrollPane scroll = new JScrollPane(textArea, 
+				ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS, 
+				ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+		scroll.setBorder(null);
+		panneauLogs.add(scroll);
+		
+		iFrameLogs.add(panneauLogs);
+		iFrameLogs.setResizable(false);
+		iFrameLogs.setBorder(null);
+		BasicInternalFrameUI biFrameLogs = (BasicInternalFrameUI) iFrameLogs.getUI();
+		biFrameLogs.setNorthPane(null);
+		iFrameLogs.setVisible(true);
+		
+		//Panneau Action (Bas Gauche)
 		panneauActions = new JPanel();
 		panneauActions.setBackground(Color.YELLOW);
 		
-		
+		//Panneau Infos (Haut Droite)
+		panneauInfos = new PanneauInfos();
 		JInternalFrame iFrameInfos = new JInternalFrame();
 		iFrameInfos.add(panneauInfos);
 		iFrameInfos.setBorder(null);
@@ -48,64 +81,39 @@ public class Fenetre extends JFrame {
 		biFrameInfos.setNorthPane(null);
 		iFrameInfos.setVisible(true);
 		
-		
-		
-		
-		
-		
-		JInternalFrame iFrameLogs= new JInternalFrame();
-		JPanel test = new JPanel(new FlowLayout(FlowLayout.CENTER, 0, 0));
-		JTextArea textArea= new JTextArea();
-		textArea.setEditable(false);
-		textArea.setBackground(Color.GREEN);
-		
-		
-		PrintStream printStream = new PrintStream(new RedirectionOutput(textArea));
-		
-		PrintStream standartOut = System.out;
-		
-		System.setOut(printStream);
-		//System.setErr(printStream);
-		
-		test.setBackground(Color.GREEN);
-		JScrollPane scroll = new JScrollPane(textArea);
-		scroll.setPreferredSize(new Dimension(100, 100));
-		scroll.setBorder(null);
-		test.add(scroll);
-		iFrameLogs.add(test);
-		iFrameLogs.setResizable(false);
-		iFrameLogs.setVisible(true);
-		
-		
-		
+		//Panneau Jeu (Haut Gauche)
 		panneauJeu = new PanneauJeu(jeu, panneauInfos);
 		
+		//Positionnement des panneaux avec GridBagConstraints
 		setLayout(new GridBagLayout());
-		
-		/* Positionnement des panneaux avec GridBagConstraints*/
-		
 		GridBagConstraints cons = new GridBagConstraints();
+		
+
+		//Panneau Jeu (Haut Gauche)
 		cons.gridx = 0;
 		cons.gridy = 0;
 		cons.fill = GridBagConstraints.BOTH;
 		cons.gridwidth = 1;
 		cons.gridheight = 1;
-		cons.weightx = 0.70;
-		cons.weighty = 0.66;
+		cons.weightx = 0.71;
+		cons.weighty = 0.68;
 		add(panneauJeu,cons);
-		
+
+		//Panneau Infos (Haut Droite)
 		cons.gridx = 1;
 		cons.gridy = 0;
 		cons.gridheight = 1;
-		cons.weightx = 0.3;
+		cons.weightx = 0.29;
 		add(iFrameInfos, cons);
 
+		//Panneau Action (Bas Gauche)
 		cons.gridx = 0;
 		cons.gridy = 1;
 		cons.gridwidth = 1;
-		cons.weighty = 0.34;
+		cons.weighty = 0.32;
 		add(panneauActions, cons);
-		
+
+		//Panneau Logs (Bas Droite)
 		cons.gridwidth = 1;
 		cons.gridx = 1;
 		cons.gridy = 1;
