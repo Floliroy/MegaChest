@@ -7,14 +7,14 @@ import javax.swing.JPanel;
 
 import plateau.Case;
 
-public class Souris extends MouseAdapter{
+public class SourisJeu extends MouseAdapter{
 	
 	private Case casePlateau;
 	private PanneauInfos panneauInfos;
 	private PanneauJeu panneauJeu;
 	private JPanel panel;
 	
-	public Souris(Case casePlateau, JPanel panel, PanneauJeu panneauJeu, PanneauInfos panneauInfos) {
+	public SourisJeu(Case casePlateau, JPanel panel, PanneauJeu panneauJeu, PanneauInfos panneauInfos) {
 		this.casePlateau = casePlateau;
 		this.panneauInfos = panneauInfos;
 		this.panneauJeu = panneauJeu;
@@ -23,10 +23,11 @@ public class Souris extends MouseAdapter{
 	
 	@Override
     public void mouseClicked(MouseEvent e) {
+		
         System.out.println("Case cliquee : " + (casePlateau.getPositionX()+1) + " , " + (casePlateau.getPositionY()+1) 
         		+ (casePlateau.getPersonnage() != null ? " -> " + casePlateau.getPersonnage().getNom() : ""));
-        		
-        if(!casePlateau.isEmpty()) {
+        
+    	if(!casePlateau.isEmpty()) {
         	CaseImage image = (CaseImage) panel;
         	if(casePlateau.getPersonnage().equals(panneauJeu.getPersonnageSelectionne())) {
         		System.out.println(panneauJeu.getPersonnageSelectionne().getNom() + " deselectionne");

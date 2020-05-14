@@ -53,7 +53,7 @@ public class PanneauInfos extends JPanel{
 						  + "h1 {"
 						  + "	font-size: xx-large; "
 						  + "	text-align: right; "
-						  + "	margin-right: 50px; "
+						  + "	margin-left: -50px; "
 						  + "}"
 						  + "</style>";
 		

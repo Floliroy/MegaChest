@@ -26,6 +26,7 @@ public class PanneauJeu extends JPanel {
 	public PanneauJeu(Jeu jeu, PanneauInfos panneauInfos) {
 		this.jeu = jeu;
 		this.panneauInfos = panneauInfos;
+		this.setBackground(Color.GRAY);
 		refresh();
 	}
 	
@@ -50,7 +51,7 @@ public class PanneauJeu extends JPanel {
 					panel.setBackground((x + y) % 2 == 0 ? Color.DARK_GRAY : Color.LIGHT_GRAY);
 				}	
 
-				panel.addMouseListener(new Souris(jeu.getPlateauJeu().getCase(y, x), panel, this, panneauInfos));
+				panel.addMouseListener(new SourisJeu(jeu.getPlateauJeu().getCase(y, x), panel, this, panneauInfos));
 				this.add(panel);		
 			}
 		}

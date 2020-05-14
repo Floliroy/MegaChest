@@ -65,13 +65,6 @@ public class Fenetre extends JFrame {
 		biFrameLogs.setNorthPane(null);
 		iFrameLogs.setVisible(true);
 		
-		//Panneau Action (Bas Gauche)
-		panneauActions = new PanneauActions();
-		panneauActions.showSelection();
-		
-		
-		
-		
 		//Panneau Infos (Haut Droite)
 		panneauInfos = new PanneauInfos();
 		JInternalFrame iFrameInfos = new JInternalFrame();
@@ -80,6 +73,10 @@ public class Fenetre extends JFrame {
 		BasicInternalFrameUI biFrameInfos = (BasicInternalFrameUI) iFrameInfos.getUI();
 		biFrameInfos.setNorthPane(null);
 		iFrameInfos.setVisible(true);
+		
+		//Panneau Action (Bas Gauche)
+		panneauActions = new PanneauActions(jeu, panneauInfos);
+		panneauActions.showSelection();
 		
 		//Panneau Jeu (Haut Gauche)
 		panneauJeu = new PanneauJeu(jeu, panneauInfos);
@@ -95,22 +92,22 @@ public class Fenetre extends JFrame {
 		cons.fill = GridBagConstraints.BOTH;
 		cons.gridwidth = 1;
 		cons.gridheight = 1;
-		cons.weightx = 0.71;
-		cons.weighty = 0.74;
+		cons.weightx = 0.67;
+		cons.weighty = 0.75;
 		add(panneauJeu,cons);
 
 		//Panneau Infos (Haut Droite)
 		cons.gridx = 1;
 		cons.gridy = 0;
 		cons.gridheight = 1;
-		cons.weightx = 0.29;
+		cons.weightx = 0.33;
 		add(iFrameInfos, cons);
 
 		//Panneau Action (Bas Gauche)
 		cons.gridx = 0;
 		cons.gridy = 1;
 		cons.gridwidth = 1;
-		cons.weighty = 0.26;
+		cons.weighty = 0.25;
 		add(panneauActions, cons);
 
 		//Panneau Logs (Bas Droite)
