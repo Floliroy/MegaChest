@@ -28,7 +28,7 @@ public class Fenetre extends JFrame {
 	
 	private PanneauJeu panneauJeu;
 	private PanneauInfos panneauInfos;
-	private JPanel panneauLogs;
+	private PanneauLogs panneauLogs;
 	private PanneauActions panneauActions;
 
 	public Fenetre(Jeu jeu) {
@@ -39,31 +39,22 @@ public class Fenetre extends JFrame {
 		this.setLocationRelativeTo(null);
 		
 		//Panneau Logs (Bas Droite)
-		JInternalFrame iFrameLogs= new JInternalFrame();
-		panneauLogs = new JPanel();
-		panneauLogs.setLayout(new BorderLayout());
-		panneauLogs.setBorder(new TitledBorder(new EtchedBorder(), "Logs"));
 		
-		JTextArea textArea= new JTextArea(1,1);
-		textArea.setBackground(Color.WHITE);
-		textArea.setAutoscrolls(true);
-		textArea.setEditable(false);
+		panneauLogs = new PanneauLogs();
 		
-		PrintStream printStream = new PrintStream(new RedirectionOutput(textArea));
+		PrintStream printStream = new PrintStream(new RedirectionOutput(panneauLogs.getTextOutput()));
 		System.setOut(printStream);
 		
-		JScrollPane scroll = new JScrollPane(textArea, 
-				ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS, 
-				ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-		scroll.setBorder(null);
-		panneauLogs.add(scroll);
-		
+		JInternalFrame iFrameLogs= new JInternalFrame();
 		iFrameLogs.add(panneauLogs);
 		iFrameLogs.setResizable(false);
 		iFrameLogs.setBorder(null);
+		
 		BasicInternalFrameUI biFrameLogs = (BasicInternalFrameUI) iFrameLogs.getUI();
 		biFrameLogs.setNorthPane(null);
+		
 		iFrameLogs.setVisible(true);
+		
 		
 		//Panneau Infos (Haut Droite)
 		panneauInfos = new PanneauInfos();
@@ -115,6 +106,8 @@ public class Fenetre extends JFrame {
 		cons.gridx = 1;
 		cons.gridy = 1;
 		add(iFrameLogs, cons);
+		
+		PopUpInit test = new PopUpInit(this, "Presentation", true);
 	}
 	
 	public void addPanel(JPanel panneau) {
