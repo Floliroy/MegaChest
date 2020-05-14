@@ -23,13 +23,13 @@ public class Souris extends MouseAdapter{
 	
 	@Override
     public void mouseClicked(MouseEvent e) {
-        System.out.println("Case clique : " + (casePlateau.getPositionX()+1) + " , " + (casePlateau.getPositionY()+1) 
+        System.out.println("Case cliquee : " + (casePlateau.getPositionX()+1) + " , " + (casePlateau.getPositionY()+1) 
         		+ (casePlateau.getPersonnage() != null ? " -> " + casePlateau.getPersonnage().getNom() : ""));
         		
         if(!casePlateau.isEmpty()) {
         	CaseImage image = (CaseImage) panel;
         	if(casePlateau.getPersonnage().equals(panneauJeu.getPersonnageSelectionne())) {
-        		System.out.println(panneauJeu.getPersonnageSelectionne().getNom() + " désélectionné");
+        		System.out.println(panneauJeu.getPersonnageSelectionne().getNom() + " deselectionne");
         		panneauJeu.setSelectionne(null, null);
         		image.setTransparency(false);
         	} else {
@@ -39,12 +39,12 @@ public class Souris extends MouseAdapter{
         		}
         		
         		panneauJeu.setSelectionne(casePlateau.getPersonnage(), (CaseImage) panel);
-        		System.out.println(panneauJeu.getPersonnageSelectionne().getNom() + " sélectionné");
+        		System.out.println(panneauJeu.getPersonnageSelectionne().getNom() + " selectionne");
         		image.setTransparency(true);
         	}	
         	image.repaint();
         } else if (panneauJeu.getPersonnageSelectionne() != null) {
-        	System.out.println(panneauJeu.getPersonnageSelectionne().getNom() + " déplacé");
+        	System.out.println(panneauJeu.getPersonnageSelectionne().getNom() + " deplace");
         	panneauJeu.getJeu().getPlateauJeu().getCase(panneauJeu.getPersonnageSelectionne()).setPersonnage(null);
         	casePlateau.setPersonnage(panneauJeu.getPersonnageSelectionne());
         	panneauJeu.setSelectionne(null, null);
