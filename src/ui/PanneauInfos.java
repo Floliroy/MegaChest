@@ -35,7 +35,7 @@ public class PanneauInfos extends JPanel{
 		cons.weightx = 0.50;
 		cons.weighty = 0.30;
 		
-		CaseImage image = new CaseImage(personnage.getCheminImage(), 100, 100, null);
+		CaseImage image = new CaseImage(personnage, 100, 100, null);
 		image.setBackground(Color.GRAY);
 		this.add(image,cons);
 		

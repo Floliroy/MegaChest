@@ -8,9 +8,12 @@ import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
 
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
+
+import personnages.Personnage;
 
 public class CaseImage extends JPanel {
 	
@@ -19,21 +22,20 @@ public class CaseImage extends JPanel {
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	private BufferedImage image;
-	private BufferedImage fond;
-	private Boolean transparency;
+	private Personnage personnage;
+	private Integer sizeX;
+	private Integer sizeY;
+	private String stringFond;
+	private HashMap<String, Integer> transparency;
 
-	public CaseImage(String stringImage, int sizeX, int sizeY, String stringFond) {
-		 try {         
-			 image = resize(ImageIO.read(new File(stringImage)), sizeX, sizeY);
-	          if(stringFond != null)
-	        	  fond = ImageIO.read(new File(System.getProperty("user.dir") + "/images/util/" + stringFond));
-	          
-	          transparency = false;
 
-	       } catch (IOException e) {
-	           e.printStackTrace();
-	       }
+	public CaseImage(Personnage personnage, int sizeX, int sizeY, String stringFond) {
+		this.personnage = personnage;
+		this.sizeX = sizeX;
+		this.sizeY = sizeY;
+		this.stringFond = stringFond;
+
+        this.transparency = new HashMap<>();
 	}
 	
 	private BufferedImage resize(BufferedImage img, int newW, int newH) { 
@@ -51,27 +53,57 @@ public class CaseImage extends JPanel {
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		
-		Graphics2D g2d = (Graphics2D) g;
-		if(fond != null)
-			g2d.drawImage(fond, 0, 0, null);
-		
-		g2d.translate(this.getWidth() / 2, this.getHeight() / 2);
-		g2d.translate(-image.getWidth(null) / 2, -image.getHeight(null) / 2);
-		g2d.drawImage(image, 0, 0, null);  
-		if(transparency) {
-			g2d.setComposite(AlphaComposite.SrcAtop);
-			g2d.setColor(new Color(255, 255, 0, 100));
-			g2d.fillRect(0, 0, image.getWidth(), image.getHeight());
-			g2d.dispose();
+		if(personnage != null) {
+
+			try {
+				BufferedImage image = resize(ImageIO.read(new File(personnage.getCheminImage())), sizeX, sizeY);
+				
+				Graphics2D g2d = (Graphics2D) g;
+				if(stringFond != null) {
+					BufferedImage fond = ImageIO.read(new File(System.getProperty("user.dir") + "/images/util/" + stringFond));
+					g2d.drawImage(fond, 0, 0, null);
+				}
+				
+				g2d.translate(this.getWidth() / 2, this.getHeight() / 2);
+				g2d.translate(-image.getWidth(null) / 2, -image.getHeight(null) / 2);
+				g2d.drawImage(image, 0, 0, null);  
+				if(transparency != null && !transparency.isEmpty()) {
+					g2d.setComposite(AlphaComposite.SrcAtop);
+					g2d.setColor(new Color(transparency.get("red"), transparency.get("green"), transparency.get("blue"), transparency.get("alpha")));
+					g2d.fillRect(0, 0, image.getWidth(), image.getHeight());
+					g2d.dispose();
+				}
+				
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			
 		}
 		
 	}
+	
 
-	public Boolean getTransparency() {
+	public String getStringFond() {
+		return stringFond;
+	}
+
+	public void setStringFond(String stringFond) {
+		this.stringFond = stringFond;
+	}
+
+	public Personnage getPersonnage() {
+		return personnage;
+	}
+
+	public void setPersonnage(Personnage personnage) {
+		this.personnage = personnage;
+	}
+
+	public HashMap<String, Integer> getTransparency() {
 		return transparency;
 	}
 
-	public void setTransparency(Boolean transparency) {
+	public void setTransparency(HashMap<String, Integer> transparency) {
 		this.transparency = transparency;
 	}
 

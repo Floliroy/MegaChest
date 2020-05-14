@@ -7,7 +7,9 @@ import javax.swing.JPanel;
 
 import partie.Jeu;
 import personnages.Personnage;
+import plateau.Case;
 import plateau.Plateau;
+import util.Util;
 
 public class PanneauJeu extends JPanel {
 
@@ -36,23 +38,28 @@ public class PanneauJeu extends JPanel {
 		
 		for(int x=0 ; x<Plateau.NOMBRE_LIGNE ; x++) {
 			for(int y=0 ; y<Plateau.NOMBRE_COLONNE ; y++) {
-				JPanel panel;
+				Case casePlateau = jeu.getPlateauJeu().getCase(y, x);
+				
+				CaseImage panel;
 				if(jeu.getPlateauJeu().getCase(y, x).getPersonnage() != null) {
 					
 					Personnage perso = jeu.getPlateauJeu().getCase(y, x).getPersonnage();
-					panel = new CaseImage(perso.getCheminImage(), 80, 80, jeu.getJoueur1().getEquipe().getListePersonnages().contains(perso)? "bleu.png" : "rouge.png");
+					panel = new CaseImage(casePlateau.getPersonnage(), 80, 80, jeu.getJoueur1().getEquipe().getListePersonnages().contains(perso)? "bleu.png" : "rouge.png");
 
 					if(perso == personnageSelectionne) {
-						((CaseImage) panel).setTransparency(true);
+						panel.setTransparency(Util.getYellowTransparency());
 					}
 					
 				}else {
-					panel = new JPanel();					
-					panel.setBackground((x + y) % 2 == 0 ? Color.DARK_GRAY : Color.LIGHT_GRAY);
+					panel = new CaseImage(null, 80, 80, null);					
 				}	
-
-				panel.addMouseListener(new SourisJeu(jeu.getPlateauJeu().getCase(y, x), panel, this, panneauInfos));
+				
+				panel.setBackground((x + y) % 2 == 0 ? Color.DARK_GRAY : Color.LIGHT_GRAY);
+				panel.addMouseListener(new SourisJeu(casePlateau, panel, this, panneauInfos));
 				this.add(panel);		
+				
+
+				jeu.getPlateauJeu().getCase(y, x).setPanel(panel);
 			}
 		}
 		this.revalidate();

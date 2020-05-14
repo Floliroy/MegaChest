@@ -6,6 +6,7 @@ import java.awt.event.MouseEvent;
 import javax.swing.JPanel;
 
 import plateau.Case;
+import util.Util;
 
 public class SourisJeu extends MouseAdapter{
 	
@@ -32,16 +33,16 @@ public class SourisJeu extends MouseAdapter{
         	if(casePlateau.getPersonnage().equals(panneauJeu.getPersonnageSelectionne())) {
         		System.out.println(panneauJeu.getPersonnageSelectionne().getNom() + " deselectionne");
         		panneauJeu.setSelectionne(null, null);
-        		image.setTransparency(false);
+        		image.setTransparency(null);
         	} else {
         		if(panneauJeu.getCasePersoSelectionne() != null) {
-            		panneauJeu.getCasePersoSelectionne().setTransparency(false);
+            		panneauJeu.getCasePersoSelectionne().setTransparency(Util.getYellowTransparency());
             		panneauJeu.getCasePersoSelectionne().repaint();
         		}
         		
         		panneauJeu.setSelectionne(casePlateau.getPersonnage(), (CaseImage) panel);
         		System.out.println(panneauJeu.getPersonnageSelectionne().getNom() + " selectionne");
-        		image.setTransparency(true);
+        		image.setTransparency(Util.getYellowTransparency());
         	}	
         	image.repaint();
         } else if (panneauJeu.getPersonnageSelectionne() != null) {

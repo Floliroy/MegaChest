@@ -10,7 +10,7 @@ import util.Util;
 
 public class Jeu {
 	
-	private static final int NOMBRE_COLONNE_PLACEMENT = 4;
+	public static final int NOMBRE_COLONNE_PLACEMENT = 4;
 	
 	
 	private Plateau plateauJeu;

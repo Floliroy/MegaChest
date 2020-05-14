@@ -65,12 +65,13 @@ public class Fenetre extends JFrame {
 		biFrameInfos.setNorthPane(null);
 		iFrameInfos.setVisible(true);
 		
-		//Panneau Action (Bas Gauche)
-		panneauActions = new PanneauActions(jeu, panneauInfos);
-		panneauActions.showSelection();
-		
 		//Panneau Jeu (Haut Gauche)
 		panneauJeu = new PanneauJeu(jeu, panneauInfos);
+		
+		//Panneau Action (Bas Gauche)
+		panneauActions = new PanneauActions(panneauJeu, panneauInfos);
+		panneauActions.showSelection();
+		
 		
 		//Positionnement des panneaux avec GridBagConstraints
 		setLayout(new GridBagLayout());

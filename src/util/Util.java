@@ -1,6 +1,7 @@
 package util;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import plateau.Plateau;
 import personnages.*;
@@ -73,6 +74,24 @@ public class Util {
 	
 	public static int distanceCase(Case depart, int positionXDestination, int positionYDestination) {
 		return Math.abs(depart.getPositionX() - positionXDestination) + Math.abs(depart.getPositionY() - positionYDestination);
+	}
+	
+	public static HashMap<String, Integer> getYellowTransparency(){
+		HashMap<String, Integer> color = new HashMap<>();
+		color.put("red", 255);
+		color.put("green", 255);
+		color.put("blue", 0);
+		color.put("alpha", 100);
+		return color;
+	}
+	
+	public static HashMap<String, Integer> getGrayTransparency(){
+		HashMap<String, Integer> color = new HashMap<>();
+		color.put("red", 0);
+		color.put("green", 0);
+		color.put("blue", 0);
+		color.put("alpha", 200);
+		return color;
 	}
 
 }

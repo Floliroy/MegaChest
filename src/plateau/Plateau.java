@@ -2,6 +2,7 @@ package plateau;
 
 import java.util.ArrayList;
 
+import partie.Jeu;
 import personnages.Personnage;
 
 public class Plateau {
@@ -94,6 +95,16 @@ public class Plateau {
 		for(Case []ligne : plateau) {
 			for(Case colonne : ligne) {
 				if(!colonne.isEmpty() && colonne.getPersonnage().equals(personnage))
+					return colonne;
+			}
+		}
+		return null;
+	}
+	
+	public Case getCaseInit(Personnage personnage){
+		for(Case []ligne : plateau) {
+			for(Case colonne : ligne) {
+				if(!colonne.isEmpty() && colonne.getPersonnage().getNom().equals(personnage.getNom()))
 					return colonne;
 			}
 		}
@@ -204,4 +215,25 @@ public class Plateau {
 	}
 	
 	
+	public Case getFirstCaseLeft() {
+		for(Case []ligne : plateau) {
+			for(Case colonne : ligne) {
+				if(colonne.getPositionX() < Jeu.NOMBRE_COLONNE_PLACEMENT && colonne.isEmpty()) {
+					return colonne;
+				}
+			}
+		}
+		return null;
+	}
+	
+	public Case getFirstCaseRight() {
+		for(Case []ligne : plateau) {
+			for(Case colonne : ligne) {
+				if(colonne.getPositionX() > Plateau.NOMBRE_COLONNE-Jeu.NOMBRE_COLONNE_PLACEMENT && colonne.isEmpty()) {
+					return colonne;
+				}
+			}
+		}
+		return null;
+	}
 }

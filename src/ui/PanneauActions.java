@@ -19,11 +19,11 @@ public class PanneauActions extends JPanel{
 	 */
 	private static final long serialVersionUID = 1L;
 
-	private Jeu jeu;
+	private PanneauJeu panneauJeu;
 	private PanneauInfos panneauInfos;
 	
-	public PanneauActions(Jeu jeu, PanneauInfos panneauInfos) {
-		this.jeu = jeu;
+	public PanneauActions(PanneauJeu panneauJeu, PanneauInfos panneauInfos) {
+		this.panneauJeu = panneauJeu;
 		this.panneauInfos = panneauInfos;
 	}
 	
@@ -44,9 +44,9 @@ public class PanneauActions extends JPanel{
 		
 		conteneurPersonnages.setLayout(new GridLayout(1, Util.listePersonnages().size()));
 		for(Personnage personnage : Util.listePersonnages()) {
-			JPanel panel = new CaseImage(personnage.getCheminImage(), 80, 80, null);
+			CaseImage panel = new CaseImage(personnage, 80, 80, null);
 			
-			panel.addMouseListener(new SourisSelection(personnage, panneauInfos));
+			panel.addMouseListener(new SourisSelection(personnage, panel, panneauJeu, panneauInfos));
 			conteneurPersonnages.add(panel);
 		}
 		this.add(conteneurPersonnages);

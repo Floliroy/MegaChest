@@ -1,6 +1,7 @@
 package plateau;
 
 import personnages.Personnage;
+import ui.CaseImage;
 
 public class Case {
 	
@@ -15,6 +16,8 @@ public class Case {
 	 *  par default = null
 	 */
 	private Personnage personnage;
+	
+	private CaseImage panel;
 	
 	/* -------------------------------------------------- */
 	
@@ -84,6 +87,12 @@ public class Case {
 		this.personnage = personnage;
 	}
 	
+	public void setPersonnage(Personnage personnage, String fond) {
+		this.personnage = personnage;
+		this.panel.setPersonnage(personnage);
+		this.panel.setStringFond(fond);
+	}
+	
 	/**
 	 * Verifie si un personnage est present sur la case
 	 * 
@@ -99,6 +108,14 @@ public class Case {
 	 */
 	public String dumpCase() {
 		return "(" + (positionX+1) + "," + (positionY+1) + ")";
+	}
+
+	public CaseImage getPanel() {
+		return panel;
+	}
+
+	public void setPanel(CaseImage panel) {
+		this.panel = panel;
 	}
 	
 }
