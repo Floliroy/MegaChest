@@ -36,7 +36,7 @@ public class SourisJeu extends MouseAdapter{
         		image.setTransparency(null);
         	} else {
         		if(panneauJeu.getCasePersoSelectionne() != null) {
-            		panneauJeu.getCasePersoSelectionne().setTransparency(Util.getYellowTransparency());
+            		panneauJeu.getCasePersoSelectionne().setTransparency(null);
             		panneauJeu.getCasePersoSelectionne().repaint();
         		}
         		

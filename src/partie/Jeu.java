@@ -305,9 +305,9 @@ public class Jeu {
 		saisirNomJoueur();
 		
 		System.out.println();
-		initialisationEquipe(joueur1);
+		/*initialisationEquipe(joueur1);
 		plateauJeu.afficherPlateau();
-		initialisationEquipe(joueur2);
+		initialisationEquipe(joueur2);*/
 		
 	}
 	
