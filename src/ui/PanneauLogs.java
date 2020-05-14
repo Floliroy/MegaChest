@@ -21,6 +21,7 @@ public class PanneauLogs extends JPanel{
 		this.setLayout(new BorderLayout());
 		this.setBorder(new TitledBorder(new EtchedBorder(), "Logs"));
 		
+		textOutput = new JTextArea(1,1);
 		textOutput.setBackground(Color.WHITE);
 		textOutput.setAutoscrolls(true);
 		textOutput.setEditable(false);
