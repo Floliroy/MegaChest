@@ -33,8 +33,10 @@ public class SourisSelection extends MouseAdapter{
 			caseImage.setTransparency(null);
 			caseImage.repaint();
 			equipe.removeEquipe(personnage);
+			panneauJeu.setPersonnageSelectionne(null);
 			Case previousCase = plateau.getCase(personnage);
 			previousCase.setPersonnage(null, null);
+			previousCase.getPanel().setTransparency(null);
 			previousCase.getPanel().repaint();
 			
 		}else {
@@ -52,6 +54,7 @@ public class SourisSelection extends MouseAdapter{
 				fond = "rouge.png";
 			}
 			newCase.setPersonnage(personnage, fond);
+			newCase.getPanel().setTransparency(null);
 			newCase.getPanel().repaint();
 		}
 	}
