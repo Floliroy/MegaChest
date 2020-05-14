@@ -1,10 +1,8 @@
 package ui;
 
-import java.awt.Color;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import plateau.Case;
@@ -14,11 +12,13 @@ public class Souris extends MouseAdapter{
 	private Case casePlateau;
 	private PanneauInfos panneauInfos;
 	private PanneauJeu panneauJeu;
+	private JPanel panel;
 	
-	public Souris(Case casePlateau, PanneauJeu panneauJeu, PanneauInfos panneauInfos) {
+	public Souris(Case casePlateau, JPanel panel, PanneauJeu panneauJeu, PanneauInfos panneauInfos) {
 		this.casePlateau = casePlateau;
 		this.panneauInfos = panneauInfos;
 		this.panneauJeu = panneauJeu;
+		this.panel = panel;
 	}
 	
 	@Override
@@ -27,14 +27,17 @@ public class Souris extends MouseAdapter{
         		+ (casePlateau.getPersonnage() != null ? " -> " + casePlateau.getPersonnage().getNom() : ""));
         		
         if(!casePlateau.isEmpty()) {
+        	CaseImage image = (CaseImage) panel;
         	if(casePlateau.getPersonnage().equals(panneauJeu.getPersonnageSelectionne())) {
         		System.out.println(panneauJeu.getPersonnageSelectionne().getNom() + " deselectionne");
         		panneauJeu.setPersonnageSelectionne(null);
-        		
+        		image.setTransparency(false);
         	} else {
         		panneauJeu.setPersonnageSelectionne(casePlateau.getPersonnage());
         		System.out.println(panneauJeu.getPersonnageSelectionne().getNom() + " selectionne");
+        		image.setTransparency(true);
         	}	
+        	image.repaint();
         } else if (panneauJeu.getPersonnageSelectionne() != null) {
         	System.out.println(panneauJeu.getPersonnageSelectionne().getNom() + " deplace");
         	panneauJeu.getJeu().getPlateauJeu().getCase(panneauJeu.getPersonnageSelectionne()).setPersonnage(null);

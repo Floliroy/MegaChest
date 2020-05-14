@@ -1,5 +1,8 @@
 package ui;
 
+import java.awt.AlphaComposite;
+import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
@@ -19,12 +22,15 @@ public class CaseImage extends JPanel {
 	
 	private BufferedImage image;
 	private BufferedImage fond;
+	private Boolean transparency;
 
 	public CaseImage(String stringImage, int sizeX, int sizeY, String stringFond) {
 		 try {         
-	          image = resize(ImageIO.read(new File(stringImage)), sizeX, sizeY);
+			 image = resize(ImageIO.read(new File(stringImage)), sizeX, sizeY);
 	          if(stringFond != null)
 	        	  fond = ImageIO.read(new File(System.getProperty("user.dir") + "/images/util/" + stringFond));
+	          
+	          transparency = false;
 
 	       } catch (IOException e) {
 	           e.printStackTrace();
@@ -53,6 +59,21 @@ public class CaseImage extends JPanel {
 		g2d.translate(this.getWidth() / 2, this.getHeight() / 2);
 		g2d.translate(-image.getWidth(null) / 2, -image.getHeight(null) / 2);
 		g2d.drawImage(image, 0, 0, null);  
+		if(transparency) {
+			g2d.setComposite(AlphaComposite.SrcAtop);
+			g2d.setColor(new Color(255, 255, 0, 100));
+			g2d.fillRect(0, 0, image.getWidth(), image.getHeight());
+			g2d.dispose();
+		}
+		
+	}
+
+	public Boolean getTransparency() {
+		return transparency;
+	}
+
+	public void setTransparency(Boolean transparency) {
+		this.transparency = transparency;
 	}
 
 }

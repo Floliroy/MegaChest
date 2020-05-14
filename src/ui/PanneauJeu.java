@@ -1,5 +1,6 @@
 package ui;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.GridLayout;
 
@@ -39,15 +40,19 @@ public class PanneauJeu extends JPanel {
 					
 					Personnage perso = jeu.getPlateauJeu().getCase(y, x).getPersonnage();
 					CaseImage caseImage = new CaseImage(perso.getCheminImage(), 80, 80, jeu.getJoueur1().getEquipe().getListePersonnages().contains(perso)? "bleu.png" : "rouge.png");
+
+					if(perso == personnageSelectionne) {
+						caseImage.setTransparency(true);
+					}
 					
-					caseImage.addMouseListener(new Souris(jeu.getPlateauJeu().getCase(y, x), this, panneauInfos));
+					caseImage.addMouseListener(new Souris(jeu.getPlateauJeu().getCase(y, x), caseImage, this, panneauInfos));
 					this.add(caseImage);
 					
 				}else {
 					JPanel panel = new JPanel();					
 					panel.setBackground((x + y) % 2 == 0 ? Color.DARK_GRAY : Color.LIGHT_GRAY);
 
-					panel.addMouseListener(new Souris(jeu.getPlateauJeu().getCase(y, x), this, panneauInfos));
+					panel.addMouseListener(new Souris(jeu.getPlateauJeu().getCase(y, x), panel, this, panneauInfos));
 					
 					this.add(panel);	
 				}		
