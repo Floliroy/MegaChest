@@ -29,7 +29,7 @@ public class Fenetre extends JFrame {
 	private PanneauJeu panneauJeu;
 	private PanneauInfos panneauInfos;
 	private JPanel panneauLogs;
-	private JPanel panneauActions;
+	private PanneauActions panneauActions;
 
 	public Fenetre(Jeu jeu) {
 		
@@ -66,8 +66,11 @@ public class Fenetre extends JFrame {
 		iFrameLogs.setVisible(true);
 		
 		//Panneau Action (Bas Gauche)
-		panneauActions = new JPanel();
-		panneauActions.setBackground(Color.YELLOW);
+		panneauActions = new PanneauActions();
+		panneauActions.showSelection();
+		
+		
+		
 		
 		//Panneau Infos (Haut Droite)
 		panneauInfos = new PanneauInfos();
@@ -93,7 +96,7 @@ public class Fenetre extends JFrame {
 		cons.gridwidth = 1;
 		cons.gridheight = 1;
 		cons.weightx = 0.71;
-		cons.weighty = 0.68;
+		cons.weighty = 0.74;
 		add(panneauJeu,cons);
 
 		//Panneau Infos (Haut Droite)
@@ -107,7 +110,7 @@ public class Fenetre extends JFrame {
 		cons.gridx = 0;
 		cons.gridy = 1;
 		cons.gridwidth = 1;
-		cons.weighty = 0.32;
+		cons.weighty = 0.26;
 		add(panneauActions, cons);
 
 		//Panneau Logs (Bas Droite)
