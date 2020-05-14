@@ -35,27 +35,23 @@ public class PanneauJeu extends JPanel {
 		
 		for(int x=0 ; x<Plateau.NOMBRE_LIGNE ; x++) {
 			for(int y=0 ; y<Plateau.NOMBRE_COLONNE ; y++) {
-				
+				JPanel panel;
 				if(jeu.getPlateauJeu().getCase(y, x).getPersonnage() != null) {
 					
 					Personnage perso = jeu.getPlateauJeu().getCase(y, x).getPersonnage();
-					CaseImage caseImage = new CaseImage(perso.getCheminImage(), 80, 80, jeu.getJoueur1().getEquipe().getListePersonnages().contains(perso)? "bleu.png" : "rouge.png");
+					panel = new CaseImage(perso.getCheminImage(), 80, 80, jeu.getJoueur1().getEquipe().getListePersonnages().contains(perso)? "bleu.png" : "rouge.png");
 
 					if(perso == personnageSelectionne) {
-						caseImage.setTransparency(true);
+						((CaseImage) panel).setTransparency(true);
 					}
 					
-					caseImage.addMouseListener(new Souris(jeu.getPlateauJeu().getCase(y, x), caseImage, this, panneauInfos));
-					this.add(caseImage);
-					
 				}else {
-					JPanel panel = new JPanel();					
+					panel = new JPanel();					
 					panel.setBackground((x + y) % 2 == 0 ? Color.DARK_GRAY : Color.LIGHT_GRAY);
+				}	
 
-					panel.addMouseListener(new Souris(jeu.getPlateauJeu().getCase(y, x), panel, this, panneauInfos));
-					
-					this.add(panel);	
-				}		
+				panel.addMouseListener(new Souris(jeu.getPlateauJeu().getCase(y, x), panel, this, panneauInfos));
+				this.add(panel);		
 			}
 		}
 		this.revalidate();
