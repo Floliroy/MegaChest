@@ -1,20 +1,36 @@
 package ui;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+import javax.swing.ScrollPaneConstants;
+import javax.swing.border.EtchedBorder;
+import javax.swing.border.TitledBorder;
 
 public class PanneauLogs extends JPanel{
 
 	private static final long serialVersionUID = 1L;
+	
 	private JTextArea textOutput;
 	
-	public PanneauLogs(JTextArea textArea) {
-		this.setBackground(Color.MAGENTA);
-		this.textOutput = textArea;
-		this.textOutput.setEditable(false);
-		this.textOutput.setVisible(true);
+	public PanneauLogs() {
+		
+		this.setLayout(new BorderLayout());
+		this.setBorder(new TitledBorder(new EtchedBorder(), "Logs"));
+		
+		textOutput.setBackground(Color.WHITE);
+		textOutput.setAutoscrolls(true);
+		textOutput.setEditable(false);
+		
+		JScrollPane scroll = new JScrollPane(textOutput, 
+				ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS, 
+				ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+		scroll.setBorder(null);
+		this.add(scroll);
+		
 	}
 
 	public JTextArea getTextOutput() {

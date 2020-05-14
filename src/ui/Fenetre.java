@@ -107,7 +107,7 @@ public class Fenetre extends JFrame {
 		cons.gridy = 1;
 		add(iFrameLogs, cons);
 		
-		PopUpInit test = new PopUpInit(this, "Presentation", true);
+		
 	}
 	
 	public void addPanel(JPanel panneau) {
