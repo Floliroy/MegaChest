@@ -1,6 +1,5 @@
 package ui;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.GridLayout;
 
@@ -20,6 +19,7 @@ public class PanneauJeu extends JPanel {
 	private Jeu jeu;
 	private PanneauInfos panneauInfos;
 	private Personnage personnageSelectionne;
+	private CaseImage casePersoSelectionne;
 	
 
 
@@ -77,5 +77,18 @@ public class PanneauJeu extends JPanel {
 
 	public void setPersonnageSelectionne(Personnage personnageSelectionne) {
 		this.personnageSelectionne = personnageSelectionne;
+	}
+
+	public CaseImage getCasePersoSelectionne() {
+		return casePersoSelectionne;
+	}
+
+	public void setCasePersoSelectionne(CaseImage casePersoSelectionne) {
+		this.casePersoSelectionne = casePersoSelectionne;
+	}
+	
+	public void setSelectionne(Personnage personnageSelectionne, CaseImage casePersoSelectionne) {
+		this.personnageSelectionne = personnageSelectionne;
+		this.casePersoSelectionne = casePersoSelectionne;
 	}
 }

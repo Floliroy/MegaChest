@@ -1,7 +1,6 @@
 package ui;
 
 import java.awt.AlphaComposite;
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
