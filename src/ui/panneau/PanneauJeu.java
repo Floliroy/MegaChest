@@ -26,12 +26,20 @@ public class PanneauJeu extends JPanel {
 	private CaseImage casePersoSelectionne;
 	
 
-
+	/**
+	 * Constructeur de panneauJeu
+	 * 
+	 * @param fenetre JFrame principale
+	 */
 	public PanneauJeu(Fenetre fenetre) {
 		this.fenetre = fenetre;
 		this.setBackground(Color.GRAY);
 	}
 	
+	/**
+	 * Affiche l'ensemble du plateau avec les infos actualisés pour chaques
+	 * ajout, déplacement, suppression de personnages.
+	 */
 	public void refresh() {
 		this.removeAll();
 		this.setLayout(new GridLayout(Plateau.NOMBRE_LIGNE,Plateau.NOMBRE_COLONNE));
@@ -67,22 +75,48 @@ public class PanneauJeu extends JPanel {
 		this.repaint();
 	}
 
+	/**
+	 * Getter de personnageSelectionne
+	 * 
+	 * @return personnageSelectionne
+	 */
 	public Personnage getPersonnageSelectionne() {
 		return personnageSelectionne;
 	}
 
+	/**
+	 * Setter de personnageSelectionne
+	 * 
+	 * @param personnageSelectionne nouveau personnage sélectionné
+	 */
 	public void setPersonnageSelectionne(Personnage personnageSelectionne) {
 		this.personnageSelectionne = personnageSelectionne;
 	}
 
+	/**
+	 * Getter de casePersoSelectionne
+	 * 
+	 * @return casePersoSelectionne
+	 */
 	public CaseImage getCasePersoSelectionne() {
 		return casePersoSelectionne;
 	}
 
+	/**
+	 * Setter de casePersoSelectionne
+	 * 
+	 * @param casePersoSelectionne nouvelle CaseImage sélectionnée
+	 */
 	public void setCasePersoSelectionne(CaseImage casePersoSelectionne) {
 		this.casePersoSelectionne = casePersoSelectionne;
 	}
 	
+	/**
+	 * Permet de set personnageSelectionne et casePersoSelectionne
+	 * 
+	 * @param personnageSelectionne nouveau personnage sélectionné
+	 * @param casePersoSelectionne nouvelle CaseImage sélectionnée
+	 */
 	public void setSelectionne(Personnage personnageSelectionne, CaseImage casePersoSelectionne) {
 		this.personnageSelectionne = personnageSelectionne;
 		this.casePersoSelectionne = casePersoSelectionne;

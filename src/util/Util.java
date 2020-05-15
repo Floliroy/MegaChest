@@ -4,13 +4,18 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 
-import plateau.Plateau;
+
 import personnages.*;
 import plateau.Case;
 
 
 public class Util {
 	
+	/**
+	 * Permet d'obtenir une ArrayList contenant tous les personnages disponibles.
+	 * 
+	 * @return ArrayList<Personnage> qui contient tous les personnages
+	 */
 	public static ArrayList<Personnage> listePersonnages(){
 		
 		ArrayList<Personnage> allPersonnages = new ArrayList<Personnage>();
@@ -36,10 +41,24 @@ public class Util {
 		return allPersonnages;
 	}
 	
+	/**
+	 * Calcule la distance entre une case de depart et une case d'arrivée sous la forme (X,Y).
+	 * 
+	 * @param depart case de depart
+	 * @param positionXDestination colonne d'arrivée
+	 * @param positionYDestination ligne d'arrivée
+	 * 
+	 * @return int distance entre les deux cases
+	 */
 	public static int distanceCase(Case depart, int positionXDestination, int positionYDestination) {
 		return Math.abs(depart.getPositionX() - positionXDestination) + Math.abs(depart.getPositionY() - positionYDestination);
 	}
 	
+	/**
+	 * Ajoute la transparence jaune lors de la selection d'un personnage sur l'UI.
+	 * 
+	 * @return color transparence jaune
+	 */
 	public static HashMap<String, Integer> getYellowTransparency(){
 		HashMap<String, Integer> color = new HashMap<>();
 		color.put("red", 255);
@@ -49,6 +68,12 @@ public class Util {
 		return color;
 	}
 	
+	/**
+	 * Ajoute la transparence grise sur un personnage déjà choisis pendant la phase de sélection 
+	 * des deux joueurs.
+	 * 
+	 * @return transparence grise
+	 */
 	public static HashMap<String, Integer> getGrayTransparency(){
 		HashMap<String, Integer> color = new HashMap<>();
 		color.put("red", 0);

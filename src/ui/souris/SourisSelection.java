@@ -17,13 +17,25 @@ public class SourisSelection extends MouseAdapter{
 	private Personnage personnage;
 	private CaseImage caseImage;
 	private Fenetre fenetre;
-	
+	/**
+	 * Constructeur sourisSelection
+	 * 
+	 * @param personnage
+	 * @param caseImage
+	 * @param fenetre
+	 */
 	public SourisSelection(Personnage personnage, CaseImage caseImage, Fenetre fenetre) {
 		this.personnage = personnage;
 		this.caseImage = caseImage;
 		this.fenetre = fenetre;
 	}
 	
+	/**
+	 * Listener permettant d'ajouter un personnage sur le plateau de jeu lorsque l'utilisateur
+	 * effetue un click de souris dessus. L'image est alors grisé pour signaler que
+	 * le personnage est déjà dans l'équipe. Si l'utilisateur reclique dessus, le
+	 * personnage est supprimé du plateau et n'est plus grisé.
+	 */
 	@Override
     public void mouseClicked(MouseEvent e) {
 		PanneauJeu panneauJeu = fenetre.getPanneauJeu();
@@ -64,12 +76,20 @@ public class SourisSelection extends MouseAdapter{
 		}
 	}
 	
+	/**
+	 * Listener pour afficher les caractéristiques dans le panneauInfos lorsque l'utilisateur 
+	 * survole un personnage sur le panneauAction.
+	 */
 	@Override
     public void mouseEntered(MouseEvent e) {
 		if(personnage != null) 
 			fenetre.getPanneauInfos().refresh(personnage);
     }
-	
+
+	/**
+	 * Listener pour réinitialiser le panneauInfos lorsque l'utilisateur ne survole plus un
+	 * personnage
+	 */
 	@Override
     public void mouseExited(MouseEvent e) {
 		fenetre.getPanneauInfos().refresh();

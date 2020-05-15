@@ -18,10 +18,19 @@ public class PanneauInfos extends JPanel{
 	 */
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * Constructeur de panneauInfos
+	 */
 	public PanneauInfos() {
 		this.setBackground(Color.GRAY);
 	}
 	
+	/**
+	 * Permet d'afficher les caractéristiques d'un personnage dans 
+	 * panneauInfos
+	 * 
+	 * @param personnage personnage dont il faut afficher les caractéristiques
+	 */
 	public void refresh(Personnage personnage) {
 		this.removeAll();
 		this.setLayout(new GridBagLayout());
@@ -101,6 +110,9 @@ public class PanneauInfos extends JPanel{
 		this.repaint();
 	}
 	
+	/**
+	 * Permet de réinitialiser panneauInfo
+	 */
 	public void refresh() {
 		this.removeAll();
 		this.revalidate();
