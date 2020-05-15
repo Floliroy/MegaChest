@@ -31,7 +31,6 @@ public class PanneauJeu extends JPanel {
 		this.jeu = jeu;
 		this.panneauInfos = panneauInfos;
 		this.setBackground(Color.GRAY);
-		refresh();
 	}
 	
 	public void refresh() {
