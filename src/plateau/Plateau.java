@@ -233,7 +233,7 @@ public class Plateau {
 			System.out.print((lig+1) + " ");
 			
 			for(int col=0 ; col<NOMBRE_COLONNE ; col++) {
-				System.out.print("| " + (getCase(col, lig).getPersonnage() != null ? getCase(col, lig).getPersonnage().getNom().substring(0, 1) : " ") + " ");
+				System.out.print("| " + (!getCase(col, lig).isEmpty() ? getCase(col, lig).getPersonnage().getNom().substring(0, 1) : " ") + " ");
 			}
 			System.out.println("|");			
 		}

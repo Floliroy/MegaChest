@@ -42,7 +42,7 @@ public class PanneauJeu extends JPanel {
 				Case casePlateau = jeu.getPlateauJeu().getCase(y, x);
 				
 				CaseImage panel;
-				if(jeu.getPlateauJeu().getCase(y, x).getPersonnage() != null) {
+				if(!jeu.getPlateauJeu().getCase(y, x).isEmpty()) {
 					
 					Personnage perso = jeu.getPlateauJeu().getCase(y, x).getPersonnage();
 					panel = new CaseImage(casePlateau.getPersonnage(), 80, 80, jeu.getJoueur1().getEquipe().getListePersonnages().contains(perso)? "blue.png" : "red.png");

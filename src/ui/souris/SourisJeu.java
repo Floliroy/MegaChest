@@ -55,8 +55,8 @@ public class SourisJeu extends MouseAdapter{
 
     	PanneauJeu panneauJeu = fenetre.getPanneauJeu();
         System.out.println("Case cliquee : " + (casePlateau.getPositionX()+1) + " , " + (casePlateau.getPositionY()+1) 
-       		+ (casePlateau.getPersonnage() != null ? " -> " + casePlateau.getPersonnage().getNom() : "")
-       		+ (casePlateau.getPersonnage() != null ? " -> " + casePlateau.getPersonnage().getDeplacements() : ""));
+       		+ (!casePlateau.isEmpty() ? " -> " + casePlateau.getPersonnage().getNom() : "")
+       		+ (!casePlateau.isEmpty() ? " -> " + casePlateau.getPersonnage().getDeplacements() : ""));
     	
 		if(!casePlateau.isEmpty()) {
         	CaseImage image = (CaseImage) panel;
@@ -94,7 +94,7 @@ public class SourisJeu extends MouseAdapter{
 	
 	@Override
     public void mouseEntered(MouseEvent e) {
-		if(casePlateau.getPersonnage() != null) 
+		if(!casePlateau.isEmpty()) 
 			fenetre.getPanneauInfos().refresh(casePlateau.getPersonnage());
     }
 	
