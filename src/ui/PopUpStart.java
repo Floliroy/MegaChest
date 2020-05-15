@@ -125,6 +125,8 @@ public class PopUpStart extends JDialog implements ActionListener{
 		dispose();		
 		fenetre.getPanneauActions().showSelection();
 		fenetre.getPanneauJeu().refresh();
+		fenetre.revalidate();
+		fenetre.repaint();
 	}
 
 }
