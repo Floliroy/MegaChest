@@ -1,4 +1,4 @@
-package ui;
+package ui.souris;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -6,6 +6,9 @@ import java.awt.event.MouseEvent;
 import javax.swing.JPanel;
 
 import plateau.Case;
+import ui.CaseImage;
+import ui.panneau.PanneauInfos;
+import ui.panneau.PanneauJeu;
 import util.Util;
 
 public class SourisJeu extends MouseAdapter{

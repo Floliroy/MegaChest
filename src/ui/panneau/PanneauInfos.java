@@ -1,4 +1,4 @@
-package ui;
+package ui.panneau;
 
 import java.awt.Color;
 import java.awt.GridBagConstraints;
@@ -8,6 +8,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import personnages.Personnage;
+import ui.CaseImage;
 
 public class PanneauInfos extends JPanel{
 	

@@ -1,4 +1,4 @@
-package ui;
+package ui.panneau;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -10,6 +10,9 @@ import javax.swing.JPanel;
 
 import partie.Jeu;
 import personnages.Personnage;
+import ui.CaseImage;
+import ui.souris.SourisSelection;
+import ui.util.MyButton;
 import util.Util;
 
 public class PanneauActions extends JPanel{
@@ -36,7 +39,7 @@ public class PanneauActions extends JPanel{
 
 		
 		this.setLayout(new GridLayout(3,1));
-		JLabel label = new JLabel("Sélectionnez vos personnages");
+		JLabel label = new JLabel(panneauJeu.getJeu().getJoueurActif().getNom() + " : Sélectionnez vos personnages");
 		label.setFont(new Font("Calibri", Font.BOLD, 32));
 		conteneurTitre.setLayout(new GridBagLayout());
 		conteneurTitre.add(label);
@@ -54,6 +57,9 @@ public class PanneauActions extends JPanel{
 		conteneurBouton.add(new MyButton("Valider", Color.LIGHT_GRAY));
 		conteneurBouton.setLayout(new GridBagLayout());
 		this.add(conteneurBouton);
+		
+		this.revalidate();
+		this.repaint();
 	}
 
 }

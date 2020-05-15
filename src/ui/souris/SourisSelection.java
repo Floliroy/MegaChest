@@ -1,4 +1,4 @@
-package ui;
+package ui.souris;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -7,6 +7,9 @@ import partie.Equipe;
 import personnages.Personnage;
 import plateau.Case;
 import plateau.Plateau;
+import ui.CaseImage;
+import ui.panneau.PanneauInfos;
+import ui.panneau.PanneauJeu;
 import util.Util;
 
 public class SourisSelection extends MouseAdapter{
@@ -57,6 +60,7 @@ public class SourisSelection extends MouseAdapter{
 			newCase.getPanel().setTransparency(null);
 			newCase.getPanel().repaint();
 		}
+		
 	}
 	
 	@Override

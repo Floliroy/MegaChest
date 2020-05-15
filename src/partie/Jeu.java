@@ -302,7 +302,7 @@ public class Jeu {
 			  pres += "\t+-------------------+";
 		
 		System.out.println(pres + "\n");
-		saisirNomJoueur();
+		//saisirNomJoueur();
 		
 		System.out.println();
 		/*initialisationEquipe(joueur1);

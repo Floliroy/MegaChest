@@ -10,6 +10,10 @@ import javax.swing.JPanel;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 
 import partie.Jeu;
+import ui.panneau.PanneauActions;
+import ui.panneau.PanneauInfos;
+import ui.panneau.PanneauJeu;
+import ui.panneau.PanneauLogs;
 import util.RedirectionOutput;
 
 public class Fenetre extends JFrame {
@@ -63,7 +67,7 @@ public class Fenetre extends JFrame {
 		
 		//Panneau Action (Bas Gauche)
 		panneauActions = new PanneauActions(panneauJeu, panneauInfos);
-		panneauActions.showSelection();
+		//panneauActions.showSelection();
 		
 		
 		//Positionnement des panneaux avec GridBagConstraints
@@ -104,6 +108,38 @@ public class Fenetre extends JFrame {
 		
 	}
 	
+	public PanneauJeu getPanneauJeu() {
+		return panneauJeu;
+	}
+
+	public void setPanneauJeu(PanneauJeu panneauJeu) {
+		this.panneauJeu = panneauJeu;
+	}
+
+	public PanneauInfos getPanneauInfos() {
+		return panneauInfos;
+	}
+
+	public void setPanneauInfos(PanneauInfos panneauInfos) {
+		this.panneauInfos = panneauInfos;
+	}
+
+	public PanneauLogs getPanneauLogs() {
+		return panneauLogs;
+	}
+
+	public void setPanneauLogs(PanneauLogs panneauLogs) {
+		this.panneauLogs = panneauLogs;
+	}
+
+	public PanneauActions getPanneauActions() {
+		return panneauActions;
+	}
+
+	public void setPanneauActions(PanneauActions panneauActions) {
+		this.panneauActions = panneauActions;
+	}
+
 	public void addPanel(JPanel panneau) {
 		this.setContentPane(panneau);
 	}

@@ -1,4 +1,4 @@
-package ui;
+package ui.panneau;
 
 import java.awt.Color;
 import java.awt.GridLayout;
@@ -9,6 +9,8 @@ import partie.Jeu;
 import personnages.Personnage;
 import plateau.Case;
 import plateau.Plateau;
+import ui.CaseImage;
+import ui.souris.SourisJeu;
 import util.Util;
 
 public class PanneauJeu extends JPanel {
