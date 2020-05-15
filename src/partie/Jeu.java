@@ -43,8 +43,8 @@ public class Jeu {
 	
 	public Jeu() {
 		plateauJeu = new Plateau();
-		joueur1 = new Joueur(true);
-		joueur2 = new Joueur(false);
+		joueur1 = new Joueur(true, "blue");
+		joueur2 = new Joueur(false, "red");
 		
 		initialiserPartie();
 	}

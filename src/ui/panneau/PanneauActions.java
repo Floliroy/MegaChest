@@ -43,7 +43,16 @@ public class PanneauActions extends JPanel{
 		JPanel conteneurBouton = new JPanel();
 		
 		this.setLayout(new GridLayout(3,1));
-		JLabel label = new JLabel(fenetre.getJeu().getJoueurActif().getNom() + " : Sélectionnez et Placez vos Personnages");
+		
+		String htmlHeader = "<html>"
+						  + "<style>"
+						  + "span{"
+						  + "	color: " + fenetre.getJeu().getJoueurActif().getCouleur() + "; "
+						  + "}"
+						  + "</style>";
+		String htmlFooter = "</html>";
+		
+		JLabel label = new JLabel(htmlHeader + "<span>" + fenetre.getJeu().getJoueurActif().getNom() + "</span> : Sélectionnez et Placez vos Personnages" + htmlFooter);
 		label.setFont(new Font("Calibri", Font.BOLD, 32));
 		conteneurTitre.setLayout(new GridBagLayout());
 		conteneurTitre.add(label);
@@ -78,7 +87,16 @@ public class PanneauActions extends JPanel{
 		JPanel conteneurVide = new JPanel();
 		
 		this.setLayout(new GridLayout(3,1));
-		JLabel label = new JLabel(fenetre.getJeu().getJoueurActif().getNom() + " : Choisissez votre Personnage et son Action");
+		
+		String htmlHeader = "<html>"
+				  + "<style>"
+				  + "span{"
+				  + "	color: " + fenetre.getJeu().getJoueurActif().getCouleur() + "; "
+				  + "}"
+				  + "</style>";
+		String htmlFooter = "</html>";
+
+		JLabel label = new JLabel(htmlHeader + "<span>" + fenetre.getJeu().getJoueurActif().getNom() + "</span> : Choisissez votre Personnage et son Action" + htmlFooter);
 		label.setFont(new Font("Calibri", Font.BOLD, 32));
 		conteneurTitre.setLayout(new GridBagLayout());
 		conteneurTitre.add(label);

@@ -52,12 +52,10 @@ public class SourisSelection extends MouseAdapter{
 			String fond;
 			if(fenetre.getJeu().getJoueurActif().equals(fenetre.getJeu().getJoueur1())) {
 				newCase = plateau.getFirstCaseLeft();
-				fond = "bleu.png";
 			}else {
 				newCase = plateau.getFirstCaseRight();
-				fond = "rouge.png";
 			}
-			newCase.setPersonnage(personnage, fond);
+			newCase.setPersonnage(personnage, fenetre.getJeu().getJoueurActif().getCouleur() + ".png");
 			newCase.getPanel().setTransparency(null);
 			newCase.getPanel().repaint();
 		}

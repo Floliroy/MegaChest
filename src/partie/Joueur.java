@@ -11,11 +11,13 @@ public class Joueur {
 	
 	private Equipe equipe;
 	private Boolean tour;
+	private String couleur;
 	private String nom;
 	
-	public Joueur(Boolean tour) {
+	public Joueur(Boolean tour, String couleur) {
 		this.equipe = new Equipe();
 		this.tour = tour;
+		this.couleur = couleur;
 	}
 	
 	
@@ -80,6 +82,16 @@ public class Joueur {
 	
 	public String getNom() {
 		return this.nom;
+	}
+
+
+	public String getCouleur() {
+		return couleur;
+	}
+
+
+	public void setCouleur(String couleur) {
+		this.couleur = couleur;
 	}
 	
 	
