@@ -5,13 +5,11 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.JPanel;
 
-
 import partie.Jeu;
 import plateau.Case;
 import plateau.Plateau;
 import ui.CaseImage;
 import ui.Fenetre;
-
 import ui.panneau.PanneauJeu;
 import util.Util;
 
