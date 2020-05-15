@@ -47,7 +47,8 @@ public class Actions implements ActionListener {
 			joueur1.getEquipe().calculerBonusEquipe();
 			joueur2.getEquipe().calculerBonusEquipe();
 			
-			System.out.println("La partie commence");
+			System.out.println();
+			System.out.println("La partie commence !");
 			
 			jeu.setEtatJeu(Jeu.PHASE_ACTION);
 			jeu.inverseJoueurs();
@@ -65,6 +66,7 @@ public class Actions implements ActionListener {
 		if(!jeu.getAttaqueEffectue() && !jeu.getJetonAttaque()) {
 			jeu.setPersonnageJoue(fenetre.getPanneauJeu().getPersonnageSelectionne());
 			jeu.setJetonAttaque(true);
+			System.out.println();
 			System.out.println("Cliquez sur le personnage a attaquer.");
 		}else {
 			if(!jeu.getActionEffectue()) {
@@ -80,6 +82,7 @@ public class Actions implements ActionListener {
 		jeu.setJetonDeplace(!jeu.getJetonDeplace());
 		if(jeu.getJetonDeplace()) {
 			jeu.setPersonnageJoue(fenetre.getPanneauJeu().getPersonnageSelectionne());
+			System.out.println();
 			System.out.println("Cliquez sur la case ou vous voulez aller.");
 		}else {
 			if(!jeu.getActionEffectue()) {
@@ -100,6 +103,7 @@ public class Actions implements ActionListener {
 		fenetre.getPanneauJeu().getCasePersoSelectionne().setTransparency(null);
 		fenetre.getPanneauJeu().setSelectionne(null, null);
 		fenetre.getPanneauJeu().refresh();
+		System.out.println();
 		System.out.println("Changement de joueur...");
 	}
 

@@ -203,45 +203,6 @@ public class Plateau {
 	}
 	
 	
-	
-	
-	/**
-	 * TODO
-	 */
-	private void afficherLigneSeparation() {
-		System.out.print("  ");
-		for(int col=0 ; col<NOMBRE_COLONNE*4+1 ; col++) {
-			System.out.print("-");
-		}
-		System.out.println();
-	}
-	
-	/**
-	 * TODO
-	 */
-	public void afficherPlateau() {
-		System.out.print("\n  ");
-		for(int col=0 ; col<NOMBRE_COLONNE ; col++) {
-			String numColonne = (col+1) + "";
-			System.out.print("  " + numColonne + (numColonne.length() < 2 ? " " : ""));
-		}
-		System.out.println();
-		
-		for(int lig=0 ; lig<NOMBRE_LIGNE ; lig++) {
-			afficherLigneSeparation();
-			System.out.print((lig+1) + " ");
-			
-			for(int col=0 ; col<NOMBRE_COLONNE ; col++) {
-				System.out.print("| " + (!getCase(col, lig).isEmpty() ? getCase(col, lig).getPersonnage().getNom().substring(0, 1) : " ") + " ");
-			}
-			System.out.println("|");			
-		}
-		
-		afficherLigneSeparation();
-		System.out.println();
-	}
-	
-	
 	public Case getFirstCaseLeft() {
 		for(Case []ligne : plateau) {
 			for(Case colonne : ligne) {

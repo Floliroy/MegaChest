@@ -113,6 +113,7 @@ public abstract class Personnage {
 	public void subirDegats(Integer degatsRecus) {
 		degatsRecus = degatsRecus >= 0 ? degatsRecus : 0;
 		vie -= degatsRecus;
+		System.out.println(nom + " -" + degatsRecus + " PV");
 	}
 	
 	/**
@@ -127,7 +128,7 @@ public abstract class Personnage {
 		if(isVivant()) {
 			System.out.println("Il reste " + getVieAvecBoost() + " points de vie a " + nom);
 		}else {
-			System.out.println(nom + " est mort.");
+			System.out.println(nom + " est mort");
 		}
 	}
 	

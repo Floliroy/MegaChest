@@ -121,6 +121,7 @@ public class PopUpStart extends JDialog implements ActionListener{
 		jeu.getJoueur2().setNom(nomJ2.getText());
 		System.out.println("Joueur 1 : " + jeu.getJoueur1().getNom());
 		System.out.println("Joueur 2 : " + jeu.getJoueur2().getNom());
+		System.out.println();
 		dispose();		
 		fenetre.getPanneauActions().showSelection();
 		fenetre.getPanneauJeu().refresh();

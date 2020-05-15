@@ -18,47 +18,7 @@ public class Joueur {
 		this.equipe = new Equipe();
 		this.tour = tour;
 		this.couleur = couleur;
-	}
-	
-	
-	public void completerEquipe() {
-		ArrayList<Personnage> listePersonnages = Util.listePersonnages();
-		String nom;
-		
-		while(!equipe.isComplete()) {
-			System.out.println("Voici la liste des personnages disponibles : ");
-			System.out.println(Util.imprimeList(listePersonnages));
-			System.out.print("Quels personnage voulez vous ajouter ? ");
-			
-			nom = Clavier.entrerClavierString();
-			Boolean trouve = false;
-			
-			for(Personnage personnage : listePersonnages) {
-				if(nom.toLowerCase().equals(personnage.getNom().toLowerCase()) && !equipe.isDansEquipe(personnage)) {
-					System.out.println("Personnage : " + personnage.getNom() + "\n" + personnage.dumpCaracteristique());
-					
-					System.out.print("Confirmer personnage (y/n) : ");
-					String choix = Clavier.entrerClavierString().toLowerCase();
-					trouve = true;
-					
-					if(choix.equals("y")) {
-						equipe.addEquipe(personnage);
-						System.out.println(personnage.getNom() + " a été ajouté à l'équipe.\n");
-						listePersonnages.remove(personnage);		
-						break;
-					}
-				}
-			}
-			if(!trouve) {
-				System.out.println("Personnage \"" + nom + "\" introuvable.");
-			}
-		}
-		equipe.calculerBonusEquipe();
-	}
-	
-	
-	
-	
+	}	
 
 	public Equipe getEquipe() {
 		return equipe;

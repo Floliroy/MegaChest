@@ -65,7 +65,6 @@ public class SourisJeu extends MouseAdapter{
 	 */
 	private void deselectPersonnage(CaseImage image) {	
     	PanneauJeu panneauJeu = fenetre.getPanneauJeu();
-		System.out.println(panneauJeu.getPersonnageSelectionne().getNom() + " deselectionne");
     	panneauJeu.setSelectionne(null, null);
     	image.setTransparency(null);
 	}
@@ -84,7 +83,6 @@ public class SourisJeu extends MouseAdapter{
 			}
 			
 			panneauJeu.setSelectionne(casePlateau.getPersonnage(), (CaseImage) panel);
-			System.out.println(panneauJeu.getPersonnageSelectionne().getNom() + " selectionne");
 			image.setTransparency(Util.getYellowTransparency());
 			
 		}
@@ -128,6 +126,7 @@ public class SourisJeu extends MouseAdapter{
 			fenetre.getPanneauActions().getButtonAttaquer().setEnabled(false);
 			fenetre.getPanneauActions().getButtonDeplacer().setEnabled(false);
 			fenetre.getPanneauActions().getButtonPasser().setEnabled(false);
+			System.out.println();
 			System.out.println(jeu.getGagnant().getNom() + ", tu es le gagant !");
 		}
 	}
@@ -149,8 +148,6 @@ public class SourisJeu extends MouseAdapter{
 	        	
 	        	casePlateau.getPanel().setTransparency(Util.getYellowTransparency());
 	        	casePlateau.getPanel().repaint();
-	        	
-	        	System.out.println(panneauJeu.getPersonnageSelectionne().getNom() + " deplace");
 		    	
 		    	previousCase.getPanel().setTransparency(null);
 		    	previousCase.getPanel().repaint(); 
@@ -180,8 +177,6 @@ public class SourisJeu extends MouseAdapter{
 			casePlateau.getPanel().setTransparency(null);
 			casePlateau.getPanel().repaint();
 			previousCase.setPersonnage(null,null);
-			
-			System.out.println(panneauJeu.getPersonnageSelectionne().getNom() + " positionne");
 		}
 		if(fenetre.getJeu().getJoueur1().isTour() && casePlateau.getPositionX() >= limite) {
 			System.out.println("Vous ne pouvez placer votre personnage que dans les 4 premieres colonnes.");
