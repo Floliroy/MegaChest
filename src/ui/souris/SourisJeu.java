@@ -5,9 +5,10 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.JPanel;
 
+
 import partie.Jeu;
 import plateau.Case;
-
+import plateau.Plateau;
 import ui.CaseImage;
 import ui.Fenetre;
 
@@ -83,11 +84,30 @@ public class SourisJeu extends MouseAdapter{
 	
 	
 	
-//	private void positionnerPersoUI(PanneauJeu panneauJeu) {
-//		Case previousCase = fenetre.getJeu().getPlateauJeu().getCase(panneauJeu.getPersonnageSelectionne());
-//		
-//		if(panneauJeu.)
-//	}
+	private void positionnerPersoUI(PanneauJeu panneauJeu) {
+		Case previousCase = fenetre.getJeu().getPlateauJeu().getCase(panneauJeu.getPersonnageSelectionne());
+		
+		int limite = fenetre.getJeu().getJoueur1().isTour() ? Jeu.NOMBRE_COLONNE_PLACEMENT : Plateau.NOMBRE_COLONNE - Jeu.NOMBRE_COLONNE_PLACEMENT;
+		
+		if(casePlateau.isEmpty() && fenetre.getJeu().getJoueurActif().getEquipe().isDansEquipe(panneauJeu.getPersonnageSelectionne())
+								 && ((fenetre.getJeu().getJoueur1().isTour() && casePlateau.getPositionX() < limite) 
+								 || (fenetre.getJeu().getJoueur2().isTour() && casePlateau.getPositionX() >= limite))) {
+			
+			System.out.println(panneauJeu.getPersonnageSelectionne().getNom() + " Positionne ");
+			
+			casePlateau.setPersonnage(previousCase.getPersonnage(),
+					fenetre.getJeu().getJoueur1().getEquipe().isDansEquipe(panneauJeu.getPersonnageSelectionne()) ? "blue.png" : "red.png");
+			casePlateau.getPanel().setTransparency(null);
+			casePlateau.getPanel().repaint();
+			previousCase.setPersonnage(null,null);
+		}
+		
+		previousCase.getPanel().setTransparency(null);
+    	previousCase.getPanel().repaint();
+    	System.out.println(panneauJeu.getPersonnageSelectionne().getNom() + " Positionne + deselectionne");
+    	panneauJeu.setSelectionne(null, null);   
+		
+	}
 	
 	
 
@@ -117,6 +137,7 @@ public class SourisJeu extends MouseAdapter{
         
 	        switch(fenetre.getJeu().getEtatJeu()) {
 	        	case Jeu.PHASE_SELECTION :
+	        		positionnerPersoUI(panneauJeu);
 	        		break;
 	        		
 	        	case Jeu.PHASE_ACTION :
