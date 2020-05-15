@@ -32,7 +32,7 @@ public class SourisSelection extends MouseAdapter{
 		Equipe equipe = fenetre.getJeu().getJoueurActif().getEquipe();
 		Plateau plateau = fenetre.getJeu().getPlateauJeu();
 
-		if(equipe.getListePersonnages().contains(personnage)) {
+		if(equipe.isDansEquipe(personnage)) {
 			System.out.println("Suppression de " + personnage.getNom());
 			caseImage.setTransparency(null);
 			caseImage.repaint();

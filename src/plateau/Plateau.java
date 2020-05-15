@@ -194,7 +194,7 @@ public class Plateau {
 			System.out.println("Distance : " + distance);
 			caseDepart.getPersonnage().setDeplacements(pmPerso - distance);
 			caseArrivee.setPersonnage(caseDepart.getPersonnage(),
-					fenetre.getJeu().getJoueur1().getEquipe().getListePersonnages().contains(panel.getPersonnageSelectionne()) ? "blue.png" : "red.png");
+					fenetre.getJeu().getJoueur1().getEquipe().isDansEquipe(panel.getPersonnageSelectionne()) ? "blue.png" : "red.png");
 			caseDepart.setPersonnage(null,null);
 			return true;
 		}

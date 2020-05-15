@@ -45,7 +45,7 @@ public class PanneauJeu extends JPanel {
 				if(!jeu.getPlateauJeu().getCase(y, x).isEmpty()) {
 					
 					Personnage perso = jeu.getPlateauJeu().getCase(y, x).getPersonnage();
-					panel = new CaseImage(casePlateau.getPersonnage(), 80, 80, jeu.getJoueur1().getEquipe().getListePersonnages().contains(perso)? "blue.png" : "red.png");
+					panel = new CaseImage(casePlateau.getPersonnage(), 80, 80, jeu.getJoueur1().getEquipe().isDansEquipe(perso)? "blue.png" : "red.png");
 
 					if(perso == personnageSelectionne) {
 						panel.setTransparency(Util.getYellowTransparency());
