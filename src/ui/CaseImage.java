@@ -22,13 +22,25 @@ public class CaseImage extends JPanel {
 	 */
 	private static final long serialVersionUID = 1L;
 	
+	/** Le personnage a afficher dans la case */
 	private Personnage personnage;
+	/** La taille en X de l'image */
 	private Integer sizeX;
+	/** La taille en Y de l'image */
 	private Integer sizeY;
+	/** La couleur de fond de l'image */
 	private String stringFond;
+	/** Les attributs de transparence a appliquer sur l'image */
 	private HashMap<String, Integer> transparency;
 
 
+	/**
+	 * Constructeur de notre JPanel
+	 * @param personnage Le personnage a afficher
+	 * @param sizeX La taille en X
+	 * @param sizeY La taille en Y
+	 * @param stringFond La couleur de fond (null si pas de fond)
+	 */
 	public CaseImage(Personnage personnage, int sizeX, int sizeY, String stringFond) {
 		this.personnage = personnage;
 		this.sizeX = sizeX;
@@ -38,6 +50,13 @@ public class CaseImage extends JPanel {
         this.transparency = new HashMap<>();
 	}
 	
+	/**
+	 * Permet de changer la taille d'une image
+	 * @param img L'image dont on souhaite changer la taille
+	 * @param newW La nouvelle taille en X
+	 * @param newH La nouvelle taille en Y
+	 * @return L'image a la nouvelle taille
+	 */
 	private BufferedImage resize(BufferedImage img, int newW, int newH) { 
 	    Image tmp = img.getScaledInstance(newW, newH, Image.SCALE_SMOOTH);
 	    BufferedImage dimg = new BufferedImage(newW, newH, BufferedImage.TYPE_INT_ARGB);
@@ -49,6 +68,9 @@ public class CaseImage extends JPanel {
 	    return dimg;
 	}  
 	
+	/**
+	 * Méthode pour formater notre JPanel avec l'image a la bonne taille et avec le bon fond
+	 */
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
@@ -82,27 +104,26 @@ public class CaseImage extends JPanel {
 		
 	}
 	
-
-	public String getStringFond() {
-		return stringFond;
-	}
-
+	/**
+	 * Setter de la couleur du fond de notre JPanel
+	 * @param stringFond La couleur de fond souhaitée
+	 */
 	public void setStringFond(String stringFond) {
 		this.stringFond = stringFond;
 	}
 
-	public Personnage getPersonnage() {
-		return personnage;
-	}
-
+	/**
+	 * Setter du personnage de notre JPanel
+	 * @param personnage Le personnage souhaité
+	 */
 	public void setPersonnage(Personnage personnage) {
 		this.personnage = personnage;
 	}
-
-	public HashMap<String, Integer> getTransparency() {
-		return transparency;
-	}
-
+	
+	/**
+	 * Permet d'appliquer une couleur de transparence sur l'image du personnage
+	 * @param transparency La HashMap de transparence souhaitée (cf. Util.java)
+	 */
 	public void setTransparency(HashMap<String, Integer> transparency) {
 		this.transparency = transparency;
 	}

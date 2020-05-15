@@ -25,17 +25,28 @@ public class PanneauActions extends JPanel{
 	 */
 	private static final long serialVersionUID = 1L;
 
+	/** La fenetre de jeu */
 	private Fenetre fenetre;
+	/** Le bouton pour valider son équipe */
 	private JButton buttonValider;
+	/** Le bouton pour indiquer que l'on souhaite attaquer */
 	private JButton buttonAttaquer;
+	/** Le bouton pour indiquer que l'on souhaite se déplacer */
 	private JButton buttonDeplacer;
+	/** Le bouton pour indiquer que l'on souhaite passer son tour */
 	private JButton buttonPasser;
 	
-
+	/**
+	 * Constructeur de panneau actions
+	 * @param fenetre La fenetre de jeu
+	 */
 	public PanneauActions(Fenetre fenetre) {
 		this.fenetre = fenetre;
 	}
 	
+	/**
+	 * Permet d'afficher le panneau correspondant à la sélection et au placement des personnage de son équipe
+	 */
 	public void showSelection() {
 		this.removeAll();
 
@@ -45,6 +56,7 @@ public class PanneauActions extends JPanel{
 		
 		this.setLayout(new GridLayout(3,1));
 		
+		//Titre (ligne 1) 
 		String htmlHeader = "<html>"
 						  + "<style>"
 						  + "span{"
@@ -59,6 +71,7 @@ public class PanneauActions extends JPanel{
 		conteneurTitre.add(label);
 		this.add(conteneurTitre);	
 		
+		//Liste des personnages dispo (ligne 2)
 		conteneurPersonnages.setLayout(new GridLayout(1, Util.listePersonnages().size()));
 		for(Personnage personnage : Util.listePersonnages()) {
 			CaseImage panel = new CaseImage(personnage, 80, 80, null);
@@ -68,6 +81,7 @@ public class PanneauActions extends JPanel{
 		}
 		this.add(conteneurPersonnages);
 		
+		//Bouton pour valider son équipe (ligne 3)
 		buttonValider = new MyButton("Valider", Color.LIGHT_GRAY);
 		buttonValider.addActionListener(new Actions(fenetre, Actions.ACTION_VALIDER));
 		buttonValider.setEnabled(false);
@@ -80,6 +94,9 @@ public class PanneauActions extends JPanel{
 		this.repaint();
 	}
 	
+	/**
+	 * Permet d'afficher le panneau correspondant à l'action souhaitée pour le personnage sélectionné
+	 */
 	public void refreshActions() {
 		this.removeAll();
 		
@@ -89,6 +106,7 @@ public class PanneauActions extends JPanel{
 		
 		this.setLayout(new GridLayout(3,1));
 		
+		//Titre (ligne 1) 
 		String htmlHeader = "<html>"
 				  + "<style>"
 				  + "span{"
@@ -103,6 +121,7 @@ public class PanneauActions extends JPanel{
 		conteneurTitre.add(label);
 		this.add(conteneurTitre);
 		
+		//Nos trois boutons d'actions (ligne 2)
 		conteneurActions.setLayout(new GridLayout(1, 3));
 		
 		buttonAttaquer = new MyButton("Attaquer", Color.ORANGE);
@@ -122,41 +141,42 @@ public class PanneauActions extends JPanel{
 		conteneurActions.add(new MyPanel(buttonPasser));
 		this.add(conteneurActions);
 		
+		//JPanel vide pour avoir la même taille que le panneau de sélection (ligne 3)
 		this.add(conteneurVide);
 		this.revalidate();
 		this.repaint();
 	}
 
+	/**
+	 * Getter du bouton d'attaque
+	 * @return le bouton d'attaque
+	 */
 	public JButton getButtonAttaquer() {
 		return buttonAttaquer;
 	}
 
-	public void setButtonAttaquer(JButton buttonAttaquer) {
-		this.buttonAttaquer = buttonAttaquer;
-	}
-
+	/**
+	 * Getter du bouton de déplacement
+	 * @return le bouton de déplacement
+	 */
 	public JButton getButtonDeplacer() {
 		return buttonDeplacer;
 	}
 
-	public void setButtonDeplacer(JButton buttonDeplacer) {
-		this.buttonDeplacer = buttonDeplacer;
-	}
-
+	/**
+	 * Getter du bouton pour valider son équipe
+	 * @return le bouton pour valider son équipe
+	 */
 	public JButton getButtonValider() {
 		return buttonValider;
 	}
-
-	public void setButtonValider(JButton buttonValider) {
-		this.buttonValider = buttonValider;
-	}
 	
+	/**
+	 * Getter du bouton pour passer son tour
+	 * @return le bouton pour passer son tour
+	 */
 	public JButton getButtonPasser() {
 		return buttonPasser;
-	}
-
-	public void setButtonPasser(JButton buttonPasser) {
-		this.buttonPasser = buttonPasser;
 	}
 
 }

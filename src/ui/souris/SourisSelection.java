@@ -53,7 +53,7 @@ public class SourisSelection extends MouseAdapter{
 			previousCase.getPanel().setTransparency(null);
 			previousCase.getPanel().repaint();
 			
-		}else if(equipe.getListePersonnages().size() < Equipe.TAILLE_EQUIPE){
+		}else if(!equipe.isComplete()){
 			System.out.println("Ajout de " + personnage.getNom());
 			caseImage.setTransparency(Util.getGrayTransparency());
 			caseImage.repaint();
@@ -68,7 +68,7 @@ public class SourisSelection extends MouseAdapter{
 			newCase.getPanel().setTransparency(null);
 			newCase.getPanel().repaint();
 		}
-		if(equipe.getListePersonnages().size() >= Equipe.TAILLE_EQUIPE) {
+		if(equipe.isComplete()) {
 			System.out.println("Votre equipe est complete, n'oubliez pas de repositionnez vos personnages.");
 			fenetre.getPanneauActions().getButtonValider().setEnabled(true);
 		}else {

@@ -23,14 +23,23 @@ public class Fenetre extends JFrame {
 	 */
 	private static final long serialVersionUID = 1L;
 	
+	/** Le panneau de jeu où le plateau de jeu est affiché */
 	private PanneauJeu panneauJeu;
+	/** Le panneau d'infos des personnages où s'afficheront les stats du perso au survol */
 	private PanneauInfos panneauInfos;
+	/** Le panneau de logs reprenant les messages de sysout() */ 
 	private PanneauLogs panneauLogs;
+	/** Le panneau d'action ou le joueur pourra choisir parmis les différentes actions disponible */
 	private PanneauActions panneauActions;
+	/** La partie en cours */
 	private Jeu jeu;
 
+	/**
+	 * Constructeur de notre fenetre, initialisant les differents panneaux
+	 * @param jeu La partie en cours
+	 */
 	public Fenetre(Jeu jeu) {
-		this.setJeu(jeu);
+		this.jeu = jeu;
 		
 		//Fenetre
 		this.setTitle("MegaChest");
@@ -121,54 +130,49 @@ public class Fenetre extends JFrame {
 		
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
-	
-	public PanneauJeu getPanneauJeu() {
-		return panneauJeu;
-	}
 
-	public void setPanneauJeu(PanneauJeu panneauJeu) {
-		this.panneauJeu = panneauJeu;
-	}
-
-	public PanneauInfos getPanneauInfos() {
-		return panneauInfos;
-	}
-
-	public void setPanneauInfos(PanneauInfos panneauInfos) {
-		this.panneauInfos = panneauInfos;
-	}
-
-	public PanneauLogs getPanneauLogs() {
-		return panneauLogs;
-	}
-
-	public void setPanneauLogs(PanneauLogs panneauLogs) {
-		this.panneauLogs = panneauLogs;
-	}
-
-	public PanneauActions getPanneauActions() {
-		return panneauActions;
-	}
-
-	public void setPanneauActions(PanneauActions panneauActions) {
-		this.panneauActions = panneauActions;
-	}
-
-	public Jeu getJeu() {
-		return jeu;
-	}
-
-	public void setJeu(Jeu jeu) {
-		this.jeu = jeu;
-	}
-	
-	public void addPanel(JPanel panneau) {
-		this.setContentPane(panneau);
-	}
-	
+	/**
+	 * Permet d'afficher la fenetre en taille maximale
+	 */
 	public void showWindow() {
 		this.setVisible(true);
 		this.setExtendedState(JFrame.MAXIMIZED_BOTH);
 	}
+	
+	
+	///////////////////////
+	// GETTERS & SETTERS //
+	///////////////////////
+	
+	/**
+	 * Getter du panneau de jeu
+	 * @return Le panneau de jeu
+	 */
+	public PanneauJeu getPanneauJeu() {
+		return panneauJeu;
+	}
+	/**
+	 * Getter du panneau d'infos
+	 * @return Le panneau d'infos
+	 */
+	public PanneauInfos getPanneauInfos() {
+		return panneauInfos;
+	}
+	/**
+	 * Getter du panneau d'actions
+	 * @return Le panneau d'actions
+	 */
+	public PanneauActions getPanneauActions() {
+		return panneauActions;
+	}
+	
+	/**
+	 * Getter de la partie en cours
+	 * @return La partie en cours
+	 */
+	public Jeu getJeu() {
+		return jeu;
+	}
+
 
 }

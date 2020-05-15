@@ -6,17 +6,13 @@ import ui.CaseImage;
 public class Case {
 	
 
-	/** coordonnee x */
+	/** coordonnee x (colonne) */
 	private int positionX;
-	
-	/** coordonnee y */
+	/** coordonnee y (ligne) */
 	private int positionY;
-	
-	/** personnage present sur la case
-	 *  par default = null
-	 */
+	/** personnage present sur la case */
 	private Personnage personnage;
-	
+	/** JPanel correspondant aux coordonnées de la cas */
 	private CaseImage panel;
 	
 	/* -------------------------------------------------- */
@@ -41,16 +37,7 @@ public class Case {
 	public int getPositionX() {
 		return positionX;
 	}
-
-	/**
-	 * Setter position x
-	 * 
-	 * @param positionX position x voulu
-	 */
-	public void setPositionX(int positionX) {
-		this.positionX = positionX;
-	}
-
+	
 	/**
 	 * Getter position y
 	 * 
@@ -58,15 +45,6 @@ public class Case {
 	 */
 	public int getPositionY() {
 		return positionY;
-	}
-
-	/**
-	 * Setter position y 
-	 * 
-	 * @param positionY position y voulu
-	 */
-	public void setPositionY(int positionY) {
-		this.positionY = positionY;
 	}
 
 	/**
@@ -87,6 +65,11 @@ public class Case {
 		this.personnage = personnage;
 	}
 	
+	/**
+	 * Permet de set le personnage sur la case ainsi que sur le JPanel correspondant
+	 * @param personnage Le personnage a attribuer a la case
+	 * @param fond La couleur du fond du JPanel correspondant
+	 */
 	public void setPersonnage(Personnage personnage, String fond) {
 		this.personnage = personnage;
 		this.panel.setPersonnage(personnage);
@@ -104,16 +87,17 @@ public class Case {
 	}
 	
 	/**
-	 * 
+	 * Permet de récupérer le JPanel correspondant à la cas
+	 * @return Le JPanel correspondant
 	 */
-	public String dumpCase() {
-		return "(" + (positionX+1) + "," + (positionY+1) + ")";
-	}
-
 	public CaseImage getPanel() {
 		return panel;
 	}
 
+	/**
+	 * Permet de set le JPanel correspondant à la case
+	 * @param panel Le JPanel correspondant
+	 */
 	public void setPanel(CaseImage panel) {
 		this.panel = panel;
 	}

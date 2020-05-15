@@ -8,19 +8,32 @@ import partie.Joueur;
 
 public class Actions implements ActionListener {
 
+	/**
+	 * Les valeurs du flag action permettant de savoir quelle action est désirée
+	 */
 	public static final int ACTION_VALIDER = 1;
 	public static final int ACTION_ATTAQUER = 2;
 	public static final int ACTION_DEPLACER = 3;
 	public static final int ACTION_PASSER_TOUR = 4;
 	
+	/** La fenetre de jeu */
 	private Fenetre fenetre;
+	/** L'action souhaitée */
 	private Integer action;
 	
+	/**
+	 * Constructeur de notre action listener
+	 * @param fenetre La fenetre de jeu
+	 * @param action L'action souhaitée
+	 */
 	public Actions(Fenetre fenetre, Integer action) {
 		this.fenetre = fenetre;
 		this.action = action;
 	}
 	
+	/**
+	 * L'action listener renvoyant sur la bonne fonction suivant l'attribut action
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		switch(this.action) {
@@ -39,28 +52,38 @@ public class Actions implements ActionListener {
 		}
 	}
 	
+	/**
+	 * L'action permettant de valider la composition et le positionnement de son équipe<br>
+	 * Permet aussi de lancer le début de la partie
+	 */
 	private void actionValider() {
 		Jeu jeu = fenetre.getJeu();
 		Joueur joueur1 = jeu.getJoueur1();
 		Joueur joueur2 = jeu.getJoueur2();
+		
 		if(joueur1.getEquipe().isComplete() && joueur2.getEquipe().isComplete()) {
+			//Quand les deux joueurs ont terminé leur équipe
 			joueur1.getEquipe().calculerBonusEquipe();
 			joueur2.getEquipe().calculerBonusEquipe();
 			
 			System.out.println();
 			System.out.println("La partie commence !");
-			
 			jeu.setEtatJeu(Jeu.PHASE_ACTION);
+			
 			jeu.inverseJoueurs();
 			fenetre.getPanneauActions().refreshActions();
 			fenetre.getPanneauJeu().refresh();
 		}else if(jeu.getJoueurActif().getEquipe().isComplete()) {
+			//Quand le second joueur doit compléter et positionner son équipe
 			jeu.inverseJoueurs();
 			fenetre.getPanneauActions().showSelection();
 			fenetre.getPanneauJeu().refresh();
 		}
 	}
 	
+	/**
+	 * L'action permettant de set les différents booleen de jeu aux valeurs pour permettre une attaque
+	 */
 	private void actionAttaquer() {
 		Jeu jeu = fenetre.getJeu();
 		if(!jeu.getAttaqueEffectue() && !jeu.getJetonAttaque()) {
@@ -77,6 +100,9 @@ public class Actions implements ActionListener {
 		}
 	}
 	
+	/**
+	 * L'action permettant de set les différents booleen de jeu aux valeurs pour permettre un déplacement
+	 */
 	private void actionDeplacer() {
 		Jeu jeu = fenetre.getJeu();
 		jeu.setJetonDeplace(!jeu.getJetonDeplace());
@@ -92,17 +118,19 @@ public class Actions implements ActionListener {
 		}
 	}
 	
+	/**
+	 * L'action permettant de terminer son tour et donc de donner la main à l'autre joueur
+	 */
 	private void actionPasser() {
 		Jeu jeu = fenetre.getJeu();
 		jeu.inverseJoueurs();
 		jeu.resetTour();
-		/*fenetre.getPanneauJeu().getCasePersoSelectionne().setTransparency(null);
-		fenetre.getPanneauJeu().getCasePersoSelectionne().getIgnoreRepaint();*/
 		
 		fenetre.getPanneauActions().refreshActions();
 		fenetre.getPanneauJeu().getCasePersoSelectionne().setTransparency(null);
 		fenetre.getPanneauJeu().setSelectionne(null, null);
 		fenetre.getPanneauJeu().refresh();
+		
 		System.out.println();
 		System.out.println("Changement de joueur...");
 	}
