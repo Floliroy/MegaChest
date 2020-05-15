@@ -1,11 +1,5 @@
 package partie;
 
-import java.util.ArrayList;
-
-import personnages.Personnage;
-import util.*;
-
-
 public class Joueur {
 	
 	
