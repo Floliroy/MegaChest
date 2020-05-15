@@ -50,10 +50,18 @@ public class SourisJeu extends MouseAdapter{
         	image.repaint();
         } else if (panneauJeu.getPersonnageSelectionne() != null) {
         	System.out.println(panneauJeu.getPersonnageSelectionne().getNom() + " deplace");
-        	panneauJeu.getJeu().getPlateauJeu().getCase(panneauJeu.getPersonnageSelectionne()).setPersonnage(null);
-        	casePlateau.setPersonnage(panneauJeu.getPersonnageSelectionne());
+        	Case previousCase = panneauJeu.getJeu().getPlateauJeu().getCase(panneauJeu.getPersonnageSelectionne());
+        	previousCase.setPersonnage(null, null);
+			
+        	casePlateau.setPersonnage(panneauJeu.getPersonnageSelectionne(), 
+        			panneauJeu.getJeu().getJoueur1().getEquipe().getListePersonnages().contains(panneauJeu.getPersonnageSelectionne()) ? "bleu.png" : "rouge.png");
         	panneauJeu.setSelectionne(null, null);
-        	panneauJeu.refresh();
+
+			previousCase.getPanel().setTransparency(null);
+        	previousCase.getPanel().repaint();
+        	casePlateau.getPanel().setTransparency(null);
+        	casePlateau.getPanel().repaint();
+        	
         }
         
     }
