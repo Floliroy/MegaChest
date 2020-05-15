@@ -200,7 +200,7 @@ public class Equipe {
 	 * @param personnage
 	 */
 	public void addEquipe(Personnage personnage) {
-		if(/*!isComplete() && */!isDansEquipe(personnage))
+		if(!isComplete() && !isDansEquipe(personnage))
 			listePersonnages.add(personnage);
 	}
 	

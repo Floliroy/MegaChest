@@ -10,12 +10,18 @@ import util.Util;
 
 public class Jeu {
 	
+	public static final int PHASE_SELECTION = 1;
+	public static final int PHASE_ACTION = 2;
+	public static final int PHASE_TERMINE = 3;
+	
+	
 	public static final int NOMBRE_COLONNE_PLACEMENT = 4;
 	
 	
 	private Plateau plateauJeu;
 	private Joueur joueur1;
 	private Joueur joueur2;
+	private int etatJeu;
 	
 	
 	public Joueur getJoueurActif() {
@@ -45,6 +51,7 @@ public class Jeu {
 		plateauJeu = new Plateau();
 		joueur1 = new Joueur(true, "blue");
 		joueur2 = new Joueur(false, "red");
+		etatJeu = PHASE_SELECTION;
 		
 		initialiserPartie();
 	}
@@ -361,5 +368,12 @@ public class Jeu {
 	}
 	public void setJoueur2(Joueur joueur2) {
 		this.joueur2 = joueur2;
+	}
+	public int getEtatJeu() {
+		return etatJeu;
+	}
+
+	public void setEtatJeu(int etatJeu) {
+		this.etatJeu = etatJeu;
 	}
 }

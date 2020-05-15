@@ -49,6 +49,7 @@ public class Actions implements ActionListener {
 			
 			System.out.println("Lancer le Jeu !!!");
 			
+			jeu.setEtatJeu(Jeu.PHASE_ACTION);
 			jeu.inverseJoueurs();
 			fenetre.getPanneauActions().refreshActions();
 			fenetre.getPanneauJeu().refresh();
