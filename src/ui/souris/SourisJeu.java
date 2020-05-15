@@ -33,9 +33,11 @@ public class SourisJeu extends MouseAdapter{
 			fenetre.getPanneauActions().getButtonDeplacer().setEnabled(false);
 		}else {
 			Boolean peutAttaquer = false;
-			for(Case caseAttaquable : jeu.getPlateauJeu().getCasesAPorte(panneauJeu.getPersonnageSelectionne())) {
-				if(!caseAttaquable.isEmpty() && !jeu.getJoueurActif().getEquipe().isDansEquipe(caseAttaquable.getPersonnage())) {
-					peutAttaquer = true;
+			if(panneauJeu.getPersonnageSelectionne().isVivant()) {
+				for(Case caseAttaquable : jeu.getPlateauJeu().getCasesAPorte(panneauJeu.getPersonnageSelectionne())) {
+					if(!caseAttaquable.isEmpty() && !jeu.getJoueurActif().getEquipe().isDansEquipe(caseAttaquable.getPersonnage())) {
+						peutAttaquer = true;
+					}
 				}
 			}
 			Boolean peutDeplacer = panneauJeu.getPersonnageSelectionne().getDeplacementsAvecBoost() > 0;
@@ -45,14 +47,14 @@ public class SourisJeu extends MouseAdapter{
 			}else {
 				fenetre.getPanneauActions().getButtonAttaquer().setEnabled(false);				
 			}
-			if(peutDeplacer) {
+			if(peutDeplacer && panneauJeu.getPersonnageSelectionne().isVivant()) {
 				fenetre.getPanneauActions().getButtonDeplacer().setEnabled(true);
 			}else {
 				fenetre.getPanneauActions().getButtonDeplacer().setEnabled(false);				
 			}
 		}
 		
-		if(jeu.getActionEffectue()) {
+		if(jeu.getActionEffectue() || !panneauJeu.getPersonnageSelectionne().isVivant()) {
 			fenetre.getPanneauActions().getButtonPasser().setEnabled(true);    				
 		}else {
 			fenetre.getPanneauActions().getButtonPasser().setEnabled(false);   
