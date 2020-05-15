@@ -6,7 +6,6 @@ import java.io.PrintStream;
 
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
-import javax.swing.JPanel;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 
 import partie.Jeu;
@@ -103,7 +102,7 @@ public class Fenetre extends JFrame {
 		cons.fill = GridBagConstraints.BOTH;
 		cons.gridwidth = 1;
 		cons.gridheight = 1;
-		cons.weightx = 0.63;
+		cons.weightx = 0.62;
 		cons.weighty = 0.75;
 		add(iFrameJeu,cons);
 
@@ -111,7 +110,7 @@ public class Fenetre extends JFrame {
 		cons.gridx = 1;
 		cons.gridy = 0;
 		cons.gridheight = 1;
-		cons.weightx = 0.37;
+		cons.weightx = 0.38;
 		add(iFrameInfos, cons);
 
 		//Panneau Action (Bas Gauche)

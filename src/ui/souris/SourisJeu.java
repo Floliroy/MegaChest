@@ -73,7 +73,7 @@ public class SourisJeu extends MouseAdapter {
 			}
 		}
 
-		if (jeu.getActionEffectue() || !panneauJeu.getPersonnageSelectionne().isVivant()) {
+		if (jeu.getActionEffectue() || (panneauJeu.getPersonnageSelectionne() != null && !panneauJeu.getPersonnageSelectionne().isVivant())) {
 			fenetre.getPanneauActions().getButtonPasser().setEnabled(true);
 		} else {
 			fenetre.getPanneauActions().getButtonPasser().setEnabled(false);
@@ -161,7 +161,7 @@ public class SourisJeu extends MouseAdapter {
 			fenetre.getPanneauActions().getButtonDeplacer().setEnabled(false);
 			fenetre.getPanneauActions().getButtonPasser().setEnabled(false);
 			System.out.println();
-			System.out.println(jeu.getGagnant().getNom() + ", tu es le gagant !");
+			System.out.println(jeu.getGagnant().getNom() + ", tu es le gagnant !");
 		}
 	}
 
