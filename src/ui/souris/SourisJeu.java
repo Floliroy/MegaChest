@@ -6,6 +6,7 @@ import java.awt.event.MouseEvent;
 import javax.swing.JPanel;
 
 import partie.Jeu;
+import personnages.Personnage;
 import plateau.Case;
 import plateau.Plateau;
 import ui.CaseImage;
@@ -24,6 +25,38 @@ public class SourisJeu extends MouseAdapter{
 		this.casePlateau = casePlateau;
 		this.panel = panel;
 		this.fenetre = fenetre;
+	}
+	
+	private void refreshBoutonsActions(Jeu jeu, PanneauJeu panneauJeu) {
+		if(panneauJeu.getPersonnageSelectionne() == null) {
+			fenetre.getPanneauActions().getButtonAttaquer().setEnabled(false);
+			fenetre.getPanneauActions().getButtonDeplacer().setEnabled(false);
+		}else {
+			Boolean peutAttaquer = false;
+			for(Case caseAttaquable : jeu.getPlateauJeu().getCasesAPorte(panneauJeu.getPersonnageSelectionne())) {
+				if(!caseAttaquable.isEmpty() && !jeu.getJoueurActif().getEquipe().isDansEquipe(caseAttaquable.getPersonnage())) {
+					peutAttaquer = true;
+				}
+			}
+			Boolean peutDeplacer = panneauJeu.getPersonnageSelectionne().getDeplacementsAvecBoost() > 0;
+			
+			if(!jeu.getAttaqueEffectue() && peutAttaquer) {
+				fenetre.getPanneauActions().getButtonAttaquer().setEnabled(true);
+			}else {
+				fenetre.getPanneauActions().getButtonAttaquer().setEnabled(false);				
+			}
+			if(peutDeplacer) {
+				fenetre.getPanneauActions().getButtonDeplacer().setEnabled(true);
+			}else {
+				fenetre.getPanneauActions().getButtonDeplacer().setEnabled(false);				
+			}
+		}
+		
+		if(jeu.getActionEffectue()) {
+			fenetre.getPanneauActions().getButtonPasser().setEnabled(true);    				
+		}else {
+			fenetre.getPanneauActions().getButtonPasser().setEnabled(false);   
+		}
 	}
 	
 	/**
@@ -53,33 +86,85 @@ public class SourisJeu extends MouseAdapter{
 			panneauJeu.setSelectionne(casePlateau.getPersonnage(), (CaseImage) panel);
 			System.out.println(panneauJeu.getPersonnageSelectionne().getNom() + " selectionne");
 			image.setTransparency(Util.getYellowTransparency());
+			
 		}
     		
 	}
 	
-	
+
 	/**
-	 * 	 * @param panneauJeu
+	 * 
+	 * @param panneauJeu
 	 */
-	private void deplacerPersoUI( PanneauJeu panneauJeu) {
-	
-    	Case previousCase = fenetre.getJeu().getPlateauJeu().getCase(panneauJeu.getPersonnageSelectionne());
-    	
-    	/* deplacer() */
-    	if(fenetre.getJeu().getPlateauJeu().deplacerPersonnage(fenetre, previousCase, casePlateau)) {
-        	
-        	casePlateau.getPanel().setTransparency(null);
-        	casePlateau.getPanel().repaint();
-        	
-        	System.out.println(panneauJeu.getPersonnageSelectionne().getNom() + " deplace");
-    	}
-    	
-    	previousCase.getPanel().setTransparency(null);
-    	previousCase.getPanel().repaint();
-    	panneauJeu.setSelectionne(null, null);   
+	private void attaquerPersoUI(PanneauJeu panneauJeu) {
+    	Jeu jeu = fenetre.getJeu();
+		if(!casePlateau.isEmpty() && !jeu.getJoueurActif().getEquipe().isDansEquipe(casePlateau.getPersonnage())) {
+			Personnage attaquant = jeu.getPersonnageJoue();
+			Personnage defenseur = casePlateau.getPersonnage();
+			if(jeu.actionAttaquer(attaquant, defenseur)) {
+				jeu.setActionEffectue(true);
+				jeu.setAttaqueEffectue(true);
+				jeu.setJetonAttaque(false);
+				
+				//On supprime le personnage de son equipe s'il est mort
+				if(!attaquant.isVivant()) {
+					jeu.getJoueurActif().getEquipe().removeEquipe(attaquant);
+					Case casePerso = jeu.getPlateauJeu().getCase(attaquant);
+					casePerso.setPersonnage(null, null);
+					casePerso.getPanel().setTransparency(null);
+					casePerso.getPanel().repaint();
+				}
+				if(!defenseur.isVivant()) {
+					jeu.getJoueurInactif().getEquipe().removeEquipe(defenseur);
+					Case casePerso = jeu.getPlateauJeu().getCase(defenseur);
+					casePerso.setPersonnage(null, null);
+					casePerso.getPanel().setTransparency(null);
+					casePerso.getPanel().repaint();
+				}
+			}
+		}
+		if(jeu.isFini()) {
+			jeu.setEtatJeu(Jeu.PHASE_TERMINE);
+			fenetre.getPanneauActions().getButtonAttaquer().setEnabled(false);
+			fenetre.getPanneauActions().getButtonDeplacer().setEnabled(false);
+			fenetre.getPanneauActions().getButtonPasser().setEnabled(false);
+			System.out.println(jeu.getGagnant().getNom() + ", tu es le gagant !");
+		}
 	}
 	
 	
+	/**
+	 * 	 
+	 * @param panneauJeu
+	 */
+	private void deplacerPersoUI(PanneauJeu panneauJeu) {
+		
+    	Case previousCase = fenetre.getJeu().getPlateauJeu().getCase(panneauJeu.getPersonnageSelectionne());
+    	Jeu jeu = fenetre.getJeu();
+    	
+		if(casePlateau.isEmpty() && fenetre.getJeu().getPersonnageJoue() != null && jeu.getJetonDeplace()
+		   && jeu.getPersonnageJoue().equals(previousCase.getPersonnage())) {
+
+	    	if(fenetre.getJeu().getPlateauJeu().deplacerPersonnage(fenetre, previousCase, casePlateau)) {
+	        	
+	        	casePlateau.getPanel().setTransparency(Util.getYellowTransparency());
+	        	casePlateau.getPanel().repaint();
+	        	
+	        	System.out.println(panneauJeu.getPersonnageSelectionne().getNom() + " deplace");
+		    	
+		    	previousCase.getPanel().setTransparency(null);
+		    	previousCase.getPanel().repaint(); 
+	    	}
+	    	
+	    	jeu.setJetonDeplace(false);
+	    	jeu.setActionEffectue(true);
+		}
+	}
+	
+	/**
+	 * 
+	 * @param panneauJeu
+	 */
 	private void positionnerPersoUI(PanneauJeu panneauJeu) {
 		Case previousCase = fenetre.getJeu().getPlateauJeu().getCase(panneauJeu.getPersonnageSelectionne());
 		
@@ -115,18 +200,20 @@ public class SourisJeu extends MouseAdapter{
 	@Override
     public void mouseClicked(MouseEvent e) {
 		PanneauJeu panneauJeu = fenetre.getPanneauJeu();
+		Jeu jeu = fenetre.getJeu();
 		
-        System.out.println("Case cliquee : " + (casePlateau.getPositionX()+1) + " , " + (casePlateau.getPositionY()+1) 
-       		+ (casePlateau.getPersonnage() != null ? " -> " + casePlateau.getPersonnage().getNom() : ""));
+		/*if(panneauJeu.getPersonnageSelectionne() != null) {
+			System.out.println("En cours : " + panneauJeu.getPersonnageSelectionne().getNom());
+		}*/
         
-		if(!casePlateau.isEmpty()) {
+		if(!casePlateau.isEmpty() && !jeu.getActionEffectue() &&!jeu.getJetonAttaque() && !jeu.getJetonDeplace()) {
         	CaseImage image = (CaseImage) panel;
         	
         	if(casePlateau.getPersonnage().equals(panneauJeu.getPersonnageSelectionne()))
         		deselectPersonnage(image);
         	else 
         		selectPersonnage(image);
-    	
+    		
         	image.repaint();
         	
         } else if (panneauJeu.getPersonnageSelectionne() != null) {
@@ -137,16 +224,24 @@ public class SourisJeu extends MouseAdapter{
 	        		break;
 	        		
 	        	case Jeu.PHASE_ACTION :
-	        		deplacerPersoUI(panneauJeu);
+	        		if(jeu.getJetonAttaque()) {
+	        			attaquerPersoUI(panneauJeu);
+	        		}else if(jeu.getJetonDeplace()) {
+		        		deplacerPersoUI(panneauJeu);
+	        		}
 	        		break;
 	        		
 	        	case Jeu.PHASE_TERMINE :
 	        		break;
 	        }
         }  
+		
+		if(jeu.getEtatJeu() == Jeu.PHASE_ACTION) {
+			refreshBoutonsActions(jeu, panneauJeu);
+		}
         
     }
-	
+
 	@Override
     public void mouseEntered(MouseEvent e) {
 		if(!casePlateau.isEmpty()) 

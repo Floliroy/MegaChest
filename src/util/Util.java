@@ -1,6 +1,7 @@
 package util;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 
 import plateau.Plateau;
@@ -69,6 +70,7 @@ public class Util {
 		allPersonnages.add(new Wukong());
 		allPersonnages.add(new Yasuo());
 		
+		Collections.shuffle(allPersonnages);
 		return allPersonnages;
 	}
 	

@@ -61,15 +61,46 @@ public class Actions implements ActionListener {
 	}
 	
 	private void actionAttaquer() {
-		System.out.println("ATTAQUER");
+		Jeu jeu = fenetre.getJeu();
+		if(!jeu.getAttaqueEffectue() && !jeu.getJetonAttaque()) {
+			jeu.setPersonnageJoue(fenetre.getPanneauJeu().getPersonnageSelectionne());
+			jeu.setJetonAttaque(true);
+			System.out.println("Cliquez sur le personnage a attaquer.");
+		}else {
+			if(!jeu.getActionEffectue()) {
+				jeu.setPersonnageJoue(null);				
+			}
+			jeu.setJetonAttaque(false);
+			System.out.println("Action d'attaque annule.");
+		}
 	}
 	
 	private void actionDeplacer() {
-		System.out.println("DEPLACER");
+		Jeu jeu = fenetre.getJeu();
+		jeu.setJetonDeplace(!jeu.getJetonDeplace());
+		if(jeu.getJetonDeplace()) {
+			jeu.setPersonnageJoue(fenetre.getPanneauJeu().getPersonnageSelectionne());
+			System.out.println("Cliquez sur la case ou vous voulez aller.");
+		}else {
+			if(!jeu.getActionEffectue()) {
+				jeu.setPersonnageJoue(null);
+			}
+			System.out.println("Action de deplacement annule.");
+		}
 	}
 	
 	private void actionPasser() {
-		System.out.println("PASSER");
+		Jeu jeu = fenetre.getJeu();
+		jeu.inverseJoueurs();
+		jeu.resetTour();
+		/*fenetre.getPanneauJeu().getCasePersoSelectionne().setTransparency(null);
+		fenetre.getPanneauJeu().getCasePersoSelectionne().getIgnoreRepaint();*/
+		
+		fenetre.getPanneauActions().refreshActions();
+		fenetre.getPanneauJeu().getCasePersoSelectionne().setTransparency(null);
+		fenetre.getPanneauJeu().setSelectionne(null, null);
+		fenetre.getPanneauJeu().refresh();
+		System.out.println("Changement de joueur...");
 	}
 
 }

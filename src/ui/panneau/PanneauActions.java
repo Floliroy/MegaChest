@@ -31,6 +31,7 @@ public class PanneauActions extends JPanel{
 	private JButton buttonDeplacer;
 	private JButton buttonPasser;
 	
+
 	public PanneauActions(Fenetre fenetre) {
 		this.fenetre = fenetre;
 	}
@@ -103,13 +104,19 @@ public class PanneauActions extends JPanel{
 		this.add(conteneurTitre);
 		
 		conteneurActions.setLayout(new GridLayout(1, 3));
+		
 		buttonAttaquer = new MyButton("Attaquer", Color.ORANGE);
 		buttonAttaquer.addActionListener(new Actions(fenetre, Actions.ACTION_ATTAQUER));
+		buttonAttaquer.setEnabled(false);
+		
 		buttonDeplacer = new MyButton("Deplacer", Color.GREEN);
 		buttonDeplacer.addActionListener(new Actions(fenetre, Actions.ACTION_DEPLACER));
+		buttonDeplacer.setEnabled(false);
+		
 		buttonPasser = new MyButton("Passer Tour", Color.LIGHT_GRAY);
 		buttonPasser.addActionListener(new Actions(fenetre, Actions.ACTION_PASSER_TOUR));
 		buttonPasser.setEnabled(false);
+		
 		conteneurActions.add(new MyPanel(buttonAttaquer));
 		conteneurActions.add(new MyPanel(buttonDeplacer));
 		conteneurActions.add(new MyPanel(buttonPasser));
@@ -136,20 +143,20 @@ public class PanneauActions extends JPanel{
 		this.buttonDeplacer = buttonDeplacer;
 	}
 
-	public JButton getButtonRetour() {
-		return buttonPasser;
-	}
-
-	public void setButtonRetour(JButton buttonRetour) {
-		this.buttonPasser = buttonRetour;
-	}
-
 	public JButton getButtonValider() {
 		return buttonValider;
 	}
 
 	public void setButtonValider(JButton buttonValider) {
 		this.buttonValider = buttonValider;
+	}
+	
+	public JButton getButtonPasser() {
+		return buttonPasser;
+	}
+
+	public void setButtonPasser(JButton buttonPasser) {
+		this.buttonPasser = buttonPasser;
 	}
 
 }

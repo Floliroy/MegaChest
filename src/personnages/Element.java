@@ -6,8 +6,18 @@ package personnages;
  *
  */
 public enum Element {
-	FEU,
-	EAU,
-	TERRE,
-	VENT
+	FEU ("Feu"),
+	EAU ("Eau"),
+	TERRE ("Terre"),
+	VENT ("Vent");
+	
+	private String name = "";
+	
+	Element(String name){
+		this.name = name;
+	}
+	
+	public String toString() {
+		return name;
+	}
 }

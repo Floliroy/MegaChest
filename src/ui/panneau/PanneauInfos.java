@@ -51,6 +51,14 @@ public class PanneauInfos extends JPanel{
 						  + "	font-weight: bold; "
 						  + "	margin-left: 50px; "
 						  + "}"
+						  + ".orange {"
+						  + "	color: orange; "
+						  + "	font-weight: bold; "
+						  + "}"
+						  + ".lime {"
+						  + "	color: lime; "
+						  + "	font-weight: bold; "
+						  + "}"
 						  + "h1 {"
 						  + "	font-size: xx-large; "
 						  + "	text-align: right; "
@@ -70,7 +78,9 @@ public class PanneauInfos extends JPanel{
 				   + " Point de déplacements : <br/>"
 				   + " Point de dégats : <br/>"
 				   + " Portée d'attaque : <br/>"
-				   + " Vitesse d'attaque : <br/></p></html>";
+				   + " Vitesse d'attaque : <br/><br/>"
+				   + " Élément : <br/>"
+				   + " Origine : <br/></p></html>";
 		
 		this.add(new JLabel(listeCaracs),cons);
 
@@ -81,7 +91,9 @@ public class PanneauInfos extends JPanel{
 				+ personnage.getDeplacementsAvecBoost() + "<br/>"
 				+ personnage.getDegatsAvecBoost() + "<br/>"
 				+ personnage.getPorteeAvecBoost() + "<br/>"
-				+ personnage.getVitesseAvecBoost() + "<br/></p></html>";
+				+ personnage.getVitesseAvecBoost() + "<br/><br/>"
+				+ "<span class=\"orange\">" + personnage.getElement() + "</span><br/>"
+				+ "<span class=\"lime\">" + personnage.getOrigine() + "</span><br/></p></html>";
 		
 		this.add(new JLabel(listeValeurs),cons);
 	

@@ -187,11 +187,11 @@ public class Plateau {
 	public boolean deplacerPersonnage(Fenetre fenetre, Case caseDepart, Case caseArrivee) {
 		PanneauJeu panel = fenetre.getPanneauJeu();
 		int distance = Util.distanceCase (caseDepart, caseArrivee.getPositionX(), caseArrivee.getPositionY());
-		int pmPerso = caseDepart.getPersonnage().getDeplacements();
+		int pmPerso = caseDepart.getPersonnage().getDeplacementsAvecBoost();
 	
 		if(distance <= pmPerso) {	
 			placerPersonnage(caseArrivee.getPositionX(), caseArrivee.getPositionY(), caseDepart.getPersonnage());
-			caseDepart.getPersonnage().setDeplacements(pmPerso - distance);
+			caseDepart.getPersonnage().setDeplacements(caseDepart.getPersonnage().getDeplacements() - distance);
 			caseArrivee.setPersonnage(caseDepart.getPersonnage(),
 					fenetre.getJeu().getJoueur1().getEquipe().isDansEquipe(panel.getPersonnageSelectionne()) ? "blue.png" : "red.png");
 			caseDepart.setPersonnage(null,null);
