@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 import partie.Jeu;
 import personnages.Personnage;
+import ui.panneau.PanneauJeu;
+import util.Util;
 
 public class Plateau {
 	
@@ -177,6 +179,31 @@ public class Plateau {
 		/**/
 		caseDepart.setPersonnage(null);
 	}
+	
+	/**
+	 * TODO
+	 */
+	public boolean deplacerPersonnage(PanneauJeu panel, Case caseDepart, Case caseArrivee) {
+		
+		int distance = Util.distanceCase (caseDepart, caseArrivee.getPositionX(), caseArrivee.getPositionY());
+		int pmPerso = caseDepart.getPersonnage().getDeplacements();
+	
+		if(distance <= pmPerso) {	
+			placerPersonnage(caseArrivee.getPositionX(), caseArrivee.getPositionY(), caseDepart.getPersonnage());
+			System.out.println("Distance : " + distance);
+			caseDepart.getPersonnage().setDeplacements(pmPerso - distance);
+			caseArrivee.setPersonnage(caseDepart.getPersonnage(),
+					panel.getJeu().getJoueur1().getEquipe().getListePersonnages().contains(panel.getPersonnageSelectionne()) ? "bleu.png" : "rouge.png");
+			caseDepart.setPersonnage(null,null);
+			return true;
+		}
+		
+		System.out.println("Deplacement impossible");
+		return false;	
+	}
+	
+	
+	
 	
 	/**
 	 * TODO

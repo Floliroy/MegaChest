@@ -56,7 +56,7 @@ public class PanneauJeu extends JPanel {
 				}	
 				
 				panel.setBackground((x + y) % 2 == 0 ? Color.DARK_GRAY : Color.LIGHT_GRAY);
-				panel.addMouseListener(new SourisJeu(casePlateau, panel, this, panneauInfos));
+				panel.addMouseListener(new SourisJeu(jeu.getPlateauJeu(), casePlateau, panel, this, panneauInfos));
 				this.add(panel);		
 				
 
