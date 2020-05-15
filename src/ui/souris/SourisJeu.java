@@ -76,10 +76,8 @@ public class SourisJeu extends MouseAdapter{
     	
     	previousCase.getPanel().setTransparency(null);
     	previousCase.getPanel().repaint();
-    	System.out.println(panneauJeu.getPersonnageSelectionne().getNom() + " deselectionne");
     	panneauJeu.setSelectionne(null, null);   
 	}
-	
 	
 	
 	private void positionnerPersoUI(PanneauJeu panneauJeu) {
@@ -91,26 +89,27 @@ public class SourisJeu extends MouseAdapter{
 								 && ((fenetre.getJeu().getJoueur1().isTour() && casePlateau.getPositionX() < limite) 
 								 || (fenetre.getJeu().getJoueur2().isTour() && casePlateau.getPositionX() >= limite))) {
 			
-			System.out.println(panneauJeu.getPersonnageSelectionne().getNom() + " Positionne ");
 			
 			casePlateau.setPersonnage(previousCase.getPersonnage(),
 					fenetre.getJeu().getJoueur1().getEquipe().isDansEquipe(panneauJeu.getPersonnageSelectionne()) ? "blue.png" : "red.png");
 			casePlateau.getPanel().setTransparency(null);
 			casePlateau.getPanel().repaint();
 			previousCase.setPersonnage(null,null);
+			
+			System.out.println(panneauJeu.getPersonnageSelectionne().getNom() + " positionne");
+		}
+		if(fenetre.getJeu().getJoueur1().isTour() && casePlateau.getPositionX() >= limite) {
+			System.out.println("Vous ne pouvez placer votre personnage que dans les 4 premieres colonnes.");
+		}
+		if(fenetre.getJeu().getJoueur2().isTour() && casePlateau.getPositionX() < limite) {
+			System.out.println("Vous ne pouvez placer votre personnage que dans les 4 dernieres colonnes.");
 		}
 		
 		previousCase.getPanel().setTransparency(null);
     	previousCase.getPanel().repaint();
-    	System.out.println(panneauJeu.getPersonnageSelectionne().getNom() + " Positionne + deselectionne");
     	panneauJeu.setSelectionne(null, null);   
 		
 	}
-	
-	
-
-	
-	
 	
 	
 	@Override
@@ -118,8 +117,7 @@ public class SourisJeu extends MouseAdapter{
 		PanneauJeu panneauJeu = fenetre.getPanneauJeu();
 		
         System.out.println("Case cliquee : " + (casePlateau.getPositionX()+1) + " , " + (casePlateau.getPositionY()+1) 
-       		+ (casePlateau.getPersonnage() != null ? " -> " + casePlateau.getPersonnage().getNom() : "")
-       		+ (casePlateau.getPersonnage() != null ? " -> " + casePlateau.getPersonnage().getDeplacements() : ""));
+       		+ (casePlateau.getPersonnage() != null ? " -> " + casePlateau.getPersonnage().getNom() : ""));
         
 		if(!casePlateau.isEmpty()) {
         	CaseImage image = (CaseImage) panel;

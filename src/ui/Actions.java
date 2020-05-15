@@ -47,7 +47,7 @@ public class Actions implements ActionListener {
 			joueur1.getEquipe().calculerBonusEquipe();
 			joueur2.getEquipe().calculerBonusEquipe();
 			
-			System.out.println("Lancer le Jeu !!!");
+			System.out.println("La partie commence");
 			
 			jeu.setEtatJeu(Jeu.PHASE_ACTION);
 			jeu.inverseJoueurs();

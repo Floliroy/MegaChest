@@ -118,6 +118,8 @@ public class Fenetre extends JFrame {
 		cons.gridy = 1;
 		add(iFrameLogs, cons);
 		
+		
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 	
 	public PanneauJeu getPanneauJeu() {
