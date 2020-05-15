@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import partie.Jeu;
 import personnages.Personnage;
+import ui.Fenetre;
 import ui.panneau.PanneauJeu;
 import util.Util;
 
@@ -183,8 +184,8 @@ public class Plateau {
 	/**
 	 * TODO
 	 */
-	public boolean deplacerPersonnage(PanneauJeu panel, Case caseDepart, Case caseArrivee) {
-		
+	public boolean deplacerPersonnage(Fenetre fenetre, Case caseDepart, Case caseArrivee) {
+		PanneauJeu panel = fenetre.getPanneauJeu();
 		int distance = Util.distanceCase (caseDepart, caseArrivee.getPositionX(), caseArrivee.getPositionY());
 		int pmPerso = caseDepart.getPersonnage().getDeplacements();
 	
@@ -193,7 +194,7 @@ public class Plateau {
 			System.out.println("Distance : " + distance);
 			caseDepart.getPersonnage().setDeplacements(pmPerso - distance);
 			caseArrivee.setPersonnage(caseDepart.getPersonnage(),
-					panel.getJeu().getJoueur1().getEquipe().getListePersonnages().contains(panel.getPersonnageSelectionne()) ? "bleu.png" : "rouge.png");
+					fenetre.getJeu().getJoueur1().getEquipe().getListePersonnages().contains(panel.getPersonnageSelectionne()) ? "bleu.png" : "rouge.png");
 			caseDepart.setPersonnage(null,null);
 			return true;
 		}
@@ -256,7 +257,7 @@ public class Plateau {
 	public Case getFirstCaseRight() {
 		for(Case []ligne : plateau) {
 			for(Case colonne : ligne) {
-				if(colonne.getPositionX() > Plateau.NOMBRE_COLONNE-Jeu.NOMBRE_COLONNE_PLACEMENT && colonne.isEmpty()) {
+				if(colonne.getPositionX() >= Plateau.NOMBRE_COLONNE-Jeu.NOMBRE_COLONNE_PLACEMENT && colonne.isEmpty()) {
 					return colonne;
 				}
 			}

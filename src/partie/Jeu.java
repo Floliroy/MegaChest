@@ -36,6 +36,11 @@ public class Jeu {
 		return null;
 	}
 	
+	public void inverseJoueurs() {
+		joueur1.setTour(!joueur1.isTour());
+		joueur2.setTour(!joueur2.isTour());
+	}
+	
 	public Jeu() {
 		plateauJeu = new Plateau();
 		joueur1 = new Joueur(true);

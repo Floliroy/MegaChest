@@ -10,6 +10,7 @@ import personnages.Personnage;
 import plateau.Case;
 import plateau.Plateau;
 import ui.CaseImage;
+import ui.Fenetre;
 import ui.souris.SourisJeu;
 import util.Util;
 
@@ -20,16 +21,14 @@ public class PanneauJeu extends JPanel {
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	private Jeu jeu;
-	private PanneauInfos panneauInfos;
+	private Fenetre fenetre;
 	private Personnage personnageSelectionne;
 	private CaseImage casePersoSelectionne;
 	
 
 
-	public PanneauJeu(Jeu jeu, PanneauInfos panneauInfos) {
-		this.jeu = jeu;
-		this.panneauInfos = panneauInfos;
+	public PanneauJeu(Fenetre fenetre) {
+		this.fenetre = fenetre;
 		this.setBackground(Color.GRAY);
 	}
 	
@@ -39,6 +38,7 @@ public class PanneauJeu extends JPanel {
 		
 		for(int x=0 ; x<Plateau.NOMBRE_LIGNE ; x++) {
 			for(int y=0 ; y<Plateau.NOMBRE_COLONNE ; y++) {
+				Jeu jeu = fenetre.getJeu();
 				Case casePlateau = jeu.getPlateauJeu().getCase(y, x);
 				
 				CaseImage panel;
@@ -56,7 +56,7 @@ public class PanneauJeu extends JPanel {
 				}	
 				
 				panel.setBackground((x + y) % 2 == 0 ? Color.DARK_GRAY : Color.LIGHT_GRAY);
-				panel.addMouseListener(new SourisJeu(jeu.getPlateauJeu(), casePlateau, panel, this, panneauInfos));
+				panel.addMouseListener(new SourisJeu(casePlateau, panel, fenetre));
 				this.add(panel);		
 				
 
@@ -65,15 +65,6 @@ public class PanneauJeu extends JPanel {
 		}
 		this.revalidate();
 		this.repaint();
-	}
-
-	
-	public Jeu getJeu() {
-		return jeu;
-	}
-
-	public void setJeu(Jeu jeu) {
-		this.jeu = jeu;
 	}
 
 	public Personnage getPersonnageSelectionne() {

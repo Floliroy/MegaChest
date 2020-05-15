@@ -9,34 +9,34 @@ import personnages.Personnage;
 import plateau.Case;
 import plateau.Plateau;
 import ui.CaseImage;
+import ui.Fenetre;
 import ui.panneau.PanneauInfos;
 import ui.panneau.PanneauJeu;
 import util.Util;
 
 public class SourisJeu extends MouseAdapter{
 	
-	private Plateau plateauJeu;
 	private Case casePlateau;
-	private PanneauInfos panneauInfos;
-	private PanneauJeu panneauJeu;
 	private JPanel panel;
+	private Fenetre fenetre;
 	
-	public SourisJeu(Plateau plateauJeu, Case casePlateau, JPanel panel, PanneauJeu panneauJeu, PanneauInfos panneauInfos) {
-		this.plateauJeu = plateauJeu;
+
+	public SourisJeu(Case casePlateau, JPanel panel, Fenetre fenetre) {
 		this.casePlateau = casePlateau;
-		this.panneauInfos = panneauInfos;
-		this.panneauJeu = panneauJeu;
 		this.panel = panel;
+		this.fenetre = fenetre;
 	}
 	
 	
 	private void selectPersonnage(CaseImage image) {	
-    	System.out.println(panneauJeu.getPersonnageSelectionne().getNom() + " deselectionne");
+    	PanneauJeu panneauJeu = fenetre.getPanneauJeu();
+		System.out.println(panneauJeu.getPersonnageSelectionne().getNom() + " deselectionne");
     	panneauJeu.setSelectionne(null, null);
     	image.setTransparency(null);
 	}
 	
 	private void deselectPersonnage(CaseImage image) {
+    	PanneauJeu panneauJeu = fenetre.getPanneauJeu();
 		if(panneauJeu.getCasePersoSelectionne() != null) {
     		panneauJeu.getCasePersoSelectionne().setTransparency(null);
     		panneauJeu.getCasePersoSelectionne().repaint();
@@ -52,11 +52,11 @@ public class SourisJeu extends MouseAdapter{
 	
 	@Override
     public void mouseClicked(MouseEvent e) {
-		
+
+    	PanneauJeu panneauJeu = fenetre.getPanneauJeu();
         System.out.println("Case cliquee : " + (casePlateau.getPositionX()+1) + " , " + (casePlateau.getPositionY()+1) 
        		+ (casePlateau.getPersonnage() != null ? " -> " + casePlateau.getPersonnage().getNom() : "")
        		+ (casePlateau.getPersonnage() != null ? " -> " + casePlateau.getPersonnage().getDeplacements() : ""));
-        
     	
 		if(!casePlateau.isEmpty()) {
         	CaseImage image = (CaseImage) panel;
@@ -71,9 +71,9 @@ public class SourisJeu extends MouseAdapter{
         } else if (panneauJeu.getPersonnageSelectionne() != null) {
         	
         	
-        	Case previousCase = panneauJeu.getJeu().getPlateauJeu().getCase(panneauJeu.getPersonnageSelectionne());
+        	Case previousCase = fenetre.getJeu().getPlateauJeu().getCase(panneauJeu.getPersonnageSelectionne());
         	
-        	if(plateauJeu.deplacerPersonnage(panneauJeu, previousCase, casePlateau)) {
+        	if(fenetre.getJeu().getPlateauJeu().deplacerPersonnage(fenetre, previousCase, casePlateau)) {
             	
             	casePlateau.getPanel().setTransparency(null);
             	casePlateau.getPanel().repaint();
@@ -95,12 +95,12 @@ public class SourisJeu extends MouseAdapter{
 	@Override
     public void mouseEntered(MouseEvent e) {
 		if(casePlateau.getPersonnage() != null) 
-			panneauInfos.refresh(casePlateau.getPersonnage());
+			fenetre.getPanneauInfos().refresh(casePlateau.getPersonnage());
     }
 	
 	@Override
     public void mouseExited(MouseEvent e) {
-		panneauInfos.refresh();
+		fenetre.getPanneauInfos().refresh();
     }
 
 	public Case getCasePlateau() {
