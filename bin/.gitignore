@@ -1,3 +1,5 @@
 /sauvegarde.json
 /.gitignore
 /persistance/
+/plateau/
+/personnages/

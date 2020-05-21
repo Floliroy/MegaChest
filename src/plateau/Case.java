@@ -1,5 +1,7 @@
 package plateau;
 
+import com.google.gson.annotations.Expose;
+
 import personnages.Personnage;
 import ui.CaseImage;
 
@@ -7,14 +9,17 @@ public class Case {
 	
 
 	/** coordonnee x */
+	@Expose
 	private int positionX;
 	
 	/** coordonnee y */
+	@Expose
 	private int positionY;
 	
 	/** personnage present sur la case
 	 *  par default = null
 	 */
+	@Expose
 	private Personnage personnage;
 	
 	private CaseImage panel;

@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import com.google.gson.annotations.Expose;
+
 import objets.Objet;
 import objets.TypeStat;
 
@@ -20,42 +22,55 @@ public abstract class Personnage {
 	///////////////
 	
 	/** Le nom du personnage */
+	@Expose
 	private String nom;
 	
 	/** La sant� du personnage */
+	@Expose
 	private Integer vie;
 	
 	/** Le vie maximale du personnage */
+	@Expose
 	private Integer vieBase;
 	
 	/** Les points de déplacement du personnage */
+	@Expose
 	private Integer deplacements;
 	
 	/** Les points de déplacement de base du personnage */
+	@Expose
 	private Integer deplacementsBase;
 	
 	/** Les dégâts du personnage */
+	@Expose
 	private Integer degats;
 	
 	/** La portée d'attaque du personnage */
+	@Expose
 	private Integer portee;
 	
 	/** La vitesse d'attaque du personnage */
+	@Expose
 	private Integer vitesse;
 	
 	/** L'element du personnage */
+	@Expose
 	private Element element;
 	
 	/** L'origine du personnage */
+	@Expose
 	private Origine origine;
 	
 	/** Les bonus en fonction de l'equipe du personnage, calculer grace a son element et son origine */
+	@Expose
 	private HashMap<TypeStat, Integer> bonusEquipe;
 	
 	/** Le chemin de l'image de l'icone du personnage */
+	@Expose
 	private String cheminImage;
 	
 	/** La liste d'objets équipés */
+	@Expose
 	private List<Objet> listObjets;
 	
 	//////////////////
