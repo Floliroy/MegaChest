@@ -62,7 +62,7 @@ public abstract class Personnage {
 	private Origine origine;
 	
 	/** Les bonus en fonction de l'equipe du personnage, calculer grace a son element et son origine */
-	//@Expose
+	@Expose
 	private HashMap<TypeStat, Integer> bonusEquipe;
 	
 	/** Le chemin de l'image de l'icone du personnage */
@@ -70,7 +70,7 @@ public abstract class Personnage {
 	private String cheminImage;
 	
 	/** La liste d'objets équipés */
-	//@Expose
+	@Expose
 	private List<Objet> listObjets;
 	
 	//////////////////

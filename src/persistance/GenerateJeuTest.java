@@ -1,7 +1,7 @@
 package persistance;
 
 import java.util.ArrayList;
-
+import java.util.Random;
 
 import partie.Equipe;
 import partie.Jeu;
@@ -13,11 +13,18 @@ import util.Util;
 
 public class GenerateJeuTest {
 	
+	private static final int NOMBRE_PERSO = 4;
+	
 	private void generateEquipe(Equipe equipe) {
 		ArrayList<Personnage> listPerso = Util.listePersonnages();
+		Personnage perso = null;
+		Random rand = new Random();
 		
-		for(int i = 0; i < 3; i++) {
-			Personnage perso = listPerso.get(i);
+		for(int i = 0; i < NOMBRE_PERSO; i++) {
+			do {
+				perso = listPerso.get(rand.nextInt(listPerso.size()));
+			} while(equipe.isDansEquipe(perso));
+			
 			System.out.println("Ajout de " + perso.getNom());
 			equipe.addEquipe(perso);
 		}
@@ -26,7 +33,7 @@ public class GenerateJeuTest {
 	
 	private void positionnerEquipe(Joueur joueur, Plateau plateau, int colonne) {
 		
-		for(int i = 0; i < 3; i ++) {
+		for(int i = 0; i < NOMBRE_PERSO; i ++) {
 			Personnage perso = joueur.getEquipe().getListePersonnages().get(i);
 			Case current = plateau.getCase(i, colonne);
 			System.out.println(perso.getNom() + " est sur la case " + current.dumpCase());
@@ -38,6 +45,9 @@ public class GenerateJeuTest {
 
 	public  Jeu GenerateTest() {
 		Jeu partie = new Jeu();
+		partie.getJoueur1().setNom("Joueur1");
+		partie.getJoueur2().setNom("Joueur2");
+		
 		System.out.println("Generation Equipe Joueur 1");
 		generateEquipe(partie.getJoueur1().getEquipe());
 		System.out.println("Generation Equipe Joueur 2");

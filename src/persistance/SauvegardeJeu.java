@@ -3,27 +3,33 @@ package persistance;
 import java.util.ArrayList;
 
 import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.JsonAdapter;
+
 
 import partie.Jeu;
-import persistance.customDeserialize.CaseDeserialize;
+
 import plateau.*;
 import personnages.*;
 
 
-public class SerilisationJson {
+public class SauvegardeJeu {
 	
 	private Jeu partie;
 	@Expose
 	private ArrayList<Case> equipeJoueur1;
 	@Expose
 	private ArrayList<Case> equipeJoueur2;
+	@Expose
+	private String nomJoueur1;
+	@Expose
+	private String nomJoueur2;
 
 	
-	public SerilisationJson(Jeu partie) {
+	public SauvegardeJeu(Jeu partie) {
 		this.partie = partie;
 		equipeJoueur1 = new ArrayList<Case>();
 		equipeJoueur2 = new ArrayList<Case> ();
+		nomJoueur1 = partie.getJoueur1().getNom();
+		nomJoueur2 = partie.getJoueur2().getNom();
 	}
 	
 	
@@ -34,7 +40,6 @@ public class SerilisationJson {
 		else
 			equipeJoueur2.add(current);
 	}
-	
 	
 	
 	public void sauvegardePersonnage(){
@@ -59,18 +64,27 @@ public class SerilisationJson {
 		return equipeJoueur2;
 	}
 
-	
 
-	public void dumpString() {
-		equipeJoueur2.forEach( (cp) -> {
-			System.out.println(  cp.dumpCase());
-		});
-		equipeJoueur2.forEach( (cp) -> {
-			System.out.println(  cp.dumpCase());
-		});
+	public String getNomJoueur1() {
+		return nomJoueur1;
+	}
 
+
+	public String getNomJoueur2() {
+		return nomJoueur2;
+	}
+
+
+	public void dumpEquipeJoueur() {
+		System.out.println(nomJoueur1);
+		equipeJoueur1.forEach( (cp) -> {
+			System.out.println(  cp.dumpCase() + " : " + cp.getPersonnage().getNom());
+		});
 		
-
+		System.out.println(nomJoueur2);
+		equipeJoueur2.forEach( (cp) -> {
+			System.out.println(  cp.dumpCase() + " : " + cp.getPersonnage().getNom());
+		});
 	}
 	
 
