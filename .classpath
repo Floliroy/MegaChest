@@ -2,14 +2,11 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="backup"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER">
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-13">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="E:/work_space/java_lib/jackson-annotations-2.11.0.jar"/>
-	<classpathentry kind="lib" path="E:/work_space/java_lib/jackson-core-2.11.0.jar"/>
-	<classpathentry kind="lib" path="E:/work_space/java_lib/jackson-databind-2.11.0.jar"/>
-	<classpathentry kind="lib" path="E:/work_space/java_lib/gson-2.6.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/stri/Documents/L3_IRT/Projet/java-lib/gson-2.6.2.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

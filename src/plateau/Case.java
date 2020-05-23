@@ -1,10 +1,12 @@
 package plateau;
 
 import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.JsonAdapter;
 
+import persistance.customDeserialize.CaseDeserialize;
 import personnages.Personnage;
 import ui.CaseImage;
-
+@JsonAdapter(CaseDeserialize.class)
 public class Case {
 	
 

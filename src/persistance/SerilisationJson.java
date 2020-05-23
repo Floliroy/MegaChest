@@ -1,20 +1,25 @@
 package persistance;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
+
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.JsonAdapter;
 
 import partie.Jeu;
+import persistance.customDeserialize.CaseDeserialize;
 import plateau.*;
 import personnages.*;
+
 
 public class SerilisationJson {
 	
 	private Jeu partie;
+	@Expose
 	private ArrayList<Case> equipeJoueur1;
+	@Expose
 	private ArrayList<Case> equipeJoueur2;
 
-
+	
 	public SerilisationJson(Jeu partie) {
 		this.partie = partie;
 		equipeJoueur1 = new ArrayList<Case>();
@@ -54,13 +59,14 @@ public class SerilisationJson {
 		return equipeJoueur2;
 	}
 
+	
 
 	public void dumpString() {
 		equipeJoueur2.forEach( (cp) -> {
-			System.out.println(  cp.dumpCase() + " : " + cp.getPersonnage().getNom());
+			System.out.println(  cp.dumpCase());
 		});
 		equipeJoueur2.forEach( (cp) -> {
-			System.out.println(  cp.dumpCase() + " : " + cp.getPersonnage().getNom());
+			System.out.println(  cp.dumpCase());
 		});
 
 		

@@ -1,13 +1,12 @@
 package persistance;
 
-
-
-import java.util.ArrayList;
-
 import com.google.gson.*;
 
 import partie.Jeu;
+import persistance.customDeserialize.CaseDeserialize;
+import personnages.Ahri;
 import plateau.Case;
+
 
 
 
@@ -26,14 +25,23 @@ public class TestGson {
 		SerilisationJson seri = new SerilisationJson(partie);
 		
 		seri.sauvegardePersonnage();
-		seri.dumpString();
+		//seri.dumpString();
 		
 	
-		String json = gson.toJson(seri.getEquipeJoueur1());
 		
+		Case ca = new Case(0,0);
+		ca.setPersonnage(new Ahri());
+		String json = gson.toJson(ca);
 		
-
+		GsonBuilder reader = new GsonBuilder().excludeFieldsWithoutExposeAnnotation();
+		JsonDeserializer<Case> deserializer = new CaseDeserialize();
+		reader.registerTypeAdapter(Case.class, deserializer);
+		Gson test = builder.setPrettyPrinting().create();
+		
 		System.out.println(json);
+		Case output = test.fromJson(json, Case.class);
+		output.dumpCase();
+		
 		
 	}
 
