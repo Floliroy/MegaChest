@@ -1,5 +1,7 @@
 package objets;
 
+import com.google.gson.annotations.Expose;
+
 public abstract class Objet {
 	
 	/** Valeur de la statistique de l'objet */
@@ -9,6 +11,7 @@ public abstract class Objet {
 	private TypeStat typeStat;
 	
 	/** Le nom de l'objet */
+	@Expose
 	private String nom;
 	
 	/** Le chemin de l'image de l'icone de l'objet */

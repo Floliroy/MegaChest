@@ -9,7 +9,7 @@ import java.io.Writer;
 
 import com.google.gson.*;
 
-
+import objets.Bottes;
 import partie.Jeu;
 import persistance.customDeserialize.CaseDeserialize;
 import plateau.Case;
@@ -33,8 +33,10 @@ public class TestGson {
 		Jeu partie = new GenerateJeuTest().GenerateTest();
 		
 		SauvegardeJeu seri = new SauvegardeJeu(partie);
-		
+		partie.getJoueur1().getEquipe().getListePersonnages().get(0).addListObjets(new Bottes());
+		partie.getJoueur1().getEquipe().getListePersonnages().get(0).addListObjets(new Bottes());
 		seri.sauvegardePersonnage();
+		
 		
 		try {
 			Writer writer = new FileWriter("./backup/sauvegarde.json");
@@ -67,7 +69,7 @@ public class TestGson {
 			System.out.println("Reading file");
 			SauvegardeJeu relecture = testreader.fromJson(str, SauvegardeJeu.class);
 			
-			System.out.println(partie.getJoueur1().getEquipe().isComplete());
+			
 			RestoreJeu.Restore(partie, relecture);
 			Fenetre fenetre = new Fenetre(partie);
 			PopUpStart popup = new PopUpStart(fenetre, partie);

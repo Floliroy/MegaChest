@@ -33,7 +33,7 @@ public class GenerateJeuTest {
 	
 	private void positionnerEquipe(Joueur joueur, Plateau plateau, int colonne) {
 		
-		for(int i = 0; i < NOMBRE_PERSO; i ++) {
+		for(int i = 0; i < joueur.getEquipe().getListePersonnages().size(); i ++) {
 			Personnage perso = joueur.getEquipe().getListePersonnages().get(i);
 			Case current = plateau.getCase(colonne, i);
 			current.setPersonnage(perso);

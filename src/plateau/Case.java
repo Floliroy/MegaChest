@@ -6,10 +6,6 @@ import ui.CaseImage;
 
 public class Case {
 	
-
-
-	
-
 	/** coordonnee x (colonne) */
 	@Expose
 	private int positionX;

@@ -13,13 +13,8 @@ import plateau.Case;
 
 public class Util {
 	
-	/**
-	 * Permet d'obtenir un Objet aléatoire parmis ceux existant
-	 * 
-	 * @return Un objet aléatoire
-	 */
-	public static Objet getRandomObjet() {
-		
+	
+	public static ArrayList<Objet> listeObjet(){
 		ArrayList<Objet> allObjets = new ArrayList<>();
 		
 		allObjets.add(new ArcCourbe());
@@ -28,6 +23,17 @@ public class Util {
 		allObjets.add(new CeintureGeant());
 		allObjets.add(new Zele());
 		
+		return allObjets;
+	}
+	
+	/**
+	 * Permet d'obtenir un Objet aléatoire parmis ceux existant
+	 * 
+	 * @return Un objet aléatoire
+	 */
+	public static Objet getRandomObjet() {
+		
+		ArrayList<Objet> allObjets = Util.listeObjet();
 		Collections.shuffle(allObjets);
 		return allObjets.get(0);
 	}
