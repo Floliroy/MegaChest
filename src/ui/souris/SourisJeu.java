@@ -5,6 +5,7 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.JPanel;
 
+import partie.Equipe;
 import partie.Jeu;
 import partie.Joueur;
 import personnages.Personnage;
@@ -148,7 +149,7 @@ public class SourisJeu extends MouseAdapter {
 					casePerso.getPanel().setTransparency(null);
 					casePerso.getPanel().repaint();
 					
-					if(!jeu.isFini() /*&& jeu.getJoueurActif().getEquipe().getListePersonnages().size() % 2 == 0*/ /*Equipe.TAILLE_EQUIPE % 2*/) {
+					if(!jeu.isFini() && jeu.getJoueurActif().getEquipe().getListePersonnages().size() % 2 == Equipe.TAILLE_EQUIPE % 2) {
 						joueurEquipement = jeu.getJoueurInactif();
 						jeu.setJetonEquipement(jeu.getJetonEquipement()+1);
 					}
@@ -160,7 +161,7 @@ public class SourisJeu extends MouseAdapter {
 					casePerso.getPanel().setTransparency(null);
 					casePerso.getPanel().repaint();
 					
-					if(!jeu.isFini() /*&& jeu.getJoueurInactif().getEquipe().getListePersonnages().size() % 2 == 0*/ /*Equipe.TAILLE_EQUIPE % 2*/) {
+					if(!jeu.isFini() && jeu.getJoueurInactif().getEquipe().getListePersonnages().size() % 2 == Equipe.TAILLE_EQUIPE % 2) {
 						joueurEquipement = jeu.getJoueurActif();
 						jeu.setJetonEquipement(jeu.getJetonEquipement()+1);
 					}
