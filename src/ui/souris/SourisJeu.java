@@ -5,6 +5,7 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.JPanel;
 
+import partie.Equipe;
 import partie.Jeu;
 import personnages.Personnage;
 import plateau.Case;
@@ -45,7 +46,7 @@ public class SourisJeu extends MouseAdapter {
 	 * @param jeu 
 	 * @param panneauJeu
 	 */
-	private void refreshBoutonsActions(Jeu jeu, PanneauJeu panneauJeu) {
+	public static void refreshBoutonsActions(Fenetre fenetre, Jeu jeu, PanneauJeu panneauJeu) {
 		if (panneauJeu.getPersonnageSelectionne() == null) {
 			fenetre.getPanneauActions().getButtonAttaquer().setEnabled(false);
 			fenetre.getPanneauActions().getButtonDeplacer().setEnabled(false);
@@ -145,6 +146,10 @@ public class SourisJeu extends MouseAdapter {
 					casePerso.setPersonnage(null, null);
 					casePerso.getPanel().setTransparency(null);
 					casePerso.getPanel().repaint();
+					
+					if(!jeu.isFini() && jeu.getJoueurActif().getEquipe().getListePersonnages().size() % 2 == Equipe.TAILLE_EQUIPE % 2) {
+						fenetre.getPanneauActions().showChoixObjet(jeu.getJoueurInactif());
+					}
 				}
 				if (!defenseur.isVivant()) {
 					jeu.getJoueurInactif().getEquipe().removeEquipe(defenseur);
@@ -152,6 +157,10 @@ public class SourisJeu extends MouseAdapter {
 					casePerso.setPersonnage(null, null);
 					casePerso.getPanel().setTransparency(null);
 					casePerso.getPanel().repaint();
+					
+					if(!jeu.isFini() && jeu.getJoueurInactif().getEquipe().getListePersonnages().size() % 2 == Equipe.TAILLE_EQUIPE % 2) {
+						fenetre.getPanneauActions().showChoixObjet(jeu.getJoueurActif());
+					}
 				}
 			}
 		}
@@ -273,7 +282,7 @@ public class SourisJeu extends MouseAdapter {
 		}
 
 		if (jeu.getEtatJeu() == Jeu.PHASE_ACTION) {
-			refreshBoutonsActions(jeu, panneauJeu);
+			refreshBoutonsActions(fenetre, jeu, panneauJeu);
 		}
 
 	}

@@ -134,7 +134,7 @@ public class Jeu {
 		Boolean defenseurPeutAttaquer = plateauJeu.getCasesAPorte(defenseur).contains(plateauJeu.getCase(attaquant));
 		
 		//Si l'attaquant attaque en premier
-		if(attaquant.getVitesseAvecBoost() > defenseur.getVitesseAvecBoost()) {
+		if(attaquant.getVitesseAvecBoost() >= defenseur.getVitesseAvecBoost()) {
 			attaquant.attaque(defenseur);
 			defenseur.imprimeEtat();
 			if(defenseur.isVivant() && defenseurPeutAttaquer) {
@@ -154,14 +154,18 @@ public class Jeu {
 			}
 			
 		//Si les deux attaques en même temps
-		}else {
+		}/*else {
+		
+			Cette partie du code est commentée pour éviter le cas où les deux joueurs looterai un objet en même temps.
+			TODO : Gérer ce cas avec un jeton ou je sais pas comment ...
+		
 			attaquant.attaque(defenseur);
 			defenseur.imprimeEtat();
 			if(defenseurPeutAttaquer) {
 				defenseur.attaque(attaquant);
 				attaquant.imprimeEtat();
 			}
-		}
+		}*/
 		
 		return true;
 	}

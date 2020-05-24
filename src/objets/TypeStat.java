@@ -7,10 +7,20 @@ package objets;
  */
 public enum TypeStat {
 	
-	VIE,
-	DEPLACEMENTS,
-	DEGATS,
-	PORTEE,
-	VITESSE,
+	VIE ("PV"),
+	DEPLACEMENTS("PM"),
+	DEGATS("Dmg"),
+	PORTEE("PO"),
+	VITESSE("Vit");
+	
+	private String name = "";
+	
+	TypeStat(String name){
+		this.name = name;
+	}
+	
+	public String toString() {
+		return name;
+	}
 
 }

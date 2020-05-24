@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 
+import objets.ArcCourbe;
+import objets.*;
 import personnages.*;
 
 import plateau.Case;
@@ -12,13 +14,32 @@ import plateau.Case;
 public class Util {
 	
 	/**
+	 * Permet d'obtenir un Objet aléatoire parmis ceux existant
+	 * 
+	 * @return Un objet aléatoire
+	 */
+	public static Objet getRandomObjet() {
+		
+		ArrayList<Objet> allObjets = new ArrayList<>();
+		
+		allObjets.add(new ArcCourbe());
+		allObjets.add(new BFGlaive());
+		allObjets.add(new Bottes());
+		allObjets.add(new CeintureGeant());
+		allObjets.add(new Zele());
+		
+		Collections.shuffle(allObjets);
+		return allObjets.get(0);
+	}
+	
+	/**
 	 * Permet d'obtenir une ArrayList contenant tous les personnages disponibles.
 	 * 
 	 * @return ArrayList<Personnage> qui contient tous les personnages
 	 */
 	public static ArrayList<Personnage> listePersonnages(){
 		
-		ArrayList<Personnage> allPersonnages = new ArrayList<Personnage>();
+		ArrayList<Personnage> allPersonnages = new ArrayList<>();
 		
 		allPersonnages.add(new Ahri());
 		allPersonnages.add(new Fizz());

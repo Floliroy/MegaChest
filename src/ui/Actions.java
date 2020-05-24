@@ -3,8 +3,12 @@ package ui;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import objets.Objet;
 import partie.Jeu;
 import partie.Joueur;
+import personnages.Personnage;
+import ui.panneau.PanneauActions;
+import ui.souris.SourisJeu;
 
 public class Actions implements ActionListener {
 
@@ -15,6 +19,7 @@ public class Actions implements ActionListener {
 	public static final int ACTION_ATTAQUER = 2;
 	public static final int ACTION_DEPLACER = 3;
 	public static final int ACTION_PASSER_TOUR = 4;
+	public static final int ACTION_EQUIPER = 5;
 	
 	/** La fenetre de jeu */
 	private Fenetre fenetre;
@@ -49,9 +54,13 @@ public class Actions implements ActionListener {
 		case ACTION_PASSER_TOUR :
 			actionPasser();
 			break;
+		case ACTION_EQUIPER :
+			actionEquiper();
+			break;
 		}
 	}
 	
+
 	/**
 	 * L'action permettant de valider la composition et le positionnement de son équipe<br>
 	 * Permet aussi de lancer le début de la partie
@@ -133,6 +142,23 @@ public class Actions implements ActionListener {
 		
 		System.out.println();
 		System.out.println("Changement de joueur...");
+	}
+	
+	/**
+	 * L'action permettant de valider le choix d'equiper un objet sur un personnage
+	 */
+	private void actionEquiper() {
+		PanneauActions panneauActions = fenetre.getPanneauActions();
+		
+		Personnage perso = panneauActions.getPersoSelectionne();
+		Objet objet = panneauActions.getObjetLoot();
+		perso.addListObjets(objet);
+		
+		panneauActions.refreshActions();
+		SourisJeu.refreshBoutonsActions(fenetre, fenetre.getJeu(), fenetre.getPanneauJeu());
+		fenetre.getJeu().getPlateauJeu().getCase(perso).getPanel().repaint();
+		
+		System.out.println(perso.getNom() + " a recu " + objet.getNom());
 	}
 
 }
