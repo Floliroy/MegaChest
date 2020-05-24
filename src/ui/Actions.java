@@ -8,7 +8,7 @@ import objets.Objet;
 import partie.Jeu;
 import partie.Joueur;
 
-import persistance.RestoreJeu;
+
 import util.FileManager;
 
 import personnages.Personnage;

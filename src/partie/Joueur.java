@@ -1,11 +1,8 @@
 package partie;
 
-import java.util.ArrayList;
 
 import com.google.gson.annotations.Expose;
 
-import personnages.Personnage;
-import util.*;
 
 
 public class Joueur {

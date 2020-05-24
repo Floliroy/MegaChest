@@ -233,10 +233,4 @@ public class Equipe {
 		listePersonnages.remove(personnage);
 	}
 
-	public ArrayList<Personnage> getListePersonnages() {
-		return listePersonnages;
-	}
-	
-	
-	
 }
