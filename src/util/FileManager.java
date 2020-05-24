@@ -20,7 +20,7 @@ import plateau.Case;
 
 public class FileManager {
 	
-	private final static String SAVE = "./backup/sauvegarde.json";
+	public final static String SAVE = "./backup/sauvegarde.json";
 
 	public void writeSauvegarde(Jeu partie) throws IOException {
 		

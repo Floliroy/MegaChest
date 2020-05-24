@@ -1,3 +1,9 @@
+/ui/
 /persistance/
+/util/
 /sauvegarde.json
+<<<<<<< HEAD
 /plateau/
+=======
+/partie/
+>>>>>>> branch 'dev' of https://github.com/Floliroy/MegaChest.git
