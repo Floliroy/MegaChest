@@ -118,16 +118,20 @@ public class Plateau {
 		ArrayList<Case> casesAPorte = new ArrayList<Case>();
 		Case positionCible = null;
 		Personnage cible = null;
+		int decalage = 0;
 		
 		int poPerso = personnage.getPorteeAvecBoost();
 		Case positionPersonnage = getCase(personnage);
-		int positionPersonnageX = positionPersonnage.getPositionX();
-		int positionPersonnageY = positionPersonnage.getPositionY();
+		int positionX = positionPersonnage.getPositionX();
+		int positionY = positionPersonnage.getPositionY();
 
-		for(int ligne = positionPersonnageY - poPerso; ligne <= positionPersonnageY + poPerso; ligne ++) {
-			for(int colonne = positionPersonnageX - poPerso; colonne <= positionPersonnageX + poPerso; colonne ++)
-				if((positionCible = getCase(colonne, ligne)) != null  && (cible = positionCible.getPersonnage()) != null && !cible.equals(personnage))
-					casesAPorte.add(positionCible);
+		
+		for(int ligne = positionY - poPerso; ligne <= positionY + poPerso; ligne ++) {
+			for(int colonne = positionX - decalage; colonne <= positionX + decalage; colonne ++)
+				if((positionCible = getCase(colonne, ligne)) != null  && 
+						   (cible = positionCible.getPersonnage()) != null &&  !cible.equals(personnage))
+							casesAPorte.add(positionCible);				
+			decalage = ligne < positionY ? decalage + 1 : decalage - 1;
 		}
 		return casesAPorte;
 	}
