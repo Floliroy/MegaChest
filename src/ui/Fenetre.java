@@ -109,19 +109,16 @@ public class Fenetre extends JFrame {
 		//Panneau Infos (Haut Droite)
 		cons.gridx = 1;
 		cons.gridy = 0;
-		cons.gridheight = 1;
 		cons.weightx = 0.38;
 		add(iFrameInfos, cons);
 
 		//Panneau Action (Bas Gauche)
 		cons.gridx = 0;
 		cons.gridy = 1;
-		cons.gridwidth = 1;
 		cons.weighty = 0.25;
 		add(iFrameActions, cons);
 
 		//Panneau Logs (Bas Droite)
-		cons.gridwidth = 1;
 		cons.gridx = 1;
 		cons.gridy = 1;
 		add(iFrameLogs, cons);

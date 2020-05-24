@@ -11,7 +11,7 @@ import personnages.Personnage;
 public class Equipe {
 	
 	/** Taille de l'équipe au début de la partie */
-	public static final int TAILLE_EQUIPE = 2;
+	public static final int TAILLE_EQUIPE = 3;
 	
 	/* -------------------------------------------------- */
 	
@@ -208,6 +208,14 @@ public class Equipe {
 		return listePersonnages.contains(personnage);
 	}
 	
+	/**
+	 * Getter sur la liste des personnages de l'équipe
+	 * @return Les personnages dans l'équipe
+	 */
+	public ArrayList<Personnage> getListePersonnages() {
+		return listePersonnages;
+	}
+
 	/**
 	 * Permet d'ajouter un personnage à l'équipe
 	 * @param personnage Le personnage a ajouter

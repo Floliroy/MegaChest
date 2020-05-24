@@ -9,10 +9,13 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import objets.Objet;
+import partie.Joueur;
 import personnages.Personnage;
 import ui.Actions;
 import ui.CaseImage;
 import ui.Fenetre;
+import ui.souris.SourisObjet;
 import ui.souris.SourisSelection;
 import ui.util.MyButton;
 import ui.util.MyPanel;
@@ -35,6 +38,15 @@ public class PanneauActions extends JPanel{
 	private JButton buttonDeplacer;
 	/** Le bouton pour indiquer que l'on souhaite passer son tour */
 	private JButton buttonPasser;
+	/** Le bouton pour valider l'equipement d'un objet */
+	private JButton buttonEquiper;
+	
+	/** La case pour donner un objet a un perso */
+	private CaseImage caseSelectionne;
+	/** Le personnage a qui donner un objet */
+	private Personnage persoSelectionne;
+	/** L'objet qu'on doit donner a un perso */
+	private Objet objetLoot;
 	
 	/**
 	 * Constructeur de panneau actions
@@ -44,6 +56,7 @@ public class PanneauActions extends JPanel{
 		this.fenetre = fenetre;
 	}
 	
+
 	/**
 	 * Permet d'afficher le panneau correspondant à la sélection et au placement des personnage de son équipe
 	 */
@@ -94,6 +107,69 @@ public class PanneauActions extends JPanel{
 		this.repaint();
 	}
 	
+	/**
+	 * Permet d'afficher le panneau qui permettra d'equiper un item
+	 */
+	public void showChoixObjet(Joueur joueur) {
+		this.removeAll();
+
+		objetLoot = Util.getRandomObjet();
+		
+		JPanel conteneurTitre = new JPanel();
+		JPanel conteneurPersonnages = new JPanel();
+		JPanel conteneurBouton = new JPanel();
+		
+		this.setLayout(new GridLayout(3,1));
+		
+		//Titre (ligne 1) 
+		String htmlHeader = "<html>"
+						  + "<style>"
+						  + "span{"
+						  + "	color: " + joueur.getCouleur() + "; "
+						  + "}"
+						  + "</style>";
+		String htmlFooter = "</html>";
+		
+		JLabel label = new JLabel(htmlHeader + "<span>" + joueur.getNom() + "</span> : Choisissez sur qui équiper \"" 
+								 + objetLoot.getNom() + "\" " + objetLoot.dumpCaracs() + htmlFooter);
+		label.setFont(new Font("Calibri", Font.BOLD, 32));
+		conteneurTitre.setLayout(new GridBagLayout());
+		conteneurTitre.add(label);
+		this.add(conteneurTitre);	
+		
+		//Liste des personnages dispo (ligne 2)
+		conteneurPersonnages.setLayout(new GridLayout(1, Util.listePersonnages().size()));
+		for(int i=0 ; i<4 ; i++) {
+			conteneurPersonnages.add(new JPanel());
+		}
+		for(Personnage personnage : joueur.getEquipe().getListePersonnages()) {
+			CaseImage panel = new CaseImage(personnage, 80, 80, null);
+			if(personnage.getListObjets().size() >= Personnage.TAILLE_MAX_LISTE_OBJET) {
+				panel.setTransparency(Util.getGrayTransparency());
+			}
+			
+			panel.addMouseListener(new SourisObjet(personnage, panel, fenetre));
+			conteneurPersonnages.add(panel);
+		}
+		for(int i=0 ; i<(Util.listePersonnages().size()-joueur.getEquipe().getListePersonnages().size()-4) ; i++) {
+			conteneurPersonnages.add(new JPanel());
+		}
+		this.add(conteneurPersonnages);
+		
+		//Bouton pour valider son équipe (ligne 3)
+		buttonEquiper = new MyButton("Équiper", Color.LIGHT_GRAY);
+		buttonEquiper.addActionListener(new Actions(fenetre, Actions.ACTION_EQUIPER));
+		buttonEquiper.setEnabled(false);
+		
+		conteneurBouton.add(buttonEquiper);
+		conteneurBouton.setLayout(new GridBagLayout());
+		this.add(conteneurBouton);
+		
+		this.revalidate();
+		this.repaint();
+	}
+	
+
 	/**
 	 * Permet d'afficher le panneau correspondant à l'action souhaitée pour le personnage sélectionné
 	 */
@@ -148,6 +224,46 @@ public class PanneauActions extends JPanel{
 	}
 
 	/**
+	 * Getter de la case selectionnee lors de la partie equipement d'un objet
+	 * @return la case selectionnee
+	 */
+	public CaseImage getCaseSelectionne() {
+		return caseSelectionne;
+	}
+
+	/**
+	 * Setter de la case selectionnee lors de la partie equipement d'un objet
+	 * @param caseSelectionne la case selectionnee
+	 */
+	public void setCaseSelectionne(CaseImage caseSelectionne) {
+		this.caseSelectionne = caseSelectionne;
+	}
+	
+	/**
+	 * Getter du personnage selectionnee lors de la partie equipement d'un objet
+	 * @return la personnage selectionne
+	 */
+	public Personnage getPersoSelectionne() {
+		return persoSelectionne;
+	}
+
+	/**
+	 * Setter du personnage selectionnee lors de la partie equipement d'un objet
+	 * @param persoSelectionne la personnage selectionne
+	 */
+	public void setPersoSelectionne(Personnage persoSelectionne) {
+		this.persoSelectionne = persoSelectionne;
+	}
+
+	/**
+	 * Getter de l'objet loot lors de la partie equipement d'un objet
+	 * @return l'objet loot 
+	 */
+	public Objet getObjetLoot() {
+		return objetLoot;
+	}
+	
+	/**
 	 * Getter du bouton d'attaque
 	 * @return le bouton d'attaque
 	 */
@@ -178,5 +294,14 @@ public class PanneauActions extends JPanel{
 	public JButton getButtonPasser() {
 		return buttonPasser;
 	}
+
+	/**
+	 * Getter du bouton pour equiper un objet
+	 * @return le bouton pour equiper un objet
+	 */
+	public JButton getButtonEquiper() {
+		return buttonEquiper;
+	}
+
 
 }

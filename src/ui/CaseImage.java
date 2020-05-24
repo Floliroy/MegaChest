@@ -78,10 +78,16 @@ public class CaseImage extends JPanel {
 		if(personnage != null) {
 
 			try {
-				BufferedImage image = resize(ImageIO.read(new File(personnage.getCheminImage())), sizeX, sizeY);
+				BufferedImage image = null;
+				if(stringFond != null && stringFond.startsWith("item")) {
+					Integer numeroItem = Integer.parseInt(stringFond.replace("item", ""));
+					image = resize(ImageIO.read(new File(personnage.getListObjets().get(numeroItem).getCheminImage())), sizeX, sizeY);
+				}else {
+					image = resize(ImageIO.read(new File(personnage.getCheminImage())), sizeX, sizeY);
+				}
 				
 				Graphics2D g2d = (Graphics2D) g;
-				if(stringFond != null) {
+				if(stringFond != null && !stringFond.startsWith("item")) {
 					BufferedImage fond = ImageIO.read(new File(System.getProperty("user.dir") + "/images/util/" + stringFond));
 					g2d.drawImage(fond, 0, 0, null);
 				}

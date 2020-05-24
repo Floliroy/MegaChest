@@ -15,7 +15,7 @@ public abstract class Personnage {
 	// CONSTANTES //
 	////////////////
 	
-	private final static int TAILLE_MAX_LISTE_OBJET = 3;
+	public final static int TAILLE_MAX_LISTE_OBJET = 3;
 	
 	///////////////
 	// ATTRIBUTS //

@@ -28,6 +28,14 @@ public abstract class Objet {
 	}
 
 	/**
+	 * Permet d'afficher les caracteristiques d'un objet
+	 * @return Un string avec les carac de l'objet
+	 */
+	public String dumpCaracs() {
+		return "<i>(+" + stat + " " + typeStat + ")</i>";
+	}
+	
+	/**
 	 * Permet de connaître la valeur de la statistique de l'objet
 	 * @return Renvoit la valeur de la statistique
 	 */

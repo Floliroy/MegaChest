@@ -5,7 +5,9 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.JPanel;
 
+import partie.Equipe;
 import partie.Jeu;
+import partie.Joueur;
 import personnages.Personnage;
 import plateau.Case;
 import plateau.Plateau;
@@ -45,7 +47,7 @@ public class SourisJeu extends MouseAdapter {
 	 * @param jeu 
 	 * @param panneauJeu
 	 */
-	private void refreshBoutonsActions(Jeu jeu, PanneauJeu panneauJeu) {
+	public static void refreshBoutonsActions(Fenetre fenetre, Jeu jeu, PanneauJeu panneauJeu) {
 		if (panneauJeu.getPersonnageSelectionne() == null) {
 			fenetre.getPanneauActions().getButtonAttaquer().setEnabled(false);
 			fenetre.getPanneauActions().getButtonDeplacer().setEnabled(false);
@@ -139,12 +141,18 @@ public class SourisJeu extends MouseAdapter {
 				jeu.setJetonAttaque(false);
 
 				// On supprime le personnage de son equipe s'il est mort
+				Joueur joueurEquipement = null;
 				if (!attaquant.isVivant()) {
 					jeu.getJoueurActif().getEquipe().removeEquipe(attaquant);
 					Case casePerso = jeu.getPlateauJeu().getCase(attaquant);
 					casePerso.setPersonnage(null, null);
 					casePerso.getPanel().setTransparency(null);
 					casePerso.getPanel().repaint();
+					
+					if(!jeu.isFini() && jeu.getJoueurActif().getEquipe().getListePersonnages().size() % 2 == Equipe.TAILLE_EQUIPE % 2) {
+						joueurEquipement = jeu.getJoueurInactif();
+						jeu.setJetonEquipement(jeu.getJetonEquipement()+1);
+					}
 				}
 				if (!defenseur.isVivant()) {
 					jeu.getJoueurInactif().getEquipe().removeEquipe(defenseur);
@@ -152,6 +160,14 @@ public class SourisJeu extends MouseAdapter {
 					casePerso.setPersonnage(null, null);
 					casePerso.getPanel().setTransparency(null);
 					casePerso.getPanel().repaint();
+					
+					if(!jeu.isFini() && jeu.getJoueurInactif().getEquipe().getListePersonnages().size() % 2 == Equipe.TAILLE_EQUIPE % 2) {
+						joueurEquipement = jeu.getJoueurActif();
+						jeu.setJetonEquipement(jeu.getJetonEquipement()+1);
+					}
+				}
+				if(joueurEquipement != null) {
+					fenetre.getPanneauActions().showChoixObjet(joueurEquipement);
 				}
 			}
 		}
@@ -273,7 +289,7 @@ public class SourisJeu extends MouseAdapter {
 		}
 
 		if (jeu.getEtatJeu() == Jeu.PHASE_ACTION) {
-			refreshBoutonsActions(jeu, panneauJeu);
+			refreshBoutonsActions(fenetre, jeu, panneauJeu);
 		}
 
 	}

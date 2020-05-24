@@ -1,7 +1,9 @@
 /ui/
-/partie/
-/test/
-/plateau/
 /personnages/
+<<<<<<< HEAD
 /util/
 /persistance/
+=======
+/objets/
+/partie/
+>>>>>>> refs/heads/dev
