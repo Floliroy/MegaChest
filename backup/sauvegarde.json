@@ -1,65 +1,17 @@
 {
   "equipeJoueur1": [
     {
-      "positionX": 1,
+      "positionX": 0,
       "positionY": 0,
       "personnage": {
-        "nom": "Shyvana",
-        "vie": 150,
+        "nom": "Quinn",
+        "vie": 80,
         "bonusEquipe": {
-          "VIE": 0,
-          "DEGATS": 0,
+          "VIE": 50,
           "VITESSE": 0,
           "DEPLACEMENTS": 0,
-          "PORTEE": 0
-        },
-        "listObjets": []
-      }
-    },
-    {
-      "positionX": 1,
-      "positionY": 1,
-      "personnage": {
-        "nom": "Pyke",
-        "vie": 120,
-        "bonusEquipe": {
-          "VIE": 0,
-          "DEGATS": 0,
-          "VITESSE": 0,
-          "DEPLACEMENTS": 0,
-          "PORTEE": 0
-        },
-        "listObjets": []
-      }
-    },
-    {
-      "positionX": 1,
-      "positionY": 2,
-      "personnage": {
-        "nom": "Sion",
-        "vie": 200,
-        "bonusEquipe": {
-          "VIE": 0,
-          "DEGATS": 0,
-          "VITESSE": 0,
-          "DEPLACEMENTS": 0,
-          "PORTEE": 0
-        },
-        "listObjets": []
-      }
-    },
-    {
-      "positionX": 1,
-      "positionY": 3,
-      "personnage": {
-        "nom": "Kled",
-        "vie": 150,
-        "bonusEquipe": {
-          "VIE": 0,
-          "DEGATS": 0,
-          "VITESSE": 0,
-          "DEPLACEMENTS": 0,
-          "PORTEE": 0
+          "PORTEE": 0,
+          "DEGATS": 0
         },
         "listObjets": []
       }
@@ -67,77 +19,45 @@
   ],
   "equipeJoueur2": [
     {
-      "positionX": 12,
+      "positionX": 5,
       "positionY": 0,
       "personnage": {
         "nom": "Kled",
+        "vie": 30,
+        "bonusEquipe": {
+          "VIE": 0,
+          "VITESSE": 0,
+          "DEPLACEMENTS": 0,
+          "PORTEE": 0,
+          "DEGATS": 15
+        },
+        "listObjets": []
+      }
+    },
+    {
+      "positionX": 12,
+      "positionY": 0,
+      "personnage": {
+        "nom": "Shyvana",
         "vie": 150,
         "bonusEquipe": {
           "VIE": 0,
-          "DEGATS": 0,
           "VITESSE": 0,
           "DEPLACEMENTS": 0,
-          "PORTEE": 0
-        },
-        "listObjets": []
-      }
-    },
-    {
-      "positionX": 12,
-      "positionY": 1,
-      "personnage": {
-        "nom": "Jarvan",
-        "vie": 150,
-        "bonusEquipe": {
-          "VIE": 0,
-          "DEGATS": 0,
-          "VITESSE": 0,
-          "DEPLACEMENTS": 0,
-          "PORTEE": 0
-        },
-        "listObjets": []
-      }
-    },
-    {
-      "positionX": 12,
-      "positionY": 2,
-      "personnage": {
-        "nom": "Wukong",
-        "vie": 120,
-        "bonusEquipe": {
-          "VIE": 0,
-          "DEGATS": 0,
-          "VITESSE": 0,
-          "DEPLACEMENTS": 0,
-          "PORTEE": 0
-        },
-        "listObjets": []
-      }
-    },
-    {
-      "positionX": 12,
-      "positionY": 3,
-      "personnage": {
-        "nom": "Sion",
-        "vie": 200,
-        "bonusEquipe": {
-          "VIE": 0,
-          "DEGATS": 0,
-          "VITESSE": 0,
-          "DEPLACEMENTS": 0,
-          "PORTEE": 0
+          "PORTEE": 0,
+          "DEGATS": 15
         },
         "listObjets": []
       }
     }
   ],
   "joueur1": {
-    "tour": true,
-    "nom": "Joueur1"
+    "tour": false,
+    "nom": "test"
   },
   "joueur2": {
-    "tour": false,
-    "nom": "Joueur2"
+    "tour": true,
+    "nom": ""
   },
-  "etatJeu": 1
+  "etatJeu": 2
 }

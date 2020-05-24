@@ -225,6 +225,10 @@ public abstract class Personnage {
 		return nom;
 	}
 
+	public void setVie(int vie) {
+		this.vie =  vie;
+	}
+	
 	/**
 	 * Permet de connaître les points de déplacements du personnage
 	 * @return Renvoit ses points de déplacements
@@ -282,6 +286,12 @@ public abstract class Personnage {
 		return cheminImage;
 	}
 	
+	
+	
+	public void setBonusEquipe(HashMap<TypeStat, Integer> bonusEquipe) {
+		this.bonusEquipe = bonusEquipe;
+	}
+
 	/**
 	 * Permet de connaître la liste des objets équipés par le personnage
 	 * @return Renvoit sa liste d'objets

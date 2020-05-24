@@ -2,9 +2,12 @@ package ui;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 import partie.Jeu;
 import partie.Joueur;
+import persistance.RestoreJeu;
+import util.FileManager;
 
 public class Actions implements ActionListener {
 
@@ -123,6 +126,14 @@ public class Actions implements ActionListener {
 	 */
 	private void actionPasser() {
 		Jeu jeu = fenetre.getJeu();
+		FileManager fm = new FileManager();
+		
+		try {
+			fm.writeSauvegarde(jeu);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
 		jeu.inverseJoueurs();
 		jeu.resetTour();
 		

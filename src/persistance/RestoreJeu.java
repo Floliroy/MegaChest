@@ -45,8 +45,4 @@ public  class RestoreJeu {
 			plateau.getCase(current.getPositionX(), current.getPositionY()).setPersonnage(current.getPersonnage());
 	}
 	
-
-	
-	
-
 }
