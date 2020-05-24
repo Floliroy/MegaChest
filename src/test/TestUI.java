@@ -3,7 +3,7 @@ package test;
 
 import partie.Jeu;
 import ui.Fenetre;
-import ui.PopUpStart;
+import ui.popup.PopUpStart;
 
 public class TestUI {
 

@@ -12,9 +12,10 @@ import partie.Joueur;
 import personnages.Personnage;
 import plateau.Case;
 import plateau.Plateau;
-import ui.CaseImage;
 import ui.Fenetre;
 import ui.panneau.PanneauJeu;
+import ui.popup.PopUpEnd;
+import ui.util.CaseImage;
 import util.FileManager;
 import util.Util;
 
@@ -180,6 +181,8 @@ public class SourisJeu extends MouseAdapter {
 			fenetre.getPanneauActions().getButtonPasser().setEnabled(false);
 			System.out.println();
 			System.out.println(jeu.getGagnant().getNom() + ", tu es le gagnant !");
+			PopUpEnd popUpEnd = new PopUpEnd(fenetre, jeu.getGagnant());
+			popUpEnd.setVisible(true);
 			File file = new File(FileManager.SAVE);
 			if(file.exists()) {
 				file.delete();

@@ -1,4 +1,4 @@
-package ui;
+package ui.popup;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -19,6 +19,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import partie.Jeu;
+import ui.Fenetre;
 import ui.souris.SourisJeu;
 import ui.util.MyPanel;
 import util.FileManager;

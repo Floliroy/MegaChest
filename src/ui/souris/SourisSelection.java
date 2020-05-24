@@ -7,9 +7,9 @@ import partie.Equipe;
 import personnages.Personnage;
 import plateau.Case;
 import plateau.Plateau;
-import ui.CaseImage;
 import ui.Fenetre;
 import ui.panneau.PanneauJeu;
+import ui.util.CaseImage;
 import util.Util;
 
 public class SourisSelection extends MouseAdapter{

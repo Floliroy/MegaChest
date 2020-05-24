@@ -1,4 +1,4 @@
-package ui;
+package ui.util;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -12,6 +12,7 @@ import partie.Joueur;
 import util.FileManager;
 
 import personnages.Personnage;
+import ui.Fenetre;
 import ui.panneau.PanneauActions;
 import ui.souris.SourisJeu;
 

@@ -2,7 +2,7 @@ package plateau;
 
 import com.google.gson.annotations.Expose;
 import personnages.Personnage;
-import ui.CaseImage;
+import ui.util.CaseImage;
 
 public class Case {
 	

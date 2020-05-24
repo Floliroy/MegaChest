@@ -9,9 +9,9 @@ import partie.Jeu;
 import personnages.Personnage;
 import plateau.Case;
 import plateau.Plateau;
-import ui.CaseImage;
 import ui.Fenetre;
 import ui.souris.SourisJeu;
+import ui.util.CaseImage;
 import util.Util;
 
 public class PanneauJeu extends JPanel {

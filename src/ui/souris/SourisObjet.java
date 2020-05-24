@@ -4,9 +4,9 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import personnages.Personnage;
-import ui.CaseImage;
 import ui.Fenetre;
 import ui.panneau.PanneauActions;
+import ui.util.CaseImage;
 import util.Util;
 
 public class SourisObjet extends MouseAdapter {

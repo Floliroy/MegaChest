@@ -9,7 +9,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import personnages.Personnage;
-import ui.CaseImage;
+import ui.util.CaseImage;
 import ui.util.MyPanel;
 
 public class PanneauInfos extends JPanel{
