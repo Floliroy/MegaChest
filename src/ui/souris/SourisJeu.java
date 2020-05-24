@@ -203,10 +203,11 @@ public class SourisJeu extends MouseAdapter {
 
 				previousCase.getPanel().setTransparency(null);
 				previousCase.getPanel().repaint();
+				
+				jeu.setJetonDeplace(false);
+				jeu.setActionEffectue(true);
 			}
 
-			jeu.setJetonDeplace(false);
-			jeu.setActionEffectue(true);
 		}
 	}
 
