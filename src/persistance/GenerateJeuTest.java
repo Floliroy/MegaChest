@@ -35,7 +35,7 @@ public class GenerateJeuTest {
 		
 		for(int i = 0; i < NOMBRE_PERSO; i ++) {
 			Personnage perso = joueur.getEquipe().getListePersonnages().get(i);
-			Case current = plateau.getCase(i, colonne);
+			Case current = plateau.getCase(colonne, i);
 			System.out.println(perso.getNom() + " est sur la case " + current.dumpCase());
 			current.setPersonnage(perso);
 		}
@@ -56,7 +56,7 @@ public class GenerateJeuTest {
 		System.out.println("Positonnement perso Equipe Joueur 1");
 		positionnerEquipe(partie.getJoueur1(), partie.getPlateauJeu(), 1);
 		System.out.println("Positonnement perso Equipe Joueur 2");
-		positionnerEquipe(partie.getJoueur2(), partie.getPlateauJeu(), 6);
+		positionnerEquipe(partie.getJoueur2(), partie.getPlateauJeu(), 12);
 		
 		
 		

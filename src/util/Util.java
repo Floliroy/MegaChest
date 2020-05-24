@@ -76,6 +76,8 @@ public class Util {
 		return Math.abs(depart.getPositionX() - positionXDestination) + Math.abs(depart.getPositionY() - positionYDestination);
 	}
 	
+	
+	
 	public static HashMap<String, Integer> getYellowTransparency(){
 		HashMap<String, Integer> color = new HashMap<>();
 		color.put("red", 255);

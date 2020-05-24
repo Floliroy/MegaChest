@@ -2,6 +2,8 @@ package partie;
 
 import java.util.ArrayList;
 
+import com.google.gson.annotations.Expose;
+
 import personnages.Personnage;
 import util.*;
 
@@ -10,8 +12,10 @@ public class Joueur {
 	
 	
 	private Equipe equipe;
+	@Expose
 	private Boolean tour;
 	private String couleur;
+	@Expose
 	private String nom;
 	
 	public Joueur(Boolean tour, String couleur) {

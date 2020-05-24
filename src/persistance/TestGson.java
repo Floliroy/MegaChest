@@ -2,19 +2,19 @@ package persistance;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
+
 import java.io.FileWriter;
-import java.io.IOException;
-import java.io.Reader;
+
 import java.io.Writer;
 
 import com.google.gson.*;
-import com.google.gson.stream.JsonWriter;
+
 
 import partie.Jeu;
 import persistance.customDeserialize.CaseDeserialize;
 import plateau.Case;
+import ui.Fenetre;
+import ui.PopUpStart;
 
 
 
@@ -49,6 +49,7 @@ public class TestGson {
 		
 		
 		/** READ **/
+		partie = new GenerateJeuTest().GenerateTest();
 		GsonBuilder readerJson = new GsonBuilder();
 		JsonDeserializer<Case> deserializer = new CaseDeserialize();
 	
@@ -64,21 +65,22 @@ public class TestGson {
 			
 			String str = new String(data);
 			System.out.println("Reading file");
-			SauvegardeJeu sauvegarde = testreader.fromJson(str, SauvegardeJeu.class);
-			sauvegarde.dumpEquipeJoueur();
+			SauvegardeJeu relecture = testreader.fromJson(str, SauvegardeJeu.class);
+			relecture.dumpEquipeJoueur();
 			
+			System.out.println(partie.getJoueur1().getEquipe().isComplete());
+			RestoreJeu.Restore(partie, relecture);
+			Fenetre fenetre = new Fenetre(partie);
+			PopUpStart popup = new PopUpStart(fenetre, partie);
+			fenetre.showWindow();
+			popup.setVisible(true);
+	
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
 		
-		
-	
-		
-		//SauvegardeJeu news = testreader.fromJson(, SauvegardeJeu.class);
-		
-		//news.dumpEquipeJoueur();
 	}
 
 }

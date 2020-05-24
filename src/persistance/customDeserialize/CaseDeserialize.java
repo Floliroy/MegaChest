@@ -16,7 +16,9 @@ import util.Util;
 
 public class CaseDeserialize implements JsonDeserializer<Case>{
 	
-
+	private void setPersoAttrib(Personnage currentP, JsonObject jsonObject) {
+		
+	}
 
 	@Override
 	public Case deserialize(JsonElement arg0, Type arg1, JsonDeserializationContext arg2) throws JsonParseException {
