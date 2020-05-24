@@ -106,6 +106,9 @@ public class Actions implements ActionListener {
 			jeu.setJetonAttaque(true);
 			System.out.println();
 			System.out.println("Cliquez sur le personnage a attaquer.");
+			if(jeu.getJetonDeplace()) {
+				jeu.setJetonDeplace(false);
+			}
 		}else {
 			if(!jeu.getActionEffectue()) {
 				jeu.setPersonnageJoue(null);				
@@ -125,6 +128,9 @@ public class Actions implements ActionListener {
 			jeu.setPersonnageJoue(fenetre.getPanneauJeu().getPersonnageSelectionne());
 			System.out.println();
 			System.out.println("Cliquez sur la case ou vous voulez aller.");
+			if(jeu.getJetonAttaque()) {
+				jeu.setJetonAttaque(false);
+			}
 		}else {
 			if(!jeu.getActionEffectue()) {
 				jeu.setPersonnageJoue(null);

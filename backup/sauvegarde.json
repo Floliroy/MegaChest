@@ -4,14 +4,14 @@
       "positionX": 0,
       "positionY": 0,
       "personnage": {
-        "nom": "Yasuo",
-        "vie": 100,
+        "nom": "Sona",
+        "vie": 80,
         "bonusEquipe": {
-          "Dmg": 0,
-          "PV": 0,
+          "PO": 0,
           "Vit": 0,
-          "PM": 0,
-          "PO": 0
+          "Dmg": 0,
+          "PV": 50,
+          "PM": 0
         },
         "listObjets": []
       }
@@ -20,30 +20,30 @@
       "positionX": 1,
       "positionY": 0,
       "personnage": {
-        "nom": "Sion",
-        "vie": 200,
+        "nom": "Kayle",
+        "vie": 100,
         "bonusEquipe": {
-          "Dmg": 0,
-          "PV": 0,
+          "PO": 0,
           "Vit": 0,
-          "PM": 0,
-          "PO": 0
+          "Dmg": 0,
+          "PV": 50,
+          "PM": 0
         },
         "listObjets": []
       }
     },
     {
       "positionX": 4,
-      "positionY": 1,
+      "positionY": 2,
       "personnage": {
-        "nom": "Shyvana",
-        "vie": 150,
+        "nom": "Swain",
+        "vie": 172,
         "bonusEquipe": {
+          "PO": 0,
+          "Vit": 0,
           "Dmg": 0,
           "PV": 0,
-          "Vit": 0,
-          "PM": 0,
-          "PO": 0
+          "PM": 0
         },
         "listObjets": []
       }
@@ -51,17 +51,17 @@
   ],
   "equipeJoueur2": [
     {
-      "positionX": 12,
-      "positionY": 0,
+      "positionX": 5,
+      "positionY": 1,
       "personnage": {
-        "nom": "Shyvana",
-        "vie": 150,
+        "nom": "Poppy",
+        "vie": 140,
         "bonusEquipe": {
-          "Dmg": 0,
-          "PV": 0,
+          "PO": 0,
           "Vit": 0,
-          "PM": 0,
-          "PO": 0
+          "Dmg": 0,
+          "PV": 50,
+          "PM": 0
         },
         "listObjets": []
       }
@@ -70,14 +70,14 @@
       "positionX": 13,
       "positionY": 0,
       "personnage": {
-        "nom": "Fizz",
-        "vie": 100,
+        "nom": "Swain",
+        "vie": 180,
         "bonusEquipe": {
-          "Dmg": 0,
-          "PV": 0,
+          "PO": 0,
           "Vit": 0,
-          "PM": 0,
-          "PO": 0
+          "Dmg": 15,
+          "PV": 0,
+          "PM": 0
         },
         "listObjets": []
       }
@@ -86,28 +86,28 @@
       "positionX": 14,
       "positionY": 0,
       "personnage": {
-        "nom": "Sion",
-        "vie": 200,
+        "nom": "Shyvana",
+        "vie": 150,
         "bonusEquipe": {
-          "Dmg": 0,
-          "PV": 0,
+          "PO": 0,
           "Vit": 0,
-          "PM": 0,
-          "PO": 0
+          "Dmg": 15,
+          "PV": 50,
+          "PM": 0
         },
         "listObjets": []
       }
     }
   ],
   "joueur1": {
-    "tour": false,
+    "tour": true,
     "couleur": "blue",
-    "nom": "blabla"
+    "nom": "F"
   },
   "joueur2": {
-    "tour": true,
+    "tour": false,
     "couleur": "red",
-    "nom": "OUI"
+    "nom": "G"
   },
   "etatJeu": 2
 }

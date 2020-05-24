@@ -11,7 +11,7 @@ import personnages.Personnage;
 public class Equipe {
 	
 	/** Taille de l'équipe au début de la partie */
-	public static final int TAILLE_EQUIPE = 8;
+	public static final int TAILLE_EQUIPE = 3;
 	
 	/* -------------------------------------------------- */
 	
