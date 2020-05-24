@@ -5,7 +5,6 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.JPanel;
 
-import partie.Equipe;
 import partie.Jeu;
 import partie.Joueur;
 import personnages.Personnage;

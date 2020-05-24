@@ -9,6 +9,7 @@ import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.io.IOException;
 
 import javax.swing.JButton;
@@ -52,7 +53,7 @@ public class PopUpStart extends JDialog implements ActionListener{
 		this.fenetre = master;
 		this.jeu = jeu;
 		
-		this.setSize(450, 250);
+		this.setSize(450, 350);
 		this.setLocationRelativeTo(master);
 		this.setBackground(Color.GRAY);
 		this.setResizable(false);
@@ -110,7 +111,7 @@ public class PopUpStart extends JDialog implements ActionListener{
 		cons.gridwidth = 1;
 		cons.gridheight = 1;
 		cons.weightx = 0.4;
-		cons.weighty = 1;
+		cons.weighty = 0.6;
 		conteneurField.add(new MyPanel(nomJ1), cons);	
 		
 		//Bouton commencer partie
@@ -126,18 +127,23 @@ public class PopUpStart extends JDialog implements ActionListener{
 		cons.gridx = 2;
 		cons.weightx = 0.4;
 		conteneurField.add(new MyPanel(nomJ2), cons);
-		this.add(conteneurField);
 		
 		//Charger sauvegarde
-		cons.gridx = 1;
-		cons.gridy = 1;
-		cons.weightx = 0.2;	
-		load = new JButton("Recharger");
-		load.addActionListener(this);
-		panel = new JPanel();
-		panel.setLayout(new BorderLayout());
-		panel.add(load, BorderLayout.SOUTH);
-		conteneurField.add(panel, cons);
+		File file = new File(FileManager.SAVE);
+		if(file.exists()) {
+			cons.gridx = 1;
+			cons.gridy = 1;
+			cons.weightx = 0.2;	
+			cons.weighty = 0.4;
+			load = new JButton("Recharger");
+			load.addActionListener(this);
+			panel = new JPanel();
+			panel.setLayout(new BorderLayout());
+			panel.add(load, BorderLayout.SOUTH);
+			conteneurField.add(panel, cons);
+		}
+		
+		this.add(conteneurField);
 	}
 
 	/**
