@@ -139,13 +139,7 @@ public class Actions implements ActionListener {
 	private void actionPasser() {
 		Jeu jeu = fenetre.getJeu();
 		FileManager fm = new FileManager();
-		
-		try {
-			fm.writeSauvegarde(jeu);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		
+
 		jeu.inverseJoueurs();
 		jeu.resetTour();
 		
@@ -156,6 +150,12 @@ public class Actions implements ActionListener {
 		
 		System.out.println();
 		System.out.println("Changement de joueur...");
+		
+		try {
+			fm.writeSauvegarde(jeu);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	/**

@@ -13,6 +13,7 @@ public class Joueur {
 	@Expose
 	private Boolean tour;
 	/** couleur du joueur */
+	@Expose
 	private String couleur;
 	/** nom du joueur */
 	@Expose

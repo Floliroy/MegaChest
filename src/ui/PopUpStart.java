@@ -9,6 +9,7 @@ import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -17,7 +18,9 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import partie.Jeu;
+import ui.souris.SourisJeu;
 import ui.util.MyPanel;
+import util.FileManager;
 
 public class PopUpStart extends JDialog implements ActionListener{
 
@@ -34,6 +37,9 @@ public class PopUpStart extends JDialog implements ActionListener{
 	private JTextField nomJ1;
 	/** Le champs de texte pour le nom du joueur 2 */
 	private JTextField nomJ2;
+	
+	private JButton start;
+	private JButton load;
 	
 	/**
 	 * Constructeur de notre pop-up
@@ -110,18 +116,28 @@ public class PopUpStart extends JDialog implements ActionListener{
 		//Bouton commencer partie
 		cons.gridx = 1;
 		cons.weightx = 0.2;	
-		JButton button = new JButton("Commencer");
-		button.addActionListener(this);
+		start = new JButton("Commencer");
+		start.addActionListener(this);
 		JPanel panel = new JPanel();
 		panel.setLayout(new BorderLayout());
-		panel.add(button, BorderLayout.SOUTH);
+		panel.add(start, BorderLayout.SOUTH);
 		conteneurField.add(panel, cons);
-		
+	
 		cons.gridx = 2;
 		cons.weightx = 0.4;
 		conteneurField.add(new MyPanel(nomJ2), cons);
 		this.add(conteneurField);
 		
+		//Charger sauvegarde
+		cons.gridx = 1;
+		cons.gridy = 1;
+		cons.weightx = 0.2;	
+		load = new JButton("Recharger");
+		load.addActionListener(this);
+		panel = new JPanel();
+		panel.setLayout(new BorderLayout());
+		panel.add(load, BorderLayout.SOUTH);
+		conteneurField.add(panel, cons);
 	}
 
 	/**
@@ -129,21 +145,44 @@ public class PopUpStart extends JDialog implements ActionListener{
 	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		//Récupère le nom des joueurs
-		if(!nomJ1.getText().isEmpty() && !nomJ2.getText().isEmpty()) {
-			jeu.getJoueur1().setNom(nomJ1.getText());
-			jeu.getJoueur2().setNom(nomJ2.getText());
-			System.out.println("Joueur 1 : " + jeu.getJoueur1().getNom());
-			System.out.println("Joueur 2 : " + jeu.getJoueur2().getNom());
-			System.out.println();
-			//Ferme la pop-up
-			dispose();		
-			//Lance la partie
-			fenetre.getPanneauActions().showSelection();
-			fenetre.getPanneauJeu().refresh();
-			fenetre.revalidate();
-			fenetre.repaint();
+		
+		if(e.getSource().equals(start)) {
+			
+			//Récupère le nom des joueurs
+			if(!nomJ1.getText().isEmpty() && !nomJ2.getText().isEmpty()) {
+				jeu.getJoueur1().setNom(nomJ1.getText());
+				jeu.getJoueur2().setNom(nomJ2.getText());
+				System.out.println("Joueur 1 : " + jeu.getJoueur1().getNom());
+				System.out.println("Joueur 2 : " + jeu.getJoueur2().getNom());
+				System.out.println();
+				//Ferme la pop-up
+				dispose();		
+				//Lance la partie
+				fenetre.getPanneauActions().showSelection();
+				fenetre.getPanneauJeu().refresh();
+				fenetre.revalidate();
+				fenetre.repaint();
+			}
+		} else {
+			FileManager fm = new FileManager();
+			try {
+				fm.readSauvegarde(jeu);
+				//Ferme la pop-up
+				dispose();		
+				//Lance la partie
+				fenetre.getPanneauActions().refreshActions();
+				SourisJeu.refreshBoutonsActions(fenetre, fenetre.getJeu(), fenetre.getPanneauJeu());
+				fenetre.getPanneauJeu().refresh();
+				fenetre.revalidate();
+				fenetre.repaint();
+				
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
+			
 		}
+			
+		
 	}
 
 }

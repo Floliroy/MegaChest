@@ -35,6 +35,7 @@ public class TestGson {
 		SauvegardeJeu seri = new SauvegardeJeu(partie);
 		partie.getJoueur1().getEquipe().getListePersonnages().get(0).addListObjets(new Bottes());
 		partie.getJoueur1().getEquipe().getListePersonnages().get(0).addListObjets(new Bottes());
+		partie.setEtatJeu(2);
 		seri.sauvegardePersonnage();
 		
 		
@@ -51,7 +52,7 @@ public class TestGson {
 		
 		
 		/** READ **/
-		partie = new GenerateJeuTest().GenerateTest();
+		partie = new Jeu();
 		GsonBuilder readerJson = new GsonBuilder();
 		JsonDeserializer<Case> deserializer = new CaseDeserialize();
 	
@@ -71,10 +72,8 @@ public class TestGson {
 			
 			
 			RestoreJeu.Restore(partie, relecture);
-			Fenetre fenetre = new Fenetre(partie);
-			PopUpStart popup = new PopUpStart(fenetre, partie);
-			fenetre.showWindow();
-			popup.setVisible(true);
+			System.out.println(partie.getJoueur1().isTour() +  " " + partie.getJoueur1().getNom());
+			System.out.println(partie.getJoueur2().isTour() +  " " + partie.getJoueur2().getNom());
 	
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

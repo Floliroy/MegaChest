@@ -1,56 +1,49 @@
 {
   "equipeJoueur1": [
     {
-      "positionX": 1,
+      "positionX": 0,
       "positionY": 0,
       "personnage": {
-        "nom": "Kayle",
-        "vie": 100,
-        "bonusEquipe": {
-          "PV": 0,
-          "Dmg": 0,
-          "Vit": 0,
-          "PM": 0,
-          "PO": 0
-        },
-        "listObjets": [
-          {
-            "nom": "Bottes"
-          },
-          {
-            "nom": "Bottes"
-          }
-        ]
-      }
-    },
-    {
-      "positionX": 1,
-      "positionY": 1,
-      "personnage": {
-        "nom": "Wukong",
+        "nom": "Pyke",
         "vie": 120,
         "bonusEquipe": {
+          "PO": 0,
           "PV": 0,
-          "Dmg": 0,
-          "Vit": 0,
           "PM": 0,
-          "PO": 0
+          "Vit": 0,
+          "Dmg": 0
         },
         "listObjets": []
       }
     },
     {
       "positionX": 1,
-      "positionY": 2,
+      "positionY": 0,
       "personnage": {
-        "nom": "Pyke",
-        "vie": 120,
+        "nom": "Jarvan",
+        "vie": 150,
         "bonusEquipe": {
-          "PV": 0,
-          "Dmg": 0,
-          "Vit": 0,
+          "PO": 0,
+          "PV": 50,
           "PM": 0,
-          "PO": 0
+          "Vit": 0,
+          "Dmg": 0
+        },
+        "listObjets": []
+      }
+    },
+    {
+      "positionX": 9,
+      "positionY": 1,
+      "personnage": {
+        "nom": "Quinn",
+        "vie": 30,
+        "bonusEquipe": {
+          "PO": 0,
+          "PV": 50,
+          "PM": 0,
+          "Vit": 0,
+          "Dmg": 0
         },
         "listObjets": []
       }
@@ -58,61 +51,63 @@
   ],
   "equipeJoueur2": [
     {
-      "positionX": 12,
-      "positionY": 0,
-      "personnage": {
-        "nom": "Illaoi",
-        "vie": 150,
-        "bonusEquipe": {
-          "PV": 0,
-          "Dmg": 0,
-          "Vit": 0,
-          "PM": 0,
-          "PO": 0
-        },
-        "listObjets": []
-      }
-    },
-    {
-      "positionX": 12,
+      "positionX": 11,
       "positionY": 1,
       "personnage": {
-        "nom": "Wukong",
-        "vie": 120,
+        "nom": "Talon",
+        "vie": 50,
         "bonusEquipe": {
+          "PO": 0,
           "PV": 0,
-          "Dmg": 0,
-          "Vit": 0,
           "PM": 0,
-          "PO": 0
+          "Vit": 0,
+          "Dmg": 0
         },
         "listObjets": []
       }
     },
     {
-      "positionX": 12,
-      "positionY": 2,
+      "positionX": 13,
+      "positionY": 0,
       "personnage": {
-        "nom": "Jarvan",
-        "vie": 150,
+        "nom": "Fizz",
+        "vie": 100,
         "bonusEquipe": {
+          "PO": 1,
           "PV": 0,
-          "Dmg": 0,
-          "Vit": 0,
           "PM": 0,
-          "PO": 0
+          "Vit": 0,
+          "Dmg": 0
+        },
+        "listObjets": []
+      }
+    },
+    {
+      "positionX": 14,
+      "positionY": 0,
+      "personnage": {
+        "nom": "Ahri",
+        "vie": 80,
+        "bonusEquipe": {
+          "PO": 1,
+          "PV": 0,
+          "PM": 0,
+          "Vit": 0,
+          "Dmg": 0
         },
         "listObjets": []
       }
     }
   ],
   "joueur1": {
-    "tour": true,
-    "nom": "Joueur1"
+    "tour": false,
+    "couleur": "blue",
+    "nom": "test"
   },
   "joueur2": {
-    "tour": false,
-    "nom": "Joueur2"
+    "tour": true,
+    "couleur": "red",
+    "nom": "resdfe"
   },
-  "etatJeu": 1
+  "etatJeu": 2
 }

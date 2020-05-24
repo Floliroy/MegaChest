@@ -297,7 +297,7 @@ public class Jeu {
 	}
 
 	public void setJoueur1(Joueur joueur1) {
-		this.joueur2 = joueur1;	
+		this.joueur1 = joueur1;	
 	}
 	
 	public void setJoueur2(Joueur joueur2) {
