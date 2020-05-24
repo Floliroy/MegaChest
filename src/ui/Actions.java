@@ -2,13 +2,19 @@ package ui;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 import objets.Objet;
 import partie.Jeu;
 import partie.Joueur;
+
+
+import util.FileManager;
+
 import personnages.Personnage;
 import ui.panneau.PanneauActions;
 import ui.souris.SourisJeu;
+
 
 public class Actions implements ActionListener {
 
@@ -132,6 +138,8 @@ public class Actions implements ActionListener {
 	 */
 	private void actionPasser() {
 		Jeu jeu = fenetre.getJeu();
+		FileManager fm = new FileManager();
+
 		jeu.inverseJoueurs();
 		jeu.resetTour();
 		
@@ -142,6 +150,12 @@ public class Actions implements ActionListener {
 		
 		System.out.println();
 		System.out.println("Changement de joueur...");
+		
+		try {
+			fm.writeSauvegarde(jeu);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	/**

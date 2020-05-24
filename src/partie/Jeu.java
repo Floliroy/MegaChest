@@ -296,5 +296,13 @@ public class Jeu {
 		this.personnageJoue = personnageJoue;
 	}
 
+	public void setJoueur1(Joueur joueur1) {
+		this.joueur1 = joueur1;	
+	}
+	
+	public void setJoueur2(Joueur joueur2) {
+		this.joueur2 = joueur2;	
+	}
+
 
 }

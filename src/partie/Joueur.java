@@ -1,14 +1,22 @@
 package partie;
 
+
+import com.google.gson.annotations.Expose;
+
+
+
 public class Joueur {
 	
 	/** L'equipe du joueur */
 	private Equipe equipe;
 	/** booleen indiquant si le joueur a la main */
+	@Expose
 	private Boolean tour;
 	/** couleur du joueur */
+	@Expose
 	private String couleur;
 	/** nom du joueur */
+	@Expose
 	private String nom;
 	
 	/**
@@ -34,6 +42,9 @@ public class Joueur {
 		return equipe;
 	}
 
+	public void setEquipe(Equipe equipe) {
+		this.equipe = equipe;
+	}
 	/**
 	 * Permet de savoir si le joueur a la main
 	 * @return true s'il l'a sinon false

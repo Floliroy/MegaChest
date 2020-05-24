@@ -232,6 +232,5 @@ public class Equipe {
 	public void removeEquipe(Personnage personnage) {
 		listePersonnages.remove(personnage);
 	}
-	
-	
+
 }

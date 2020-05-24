@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import com.google.gson.annotations.Expose;
+
 import objets.Objet;
 import objets.TypeStat;
 
@@ -20,9 +22,11 @@ public abstract class Personnage {
 	///////////////
 	
 	/** Le nom du personnage */
+	@Expose
 	private String nom;
 	
 	/** La sant� du personnage */
+	@Expose
 	private Integer vie;
 	
 	/** Le vie maximale du personnage */
@@ -50,12 +54,14 @@ public abstract class Personnage {
 	private Origine origine;
 	
 	/** Les bonus en fonction de l'equipe du personnage, calculer grace a son element et son origine */
+	@Expose
 	private HashMap<TypeStat, Integer> bonusEquipe;
 	
 	/** Le chemin de l'image de l'icone du personnage */
 	private String cheminImage;
 	
 	/** La liste d'objets équipés */
+	@Expose
 	private List<Objet> listObjets;
 	
 	//////////////////
@@ -219,6 +225,10 @@ public abstract class Personnage {
 		return nom;
 	}
 
+	public void setVie(int vie) {
+		this.vie =  vie;
+	}
+	
 	/**
 	 * Permet de connaître les points de déplacements du personnage
 	 * @return Renvoit ses points de déplacements
@@ -276,6 +286,12 @@ public abstract class Personnage {
 		return cheminImage;
 	}
 	
+	
+	
+	public void setBonusEquipe(HashMap<TypeStat, Integer> bonusEquipe) {
+		this.bonusEquipe = bonusEquipe;
+	}
+
 	/**
 	 * Permet de connaître la liste des objets équipés par le personnage
 	 * @return Renvoit sa liste d'objets
