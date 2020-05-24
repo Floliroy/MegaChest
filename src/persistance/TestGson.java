@@ -66,7 +66,6 @@ public class TestGson {
 			String str = new String(data);
 			System.out.println("Reading file");
 			SauvegardeJeu relecture = testreader.fromJson(str, SauvegardeJeu.class);
-			relecture.dumpEquipeJoueur();
 			
 			System.out.println(partie.getJoueur1().getEquipe().isComplete());
 			RestoreJeu.Restore(partie, relecture);

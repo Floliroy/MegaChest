@@ -1,53 +1,21 @@
 package util;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 
-import plateau.Plateau;
 import personnages.*;
+
 import plateau.Case;
 
 
 public class Util {
 	
 	/**
-	 * Renvoit tous les elements d'une liste séparés par une virgule
-	 * @param liste La liste que l'on souhaite imprimer
-	 * @return Les elements séparés par une virgule
+	 * Permet d'obtenir une ArrayList contenant tous les personnages disponibles.
+	 * 
+	 * @return ArrayList<Personnage> qui contient tous les personnages
 	 */
-	public static String imprimeList(ArrayList<?> liste) {
-		String retour = "";
-		if(!liste.isEmpty()) {
-			if(liste.get(0) instanceof Personnage) {
-				for(Object element : liste) {
-					Personnage perso = (Personnage) element;
-					retour += perso.getNom() + ", ";
-				}
-			}
-			retour = retour.substring(0, retour.length() - 2);
-		}
-		return retour;
-	}
-	
-
-	/**
-	 * Renvoit la liste des personnages avec leurs coordonnées
-	 * @param equipe La liste des personnages
-	 * @param plateau Le plateau de jeu
-	 * @return Renvoit la liste formatées
-	 */
-	public static String imprimeListPersoCoor(ArrayList<Personnage> equipe, Plateau plateau) {
-		String retour = "";
-		if(!equipe.isEmpty()) {
-			for(Personnage perso : equipe) {
-				retour += perso.getNom() + " " + plateau.getCase(perso).dumpCase() + ", ";
-			}
-			retour = retour.substring(0, retour.length() - 2);
-		}
-		return retour;
-	}
-	
-
 	public static ArrayList<Personnage> listePersonnages(){
 		
 		ArrayList<Personnage> allPersonnages = new ArrayList<Personnage>();
@@ -69,15 +37,28 @@ public class Util {
 		allPersonnages.add(new Wukong());
 		allPersonnages.add(new Yasuo());
 		
+		Collections.shuffle(allPersonnages);
 		return allPersonnages;
 	}
 	
+	/**
+	 * Calcule la distance entre une case de depart et une case d'arrivée sous la forme (X,Y).
+	 * 
+	 * @param depart case de depart
+	 * @param positionXDestination colonne d'arrivée
+	 * @param positionYDestination ligne d'arrivée
+	 * 
+	 * @return int distance entre les deux cases
+	 */
 	public static int distanceCase(Case depart, int positionXDestination, int positionYDestination) {
 		return Math.abs(depart.getPositionX() - positionXDestination) + Math.abs(depart.getPositionY() - positionYDestination);
 	}
-	
-	
-	
+
+	/**
+	 * Ajoute la transparence jaune lors de la selection d'un personnage sur l'UI.
+	 * 
+	 * @return color transparence jaune
+	 */
 	public static HashMap<String, Integer> getYellowTransparency(){
 		HashMap<String, Integer> color = new HashMap<>();
 		color.put("red", 255);
@@ -87,6 +68,12 @@ public class Util {
 		return color;
 	}
 	
+	/**
+	 * Ajoute la transparence grise sur un personnage déjà choisis pendant la phase de sélection 
+	 * des deux joueurs.
+	 * 
+	 * @return transparence grise
+	 */
 	public static HashMap<String, Integer> getGrayTransparency(){
 		HashMap<String, Integer> color = new HashMap<>();
 		color.put("red", 0);

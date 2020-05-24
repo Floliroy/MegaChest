@@ -12,7 +12,6 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -27,11 +26,21 @@ public class PopUpStart extends JDialog implements ActionListener{
 	 */
 	private static final long serialVersionUID = 1L;
 	
+	/** La partie en cours */
 	private Jeu jeu;
+	/** La fenetre de jeu */
 	private Fenetre fenetre;
+	/** Le champs de texte pour le nom du joueur 1 */
 	private JTextField nomJ1;
+	/** Le champs de texte pour le nom du joueur 2 */
 	private JTextField nomJ2;
 	
+	/**
+	 * Constructeur de notre pop-up
+	 * 
+	 * @param master La fenetre de jeu
+	 * @param jeu La partie en cours
+	 */
 	public PopUpStart(Fenetre master, Jeu jeu) {
 
 		this.fenetre = master;
@@ -115,14 +124,20 @@ public class PopUpStart extends JDialog implements ActionListener{
 		
 	}
 
+	/**
+	 * Listener pour savoir quand on clique sur le bouton pour commencer la partie
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		//Fonction appelée par l'action listener du bouton
+		//Récupère le nom des joueurs
 		jeu.getJoueur1().setNom(nomJ1.getText());
 		jeu.getJoueur2().setNom(nomJ2.getText());
 		System.out.println("Joueur 1 : " + jeu.getJoueur1().getNom());
 		System.out.println("Joueur 2 : " + jeu.getJoueur2().getNom());
+		System.out.println();
+		//Ferme la pop-up
 		dispose();		
+		//Lance la partie
 		fenetre.getPanneauActions().showSelection();
 		fenetre.getPanneauJeu().refresh();
 		fenetre.revalidate();

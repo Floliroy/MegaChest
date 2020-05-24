@@ -23,8 +23,7 @@ public class Plateau {
 	/* -------------------------------------------------- */
 	
 	/**
-	 * Constructeur permettant d'initialiser toutes
-	 * les cases du plateau
+	 * Constructeur permettant d'initialiser toutes les cases du plateau
 	 * 
 	 */
 	public Plateau() {
@@ -35,28 +34,9 @@ public class Plateau {
 				plateau[ligne][colonne] = new Case(colonne, ligne);
 		}	
 	}
-
-	/**
-	 * Getter plateau de jeu
-	 * 
-	 * @return plateau
-	 */
-	public Case[][] getPlateau() {
-		return plateau;
-	}
-
-	/**
-	 * Setter plateau de jeu
-	 * 
-	 * @param plateau plateau de jeu voulu
-	 */
-	public void setPlateau(Case[][] plateau) {
-		this.plateau = plateau;
-	}
 	
 	/**
-	 * Verifie que les coordonnees de la case sont 
-	 * bien dans le plateau
+	 * Verifie que les coordonnees de la case sont bien dans le plateau
 	 * 
 	 * @param positionX colonne du plateau
 	 * @param positionY ligne du plateau
@@ -69,8 +49,7 @@ public class Plateau {
 	}
 	
 	/**
-	 * Permet de recuperer une case a partir de ses
-	 * coordonnees
+	 * Permet de recuperer une case a partir de ses coordonnees
 	 * 
 	 * @param positionX colonne de la case
 	 * @param positionY ligne de la case
@@ -86,8 +65,7 @@ public class Plateau {
 	}
 	
 	/**
-	 * Permet de recuperer une case a partir du personnage
-	 * present dessus
+	 * Permet de recuperer une case a partir du personnage present dessus
 	 * 
 	 * @param personnage personnage present sur la case
 	 * 
@@ -104,19 +82,9 @@ public class Plateau {
 		return null;
 	}
 	
-	public Case getCaseInit(Personnage personnage){
-		for(Case []ligne : plateau) {
-			for(Case colonne : ligne) {
-				if(!colonne.isEmpty() && colonne.getPersonnage().getNom().equals(personnage.getNom()))
-					return colonne;
-			}
-		}
-		return null;
-	}
-	
 	/**
-	 * Permet d'obtenir toutes les cases atteignables par un 
-	 * personnage depuis sa position
+	 * Permet d'obtenir toutes les cases atteignables par un personnage depuis sa position<br>
+	 * <b>METHODE INUTILISEE ATM</b>
 	 * 
 	 * @param personnage personnage dont on veut connaitre les deplacements possibles
 	 * 
@@ -142,9 +110,9 @@ public class Plateau {
 	}
 	
 	/**
-	 * TODO
-	 * @param personnage
-	 * @return
+	 * Permet de connaitre les cases que le personnage peut attaquer
+	 * @param personnage Le personnage dont on veut connaitre les cases attaquables
+	 * @return La liste des cases attaquables
 	 */
 	public ArrayList<Case> getCasesAPorte(Personnage personnage) {
 		ArrayList<Case> casesAPorte = new ArrayList<Case>();
@@ -165,33 +133,32 @@ public class Plateau {
 	}
 	
 	/**
-	 * TODO
+	 * Permet de placer un personnage sur une position
+	 * 
+	 * @param positionX La colonne ou le personnage doit etre placé
+	 * @param positionY La ligne ou le personnage doit etre placé
+	 * @param personnage Le personnage a placer
 	 */
 	public void placerPersonnage(int positionX, int positionY, Personnage personnage) {
 		plateau[positionY][positionX].setPersonnage(personnage);
 	}
 	
 	/**
-	 * TODO
-	 */
-	public void deplacerPersonnage(Case caseDepart, int positionX, int positionY) {
-		/**/
-		placerPersonnage(positionX, positionY, caseDepart.getPersonnage());
-		/**/
-		caseDepart.setPersonnage(null);
-	}
-	
-	/**
-	 * TODO
+	 * Permet de déplacer un personnage d'une case a une autre avec les vérifications et calculs nécessaires
+	 * 
+	 * @param fenetre La fenetre de jeu
+	 * @param caseDepart La case de depart du personnage
+	 * @param caseArrivee La case ou l'on souhaite placer le personnage
+	 * @return Si le déplacement a pu être effectué ou non
 	 */
 	public boolean deplacerPersonnage(Fenetre fenetre, Case caseDepart, Case caseArrivee) {
 		PanneauJeu panel = fenetre.getPanneauJeu();
 		int distance = Util.distanceCase (caseDepart, caseArrivee.getPositionX(), caseArrivee.getPositionY());
-		int pmPerso = caseDepart.getPersonnage().getDeplacements();
+		int pmPerso = caseDepart.getPersonnage().getDeplacementsAvecBoost();
 	
 		if(distance <= pmPerso) {	
 			placerPersonnage(caseArrivee.getPositionX(), caseArrivee.getPositionY(), caseDepart.getPersonnage());
-			caseDepart.getPersonnage().setDeplacements(pmPerso - distance);
+			caseDepart.getPersonnage().setDeplacements(caseDepart.getPersonnage().getDeplacements() - distance);
 			caseArrivee.setPersonnage(caseDepart.getPersonnage(),
 					fenetre.getJeu().getJoueur1().getEquipe().isDansEquipe(panel.getPersonnageSelectionne()) ? "blue.png" : "red.png");
 			caseDepart.setPersonnage(null,null);
@@ -202,46 +169,10 @@ public class Plateau {
 		return false;	
 	}
 	
-	
-	
-	
 	/**
-	 * TODO
+	 * Permet de connaitre la premiere case disponible dans les colonnes de gauche (pour le J1)
+	 * @return La premiere case disponible
 	 */
-	private void afficherLigneSeparation() {
-		System.out.print("  ");
-		for(int col=0 ; col<NOMBRE_COLONNE*4+1 ; col++) {
-			System.out.print("-");
-		}
-		System.out.println();
-	}
-	
-	/**
-	 * TODO
-	 */
-	public void afficherPlateau() {
-		System.out.print("\n  ");
-		for(int col=0 ; col<NOMBRE_COLONNE ; col++) {
-			String numColonne = (col+1) + "";
-			System.out.print("  " + numColonne + (numColonne.length() < 2 ? " " : ""));
-		}
-		System.out.println();
-		
-		for(int lig=0 ; lig<NOMBRE_LIGNE ; lig++) {
-			afficherLigneSeparation();
-			System.out.print((lig+1) + " ");
-			
-			for(int col=0 ; col<NOMBRE_COLONNE ; col++) {
-				System.out.print("| " + (!getCase(col, lig).isEmpty() ? getCase(col, lig).getPersonnage().getNom().substring(0, 1) : " ") + " ");
-			}
-			System.out.println("|");			
-		}
-		
-		afficherLigneSeparation();
-		System.out.println();
-	}
-	
-	
 	public Case getFirstCaseLeft() {
 		for(Case []ligne : plateau) {
 			for(Case colonne : ligne) {
@@ -253,6 +184,10 @@ public class Plateau {
 		return null;
 	}
 	
+	/**
+	 * Permet de connaitre la premiere case disponible dans les colonnes de droite (pour le J2)
+	 * @return La premiere case disponible
+	 */
 	public Case getFirstCaseRight() {
 		for(Case []ligne : plateau) {
 			for(Case colonne : ligne) {

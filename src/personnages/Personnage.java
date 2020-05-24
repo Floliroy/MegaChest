@@ -119,6 +119,7 @@ public abstract class Personnage {
 	public void subirDegats(Integer degatsRecus) {
 		degatsRecus = degatsRecus >= 0 ? degatsRecus : 0;
 		vie -= degatsRecus;
+		System.out.println(nom + " -" + degatsRecus + " PV");
 	}
 	
 	/**
@@ -129,11 +130,14 @@ public abstract class Personnage {
 		return getVieAvecBoost() > 0;
 	}
 	
+	/**
+	 * Permet d'affiche le nombre de point de vie restant au personnage ou s'il est mort
+	 */
 	public void imprimeEtat() {
 		if(isVivant()) {
 			System.out.println("Il reste " + getVieAvecBoost() + " points de vie a " + nom);
 		}else {
-			System.out.println(nom + " est mort.");
+			System.out.println(nom + " est mort");
 		}
 	}
 	
@@ -222,38 +226,6 @@ public abstract class Personnage {
 	}
 
 	/**
-	 * Permet de renseigner le nom du personnage
-	 * @param nom Nom du personnage souhait�
-	 */
-	public void setNom(String nom) {
-		this.nom = nom;
-	}
-
-	/**
-	 * Permet de connaître la santé actuelle du personnage
-	 * @return Renvoit sa vie
-	 */
-	public Integer getVie() {
-		return vie;
-	}
-
-	/**
-	 * Permet de renseigner la santé du personnage
-	 * @param vie Vie du personnage souhait�
-	 */
-	public void setVie(Integer vie) {
-		this.vie = vie;
-	}
-
-	/**
-	 * Permet de connaître la santé maximale du personnage
-	 * @return Renvoit sa vie de base
-	 */
-	public Integer getVieBase() {
-		return vieBase;
-	}
-
-	/**
 	 * Permet de connaître les points de déplacements du personnage
 	 * @return Renvoit ses points de déplacements
 	 */
@@ -278,75 +250,11 @@ public abstract class Personnage {
 	}
 
 	/**
-	 * Permet de renseigner les points de déplacements de base du personnage
-	 * @param deplacements Le nombre de points de déplacements de base souhaités
-	 */
-	public void setDeplacementsBase(Integer deplacementsBase) {
-		this.deplacementsBase = deplacementsBase;
-	}
-
-	/**
-	 * Permet de connaître la force de frappe du personnage
-	 * @return Renvoit ses dégâts
-	 */
-	public Integer getDegats() {
-		return degats;
-	}
-
-	/**
-	 * Permet de renseigner les dégâts du personnage
-	 * @param degats Les dégâts du personnage souhaités
-	 */
-	public void setDegats(Integer degats) {
-		this.degats = degats;
-	}
-
-	/**
-	 * Permet de connaître la portée d'attaque du personnage
-	 * @return Renvoit sa portée
-	 */
-	public Integer getPortee() {
-		return portee;
-	}
-
-	/**
-	 * Permet de renseigner la portée d'attaque du personnage
-	 * @param portee La portée du personnage souhaitée
-	 */
-	public void setPortee(Integer portee) {
-		this.portee = portee;
-	}
-
-	/**
-	 * Permet de connaître la vitesse d'attaque du personnage
-	 * @return Renvoit sa vitesse
-	 */
-	public Integer getVitesse() {
-		return vitesse;
-	}
-
-	/**
-	 * Permet de renseigner la vitesse d'attaque du personnage
-	 * @param vitesse La vitesse du personnage souhaitée
-	 */
-	public void setVitesse(Integer vitesse) {
-		this.vitesse = vitesse;
-	}
-
-	/**
 	 * Permet de connaître l'élément du personnage
 	 * @return Renvoit son élément
 	 */
 	public Element getElement() {
 		return element;
-	}
-
-	/**
-	 * Permet de renseigner l'élément du personnage
-	 * @param element L'élément du personnage souhaité
-	 */
-	public void setElement(Element element) {
-		this.element = element;
 	}
 
 	/**
@@ -358,33 +266,9 @@ public abstract class Personnage {
 	}
 
 	/**
-	 * Permet de renseigner l'origine du personnage
-	 * @param element L'origine du personnage souhaitée
-	 */
-	public void setOrigine(Origine origine) {
-		this.origine = origine;
-	}
-
-	/**
-	 * TODO
-	 * @return
-	 */
-	public HashMap<TypeStat, Integer> getBonusEquipe() {
-		return bonusEquipe;
-	}
-
-	/**
-	 * TODO
-	 * @param bonusEquipe
-	 */
-	public void setBonusEquipe(HashMap<TypeStat, Integer> bonusEquipe) {
-		this.bonusEquipe = bonusEquipe;
-	}
-	
-	/**
-	 * TODO
-	 * @param typeStat
-	 * @param value
+	 * Ajoute un bonus en fonction de l'équipe du personnage
+	 * @param typeStat Le type de stat affecté par le bonus
+	 * @param value La valeur du bonus
 	 */
 	public void putBonusEquipe(TypeStat typeStat, Integer value) {
 		bonusEquipe.replace(typeStat, bonusEquipe.get(typeStat) + value);
@@ -397,15 +281,7 @@ public abstract class Personnage {
 	public String getCheminImage() {
 		return cheminImage;
 	}
-
-	/**
-	 * Permet de renseigner le chemin de l'image de l'icone du personnage
-	 * @param cheminImage Le chemin de l'image souhaité
-	 */
-	public void setCheminImage(String cheminImage) {
-		this.cheminImage = cheminImage;
-	}
-
+	
 	/**
 	 * Permet de connaître la liste des objets équipés par le personnage
 	 * @return Renvoit sa liste d'objets
@@ -424,21 +300,11 @@ public abstract class Personnage {
 	
 	/**
 	 * Permet d'ajouter un objet à la liste des objets équipés
-	 * @param objet
+	 * @param objet L'objet a ajouter
 	 */
 	public void addListObjets(Objet objet) {
 		if(listObjets.size() < TAILLE_MAX_LISTE_OBJET) {
 			listObjets.add(objet);
 		}
-	}
-	
-	public String dumpCaracteristique() {
-		String print;
-		print = "PV : " + vieBase + /*"\n"*/ " | ";
-		print += "PM : " + deplacements + /*"\n"*/ " | ";
-		print += "Deg : " + degats + /*"\n"*/ " | ";
-		print += "PO : " + portee + /*"\n"*/ " | ";
-		print += "Vit : " + vitesse + "";	
-		return print;
 	}
 }

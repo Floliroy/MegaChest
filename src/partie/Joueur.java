@@ -10,60 +10,36 @@ import util.*;
 
 public class Joueur {
 	
-	
+	/** L'equipe du joueur */
 	private Equipe equipe;
+	/** booleen indiquant si le joueur a la main */
 	@Expose
 	private Boolean tour;
+	/** couleur du joueur */
 	private String couleur;
+	/** nom du joueur */
 	@Expose
 	private String nom;
 	
+	/**
+	 * Constructeur de Joueur initialisant son équipe 
+	 * @param tour Si le joueur commence ou non
+	 * @param couleur La couleur du joueur
+	 */
 	public Joueur(Boolean tour, String couleur) {
 		this.equipe = new Equipe();
 		this.tour = tour;
 		this.couleur = couleur;
-	}
-	
-	
-	public void completerEquipe() {
-		ArrayList<Personnage> listePersonnages = Util.listePersonnages();
-		String nom;
-		
-		while(!equipe.isComplete()) {
-			System.out.println("Voici la liste des personnages disponibles : ");
-			System.out.println(Util.imprimeList(listePersonnages));
-			System.out.print("Quels personnage voulez vous ajouter ? ");
-			
-			nom = Clavier.entrerClavierString();
-			Boolean trouve = false;
-			
-			for(Personnage personnage : listePersonnages) {
-				if(nom.toLowerCase().equals(personnage.getNom().toLowerCase()) && !equipe.isDansEquipe(personnage)) {
-					System.out.println("Personnage : " + personnage.getNom() + "\n" + personnage.dumpCaracteristique());
-					
-					System.out.print("Confirmer personnage (y/n) : ");
-					String choix = Clavier.entrerClavierString().toLowerCase();
-					trouve = true;
-					
-					if(choix.equals("y")) {
-						equipe.addEquipe(personnage);
-						System.out.println(personnage.getNom() + " a été ajouté à l'équipe.\n");
-						listePersonnages.remove(personnage);		
-						break;
-					}
-				}
-			}
-			if(!trouve) {
-				System.out.println("Personnage \"" + nom + "\" introuvable.");
-			}
-		}
-		equipe.calculerBonusEquipe();
-	}
-	
-	
-	
-	
+	}	
 
+	///////////////////////
+	// GETTERS & SETTERS //
+	///////////////////////
+	
+	/**
+	 * Getter de l'équipe du joueur
+	 * @return L'équipe du joueur
+	 */
 	public Equipe getEquipe() {
 		return equipe;
 	}
@@ -71,33 +47,45 @@ public class Joueur {
 	public void setEquipe(Equipe equipe) {
 		this.equipe = equipe;
 	}
-
+	/**
+	 * Permet de savoir si le joueur a la main
+	 * @return true s'il l'a sinon false
+	 */
 	public Boolean isTour() {
 		return tour;
 	}
-
+	
+	/**
+	 * Permet de donner ou non la main au joueur
+	 * @param tour La valeur souhaitée
+	 */
 	public void setTour(Boolean tour) {
 		this.tour = tour;
 	}
 	
+	/**
+	 * Setter du nom du joueur
+	 * @param nom Le nom souhaité
+	 */
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
 	
+	/**
+	 * Getter du nom du joueur
+	 * @return le nom du joueur
+	 */
 	public String getNom() {
 		return this.nom;
 	}
 
-
+	/**
+	 * Getter de la couleur du joueur
+	 * @return La couleur du joueur
+	 */
 	public String getCouleur() {
 		return couleur;
 	}
-
-
-	public void setCouleur(String couleur) {
-		this.couleur = couleur;
-	}
-	
 	
 
 }

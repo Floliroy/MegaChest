@@ -36,7 +36,6 @@ public class GenerateJeuTest {
 		for(int i = 0; i < NOMBRE_PERSO; i ++) {
 			Personnage perso = joueur.getEquipe().getListePersonnages().get(i);
 			Case current = plateau.getCase(colonne, i);
-			System.out.println(perso.getNom() + " est sur la case " + current.dumpCase());
 			current.setPersonnage(perso);
 		}
 		

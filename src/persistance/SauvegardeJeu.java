@@ -83,17 +83,5 @@ public class SauvegardeJeu {
 		return etatJeu;
 	}
 
-	public void dumpEquipeJoueur() {
-		System.out.println(joueur1.getNom());
-		equipeJoueur1.forEach( (cp) -> {
-			System.out.println(  cp.dumpCase() + " : " + cp.getPersonnage().getNom());
-		});
-		
-		System.out.println(joueur2.getNom());
-		equipeJoueur2.forEach( (cp) -> {
-			System.out.println(  cp.dumpCase() + " : " + cp.getPersonnage().getNom());
-		});
-	}
-	
 
 }

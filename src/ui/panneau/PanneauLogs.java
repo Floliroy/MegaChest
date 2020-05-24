@@ -16,6 +16,12 @@ public class PanneauLogs extends JPanel{
 	
 	private JTextArea textOutput;
 	
+	/**
+	 * Constructeur de PanneauLogs
+	 * 
+	 * Permet de construire le panneau contenant une JTextArea permettant
+	 * d'afficher les logs sur les actions qui ont lieu pendant la partie.
+	 */
 	public PanneauLogs() {
 		
 		this.setLayout(new BorderLayout());
