@@ -2,6 +2,7 @@ package ui.souris;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.File;
 
 import javax.swing.JPanel;
 
@@ -14,6 +15,7 @@ import plateau.Plateau;
 import ui.CaseImage;
 import ui.Fenetre;
 import ui.panneau.PanneauJeu;
+import util.FileManager;
 import util.Util;
 
 /**
@@ -178,6 +180,10 @@ public class SourisJeu extends MouseAdapter {
 			fenetre.getPanneauActions().getButtonPasser().setEnabled(false);
 			System.out.println();
 			System.out.println(jeu.getGagnant().getNom() + ", tu es le gagnant !");
+			File file = new File(FileManager.SAVE);
+			if(file.exists()) {
+				file.delete();
+			}
 		}
 	}
 

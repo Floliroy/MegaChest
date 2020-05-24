@@ -164,6 +164,10 @@ public class PopUpStart extends JDialog implements ActionListener{
 				//Ferme la pop-up
 				dispose();		
 				//Lance la partie
+				File file = new File(FileManager.SAVE);
+				if(file.exists()) {
+					file.delete();
+				}
 				fenetre.getPanneauActions().showSelection();
 				fenetre.getPanneauJeu().refresh();
 				fenetre.revalidate();
