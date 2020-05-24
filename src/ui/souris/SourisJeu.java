@@ -7,6 +7,7 @@ import javax.swing.JPanel;
 
 import partie.Equipe;
 import partie.Jeu;
+import partie.Joueur;
 import personnages.Personnage;
 import plateau.Case;
 import plateau.Plateau;
@@ -140,6 +141,7 @@ public class SourisJeu extends MouseAdapter {
 				jeu.setJetonAttaque(false);
 
 				// On supprime le personnage de son equipe s'il est mort
+				Joueur joueurEquipement = null;
 				if (!attaquant.isVivant()) {
 					jeu.getJoueurActif().getEquipe().removeEquipe(attaquant);
 					Case casePerso = jeu.getPlateauJeu().getCase(attaquant);
@@ -148,7 +150,8 @@ public class SourisJeu extends MouseAdapter {
 					casePerso.getPanel().repaint();
 					
 					if(!jeu.isFini() && jeu.getJoueurActif().getEquipe().getListePersonnages().size() % 2 == Equipe.TAILLE_EQUIPE % 2) {
-						fenetre.getPanneauActions().showChoixObjet(jeu.getJoueurInactif());
+						joueurEquipement = jeu.getJoueurInactif();
+						jeu.setJetonEquipement(jeu.getJetonEquipement()+1);
 					}
 				}
 				if (!defenseur.isVivant()) {
@@ -159,8 +162,12 @@ public class SourisJeu extends MouseAdapter {
 					casePerso.getPanel().repaint();
 					
 					if(!jeu.isFini() && jeu.getJoueurInactif().getEquipe().getListePersonnages().size() % 2 == Equipe.TAILLE_EQUIPE % 2) {
-						fenetre.getPanneauActions().showChoixObjet(jeu.getJoueurActif());
+						joueurEquipement = jeu.getJoueurActif();
+						jeu.setJetonEquipement(jeu.getJetonEquipement()+1);
 					}
+				}
+				if(joueurEquipement != null) {
+					fenetre.getPanneauActions().showChoixObjet(joueurEquipement);
 				}
 			}
 		}

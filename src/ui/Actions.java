@@ -149,14 +149,19 @@ public class Actions implements ActionListener {
 	 */
 	private void actionEquiper() {
 		PanneauActions panneauActions = fenetre.getPanneauActions();
+		Jeu jeu = fenetre.getJeu();
+		jeu.setJetonEquipement(jeu.getJetonEquipement()-1);
 		
 		Personnage perso = panneauActions.getPersoSelectionne();
 		Objet objet = panneauActions.getObjetLoot();
 		perso.addListObjets(objet);
 		
-		panneauActions.refreshActions();
-		SourisJeu.refreshBoutonsActions(fenetre, fenetre.getJeu(), fenetre.getPanneauJeu());
-		fenetre.getJeu().getPlateauJeu().getCase(perso).getPanel().repaint();
+		if(jeu.getJetonEquipement() == 0) {
+			panneauActions.refreshActions();
+			SourisJeu.refreshBoutonsActions(fenetre, fenetre.getJeu(), fenetre.getPanneauJeu());
+		}else {
+			fenetre.getPanneauActions().showChoixObjet(jeu.getJoueurInactif());
+		}
 		
 		System.out.println(perso.getNom() + " a recu " + objet.getNom());
 	}

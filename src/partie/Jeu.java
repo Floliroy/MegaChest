@@ -33,6 +33,8 @@ public class Jeu {
 	private Boolean jetonAttaque;
 	/** un jeton pour que le prochain click soit utilisé pour connaitre la case ciblée de déplacement */
 	private Boolean jetonDeplace;
+	/** un jeton a incrementer pour que l'on puisse equiper un objet */
+	private Integer jetonEquipement;
 	/** Le personnage joué ce tour */
 	private Personnage personnageJoue;
 	
@@ -49,6 +51,7 @@ public class Jeu {
 		attaqueEffectue = false;
 		jetonAttaque = false;
 		jetonDeplace = false;
+		setJetonEquipement(0);
 	}
 	
 	/**
@@ -59,6 +62,8 @@ public class Jeu {
 		attaqueEffectue = false;
 		jetonAttaque = false;
 		jetonDeplace = false;
+		setJetonEquipement(0);
+		
 		personnageJoue.setDeplacements(personnageJoue.getDeplacementsBase());
 		personnageJoue = null;
 	}
@@ -134,7 +139,7 @@ public class Jeu {
 		Boolean defenseurPeutAttaquer = plateauJeu.getCasesAPorte(defenseur).contains(plateauJeu.getCase(attaquant));
 		
 		//Si l'attaquant attaque en premier
-		if(attaquant.getVitesseAvecBoost() >= defenseur.getVitesseAvecBoost()) {
+		if(attaquant.getVitesseAvecBoost() > defenseur.getVitesseAvecBoost()) {
 			attaquant.attaque(defenseur);
 			defenseur.imprimeEtat();
 			if(defenseur.isVivant() && defenseurPeutAttaquer) {
@@ -154,18 +159,14 @@ public class Jeu {
 			}
 			
 		//Si les deux attaques en même temps
-		}/*else {
-		
-			Cette partie du code est commentée pour éviter le cas où les deux joueurs looterai un objet en même temps.
-			TODO : Gérer ce cas avec un jeton ou je sais pas comment ...
-		
+		}else {		
 			attaquant.attaque(defenseur);
 			defenseur.imprimeEtat();
 			if(defenseurPeutAttaquer) {
 				defenseur.attaque(attaquant);
 				attaquant.imprimeEtat();
 			}
-		}*/
+		}
 		
 		return true;
 	}
@@ -261,10 +262,24 @@ public class Jeu {
 	}
 	/**
 	 * Permet de donner ou d'enlever un jeton de déplacement pour le prochain click
-	 * @param jetonAttaque La valeur souhaitée
+	 * @param jetonDeplace La valeur souhaitée
 	 */
 	public void setJetonDeplace(Boolean jetonDeplace) {
 		this.jetonDeplace = jetonDeplace;
+	}
+	/**
+	 * Permet de savoir si on a un jeton d'équipement disponible
+	 * @return Le nombre de jeton disponible
+	 */
+	public Integer getJetonEquipement() {
+		return jetonEquipement;
+	}
+	/**
+	 * Permet de donner ou d'enlever des jetons d'équipement
+	 * @param jetonEquipement La valeur souhaitée
+	 */
+	public void setJetonEquipement(Integer jetonEquipement) {
+		this.jetonEquipement = jetonEquipement;
 	}
 	/**
 	 * Permet de connaitre le personnage joué ce tour
