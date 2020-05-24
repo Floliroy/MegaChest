@@ -1,5 +1,6 @@
 package ui.util;
 
+import java.awt.Color;
 import java.awt.GridBagLayout;
 
 import javax.swing.JButton;
@@ -27,6 +28,18 @@ public class MyPanel extends JPanel {
 		super();
 		this.setLayout(new GridBagLayout());
 		this.add(label);
+	}
+	
+	/**
+	 * JPanel avec un JLabel centré et un fond d'une couleur
+	 * 
+	 * @param label JLabel à insérer
+	 */
+	public MyPanel(JLabel label, Color color) {
+		super();
+		this.setLayout(new GridBagLayout());
+		this.add(label);
+		this.setBackground(color);
 	}
 	
 	/**

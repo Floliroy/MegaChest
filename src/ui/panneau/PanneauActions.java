@@ -131,7 +131,7 @@ public class PanneauActions extends JPanel{
 		String htmlFooter = "</html>";
 		
 		JLabel label = new JLabel(htmlHeader + "<span>" + joueur.getNom() + "</span> : Choisissez sur qui équiper \"" 
-								 + objetLoot.getNom() + "\" <i>(+" + objetLoot.getStat() + " " + objetLoot.getTypeStat() + ")</i>" + htmlFooter);
+								 + objetLoot.getNom() + "\" " + objetLoot.dumpCaracs() + htmlFooter);
 		label.setFont(new Font("Calibri", Font.BOLD, 32));
 		conteneurTitre.setLayout(new GridBagLayout());
 		conteneurTitre.add(label);
