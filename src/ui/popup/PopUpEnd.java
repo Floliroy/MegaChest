@@ -24,9 +24,9 @@ public class PopUpEnd extends JDialog {
 		this.setSize(450, 350);
 		
 		this.setLocationRelativeTo(fenetre);
-		fenetre.getRootPane().getGlassPane().setVisible(true);
+		/*fenetre.getRootPane().getGlassPane().setVisible(true);
 		fenetre.revalidate();
-		fenetre.repaint();
+		fenetre.repaint();*/
 		
 		this.setBackground(Color.GRAY);
 		this.setResizable(false);

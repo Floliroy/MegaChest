@@ -84,7 +84,6 @@ public class Plateau {
 	
 	/**
 	 * Permet d'obtenir toutes les cases atteignables par un personnage depuis sa position<br>
-	 * <b>METHODE INUTILISEE ATM</b>
 	 * 
 	 * @param personnage personnage dont on veut connaitre les deplacements possibles
 	 * 
@@ -92,7 +91,6 @@ public class Plateau {
 	 */
 	public ArrayList<Case> getCasesAtteignables(Personnage personnage) {
 		ArrayList<Case> casesAtteignables = new ArrayList<Case>();
-		Case libre = null;
 		
 		int pmPerso = personnage.getDeplacementsAvecBoost();
 		Case position = getCase(personnage);
@@ -102,8 +100,8 @@ public class Plateau {
 
 		for(int ligne = positionY - pmPerso; ligne <= positionY + pmPerso; ligne ++) {
 			for(int colonne = positionX - decalage; colonne <= positionX + decalage; colonne ++)
-				if((libre = getCase(colonne, ligne)) != null  && libre.getPersonnage() == null) 
-					casesAtteignables.add(libre);
+				if(getCase(colonne, ligne) != null && !personnage.equals(getCase(colonne, ligne).getPersonnage()))
+					casesAtteignables.add(getCase(colonne, ligne));
 			decalage = ligne < positionY ? decalage + 1 : decalage - 1;
 		}
 		return casesAtteignables;
@@ -131,6 +129,31 @@ public class Plateau {
 				if((positionCible = getCase(colonne, ligne)) != null  && 
 						   (cible = positionCible.getPersonnage()) != null &&  !cible.equals(personnage))
 							casesAPorte.add(positionCible);				
+			decalage = ligne < positionY ? decalage + 1 : decalage - 1;
+		}
+		return casesAPorte;
+	}
+	
+	/**
+	 * Permet de connaitre la range dees cases que le personnage peut attaquer
+	 * @param personnage Le personnage dont on veut connaitre les cases attaquables
+	 * @return La range des cases attaquables
+	 */
+	public ArrayList<Case> getAllCasesAPorte(Personnage personnage, Jeu jeu) {
+		ArrayList<Case> casesAPorte = new ArrayList<Case>();
+		
+		int poPerso = personnage.getPorteeAvecBoost();
+		Case positionPersonnage = getCase(personnage);
+		int positionX = positionPersonnage.getPositionX();
+		int positionY = positionPersonnage.getPositionY();
+		int decalage = 0;
+
+		
+		for(int ligne = positionY - poPerso; ligne <= positionY + poPerso; ligne ++) {
+			for(int colonne = positionX - decalage; colonne <= positionX + decalage; colonne ++)
+				if(getCase(colonne, ligne) != null && !personnage.equals(getCase(colonne, ligne).getPersonnage()))
+					if(!(getCase(colonne, ligne).getPersonnage() != null && jeu.getJoueurActif().getEquipe().contains(getCase(colonne, ligne).getPersonnage())))
+						casesAPorte.add(getCase(colonne, ligne));				
 			decalage = ligne < positionY ? decalage + 1 : decalage - 1;
 		}
 		return casesAPorte;

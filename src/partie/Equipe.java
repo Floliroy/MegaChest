@@ -11,7 +11,7 @@ import personnages.Personnage;
 public class Equipe {
 	
 	/** Taille de l'équipe au début de la partie */
-	public static final int TAILLE_EQUIPE = 3;
+	public static final int TAILLE_EQUIPE = 6;
 	
 	/* -------------------------------------------------- */
 	
@@ -231,6 +231,10 @@ public class Equipe {
 	 */
 	public void removeEquipe(Personnage personnage) {
 		listePersonnages.remove(personnage);
+	}
+	
+	public Boolean contains(Personnage personnage) {
+		return listePersonnages.contains(personnage);
 	}
 
 }

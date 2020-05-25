@@ -1,8 +1,10 @@
 package ui.util;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import objets.Objet;
 import partie.Jeu;
@@ -10,10 +12,12 @@ import partie.Joueur;
 
 
 import util.FileManager;
-
+import util.Util;
 import personnages.Personnage;
+import plateau.Case;
 import ui.Fenetre;
 import ui.panneau.PanneauActions;
+import ui.panneau.PanneauJeu;
 import ui.souris.SourisJeu;
 
 
@@ -102,6 +106,8 @@ public class Actions implements ActionListener {
 	 */
 	private void actionAttaquer() {
 		Jeu jeu = fenetre.getJeu();
+		PanneauJeu panneauJeu = fenetre.getPanneauJeu();
+		
 		if(!jeu.getAttaqueEffectue() && !jeu.getJetonAttaque()) {
 			jeu.setPersonnageJoue(fenetre.getPanneauJeu().getPersonnageSelectionne());
 			jeu.setJetonAttaque(true);
@@ -109,13 +115,25 @@ public class Actions implements ActionListener {
 			System.out.println("Cliquez sur le personnage a attaquer.");
 			if(jeu.getJetonDeplace()) {
 				jeu.setJetonDeplace(false);
+				panneauJeu.refresh();
+			}
+			ArrayList<Case> cases = jeu.getPlateauJeu().getAllCasesAPorte(jeu.getPersonnageJoue(), jeu);
+			for(Case casePlateau : cases) {
+				CaseImage panel = casePlateau.getPanel();
+				if(!casePlateau.isEmpty()) {
+					panel.setTransparency(Util.getRedTransparency());
+				}else {
+					panel.setBackground(panel.getBackground()==Color.LIGHT_GRAY ? new Color(240,128,128) : new Color(139,0,0));
+				}
+				panel.repaint();
 			}
 		}else {
 			if(!jeu.getActionEffectue()) {
 				jeu.setPersonnageJoue(null);				
 			}
 			jeu.setJetonAttaque(false);
-			System.out.println("Action d'attaque annule.");
+			System.out.println("Action d'attaque annulee.");
+			panneauJeu.refresh();
 		}
 	}
 	
@@ -124,6 +142,8 @@ public class Actions implements ActionListener {
 	 */
 	private void actionDeplacer() {
 		Jeu jeu = fenetre.getJeu();
+		PanneauJeu panneauJeu = fenetre.getPanneauJeu();
+		
 		jeu.setJetonDeplace(!jeu.getJetonDeplace());
 		if(jeu.getJetonDeplace()) {
 			jeu.setPersonnageJoue(fenetre.getPanneauJeu().getPersonnageSelectionne());
@@ -131,12 +151,22 @@ public class Actions implements ActionListener {
 			System.out.println("Cliquez sur la case ou vous voulez aller.");
 			if(jeu.getJetonAttaque()) {
 				jeu.setJetonAttaque(false);
+				panneauJeu.refresh();
+			}
+			ArrayList<Case> cases = jeu.getPlateauJeu().getCasesAtteignables(jeu.getPersonnageJoue());
+			for(Case casePlateau : cases) {
+				CaseImage panel = casePlateau.getPanel();
+				if(casePlateau.isEmpty()) {
+					panel.setBackground(panel.getBackground()==Color.LIGHT_GRAY ? new Color(50,205,0) : new Color(85,107,47));
+				}
+				panel.repaint();
 			}
 		}else {
 			if(!jeu.getActionEffectue()) {
 				jeu.setPersonnageJoue(null);
 			}
-			System.out.println("Action de deplacement annule.");
+			System.out.println("Action de deplacement annulee.");
+			panneauJeu.refresh();
 		}
 	}
 	

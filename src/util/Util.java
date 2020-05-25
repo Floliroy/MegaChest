@@ -96,6 +96,34 @@ public class Util {
 	}
 	
 	/**
+	 * Ajoute la transparence verte sur un personnage
+	 * 
+	 * @return color transparence verte
+	 */
+	public static HashMap<String, Integer> getGreenTransparency(){
+		HashMap<String, Integer> color = new HashMap<>();
+		color.put("red", 0);
+		color.put("green", 255);
+		color.put("blue", 0);
+		color.put("alpha", 100);
+		return color;
+	}
+	
+	/**
+	 * Ajoute la transparence rouge sur un personnage
+	 * 
+	 * @return color transparence rouge
+	 */
+	public static HashMap<String, Integer> getRedTransparency(){
+		HashMap<String, Integer> color = new HashMap<>();
+		color.put("red", 255);
+		color.put("green", 0);
+		color.put("blue", 0);
+		color.put("alpha", 100);
+		return color;
+	}
+	
+	/**
 	 * Ajoute la transparence grise sur un personnage déjà choisis pendant la phase de sélection 
 	 * des deux joueurs.
 	 * 

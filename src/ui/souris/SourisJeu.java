@@ -149,8 +149,8 @@ public class SourisJeu extends MouseAdapter {
 					jeu.getJoueurActif().getEquipe().removeEquipe(attaquant);
 					Case casePerso = jeu.getPlateauJeu().getCase(attaquant);
 					casePerso.setPersonnage(null, null);
-					casePerso.getPanel().setTransparency(null);
-					casePerso.getPanel().repaint();
+					/*casePerso.getPanel().setTransparency(null);
+					casePerso.getPanel().repaint();*/
 					
 					if(!jeu.isFini() && jeu.getJoueurActif().getEquipe().getListePersonnages().size() % 2 == Equipe.TAILLE_EQUIPE % 2) {
 						joueurEquipement = jeu.getJoueurInactif();
@@ -161,8 +161,8 @@ public class SourisJeu extends MouseAdapter {
 					jeu.getJoueurInactif().getEquipe().removeEquipe(defenseur);
 					Case casePerso = jeu.getPlateauJeu().getCase(defenseur);
 					casePerso.setPersonnage(null, null);
-					casePerso.getPanel().setTransparency(null);
-					casePerso.getPanel().repaint();
+					/*casePerso.getPanel().setTransparency(null);
+					casePerso.getPanel().repaint();*/
 					
 					if(!jeu.isFini() && jeu.getJoueurInactif().getEquipe().getListePersonnages().size() % 2 == Equipe.TAILLE_EQUIPE % 2) {
 						joueurEquipement = jeu.getJoueurActif();
@@ -174,8 +174,14 @@ public class SourisJeu extends MouseAdapter {
 				}
 			}
 		}
+		panneauJeu.refresh();
 		if (jeu.isFini()) {
 			jeu.setEtatJeu(Jeu.PHASE_TERMINE);
+			File file = new File(FileManager.SAVE);
+			if(file.exists()) {
+				file.delete();
+			}
+			
 			fenetre.getPanneauActions().getButtonAttaquer().setEnabled(false);
 			fenetre.getPanneauActions().getButtonDeplacer().setEnabled(false);
 			fenetre.getPanneauActions().getButtonPasser().setEnabled(false);
@@ -183,10 +189,6 @@ public class SourisJeu extends MouseAdapter {
 			System.out.println(jeu.getGagnant().getNom() + ", tu es le gagnant !");
 			PopUpEnd popUpEnd = new PopUpEnd(fenetre, jeu.getGagnant());
 			popUpEnd.setVisible(true);
-			/*File file = new File(FileManager.SAVE);
-			if(file.exists()) {
-				file.delete();
-			}*/
 		}
 	}
 
@@ -207,14 +209,15 @@ public class SourisJeu extends MouseAdapter {
 
 			if (fenetre.getJeu().getPlateauJeu().deplacerPersonnage(fenetre, previousCase, casePlateau)) {
 
-				casePlateau.getPanel().setTransparency(Util.getYellowTransparency());
+				/*casePlateau.getPanel().setTransparency(Util.getYellowTransparency());
 				casePlateau.getPanel().repaint();
 
 				previousCase.getPanel().setTransparency(null);
-				previousCase.getPanel().repaint();
+				previousCase.getPanel().repaint();*/
 				
 				jeu.setJetonDeplace(false);
 				jeu.setActionEffectue(true);
+				panneauJeu.refresh();
 			}
 
 		}
