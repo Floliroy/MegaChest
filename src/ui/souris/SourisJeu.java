@@ -173,8 +173,8 @@ public class SourisJeu extends MouseAdapter {
 					fenetre.getPanneauActions().showChoixObjet(joueurEquipement);
 				}
 			}
+			panneauJeu.refresh();
 		}
-		panneauJeu.refresh();
 		if (jeu.isFini()) {
 			jeu.setEtatJeu(Jeu.PHASE_TERMINE);
 			File file = new File(FileManager.SAVE);
