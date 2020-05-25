@@ -7,10 +7,10 @@
         "nom": "Sona",
         "vie": 80,
         "bonusEquipe": {
-          "Dmg": 0,
+          "PM": 0,
           "Vit": 0,
           "PV": 50,
-          "PM": 0,
+          "Dmg": 0,
           "PO": 0
         },
         "listObjets": []
@@ -23,10 +23,10 @@
         "nom": "Kayle",
         "vie": 30,
         "bonusEquipe": {
-          "Dmg": 0,
+          "PM": 0,
           "Vit": 0,
           "PV": 50,
-          "PM": 0,
+          "Dmg": 0,
           "PO": 0
         },
         "listObjets": [
@@ -40,15 +40,15 @@
   "equipeJoueur2": [
     {
       "positionX": 7,
-      "positionY": 1,
+      "positionY": 2,
       "personnage": {
         "nom": "Swain",
         "vie": 20,
         "bonusEquipe": {
-          "Dmg": 15,
+          "PM": 0,
           "Vit": 0,
           "PV": 0,
-          "PM": 0,
+          "Dmg": 15,
           "PO": 0
         },
         "listObjets": []
@@ -56,12 +56,12 @@
     }
   ],
   "joueur1": {
-    "tour": false,
+    "tour": true,
     "couleur": "blue",
     "nom": "Floliroy"
   },
   "joueur2": {
-    "tour": true,
+    "tour": false,
     "couleur": "red",
     "nom": "DenApache"
   },

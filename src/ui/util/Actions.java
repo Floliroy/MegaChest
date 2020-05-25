@@ -123,7 +123,7 @@ public class Actions implements ActionListener {
 				if(!casePlateau.isEmpty()) {
 					panel.setTransparency(Util.getRedTransparency());
 				}else {
-					panel.setBackground(panel.getBackground()==Color.LIGHT_GRAY ? new Color(240,128,128) : new Color(139,0,0));
+					panel.setBackground(panel.getBackground()==Color.LIGHT_GRAY ? new Color(215,110,110) : new Color(175,35,35));
 				}
 				panel.repaint();
 			}
@@ -157,7 +157,7 @@ public class Actions implements ActionListener {
 			for(Case casePlateau : cases) {
 				CaseImage panel = casePlateau.getPanel();
 				if(casePlateau.isEmpty()) {
-					panel.setBackground(panel.getBackground()==Color.LIGHT_GRAY ? new Color(50,205,0) : new Color(85,107,47));
+					panel.setBackground(panel.getBackground()==Color.LIGHT_GRAY ? new Color(128,195,128) : new Color(0,155,0));
 				}
 				panel.repaint();
 			}
