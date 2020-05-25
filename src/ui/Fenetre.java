@@ -1,12 +1,9 @@
 package ui;
 
-import java.awt.Color;
-import java.awt.Graphics;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.io.PrintStream;
 
-import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
@@ -47,19 +44,8 @@ public class Fenetre extends JFrame {
 		this.setTitle("MegaChest");
 		this.setSize(1920, 1080);
 		this.setLocationRelativeTo(null);
-
-		this.getRootPane().setGlassPane(new JComponent() {
-			private static final long serialVersionUID = 3117068699940743711L;
-			public void paintComponent(Graphics g) {
-                super.paintComponent(g);
-				g.setColor(new Color(0, 0, 0, 255/2));
-				g.fillRect(0, 0, getWidth(), getHeight());
-				g.dispose();
-            }
-        });
 		
 		//Panneau Logs (Bas Droite)
-		
 		panneauLogs = new PanneauLogs();
 		
 		PrintStream printStream = new PrintStream(new RedirectionOutput(panneauLogs.getTextOutput()));
@@ -146,7 +132,6 @@ public class Fenetre extends JFrame {
 	public void showWindow() {
 		this.setVisible(true);
 		this.setExtendedState(JFrame.MAXIMIZED_BOTH);
-		this.getRootPane().getGlassPane().setVisible(true);
 	}
 	
 	
