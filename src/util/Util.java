@@ -13,7 +13,11 @@ import plateau.Case;
 
 public class Util {
 	
-	
+	/**
+	 * Permet d'obtenir une ArrayList contenant tous les objets disponibles.
+	 * 
+	 * @return ArrayList<Objet> qui contient tous les objets
+	 */
 	public static ArrayList<Objet> listeObjet(){
 		ArrayList<Objet> allObjets = new ArrayList<>();
 		

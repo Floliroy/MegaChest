@@ -108,15 +108,20 @@ public class Actions implements ActionListener {
 		Jeu jeu = fenetre.getJeu();
 		PanneauJeu panneauJeu = fenetre.getPanneauJeu();
 		
+		//On regarde si on a deja effectué une attaque et si on possède un jeton d'attaque
 		if(!jeu.getAttaqueEffectue() && !jeu.getJetonAttaque()) {
+			//On renseigne le personnage joué pour ce tour
 			jeu.setPersonnageJoue(fenetre.getPanneauJeu().getPersonnageSelectionne());
+			//On donne un jeton d'attaque
 			jeu.setJetonAttaque(true);
 			System.out.println();
 			System.out.println("Cliquez sur le personnage a attaquer.");
 			if(jeu.getJetonDeplace()) {
+				//Si on avait un jeton de déplacement on le supprime
 				jeu.setJetonDeplace(false);
 				panneauJeu.refresh();
 			}
+			//On affiche la zone attaquable
 			ArrayList<Case> cases = jeu.getPlateauJeu().getAllCasesAPorte(jeu.getPersonnageJoue(), jeu);
 			for(Case casePlateau : cases) {
 				CaseImage panel = casePlateau.getPanel();
@@ -128,9 +133,11 @@ public class Actions implements ActionListener {
 				panel.repaint();
 			}
 		}else {
+			//Si on a pas encore effectué d'action on peut changer de personnage joué pour ce tour
 			if(!jeu.getActionEffectue()) {
 				jeu.setPersonnageJoue(null);				
 			}
+			//On enleve le jeton d'attaque
 			jeu.setJetonAttaque(false);
 			System.out.println("Action d'attaque annulee.");
 			panneauJeu.refresh();
@@ -145,14 +152,18 @@ public class Actions implements ActionListener {
 		PanneauJeu panneauJeu = fenetre.getPanneauJeu();
 		
 		jeu.setJetonDeplace(!jeu.getJetonDeplace());
+		//On regarde si on possède un jeton de déplacement
 		if(jeu.getJetonDeplace()) {
+			//On renseigne le personnage joué pour ce tour
 			jeu.setPersonnageJoue(fenetre.getPanneauJeu().getPersonnageSelectionne());
 			System.out.println();
 			System.out.println("Cliquez sur la case ou vous voulez aller.");
 			if(jeu.getJetonAttaque()) {
+				//Si on avait un jeton d'attaque on le supprime
 				jeu.setJetonAttaque(false);
 				panneauJeu.refresh();
 			}
+			//On affiche la zone de deplacements possibles
 			ArrayList<Case> cases = jeu.getPlateauJeu().getCasesAtteignables(jeu.getPersonnageJoue());
 			for(Case casePlateau : cases) {
 				CaseImage panel = casePlateau.getPanel();
@@ -162,6 +173,7 @@ public class Actions implements ActionListener {
 				panel.repaint();
 			}
 		}else {
+			//Si on a pas encore effectué d'action on peut changer de personnage joué pour ce tour
 			if(!jeu.getActionEffectue()) {
 				jeu.setPersonnageJoue(null);
 			}
@@ -177,9 +189,11 @@ public class Actions implements ActionListener {
 		Jeu jeu = fenetre.getJeu();
 		FileManager fm = new FileManager();
 
+		//On réinitialise les jetons et flags pour le prochain tour
 		jeu.inverseJoueurs();
 		jeu.resetTour();
 		
+		//On réinitialise les panneaux de notre UI pour le prochain tour
 		fenetre.getPanneauActions().refreshActions();
 		fenetre.getPanneauJeu().getCasePersoSelectionne().setTransparency(null);
 		fenetre.getPanneauJeu().setSelectionne(null, null);
@@ -188,6 +202,7 @@ public class Actions implements ActionListener {
 		System.out.println();
 		System.out.println("Changement de joueur...");
 		
+		//On sauvegarde la partie au début du nouveau tour
 		try {
 			fm.writeSauvegarde(jeu);
 		} catch (IOException e) {
@@ -203,14 +218,17 @@ public class Actions implements ActionListener {
 		Jeu jeu = fenetre.getJeu();
 		jeu.setJetonEquipement(jeu.getJetonEquipement()-1);
 		
+		//On ajoute l'objet aléatoire au personnage sélectionné
 		Personnage perso = panneauActions.getPersoSelectionne();
 		Objet objet = panneauActions.getObjetLoot();
 		perso.addListObjets(objet);
 		
 		if(jeu.getJetonEquipement() == 0) {
+			//Si c'était le seul jeton d'équipement
 			panneauActions.refreshActions();
-			SourisJeu.refreshBoutonsActions(fenetre, fenetre.getJeu(), fenetre.getPanneauJeu());
+			SourisJeu.refreshBoutonsActions(fenetre);
 		}else {
+			//S'il y avait un deuxieme jeton d'équipement pour l'autre joueur
 			fenetre.getPanneauActions().showChoixObjet(jeu.getJoueurInactif());
 		}
 		

@@ -14,9 +14,13 @@ import util.Util;
 
 public class SourisSelection extends MouseAdapter{
 
+	/** La personnage concerné par le listener */
 	private Personnage personnage;
+	/** La case concerné par le listener */
 	private CaseImage caseImage;
+	/** La fenetre de jeu */
 	private Fenetre fenetre;
+	
 	/**
 	 * Constructeur sourisSelection
 	 * 
@@ -42,22 +46,26 @@ public class SourisSelection extends MouseAdapter{
 		Equipe equipe = fenetre.getJeu().getJoueurActif().getEquipe();
 		Plateau plateau = fenetre.getJeu().getPlateauJeu();
 
+		//Si le personnage est deja dans l'équipe alors on l'enleve de l'equipe
 		if(equipe.isDansEquipe(personnage)) {
 			System.out.println("Suppression de " + personnage.getNom());
 			caseImage.setTransparency(null);
 			caseImage.repaint();
 			equipe.removeEquipe(personnage);
+			
 			panneauJeu.setPersonnageSelectionne(null);
 			Case previousCase = plateau.getCase(personnage);
 			previousCase.setPersonnage(null, null);
 			previousCase.getPanel().setTransparency(null);
 			previousCase.getPanel().repaint();
-			
+		//Si l'équipe n'est pas complete on ajoute le personnage a l'équipe
 		}else if(!equipe.isComplete()){
 			System.out.println("Ajout de " + personnage.getNom());
+			//On grise le personnage dans le menu de selection
 			caseImage.setTransparency(Util.getGrayTransparency());
 			caseImage.repaint();
 			equipe.addEquipe(personnage);
+			//On recupere la premiere case disponible en fonction du joueur pour y placer le personnage
 			Case newCase;
 			if(fenetre.getJeu().getJoueurActif().equals(fenetre.getJeu().getJoueur1())) {
 				newCase = plateau.getFirstCaseLeft();
@@ -68,6 +76,7 @@ public class SourisSelection extends MouseAdapter{
 			newCase.getPanel().setTransparency(null);
 			newCase.getPanel().repaint();
 		}
+		//Si l'equipe est complete on donne l'accés au bouton pour valider sa composition
 		if(equipe.isComplete()) {
 			System.out.println("Votre equipe est complete, n'oubliez pas de repositionnez vos personnages.");
 			fenetre.getPanneauActions().getButtonValider().setEnabled(true);
@@ -77,8 +86,7 @@ public class SourisSelection extends MouseAdapter{
 	}
 	
 	/**
-	 * Listener pour afficher les caractéristiques dans le panneauInfos lorsque l'utilisateur 
-	 * survole un personnage sur le panneauAction.
+	 * Listener pour afficher les caractéristiques dans le panneauInfos lorsque l'utilisateur survole un personnage sur le panneauAction
 	 */
 	@Override
     public void mouseEntered(MouseEvent e) {
@@ -87,8 +95,7 @@ public class SourisSelection extends MouseAdapter{
     }
 
 	/**
-	 * Listener pour réinitialiser le panneauInfos lorsque l'utilisateur ne survole plus un
-	 * personnage
+	 * Listener pour réinitialiser le panneauInfos lorsque l'utilisateur ne survole plus un personnage
 	 */
 	@Override
     public void mouseExited(MouseEvent e) {

@@ -75,10 +75,12 @@ public class CaseImage extends JPanel {
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		
+		//Si la case contient un personnage
 		if(personnage != null) {
 
 			try {
 				BufferedImage image = null;
+				//On regarde si on veut afficher une icone d'objet ou de personnage
 				if(stringFond != null && stringFond.startsWith("item")) {
 					Integer numeroItem = Integer.parseInt(stringFond.replace("item", ""));
 					image = resize(ImageIO.read(new File(personnage.getListObjets().get(numeroItem).getCheminImage())), sizeX, sizeY);
@@ -86,15 +88,19 @@ public class CaseImage extends JPanel {
 					image = resize(ImageIO.read(new File(personnage.getCheminImage())), sizeX, sizeY);
 				}
 				
+				//On applique le fond si nécessaire
 				Graphics2D g2d = (Graphics2D) g;
 				if(stringFond != null && !stringFond.startsWith("item")) {
 					BufferedImage fond = ImageIO.read(new File(System.getProperty("user.dir") + "/images/util/" + stringFond));
 					g2d.drawImage(fond, 0, 0, null);
 				}
 				
+				//On affiche l'image au centre du JPanel
 				g2d.translate(this.getWidth() / 2, this.getHeight() / 2);
 				g2d.translate(-image.getWidth(null) / 2, -image.getHeight(null) / 2);
 				g2d.drawImage(image, 0, 0, null);  
+				
+				//On ajoute une transparence si nécessaire
 				if(transparency != null && !transparency.isEmpty()) {
 					g2d.setComposite(AlphaComposite.SrcAtop);
 					g2d.setColor(new Color(transparency.get("red"), transparency.get("green"), transparency.get("blue"), transparency.get("alpha")));

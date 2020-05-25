@@ -224,7 +224,11 @@ public abstract class Personnage {
 	public String getNom() {
 		return nom;
 	}
-
+	
+	/**
+	 * Permet de renseigner la vie actuelle du personnage
+	 * @param vie La vie souhaitée
+	 */
 	public void setVie(int vie) {
 		this.vie =  vie;
 	}
@@ -286,8 +290,10 @@ public abstract class Personnage {
 		return cheminImage;
 	}
 	
-	
-	
+	/**
+	 * Permet de renseigner les bonus d'équipe du personnage
+	 * @param bonusEquipe les bonus d'équipe souhaités
+	 */
 	public void setBonusEquipe(HashMap<TypeStat, Integer> bonusEquipe) {
 		this.bonusEquipe = bonusEquipe;
 	}

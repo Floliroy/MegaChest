@@ -20,14 +20,15 @@ import util.FileManager;
 import util.Util;
 
 /**
- * SourisJeu permet d'effectuer toutes les actions correspondantes 
- * pour chaques action réaliser par l'utilisateur avec la souris 
- * sur le panneauJeu.
+ * SourisJeu permet d'effectuer toutes les actions correspondantes pour chaques action réaliser par l'utilisateur avec la souris sur le panneauJeu.
  */
 public class SourisJeu extends MouseAdapter {
 
+	/** La case concerné par le listener */
 	private Case casePlateau;
+	/** La panel concerné par le listener */
 	private JPanel panel;
+	/** La fenetre de jeu */
 	private Fenetre fenetre;
 
 	/**
@@ -44,13 +45,15 @@ public class SourisJeu extends MouseAdapter {
 	}
 
 	/**
-	 * Actualise les boutons d'actions du panneau panneauAction en fonction des
-	 * actions que l'utilisateur peut effectuer.
+	 * Actualise les boutons d'actions du panneau panneauAction en fonction des actions que l'utilisateur peut effectuer.
 	 * 
 	 * @param jeu 
 	 * @param panneauJeu
 	 */
-	public static void refreshBoutonsActions(Fenetre fenetre, Jeu jeu, PanneauJeu panneauJeu) {
+	public static void refreshBoutonsActions(Fenetre fenetre) {
+		Jeu jeu = fenetre.getJeu();
+		PanneauJeu panneauJeu = fenetre.getPanneauJeu();
+		
 		if (panneauJeu.getPersonnageSelectionne() == null) {
 			fenetre.getPanneauActions().getButtonAttaquer().setEnabled(false);
 			fenetre.getPanneauActions().getButtonDeplacer().setEnabled(false);
@@ -263,8 +266,7 @@ public class SourisJeu extends MouseAdapter {
 	}
 
 	/**
-	 * Gère les différentes actions possibles que peut effectuer le joueur actif
-	 * avec la souris en fonction de la phase dans laquelle se trouve la partie.
+	 * Gère les différentes actions possibles que peut effectuer le joueur actif avec la souris en fonction de la phase dans laquelle se trouve la partie.
 	 */
 	@Override
 	public void mouseClicked(MouseEvent e) {
@@ -302,14 +304,13 @@ public class SourisJeu extends MouseAdapter {
 		}
 
 		if (jeu.getEtatJeu() == Jeu.PHASE_ACTION) {
-			refreshBoutonsActions(fenetre, jeu, panneauJeu);
+			refreshBoutonsActions(fenetre);
 		}
 
 	}
 
 	/**
-	 * Listener pour affiche les caractéristiques dans le panneauInfos lorsque l'utilisateur 
-	 * survole un personnage sur le plateau.
+	 * Listener pour affiche les caractéristiques dans le panneauInfos lorsque l'utilisateur survole un personnage sur le plateau
 	 */
 	@Override
 	public void mouseEntered(MouseEvent e) {
@@ -318,8 +319,7 @@ public class SourisJeu extends MouseAdapter {
 	}
 
 	/**
-	 * Listener réinitialise le panneauInfos lorsque l'utilisateur ne survole plus un
-	 * personnage
+	 * Listener réinitialise le panneauInfos lorsque l'utilisateur ne survole plus un personnage
 	 */
 	@Override
 	public void mouseExited(MouseEvent e) {

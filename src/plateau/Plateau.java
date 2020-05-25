@@ -135,7 +135,7 @@ public class Plateau {
 	}
 	
 	/**
-	 * Permet de connaitre la range dees cases que le personnage peut attaquer
+	 * Permet de connaitre la range des cases que le personnage peut attaquer
 	 * @param personnage Le personnage dont on veut connaitre les cases attaquables
 	 * @return La range des cases attaquables
 	 */
@@ -203,6 +203,7 @@ public class Plateau {
 	public Case getFirstCaseLeft() {
 		for(Case []ligne : plateau) {
 			for(Case colonne : ligne) {
+				//On regarde si la colonne est bien l'une des 4 premieres
 				if(colonne.getPositionX() < Jeu.NOMBRE_COLONNE_PLACEMENT && colonne.isEmpty()) {
 					return colonne;
 				}
@@ -218,6 +219,7 @@ public class Plateau {
 	public Case getFirstCaseRight() {
 		for(Case []ligne : plateau) {
 			for(Case colonne : ligne) {
+				//On regarde si la colonne est bien l'une des 4 dernieres
 				if(colonne.getPositionX() >= Plateau.NOMBRE_COLONNE-Jeu.NOMBRE_COLONNE_PLACEMENT && colonne.isEmpty()) {
 					return colonne;
 				}

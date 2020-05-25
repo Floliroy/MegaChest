@@ -25,6 +25,7 @@ public class PanneauLogs extends JPanel{
 	public PanneauLogs() {
 		
 		this.setLayout(new BorderLayout());
+		//On ajoute une bordure avec un titre
 		this.setBorder(new TitledBorder(new EtchedBorder(), "Logs"));
 		
 		textOutput = new JTextArea(1,1);
@@ -32,6 +33,7 @@ public class PanneauLogs extends JPanel{
 		textOutput.setAutoscrolls(true);
 		textOutput.setEditable(false);
 		
+		//On ajoute une barre scrollable
 		JScrollPane scroll = new JScrollPane(textOutput, 
 				ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS, 
 				ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
@@ -40,6 +42,10 @@ public class PanneauLogs extends JPanel{
 		
 	}
 
+	/**
+	 * Methode qui permet de rediriger un flux de texte vers notre panneau
+	 * @return
+	 */
 	public JTextArea getTextOutput() {
 		return textOutput;
 	}

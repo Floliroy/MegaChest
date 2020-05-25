@@ -18,13 +18,16 @@ public class PopUpEnd extends JDialog {
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	
+	/**
+	 * Constructeur de la popup de fin affichant le gagnant
+	 * @param fenetre La fenetre de jeu
+	 * @param joueur Le gagnant
+	 */
 	public PopUpEnd(Fenetre fenetre, Joueur joueur) {
 		
+		//On initialise la popup
 		this.setSize(450, 350);
-		
 		this.setLocationRelativeTo(fenetre);
-		
 		this.setBackground(Color.GRAY);
 		this.setResizable(false);
 		this.setModal(true);
@@ -39,11 +42,12 @@ public class PopUpEnd extends JDialog {
 				  + "}"
 				  + "</style>";
 		String htmlFooter = "</html>";
-		
+		//On applique de l'html / css sur le texte
 		JLabel label = new JLabel(htmlHeader + "<p>Bravo <span>" + joueur.getNom() + "</span> tu es le gagnant !</p>" + htmlFooter);
 		label.setFont(new Font("Calibri", Font.BOLD, 38));
 		this.add(label);
 		
+		//On termine le programme si on ferme la popup
 		this.addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent e){
 				System.exit(0);

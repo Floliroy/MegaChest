@@ -13,6 +13,7 @@ import ui.panneau.PanneauActions;
 import ui.panneau.PanneauInfos;
 import ui.panneau.PanneauJeu;
 import ui.panneau.PanneauLogs;
+import ui.souris.SourisJeu;
 import util.RedirectionOutput;
 
 public class Fenetre extends JFrame {
@@ -40,14 +41,14 @@ public class Fenetre extends JFrame {
 	public Fenetre(Jeu jeu) {
 		this.jeu = jeu;
 		
-		//Fenetre
+		/* Fenetre */
 		this.setTitle("MegaChest");
 		this.setSize(1920, 1080);
 		this.setLocationRelativeTo(null);
 		
-		//Panneau Logs (Bas Droite)
+		/* Panneau Logs (Bas Droite) */
 		panneauLogs = new PanneauLogs();
-		
+		//On redirige sysout vers notre panneau
 		PrintStream printStream = new PrintStream(new RedirectionOutput(panneauLogs.getTextOutput()));
 		System.setOut(printStream);
 		
@@ -55,14 +56,12 @@ public class Fenetre extends JFrame {
 		iFrameLogs.add(panneauLogs);
 		iFrameLogs.setResizable(false);
 		iFrameLogs.setBorder(null);
-		
 		BasicInternalFrameUI biFrameLogs = (BasicInternalFrameUI) iFrameLogs.getUI();
 		biFrameLogs.setNorthPane(null);
-		
 		iFrameLogs.setVisible(true);
 		
 		
-		//Panneau Infos (Haut Droite)
+		/* Panneau Infos (Haut Droite) */
 		panneauInfos = new PanneauInfos();
 		JInternalFrame iFrameInfos = new JInternalFrame();
 		iFrameInfos.add(panneauInfos);
@@ -71,7 +70,7 @@ public class Fenetre extends JFrame {
 		biFrameInfos.setNorthPane(null);
 		iFrameInfos.setVisible(true);
 		
-		//Panneau Jeu (Haut Gauche)
+		/* Panneau Jeu (Haut Gauche) */
 		panneauJeu = new PanneauJeu(this);
 		JInternalFrame iFrameJeu = new JInternalFrame();
 		iFrameJeu.add(panneauJeu);
@@ -80,7 +79,7 @@ public class Fenetre extends JFrame {
 		biFrameJeu.setNorthPane(null);
 		iFrameJeu.setVisible(true);
 		
-		//Panneau Action (Bas Gauche)
+		/* Panneau Action (Bas Gauche) */
 		panneauActions = new PanneauActions(this);
 		JInternalFrame iFrameActions = new JInternalFrame();
 		iFrameActions.add(panneauActions);
@@ -91,38 +90,38 @@ public class Fenetre extends JFrame {
 		
 		
 		//Positionnement des panneaux avec GridBagConstraints
-		setLayout(new GridBagLayout());
+		this.setLayout(new GridBagLayout());
 		GridBagConstraints cons = new GridBagConstraints();
-		
-
-		//Panneau Jeu (Haut Gauche)
-		cons.gridx = 0;
-		cons.gridy = 0;
 		cons.fill = GridBagConstraints.BOTH;
 		cons.gridwidth = 1;
 		cons.gridheight = 1;
+		
+
+		/* Panneau Jeu (Haut Gauche) */
+		cons.gridx = 0;
+		cons.gridy = 0;
 		cons.weightx = 0.62;
 		cons.weighty = 0.75;
-		add(iFrameJeu,cons);
+		this.add(iFrameJeu,cons);
 
-		//Panneau Infos (Haut Droite)
+		/* Panneau Infos (Haut Droite) */
 		cons.gridx = 1;
 		cons.gridy = 0;
 		cons.weightx = 0.38;
-		add(iFrameInfos, cons);
+		this.add(iFrameInfos, cons);
 
-		//Panneau Action (Bas Gauche)
+		/* Panneau Action (Bas Gauche) */
 		cons.gridx = 0;
 		cons.gridy = 1;
 		cons.weighty = 0.25;
-		add(iFrameActions, cons);
+		this.add(iFrameActions, cons);
 
-		//Panneau Logs (Bas Droite)
+		/* Panneau Logs (Bas Droite) */
 		cons.gridx = 1;
 		cons.gridy = 1;
-		add(iFrameLogs, cons);
+		this.add(iFrameLogs, cons);
 		
-		
+		//On quitte le programme a la fermeture de la fenetre
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
@@ -134,6 +133,20 @@ public class Fenetre extends JFrame {
 		this.setExtendedState(JFrame.MAXIMIZED_BOTH);
 	}
 	
+	/**
+	 * Permet d'initialiser les composants de notre fenetre
+	 */
+	public void initJeu() {
+		if(jeu.getEtatJeu() == Jeu.PHASE_SELECTION) {
+			this.getPanneauActions().showSelection();
+		}else {
+			this.getPanneauActions().refreshActions();
+			SourisJeu.refreshBoutonsActions(this);
+		}
+		this.getPanneauJeu().refresh();
+		this.revalidate();
+		this.repaint();
+	}
 	
 	///////////////////////
 	// GETTERS & SETTERS //

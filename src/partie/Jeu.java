@@ -42,11 +42,13 @@ public class Jeu {
 	 * Constructeur permettant d'initialiser le plateau, les joueurs, et les differents flags / jeton d'un tour
 	 */
 	public Jeu(){
+		//On initialise le jeu
 		plateauJeu = new Plateau();
 		joueur1 = new Joueur(true, "blue");
 		joueur2 = new Joueur(false, "red");
 		etatJeu = PHASE_SELECTION;
 		
+		//On initialise les flags et jetons nécessaires au premier tour de jeu
 		actionEffectue = false;
 		attaqueEffectue = false;
 		jetonAttaque = false;
@@ -191,11 +193,25 @@ public class Jeu {
 		return joueur1;
 	}
 	/**
+	 * Setter du joueur 1
+	 * @param joueur1 Le joueur 1
+	 */
+	public void setJoueur1(Joueur joueur1) {
+		this.joueur1 = joueur1;	
+	}
+	/**
 	 * Getter du joueur 2
 	 * @return Le joueur 2
 	 */
 	public Joueur getJoueur2() {
 		return joueur2;
+	}
+	/**
+	 * Setter du joueur 2
+	 * @param joueur2 Le joueur 2
+	 */
+	public void setJoueur2(Joueur joueur2) {
+		this.joueur2 = joueur2;	
 	}
 	/**
 	 * Getter de l'etat du jeu
@@ -295,14 +311,5 @@ public class Jeu {
 	public void setPersonnageJoue(Personnage personnageJoue) {
 		this.personnageJoue = personnageJoue;
 	}
-
-	public void setJoueur1(Joueur joueur1) {
-		this.joueur1 = joueur1;	
-	}
-	
-	public void setJoueur2(Joueur joueur2) {
-		this.joueur2 = joueur2;	
-	}
-
 
 }

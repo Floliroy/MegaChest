@@ -41,7 +41,10 @@ public class Joueur {
 	public Equipe getEquipe() {
 		return equipe;
 	}
-
+	/**
+	 * Setter de l'équipe du joueur
+	 * @param equipe L'équipe du joueur
+	 */
 	public void setEquipe(Equipe equipe) {
 		this.equipe = equipe;
 	}
