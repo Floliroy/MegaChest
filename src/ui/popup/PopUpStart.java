@@ -182,7 +182,7 @@ public class PopUpStart extends JDialog implements ActionListener{
 				fenetre.revalidate();
 				fenetre.repaint();
 			}
-		} else {
+		}else if(e.getSource().equals(load) && (new File(FileManager.SAVE).exists())){
 			FileManager fm = new FileManager();
 			try {
 				fm.readSauvegarde(jeu);
