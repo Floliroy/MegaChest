@@ -183,10 +183,10 @@ public class SourisJeu extends MouseAdapter {
 			System.out.println(jeu.getGagnant().getNom() + ", tu es le gagnant !");
 			PopUpEnd popUpEnd = new PopUpEnd(fenetre, jeu.getGagnant());
 			popUpEnd.setVisible(true);
-			File file = new File(FileManager.SAVE);
+			/*File file = new File(FileManager.SAVE);
 			if(file.exists()) {
 				file.delete();
-			}
+			}*/
 		}
 	}
 

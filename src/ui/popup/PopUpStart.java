@@ -171,6 +171,7 @@ public class PopUpStart extends JDialog implements ActionListener{
 				}
 				fenetre.getPanneauActions().showSelection();
 				fenetre.getPanneauJeu().refresh();
+				fenetre.getRootPane().getGlassPane().setVisible(false);
 				fenetre.revalidate();
 				fenetre.repaint();
 			}
@@ -184,6 +185,7 @@ public class PopUpStart extends JDialog implements ActionListener{
 				fenetre.getPanneauActions().refreshActions();
 				SourisJeu.refreshBoutonsActions(fenetre, fenetre.getJeu(), fenetre.getPanneauJeu());
 				fenetre.getPanneauJeu().refresh();
+				fenetre.getRootPane().getGlassPane().setVisible(false);
 				fenetre.revalidate();
 				fenetre.repaint();
 				
