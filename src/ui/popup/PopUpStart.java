@@ -23,7 +23,7 @@ import javax.swing.JTextField;
 import partie.Jeu;
 import ui.Fenetre;
 import ui.util.MyPanel;
-import util.FileManager;
+import util.SaveManager;
 
 public class PopUpStart extends JDialog implements ActionListener{
 
@@ -135,7 +135,7 @@ public class PopUpStart extends JDialog implements ActionListener{
 		conteneurField.add(new MyPanel(nomJ2), cons);
 		
 		//Bouton charger sauvegarde
-		File file = new File(FileManager.SAVE);
+		File file = new File(SaveManager.SAVE);
 		//On crée le bouton seulement si on a un fichier de sauvegarde
 		if(file.exists()) {
 			cons.gridx = 1;
@@ -179,7 +179,7 @@ public class PopUpStart extends JDialog implements ActionListener{
 				//On ferme la pop-up
 				dispose();		
 				//On supprime l'ancien fichier de sauvgarde
-				File file = new File(FileManager.SAVE);
+				File file = new File(SaveManager.SAVE);
 				if(file.exists()) {
 					file.delete();
 				}
@@ -187,8 +187,8 @@ public class PopUpStart extends JDialog implements ActionListener{
 				fenetre.initJeu();
 			}
 		//Si on souhaite recharger la derniere partie
-		}else if(e.getSource().equals(load) && (new File(FileManager.SAVE).exists())){
-			FileManager fm = new FileManager();
+		}else if(e.getSource().equals(load) && (new File(SaveManager.SAVE).exists())){
+			SaveManager fm = new SaveManager();
 			try {
 				//On récupère la partie sauvegardée
 				fm.readSauvegarde(jeu);

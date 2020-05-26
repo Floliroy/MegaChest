@@ -18,19 +18,28 @@ import persistance.SauvegardeJeu;
 import persistance.customDeserialize.CaseDeserialize;
 import plateau.Case;
 
-public class FileManager {
-	
+public class SaveManager {
+	/**
+	 * PATH relatif du fichier de sauvegarde
+	 */
 	public final static String SAVE = "./backup/sauvegarde.json";
-
+	
+	/**
+	 * Permet d'écrire le contenu de la sauvegarde
+	 * 
+	 * @param partie jeu en cours à sauvegarder
+	 * @throws IOException
+	 */
 	public void writeSauvegarde(Jeu partie) throws IOException {
 		
 		GsonBuilder builder = new GsonBuilder().excludeFieldsWithoutExposeAnnotation();
 		Gson gson = builder.setPrettyPrinting().create();
 		
 		SauvegardeJeu seri = new SauvegardeJeu(partie);
-		
+		//Sauvegarde de la partie
 		seri.sauvegardePersonnage();
 		
+		// Ecriture de la sauvegarde dans le fichier
 		Writer writer = new FileWriter(SAVE);
 		gson.toJson(seri, writer);
 		writer.flush();
@@ -38,7 +47,12 @@ public class FileManager {
 
 	}
 	
-	
+	/**
+	 * Permet lire le contenue de la sauvegarde
+	 * 
+	 * @param partie jeu sur lequel la sauvegarde est chargée
+	 * @throws IOException
+	 */
 	public void readSauvegarde(Jeu partie) throws IOException {
 		
 		GsonBuilder builder = new GsonBuilder();
@@ -48,14 +62,17 @@ public class FileManager {
 		
 		File file = new File(SAVE);
 	
+		// Lecture du fichier de sauvegarde
 		FileInputStream fis = new FileInputStream(file);
 		byte[]data = new byte[(int) file.length()];
 		fis.read(data);
 		fis.close();
 		
 		String str = new String(data);
-		SauvegardeJeu relecture = gson.fromJson(str, SauvegardeJeu.class);
-		RestoreJeu.Restore(partie, relecture);
+		// Affectation de la sauvegarde à un objet SauvegardeJeu
+		SauvegardeJeu chargement = gson.fromJson(str, SauvegardeJeu.class);
+		// Chargement de la sauvegarde
+		RestoreJeu.Restore(partie, chargement);
 	}
 	
 }

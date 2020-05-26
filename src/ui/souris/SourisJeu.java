@@ -16,7 +16,7 @@ import ui.Fenetre;
 import ui.panneau.PanneauJeu;
 import ui.popup.PopUpEnd;
 import ui.util.CaseImage;
-import util.FileManager;
+import util.SaveManager;
 import util.Util;
 
 /**
@@ -193,7 +193,7 @@ public class SourisJeu extends MouseAdapter {
 		if (jeu.isFini()) {
 			jeu.setEtatJeu(Jeu.PHASE_TERMINE);
 			
-			File file = new File(FileManager.SAVE);
+			File file = new File(SaveManager.SAVE);
 			//On supprime le fichier de sauvegarde
 			if(file.exists()) {
 				file.delete();

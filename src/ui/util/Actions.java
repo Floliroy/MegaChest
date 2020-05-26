@@ -11,7 +11,7 @@ import partie.Jeu;
 import partie.Joueur;
 
 
-import util.FileManager;
+import util.SaveManager;
 import util.Util;
 import personnages.Personnage;
 import plateau.Case;
@@ -187,7 +187,7 @@ public class Actions implements ActionListener {
 	 */
 	private void actionPasser() {
 		Jeu jeu = fenetre.getJeu();
-		FileManager fm = new FileManager();
+		SaveManager fm = new SaveManager();
 
 		//On réinitialise les jetons et flags pour le prochain tour
 		jeu.inverseJoueurs();

@@ -18,7 +18,6 @@ public class Case {
 	/** JPanel correspondant aux coordonnées de la cas */
 	private CaseImage panel;
 	
-	/* -------------------------------------------------- */
 	
 	/**
 	 * Constructeur permettant de creer une Case
