@@ -232,14 +232,5 @@ public class Equipe {
 	public void removeEquipe(Personnage personnage) {
 		listePersonnages.remove(personnage);
 	}
-	
-	/**
-	 * Permet de savoir si l'équipe contient un personnage
-	 * @param personnage Le personnage dont on veut savoir s'il fait partie de l'équipe
-	 * @return true s'il fait partie de l'équipe sinon false
-	 */
-	public Boolean contains(Personnage personnage) {
-		return listePersonnages.contains(personnage);
-	}
 
 }

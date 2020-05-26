@@ -111,18 +111,16 @@ public class SourisJeu extends MouseAdapter {
 		PanneauJeu panneauJeu = fenetre.getPanneauJeu();
 
 		/*
-		 * Verifie que le personnage à sélectionner appartient bien à l'équipe du joueur
-		 * actif
+		 * Verifie que le personnage à sélectionner appartient bien à l'équipe du joueur actif
 		 */
 		if (fenetre.getJeu().getJoueurActif().getEquipe().isDansEquipe(casePlateau.getPersonnage())) {
 
 			/* Si un personnage est déjà sélectionné, on supprime la sélection */
 			if (panneauJeu.getCasePersoSelectionne() != null) {
 				panneauJeu.getCasePersoSelectionne().setTransparency(null);
-				panneauJeu.getCasePersoSelectionne().repaint();
 			}
 			/* On met à jours la sélection avec le bon personnage en surbrillance */
-			panneauJeu.setSelectionne(casePlateau.getPersonnage(), (CaseImage) panel);
+			panneauJeu.setSelectionne(casePlateau.getPersonnage(), image);
 			image.setTransparency(Util.getYellowTransparency());
 
 		}
@@ -281,7 +279,7 @@ public class SourisJeu extends MouseAdapter {
 			else
 				selectPersonnage(image);
 
-			image.repaint();
+			panneauJeu.refresh();
 
 		} else if (panneauJeu.getPersonnageSelectionne() != null) {
 

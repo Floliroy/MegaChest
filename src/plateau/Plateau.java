@@ -152,7 +152,7 @@ public class Plateau {
 		for(int ligne = positionY - poPerso; ligne <= positionY + poPerso; ligne ++) {
 			for(int colonne = positionX - decalage; colonne <= positionX + decalage; colonne ++)
 				if(getCase(colonne, ligne) != null && !personnage.equals(getCase(colonne, ligne).getPersonnage()))
-					if(!(getCase(colonne, ligne).getPersonnage() != null && jeu.getJoueurActif().getEquipe().contains(getCase(colonne, ligne).getPersonnage())))
+					if(!(getCase(colonne, ligne).getPersonnage() != null && jeu.getJoueurActif().getEquipe().isDansEquipe(getCase(colonne, ligne).getPersonnage())))
 						casesAPorte.add(getCase(colonne, ligne));				
 			decalage = ligne < positionY ? decalage + 1 : decalage - 1;
 		}
