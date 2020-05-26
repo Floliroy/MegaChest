@@ -55,10 +55,12 @@ public class SourisJeu extends MouseAdapter {
 		PanneauJeu panneauJeu = fenetre.getPanneauJeu();
 		
 		if (panneauJeu.getPersonnageSelectionne() == null) {
+			//S'il n'y a pas de personnage selectionne on désactive les boutons d'attaque et de deplacement
 			fenetre.getPanneauActions().getButtonAttaquer().setEnabled(false);
 			fenetre.getPanneauActions().getButtonDeplacer().setEnabled(false);
 		} else {
 			Boolean peutAttaquer = false;
+			//Un personnage peut attaque s'il a des adversaires a portees
 			if (panneauJeu.getPersonnageSelectionne().isVivant()) {
 				for (Case caseAttaquable : jeu.getPlateauJeu().getCasesAPorte(panneauJeu.getPersonnageSelectionne())) {
 					if (!caseAttaquable.isEmpty()
@@ -67,13 +69,16 @@ public class SourisJeu extends MouseAdapter {
 					}
 				}
 			}
+			//Un personnage peut se deplacer s'il lui reste des PMs
 			Boolean peutDeplacer = panneauJeu.getPersonnageSelectionne().getDeplacementsAvecBoost() > 0;
 
+			//Une seule attaque disponible par tour
 			if (!jeu.getAttaqueEffectue() && peutAttaquer) {
 				fenetre.getPanneauActions().getButtonAttaquer().setEnabled(true);
 			} else {
 				fenetre.getPanneauActions().getButtonAttaquer().setEnabled(false);
 			}
+			//Si le personnage est mort durant son tour il ne peut plus se deplacer
 			if (peutDeplacer && panneauJeu.getPersonnageSelectionne().isVivant()) {
 				fenetre.getPanneauActions().getButtonDeplacer().setEnabled(true);
 			} else {
@@ -81,6 +86,7 @@ public class SourisJeu extends MouseAdapter {
 			}
 		}
 
+		//Si on a effectué au moins une action ou que le personnage joué est mort on peut passer son tour
 		if (jeu.getActionEffectue() || (panneauJeu.getPersonnageSelectionne() != null && !panneauJeu.getPersonnageSelectionne().isVivant())) {
 			fenetre.getPanneauActions().getButtonPasser().setEnabled(true);
 		} else {
@@ -110,16 +116,15 @@ public class SourisJeu extends MouseAdapter {
 	private void selectPersonnage(CaseImage image) {
 		PanneauJeu panneauJeu = fenetre.getPanneauJeu();
 
-		/*
-		 * Verifie que le personnage à sélectionner appartient bien à l'équipe du joueur actif
-		 */
+
+		//On verifie que le personnage à sélectionner appartient bien à l'équipe du joueur actif
 		if (fenetre.getJeu().getJoueurActif().getEquipe().isDansEquipe(casePlateau.getPersonnage())) {
 
-			/* Si un personnage est déjà sélectionné, on supprime la sélection */
+			//Si un personnage est déjà sélectionné, on supprime la sélection
 			if (panneauJeu.getCasePersoSelectionne() != null) {
 				panneauJeu.getCasePersoSelectionne().setTransparency(null);
 			}
-			/* On met à jours la sélection avec le bon personnage en surbrillance */
+			//On met à jours la sélection avec le bon personnage en surbrillance
 			panneauJeu.setSelectionne(casePlateau.getPersonnage(), image);
 			image.setTransparency(Util.getYellowTransparency());
 
@@ -136,15 +141,19 @@ public class SourisJeu extends MouseAdapter {
 	 */
 	private void attaquerPersoUI(PanneauJeu panneauJeu) {
 		Jeu jeu = fenetre.getJeu();
+		//On verifie qu'on a bien cliqué sur un personnage ennemi
 		if (!casePlateau.isEmpty() && !jeu.getJoueurActif().getEquipe().isDansEquipe(casePlateau.getPersonnage())) {
 			Personnage attaquant = jeu.getPersonnageJoue();
 			Personnage defenseur = casePlateau.getPersonnage();
+			
+			//On effectue l'attaque entre les deux personnages
 			if (jeu.actionAttaquer(attaquant, defenseur)) {
+				//On met a jour les jetons et flags correspondant a l'attaque
 				jeu.setActionEffectue(true);
 				jeu.setAttaqueEffectue(true);
 				jeu.setJetonAttaque(false);
 
-				// On supprime le personnage de son equipe s'il est mort
+				// On supprime les personnages de leurs equipes s'ils sont morts
 				Joueur joueurEquipement = null;
 				if (!attaquant.isVivant()) {
 					jeu.getJoueurActif().getEquipe().removeEquipe(attaquant);
@@ -153,6 +162,7 @@ public class SourisJeu extends MouseAdapter {
 					/*casePerso.getPanel().setTransparency(null);
 					casePerso.getPanel().repaint();*/
 					
+					//Si l'equipe a perdu deux personnages le joueur adverse gagne un objet
 					if(!jeu.isFini() && jeu.getJoueurActif().getEquipe().getListePersonnages().size() % 2 == Equipe.TAILLE_EQUIPE % 2) {
 						joueurEquipement = jeu.getJoueurInactif();
 						jeu.setJetonEquipement(jeu.getJetonEquipement()+1);
@@ -165,27 +175,36 @@ public class SourisJeu extends MouseAdapter {
 					/*casePerso.getPanel().setTransparency(null);
 					casePerso.getPanel().repaint();*/
 					
+					//Si l'equipe adverse a perdu deux personnages le joueur gagne un objet
 					if(!jeu.isFini() && jeu.getJoueurInactif().getEquipe().getListePersonnages().size() % 2 == Equipe.TAILLE_EQUIPE % 2) {
 						joueurEquipement = jeu.getJoueurActif();
 						jeu.setJetonEquipement(jeu.getJetonEquipement()+1);
 					}
 				}
+				//Si un joueur a gagné un equipement on lance la methode correspondante
 				if(joueurEquipement != null) {
 					fenetre.getPanneauActions().showChoixObjet(joueurEquipement);
 				}
 			}
+			//On met a jour le panneau de jeu pour enlever la zone attaquable
 			panneauJeu.refresh();
 		}
+		//On regarde si le jeu est fini
 		if (jeu.isFini()) {
 			jeu.setEtatJeu(Jeu.PHASE_TERMINE);
+			
 			File file = new File(FileManager.SAVE);
+			//On supprime le fichier de sauvegarde
 			if(file.exists()) {
 				file.delete();
 			}
 			
+			//On enleve la possibilité d'effectuer des actions
 			fenetre.getPanneauActions().getButtonAttaquer().setEnabled(false);
 			fenetre.getPanneauActions().getButtonDeplacer().setEnabled(false);
 			fenetre.getPanneauActions().getButtonPasser().setEnabled(false);
+			
+			//On affiche le gagnant
 			System.out.println();
 			System.out.println(jeu.getGagnant().getNom() + ", tu es le gagnant !");
 			PopUpEnd popUpEnd = new PopUpEnd(fenetre, jeu.getGagnant());
@@ -205,9 +224,11 @@ public class SourisJeu extends MouseAdapter {
 		Case previousCase = fenetre.getJeu().getPlateauJeu().getCase(panneauJeu.getPersonnageSelectionne());
 		Jeu jeu = fenetre.getJeu();
 
+		//On verifie que le deplacement est bien autorisé
 		if (casePlateau.isEmpty() && fenetre.getJeu().getPersonnageJoue() != null && jeu.getJetonDeplace()
 				&& jeu.getPersonnageJoue().equals(previousCase.getPersonnage())) {
 
+			//On verifie que le deplacement est bien effectué
 			if (fenetre.getJeu().getPlateauJeu().deplacerPersonnage(fenetre, previousCase, casePlateau)) {
 
 				/*casePlateau.getPanel().setTransparency(Util.getYellowTransparency());
@@ -216,8 +237,11 @@ public class SourisJeu extends MouseAdapter {
 				previousCase.getPanel().setTransparency(null);
 				previousCase.getPanel().repaint();*/
 				
+
+				//On met a jour les jetons et flags correspondant au deplacement
 				jeu.setJetonDeplace(false);
 				jeu.setActionEffectue(true);
+				//On met a jour le panneau de jeu pour enlever la zone de deplacement
 				panneauJeu.refresh();
 			}
 
@@ -234,14 +258,17 @@ public class SourisJeu extends MouseAdapter {
 	private void positionnerPersoUI(PanneauJeu panneauJeu) {
 		Case previousCase = fenetre.getJeu().getPlateauJeu().getCase(panneauJeu.getPersonnageSelectionne());
 
+		//On determine la limite dans laquelle le joueur peut postionner ses personnages
 		int limite = fenetre.getJeu().getJoueur1().isTour() ? Jeu.NOMBRE_COLONNE_PLACEMENT
 				: Plateau.NOMBRE_COLONNE - Jeu.NOMBRE_COLONNE_PLACEMENT;
 
+		//On verifie que la case cliquée est libre et dans la limite
 		if (casePlateau.isEmpty()
 				&& fenetre.getJeu().getJoueurActif().getEquipe().isDansEquipe(panneauJeu.getPersonnageSelectionne())
 				&& ((fenetre.getJeu().getJoueur1().isTour() && casePlateau.getPositionX() < limite)
 						|| (fenetre.getJeu().getJoueur2().isTour() && casePlateau.getPositionX() >= limite))) {
 
+			//On place le personnage sur la case avec la couleur de l'equipe en fond
 			casePlateau.setPersonnage(previousCase.getPersonnage(),
 					fenetre.getJeu().getJoueur1().getEquipe().isDansEquipe(panneauJeu.getPersonnageSelectionne())
 							? "blue.png"
@@ -250,6 +277,7 @@ public class SourisJeu extends MouseAdapter {
 			casePlateau.getPanel().repaint();
 			previousCase.setPersonnage(null, null);
 		}
+		//Si en dehors de la limite on l'indique au joueur
 		if (fenetre.getJeu().getJoueur1().isTour() && casePlateau.getPositionX() >= limite) {
 			System.out.println("Vous ne pouvez placer votre personnage que dans les 4 premieres colonnes.");
 		}
@@ -257,6 +285,7 @@ public class SourisJeu extends MouseAdapter {
 			System.out.println("Vous ne pouvez placer votre personnage que dans les 4 dernieres colonnes.");
 		}
 
+		//On reset la derniere case cliquée
 		previousCase.getPanel().setTransparency(null);
 		previousCase.getPanel().repaint();
 		panneauJeu.setSelectionne(null, null);
@@ -271,9 +300,11 @@ public class SourisJeu extends MouseAdapter {
 		PanneauJeu panneauJeu = fenetre.getPanneauJeu();
 		Jeu jeu = fenetre.getJeu();
 
+		//Si on clique sur un personnage et qu'il n'y a pas de jeton d'action en cours et qu'on a pas deja effectué une action ce tour
 		if (!casePlateau.isEmpty() && !jeu.getActionEffectue() && !jeu.getJetonAttaque() && !jeu.getJetonDeplace()) {
 			CaseImage image = (CaseImage) panel;
 
+			//Si c'est le personnage sélectionné on le déselectionne
 			if (casePlateau.getPersonnage().equals(panneauJeu.getPersonnageSelectionne()))
 				deselectPersonnage(image);
 			else
@@ -282,13 +313,16 @@ public class SourisJeu extends MouseAdapter {
 			panneauJeu.refresh();
 
 		} else if (panneauJeu.getPersonnageSelectionne() != null) {
-
+			//Si on a un jeton et un personnage deja sélectionné
+			
 			switch (fenetre.getJeu().getEtatJeu()) {
 			case Jeu.PHASE_SELECTION:
+				//En phase de selection on positionne son equipe
 				positionnerPersoUI(panneauJeu);
 				break;
 
 			case Jeu.PHASE_ACTION:
+				//En phase d'action on renvoit sur l'action souhaitée en fonction du jeton disponible
 				if (jeu.getJetonAttaque()) {
 					attaquerPersoUI(panneauJeu);
 				} else if (jeu.getJetonDeplace()) {
@@ -297,10 +331,12 @@ public class SourisJeu extends MouseAdapter {
 				break;
 
 			case Jeu.PHASE_TERMINE:
+				//En phase de jeu termine on ne fait rien
 				break;
 			}
 		}
 
+		//Si on est en phase d'action on met a jour les boutons d'actions en fonction de ce qu'il vient de se passer
 		if (jeu.getEtatJeu() == Jeu.PHASE_ACTION) {
 			refreshBoutonsActions(fenetre);
 		}
