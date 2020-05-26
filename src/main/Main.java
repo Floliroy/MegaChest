@@ -1,11 +1,11 @@
-package test;
+package main;
 
 
 import partie.Jeu;
 import ui.Fenetre;
 import ui.popup.PopUpStart;
 
-public class TestUI {
+public class Main {
 
 	public static void main(String[] args) {
 		Jeu jeu = new Jeu();
